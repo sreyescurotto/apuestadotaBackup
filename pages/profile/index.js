@@ -2,9 +2,9 @@ import React from "react";
 
 import ProfileSettings from "../../components/ProfileSettings";
 
-import withAuth from "../interceptors/auth";
+import withAuth from "../../interceptors/auth";
 
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/Layout";
 
 const Profile = () => {
   return (

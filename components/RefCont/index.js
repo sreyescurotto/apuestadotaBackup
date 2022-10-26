@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import ReferidosAll from "../Referidos/ReferidosAll";
+import ReferidosAll from "../Referidos";
 
 export default function Referrals({ user, ...props }) {
   const [copySuccess, setCopySuccess] = useState("");
