@@ -470,6 +470,17 @@ const Solo = () => {
             <h3>Apuestas realizadas</h3>
           </div>
 
+          <p>lorem ipsun qwijeqwoje wqjewq wqeewklqnelkqwjekwjqekljwqekljwqkejqwkejwqlkejwlqkewlkqjeklwqejwqkljeklqwe</p>
+          <p>lorem ipsun qwijeqwoje wqjewq wqeewklqnelkqwjekwjqekljwqekljwqkejqwkejwqlkejwlqkewlkqjeklwqejwqkljeklqwe</p>
+          <p>lorem ipsun qwijeqwoje wqjewq wqeewklqnelkqwjekwjqekljwqekljwqkejqwkejwqlkejwlqkewlkqjeklwqejwqkljeklqwe</p>
+          <p>lorem ipsun qwijeqwoje wqjewq wqeewklqnelkqwjekwjqekljwqekljwqkejqwkejwqlkejwlqkewlkqjeklwqejwqkljeklqwe</p>
+          <p>lorem ipsun qwijeqwoje wqjewq wqeewklqnelkqwjekwjqekljwqekljwqkejqwkejwqlkejwlqkewlkqjeklwqejwqkljeklqwe</p>
+          <p>lorem ipsun qwijeqwoje wqjewq wqeewklqnelkqwjekwjqekljwqekljwqkejqwkejwqlkejwlqkewlkqjeklwqejwqkljeklqwe</p>
+          <p>lorem ipsun qwijeqwoje wqjewq wqeewklqnelkqwjekwjqekljwqekljwqkejqwkejwqlkejwlqkewlkqjeklwqejwqkljeklqwe</p>
+          <p>lorem ipsun qwijeqwoje wqjewq wqeewklqnelkqwjekwjqekljwqekljwqkejqwkejwqlkejwlqkewlkqjeklwqejwqkljeklqwe</p>
+          <p>lorem ipsun qwijeqwoje wqjewq wqeewklqnelkqwjekwjqekljwqekljwqkejqwkejwqlkejwlqkewlkqjeklwqejwqkljeklqwe</p>
+          <p>lorem ipsun qwijeqwoje wqjewq wqeewklqnelkqwjekwjqekljwqekljwqkejqwkejwqlkejwlqkewlkqjeklwqejwqkljeklqwe</p>
+
           <div className="solo--content">
           {loadApuestas && <Apuestas />}
           

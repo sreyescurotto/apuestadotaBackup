@@ -13,7 +13,6 @@ const Normal = () => {
             <style jsx>
         {`
           .interface {
-            overflow: hidden;
 
             background-image: linear-gradient(
               0deg,

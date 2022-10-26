@@ -24,9 +24,10 @@ const Layout = (props) => {
 
       <div className="mode-play">
         <Navbar />
-
         <div className="main--1">
           <Leftbar />
+        
+          
 
           {props.children}
         </div>

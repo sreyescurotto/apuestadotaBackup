@@ -13,8 +13,6 @@ const Practice = () => {
             <style jsx>
             {`
             .interface {
-                overflow: hidden;
-
                 background-image: linear-gradient(
                 0deg,
                 hsl(236deg 24% 11%) 0%,
