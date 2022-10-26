@@ -6,8 +6,9 @@ import { useRouter} from "next/router";
 
 import { useState } from "react";
 
-
 import Image from "next/image";
+
+import AppService from "../../services/app.service";
 
 
 const Navbar = () => {
@@ -34,17 +35,17 @@ const Navbar = () => {
 
   };
 
-//   useEffect(() => {
+  useEffect(() => {
 
-//     let s = new AppService();
+    let s = new AppService();
 
-//     let _user = s.getUser();
+    let _user = s.getUser();
 
 
 
-//     if (_user !== null) setUser(_user);
+    if (_user !== null) setUser(_user);
 
-//   }, [user]);
+  }, []);
 
   return (
 
@@ -197,8 +198,8 @@ const Navbar = () => {
 
             >
 
-              {/* <a href={"/profile"}>
-
+<Link href={"/profile"}>
+              <a>
                 <img
 
                   src={user.foto}
@@ -208,9 +209,8 @@ const Navbar = () => {
                   className="round-profile-img"
 
                 />
-
-              </a> */}
-
+              </a>
+</Link>
             </div>
 
             <button className="btn btn-md">Bienvenido {user.nickname}</button>

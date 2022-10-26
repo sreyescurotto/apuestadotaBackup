@@ -39,9 +39,9 @@ const Login = () => {
 
       "openid.mode": "checkid_setup",
 
-      "openid.return_to": process.env.NEXT_PUBLIC_APP_DOMAN + "/login", // Esto es la url donde va a recibir los get params despues de iniciar sesion
+      "openid.return_to": "http://localhost:3000/login", // Esto es la url donde va a recibir los get params despues de iniciar sesion
 
-      "openid.realm": process.env.NEXT_PUBLIC_APP_DOMAN, // Esto es el origen de la peticion
+      "openid.realm": "http://localhost:3000/", // Esto es el origen de la peticion
 
       "openid.identity": "http://specs.openid.net/auth/2.0/identifier_select",
 

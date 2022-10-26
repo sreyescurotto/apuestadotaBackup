@@ -2,7 +2,7 @@ import Axios from "axios";
 
 const AppService = () => {
   const axios = Axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_REST,
+    baseURL: "https://apuestadota.com:8080/api",
 
     headers: {
       "X-Requested-With": "XMLHttpRequest",
@@ -10,7 +10,7 @@ const AppService = () => {
   });
 
   const getBaseUrl = () => {
-    return process.env.NEXT_PUBLIC_API_REST;
+    return "https://apuestadota.com:8080/api";
   };
 
   const setUser = (user) => {

@@ -13,9 +13,9 @@ import Image from "next/image";
 const Leftbar = (classWitdraw, c2, c3, c4, c5, c6, c7) => {
   const router = useRouter();
 
-  const [saldo, setSaldo] = useState("0.00");
+  const [saldo, setSaldo] = useState("Cargando ...");
 
-  const [saldoPrueba, setSaldoPrueba] = useState("0.00");
+  const [saldoPrueba, setSaldoPrueba] = useState("Cargando ...");
 
   const [changing, setChanging] = useState(false);
 
@@ -151,7 +151,7 @@ const routeReal = () => {
         <div className="left-container-body">
           <div className="left-container-body-item">
             
-            <Link href='profile'>
+            <Link href='/profile'>
               <a className={router.pathname == '/profile' ? "left-body-anchor-active" : "left-container-body-anchor"}>
               <div className="left-container-img left-img-active">
                 <Image
