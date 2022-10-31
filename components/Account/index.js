@@ -4,10 +4,12 @@ import React, { useEffect, useState } from "react";
 
 import AppService from "../../services/app.service";
 
-const Account = () => {
+const Account = (props) => {
   const [loading, setLoading] = useState(false);
 
   const [resumen, setResumen] = useState([]);
+
+  const profile = props.profile;
 
   const getConsumos = () => {
     setLoading(true);
@@ -37,11 +39,11 @@ const Account = () => {
         <table className="desktop-table">
           <thead>
             <tr>
-              <th>Fecha y hora </th>
+              <th>{profile.datetime} </th>
 
-              <th>Monto</th>
+              <th>{profile.amount}</th>
 
-              <th>Origen</th>
+              <th>{profile.source}</th>
             </tr>
           </thead>
 

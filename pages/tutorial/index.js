@@ -1,8 +1,22 @@
 import React, { useState } from "react";
-
 import Layout from '../../components/Layout/Layout';
 
-export default function Tutorial() {
+export async function getStaticProps({ locale }) {
+  const response = await import(`../../lang/${locale}.json`);
+  return {
+    props: {
+      play: response.default.play,
+      navbar: response.default.navbar,
+      layout: response.default.layout,
+      leftbar: response.default.leftbar,
+    },
+  };
+}
+
+export default function Tutorial(props) {
+
+  const { play , layout, navbar, leftbar } = props;
+  
   const [active2, setActive2] = useState(false);
 
   const [active3, setActive3] = useState(false);
@@ -89,7 +103,7 @@ export default function Tutorial() {
 
   return (
     <>
-      <Layout>
+      <Layout layout={layout} navbar={navbar} leftbar={leftbar}>
         <div className="interface">
           <div className="faq-container">
             <div className="faq-container-title">
@@ -104,7 +118,7 @@ export default function Tutorial() {
 
                 <div className="tutorial-p">
                   <p>
-                    Envianos un correo y te ayudaremos:{" "}
+                    Envianos un correo y te ayudaremos:
                     <span className="green">soporte@apuestadota.com </span>
                   </p>
                 </div>

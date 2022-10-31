@@ -4,20 +4,31 @@ import Layout from "../../components/Layout/Layout";
 
 import Image from "next/image";
 
-export default function rules() {
+export async function getStaticProps({ locale }) {
+  const response = await import(`../../lang/${locale}.json`);
+  return {
+    props: {
+      navbar: response.default.navbar,
+      layout: response.default.layout,
+      leftbar: response.default.leftbar,
+      terms: response.default.terms,
+    },
+  };
+}
+
+export default function rules(props) {
+  const { layout, navbar, leftbar, terms } = props;
   const date = new Date();
 
   const b = date.toLocaleDateString("en-GB");
 
   return (
     <>
-      <Layout>
+      <Layout layout={layout} navbar={navbar} leftbar={leftbar}>
         <div className="interface">
           <div className="rules-container">
-            <h2 className="rules-title">Términos y Condiciones</h2>
-
-            <p>Actualizado al {b}. </p>
-
+            <h2 className="sec-title-h">{terms.title}</h2>
+            <p>{terms.date} {b}. </p>
             <div className="terms-link-container">
               <Image src="/pdf-blue.png" className="terms-img" width={50} height={50}/>
 
@@ -83,13 +94,7 @@ export default function rules() {
             padding: 2rem;
           }
 
-          .rules-title {
-            font-family: "Teko", sans-serif;
-
-            font-size: 3.5rem;
-
-            text-shadow: 2px 2px 2px #000;
-          }
+          
 
           .rules-container p {
             margin-bottom: 4rem;

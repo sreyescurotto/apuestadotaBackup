@@ -62,11 +62,9 @@ const Dep = () => {
   };
 
   const handleChange = (e) => {
-    e.preventDefault();
-
+    const b = e.target.value;
     const amount = refM.current.value;
-
-    setMonto(amount);
+    b.length > 4 ? setMonto(100) : setMonto(amount);
   };
 
   const handleCodRefChange = (e) => {
@@ -230,7 +228,7 @@ const Dep = () => {
                   <div className="withdraw-flex-payment-main-item">
                     <label htmlFor="amount">Monto:</label>
 
-                    <input type="number" min="10" step="0.01" defaultValue={10}/>
+                    <input type="number" min="10" step="0.01" defaultValue={10} value={monto}/>
                   </div>
 
                   <PayPalScriptProvider
@@ -303,6 +301,7 @@ const Dep = () => {
                       type="number"
                       id="amount"
                       name="amount"
+                      value={monto}
                       ref={refM}
                       onChange={handleChange}
                       min="10"
@@ -369,6 +368,7 @@ const Dep = () => {
                         type="number"
                         id="amount"
                         name="monto"
+                        value={monto}
                         ref={refM}
                         onChange={handleChange}
                         max="100"

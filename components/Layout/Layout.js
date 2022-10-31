@@ -10,8 +10,10 @@ import Leftbar from "../Leftbar/Leftbar";
 
 
 
-
 const Layout = (props) => {
+  const layout = props.layout
+  const navbar = props.navbar
+  const leftbar = props.leftbar
   return (
     <>
       <Head>
@@ -23,9 +25,9 @@ const Layout = (props) => {
       </Head>
 
       <div className="mode-play">
-        <Navbar />
+        <Navbar navbar={navbar}/>
         <div className="main--1">
-          <Leftbar />
+          <Leftbar leftbar={leftbar} />
         
           
 
@@ -37,6 +39,7 @@ const Layout = (props) => {
             href="https://wa.me/923298322?text=Hola%20tengo%20una%20consulta%20acerca%20de%20ApuestaDota.com"
             target={"_blank"}
           >
+           <p className="contact">{layout.title}</p>
             <Image
               src="/social/whatsapp-call.png"
               alt="normalMode"
@@ -58,17 +61,25 @@ const Layout = (props) => {
 
             right: 0;
 
-            margin: 2rem;
+            margin: 3rem;
 
             bottom: 0;
 
             cursor: pointer;
 
-            height: 80px;
+            height: 100px;
 
             width: 80px;
 
             transition: all 0.3s ease-in-out;
+          }
+          .contact {
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            font-size:1.2rem;
+            margin-bottom: .5rem;
+            color: #b4ff43; 
+            font-weight: 600;
           }
 
           .social-container:hover {
@@ -78,6 +89,13 @@ const Layout = (props) => {
           @media (max-width: 768px) {
             .mode-play {
               overflow-y: scroll;
+            }
+            .contact {
+              font-size: .8rem;
+            }
+            .social-container {
+              height: 70px;
+              width: 56px;
             }
           }
         `}

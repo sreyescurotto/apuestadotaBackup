@@ -10,8 +10,24 @@ import Footer from "../components/Footer/Footer";
 
 import Script from "next/script";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
-const Home = () => {
+
+export async function getStaticProps({ locale }) {
+  const response = await import(`../lang/${locale}.json`);
+  return {
+    props: {
+      home: response.default.home,
+      navbar: response.default.navbar,
+      footer: response.default.footer,
+    },
+  };
+}
+
+const Home = (props) => {
+  const { home, navbar, footer } = props;
+  const router = useRouter();
+  
   return (
     <>
       <Head>
@@ -43,17 +59,33 @@ const Home = () => {
         <link rel="shortcut icon" href="/icons/favicon/favicon-32.png" />
       </Head>
 
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-K63L1CV95V"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-K63L1CV95V');
+        `}
+      </Script>
+
       <div className="App">
         <div className="main">
-          <NavbarFirst />
+          <NavbarFirst  props={navbar}/>
 
           <div className="fixed-button-container">
             {/* CAMBIAR */}
 
-            <Link href="/play/normal">
+            <Link href="/play/normal" locale={router.locale}>
               <a>
                 <button className="fixed-button" id="fixed-button">
-                  EMPEZAR
+                  {
+                    home.section3title2
+                  }
                 </button>
               </a>
             </Link>
@@ -62,12 +94,17 @@ const Home = () => {
           <section className="first-section">
             <div className="intro">
               <h1 className="title-1">
-                Apuesta, juega <br /> y gana
+                {
+                  home.title
+                } <br /> 
+                {
+                  home.title2
+                }
               </h1>
 
               <p className="subtitle-1">
-                ¿Cansado de que te digan que busques un trabajo? <br /> ¡Gana
-                dinero jugando Dota 2!
+                { home.subtitle} <br />
+                { home.subtitle2}
               </p>
             </div>
 
@@ -86,7 +123,8 @@ const Home = () => {
             <div></div>
 
             <h1 className="title-1 cursive center mtop">
-              <span className="blue">¿ Listo </span> para comenzar ?
+              <span className="blue">{ home.subtitle3 } </span> {
+                home.subtitle4 }
             </h1>
           </section>
 
@@ -102,32 +140,32 @@ const Home = () => {
 
             <div className="section2-text text-01">
               <h3 className="title-2">
-                APUESTA A TU PROPIA <br />
-                PARTIDA RANKED
+                {home.section2title1} <br />
+                {home.section2title12}
               </h3>
             </div>
 
             <div className="section2-text text-02">
               <h3 className="title-2">
-                GANA Y TE PAGAMOS
+                {home.section2title2}
                 <br />
-                EL 40% DE TU APUESTA
+                {home.section2title22}
               </h3>
             </div>
 
             <div className="section2-text text-03">
               <h3 className="title-2">
-                VELOCIDAD Y SEGURIDAD <br />
-                EN TODAS TUS TRANSACCIONES
+                {home.section2title3} <br />
+                {home.section2title32}
               </h3>
             </div>
           </section>
 
           <div className="relative">
             <h1 className="title-1 cursive center">
-              <span className="blue">¿ Como</span> empezar ?
+              <span className="blue">{home.section3title1}</span> {home.section3title3}
               <p className="poppins center font-m">
-                APUESTA Y APROVECHA AL MAXIMO TUS HABILIDADES DOTERAS.
+               {home.section3subtitle}
               </p>
             </h1>
 
@@ -137,6 +175,7 @@ const Home = () => {
                 className="spacer"
                 alt="spacer"
                 layout="fill"
+
               />
             </div>
           </div>
@@ -223,10 +262,10 @@ const Home = () => {
               </div>
             </div>
           </section>
-
-          <Footer />
+          <Footer  props={footer}/>   
         </div>
       </div>
+     
 
       <style jsx>{`
         @font-face {
@@ -235,9 +274,12 @@ const Home = () => {
           src: url("font/geometric.ttf") format("opentype");
         }
 
+       
+
         .spacer-container {
           width: 100%;
           height: 240px;
+          position: relative;
         }
 
         .aegis-background {
@@ -345,7 +387,10 @@ const Home = () => {
           filter: brightness(1.3);
         }
 
-        @media only screen and (max-width: 415px) {
+
+        
+
+        @media only screen and (max-width: 485px) {
           .absolute-social-c img {
             width: 60px;
           }

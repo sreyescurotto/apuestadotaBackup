@@ -4,20 +4,21 @@ import Link from "next/link";
 
 import { useEffect, useState } from "react";
 
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 import AppService from "../../services/app.service";
 
 import Image from "next/image";
 
-const Leftbar = (classWitdraw, c2, c3, c4, c5, c6, c7) => {
+const Leftbar = (props) => {
+
+  const leftbar = props.leftbar
+
   const router = useRouter();
+  
+  const [saldo, setSaldo] = useState(leftbar.loading);
 
-  const [saldo, setSaldo] = useState("Cargando ...");
-
-  const [saldoPrueba, setSaldoPrueba] = useState("Cargando ...");
-
-  const [changing, setChanging] = useState(false);
+  const [saldoPrueba, setSaldoPrueba] = useState(leftbar.loading);
 
   const [charging, setCharging] = useState(false);
 
@@ -50,25 +51,7 @@ const Leftbar = (classWitdraw, c2, c3, c4, c5, c6, c7) => {
       });
   };
 
-  const switchSaldo = (test_mode) => {
-    if (changing) return;
 
-    let s = new AppService();
-
-    setChanging(true);
-
-    s.makePut("saldo/switch", { switch: test_mode }, true).then((res) => {
-      if (res.data.saldo_switch == "balance_prueba") {
-        setChanging(false);
-   
-          location.replace("/practice");
-       
-      } else {
-        setChanging(false);
-        location.replace("/start");
-      }
-    });
-  };
 
   useEffect(() => {
     let s = new AppService();
@@ -81,6 +64,9 @@ const Leftbar = (classWitdraw, c2, c3, c4, c5, c6, c7) => {
 
         setTest2(res.data.saldo_switch == "balance_prueba");
       });
+    } else {
+      setSaldo("...");
+      setSaldoPrueba("...");
     }
   }, []);
 
@@ -96,7 +82,7 @@ const routeReal = () => {
     <>
       <div className="left-container">
         <div className="left-container-header">
-          <h3 className="left-container-title">Tu Saldo: </h3>
+          <h3 className="left-container-title">{leftbar.title} </h3>
 
           <div
             className="pad--s"
@@ -106,7 +92,7 @@ const routeReal = () => {
               switchSaldo(0);
             }} */}
             <div className={router.pathname == '/play/normal' ?   "pad--int active-mode" : "pad--int"}>
-              <h3 className="left-container-h3 real-acc">Cuenta real:</h3>
+              <h3 className="left-container-h3 real-acc">{leftbar.realAcc}</h3>
 
               <h3 className="left-container-h3 left-flex-container-h real-acc">
                 <Image
@@ -125,10 +111,10 @@ const routeReal = () => {
             onClick={routePractice}
           >
             <div className={router.pathname == '/play/practice' ?   "pad--int active-mode" : "pad--int"}>
-              <h3 className="left-container-h3 orange">Cuenta de práctica:</h3>
+              <h3 className="left-container-h3 orange">{leftbar.practiceAcc}</h3>
 
               <h3 className="left-container-h3 left-flex-container-h">
-                {" "}
+           
                 <div className="dollar--svg"> 
                   <Image src="/icons/currency-o.png"  width={24}
                   height={24} alt='dollar'/>
@@ -161,7 +147,7 @@ const routeReal = () => {
                     height={24}
                   />
               </div>
-                <h3 className="left-container-h3  left-h3-active">PERFIL</h3>
+                <h3 className="left-container-h3  left-h3-active">{leftbar.profile}</h3>
               </a>
             </Link>
           </div>
@@ -178,7 +164,7 @@ const routeReal = () => {
                     height={24}
                   />
               </div>
-                <h3 className="left-container-h3 left-h3-active">DEPOSITO</h3>
+                <h3 className="left-container-h3 left-h3-active">{leftbar.deposit}</h3>
               </a>
            </Link>
               
@@ -197,7 +183,7 @@ const routeReal = () => {
                   height={24}
                 />
               </div>
-                <h3 className="left-container-h3 left-h3-active">RETIRO</h3>
+                <h3 className="left-container-h3 left-h3-active">{leftbar.withdraw}</h3>
               </a>
             </Link>
           </div>
@@ -214,13 +200,12 @@ const routeReal = () => {
                   height={24}
                 />
               </div>
-                <h3 className="left-container-h3 left-h3-active">TUTORIAL</h3>
+                <h3 className="left-container-h3 left-h3-active">{leftbar.tutorial}</h3>
               </a>
               </Link>
           </div>
 
-          <div className="left-container-body-item">
-            
+          <div className="left-container-body-item">  
             <Link href="/rules">
               <a  className={router.pathname == '/rules' ? "left-body-anchor-active" : "left-container-body-anchor"}>
               <div className="left-container-img left-img-active">
@@ -232,7 +217,25 @@ const routeReal = () => {
                   />
               </div>
                 <h3 className="left-container-h3 left-h3-active">
-                  TeRMINOS Y CONDICIONES
+                  {leftbar.terms}
+                </h3>
+              </a>
+            </Link>
+          </div>
+
+          <div className="left-container-body-item">  
+            <Link href="/monetize">
+              <a  className={router.pathname == '/monetize' ? "left-body-anchor-active" : "left-container-body-anchor"}>
+              <div className="left-container-img left-img-active">
+                <Image
+                    src="/icons/cash-1.png"
+                    alt="monetize"
+                    width={24}
+                    height={24}
+                  />
+              </div>
+                <h3 className="left-container-h3 left-h3-active">
+                  {leftbar.monetize}
                 </h3>
               </a>
             </Link>
@@ -317,6 +320,11 @@ const routeReal = () => {
             font-weight: lighter;
           }
 
+          .left-container-body {
+            position: relative;
+            height: 100%;
+          }
+
           .left-container-body-item {
             padding-left: 0.7rem;
 
@@ -328,7 +336,7 @@ const routeReal = () => {
           }
 
           .left-container-body-item a {
-            padding: 0.7rem 1rem;
+            padding: 0.7rem 1rem .5rem;
 
             border-radius: 20px;
           }
@@ -366,7 +374,7 @@ const routeReal = () => {
           }
 
           .left-container-h3 {
-            font-size: 14px;
+            
 
             font-weight: 400;
 

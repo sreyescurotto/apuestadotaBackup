@@ -182,6 +182,12 @@ li {
   display: none;
 }
 
+
+
+
+
+
+
 @media (max-width: 768px) {
   .log-buttons {
     display: none;
@@ -300,9 +306,7 @@ li {
 .overlay-gradient {
   position: absolute;
 
-  /* height: 150px; */
-
-  top: 70%;
+  top: 19%;
 
   width: 100%;
 
@@ -311,6 +315,13 @@ li {
   z-index: 2;
 
   background: linear-gradient(180deg, transparent, #081325 50%, #081325);
+}
+
+.right-c {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 /* HASTA AQUI TERMINA EL NAVBAR */
@@ -735,6 +746,17 @@ h5 {
   font-family: "Roboto Mono", monospace;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .thd-description h3 {
   text-align: end;
 }
@@ -751,14 +773,16 @@ h5 {
 
 .main--1 {
   display: grid;
-
+  height: 100%;
   grid-template-columns: 1fr 7fr;
 }
 
 .interface {
   position: relative;
 
-  height: 860px;
+  padding-bottom: 3rem;
+
+  height: 960px;
 
   overflow-y: scroll;
 
@@ -1239,11 +1263,23 @@ h5 {
   background-color: #3c5376;
 }
 
+
+/* ESTILOS TITLE RULES  */
+.sec-title-h {
+  font-family: "Teko", sans-serif;
+  font-size: 3.5rem;
+  text-shadow: 2px 2px 2px #000;
+}
+
+
+
 /* 
-
-
-
 MEDIA QUERY MAXW WIDTH 768PX  APLICACION POR DENTRO */
+
+
+
+
+
 
 @media (max-width: 768px) {
   .main--1 {
@@ -1351,7 +1387,7 @@ MEDIA QUERY MAXW WIDTH 415PX  */
   }
 
   .overlay-gradient {
-    top: 60%;
+    top: 12%;
   }
 
   .grid-content {
@@ -1372,10 +1408,6 @@ MEDIA QUERY MAXW WIDTH 415PX  */
     margin-left: 20px;
 
     margin-right: 20px;
-  }
-
-  .third-section {
-    margin-bottom: 0 !important;
   }
 
   .third-section-large-header {
@@ -1404,12 +1436,6 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 
   .intro-content {
     flex-direction: column;
-  }
-
-  .relative {
-    height: 270px;
-
-    position: relative;
   }
 
   .intro-content {
@@ -1467,7 +1493,7 @@ MEDIA QUERY MAXW WIDTH 415PX  */
   }
 
   .section2-text h3 {
-    font-size: 1.7rem;
+    font-size: 1.7rem!important;
   }
 
   .font-m {
@@ -1479,7 +1505,7 @@ MEDIA QUERY MAXW WIDTH 415PX  */
   }
 
   .third-section {
-    margin-bottom: 120px;
+    margin-bottom: 80px;
   }
 
   .m-bot {
@@ -1492,5 +1518,588 @@ MEDIA QUERY MAXW WIDTH 415PX  */
   .absolute-social-c {
     margin: 0.5rem 3rem;
     display: flex;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+////////////////////////////////////
+////////////MODE PLAY /////////////
+//////////////////////////////////
+
+
+
+
+*/
+#terms {
+            
+  min-width:13px;
+}
+#rules {
+  
+  min-width:13px;
+}
+.mode-unactive a h4 {
+  color: #999;
+}
+
+/* crear apuesta - MODO SOLO */
+
+.sss {
+  position: absolute;
+
+  width: 100%;
+
+  height: 106%;
+
+  background-color: rgba(55, 55, 55, 0.631);
+
+  top: -5%;
+
+  z-index: 5;
+}
+
+.menu-bet {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  width: 100%;
+
+  height: 100%;
+
+  visibility: hidden;
+
+  position: absolute;
+
+  z-index: 5;
+}
+
+.subtitle-modes {
+  color: #fff;
+
+  /* text-align: center; */
+
+  font-size: 25px;
+
+  font-family: "Roboto Mono", monospace;
+}
+
+.mb-sm {
+  margin-bottom: 20px;
+}
+
+.mode-solo-amount {
+  margin-top: 10px;
+
+  margin-bottom: 10px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  width: 100%;
+}
+
+.mode-solo-amount-inp {
+  background-color: #0e1018;
+
+  width: 320px;
+
+  border-radius: 10px;
+
+  margin-bottom: 10px;
+
+  padding-top: 10px;
+
+  padding-bottom: 10px;
+
+  position: relative;
+}
+
+.mode-test-active {
+  color: rgb(255 255 255 / 60%);
+
+  position: absolute;
+
+  top: 0;
+
+  margin: 14px 0;
+
+  font-size: 20px;
+
+  font-family: "Roboto Mono", monospace;
+}
+
+.mode-solo-amount div h3 {
+  font-size: 22px;
+
+  font-weight: lighter;
+
+  text-align: center;
+}
+
+.mode-solo-amount-btn {
+  width: 320px;
+
+  border-radius: 10px;
+
+  display: flex;
+
+  gap: 5px;
+}
+
+.balance-container {
+  display: none;
+
+  margin-top: 2rem;
+}
+
+.welcomebtn {
+  margin: 0px 0px 20px 0;
+
+  width: 100%;
+}
+
+.left-container-h3 {
+  font-size: 1.2rem;
+
+  font-family: "Teko", sans-serif;
+}
+
+.large-btn {
+  padding-left: 25px;
+
+  padding-right: 25px;
+
+  border-radius: 20px;
+
+  font-size: 20px;
+
+  background-color: #0e1018;
+
+  border: none;
+
+  color: #fff;
+
+  width: 50%;
+}
+
+.dollarsign {
+  color: white;
+
+  font-size: 22px;
+
+  position: absolute;
+
+  left: 35%;
+
+  font-family: "Roboto Mono", monospace;
+}
+
+.start-game-btn-container {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  margin-top: 2rem;
+
+  margin-bottom: 2rem;
+}
+
+.start-game-btn {
+  background-color: #b6ff40;
+
+  color: #081325;
+
+  border: none;
+
+  border-radius: 20px;
+
+  font-size: 22px;
+
+  line-height: 28px;
+
+  width: 370px;
+
+  padding-left: 1rem;
+
+  padding-right: 1rem;
+
+  padding-top: 0.4rem;
+
+  padding-bottom: 0.4rem;
+
+  font-family: "Roboto Mono", monospace;
+
+  text-transform: uppercase;
+}
+
+.lighterr {
+  font-weight: 300;
+}
+
+.visible {
+  visibility: visible !important;
+}
+
+.scaleuptr {
+  -webkit-animation: scale-up-tr 0.4s ease-in-out both;
+
+  animation: scale-up-tr 0.4s ease-in-out both;
+}
+
+.scaledowntop {
+  -webkit-animation: scale-down-top 0.4s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+  animation: scale-down-top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    both;
+}
+
+.mode-create-lobby {
+  padding: 68px 40px;
+
+  margin-top: 6%;
+
+  position: relative;
+
+  z-index: 10;
+}
+
+.normal-lobby {
+  background-color: #25273d;
+}
+
+.practice-lobby {
+  background-color: #f55b01;
+}
+
+.mode-create-lobby img {
+  position: absolute;
+
+  right: 0;
+
+  top: 0;
+
+  padding: 10px;
+
+  cursor: pointer;
+}
+
+.inputBetAmount {
+  background: transparent;
+
+  color: #fff;
+
+  border: none;
+
+  text-align: center;
+
+  width: 100%;
+
+  font-size: 22px;
+
+  font-weight: lighter;
+
+  font-family: "Roboto Mono", monospace;
+}
+
+.gc-profile-title {
+  margin-bottom: 40px;
+
+  font-size: 20px;
+
+  font-weight: 300;
+
+  font-family: "Poppins", sans-serif;
+
+  text-transform: uppercase;
+
+  color: #fff;
+}
+
+.terms-container label {
+  color: rgba(255, 255, 255, 0.6);
+
+  font-size: 14px;
+}
+
+.terms-container label a {
+  color: #fff;
+}
+
+.terms-container {
+  margin-top: 20px;
+
+  display: flex;
+
+  flex-direction: row;
+
+  gap: 10px;
+
+  width: 480px;
+}
+
+/* cerrar */
+
+@-webkit-keyframes scale-down-top {
+  0% {
+    -webkit-transform: scale(1);
+
+    transform: scale(1);
+
+    -webkit-transform-origin: 50% 0%;
+
+    transform-origin: 50% 0%;
+  }
+
+  100% {
+    -webkit-transform: scale(0.3);
+
+    transform: scale(0.3);
+
+    -webkit-transform-origin: 0% 0%;
+
+    transform-origin: 0% 0%;
+
+    opacity: 0;
+
+    visibility: hidden;
+  }
+}
+
+@keyframes scale-down-top {
+  0% {
+    -webkit-transform: scale(1);
+
+    transform: scale(1);
+
+    -webkit-transform-origin: 100% 0%;
+
+    transform-origin: 100% 0%;
+  }
+
+  100% {
+    -webkit-transform: scale(0.3);
+
+    transform: scale(0.3);
+
+    -webkit-transform-origin: 100% 0%;
+
+    transform-origin: 100% 0%;
+
+    opacity: 0;
+
+    visibility: hidden;
+  }
+}
+
+/* abrir */
+
+@-webkit-keyframes scale-up-tr {
+  0% {
+    -webkit-transform: scale(0.3);
+
+    transform: scale(0.3);
+
+    -webkit-transform-origin: 100% 0%;
+
+    transform-origin: 100% 0%;
+
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+
+    transform: scale(1);
+
+    -webkit-transform-origin: 100% 0%;
+
+    transform-origin: 100% 0%;
+  }
+}
+
+@keyframes scale-up-tr {
+  0% {
+    -webkit-transform: scale(0.3);
+
+    transform: scale(0.3);
+
+    -webkit-transform-origin: 100% 0%;
+
+    transform-origin: 100% 0%;
+
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+
+    transform: scale(1);
+
+    -webkit-transform-origin: 100% 0%;
+
+    transform-origin: 100% 0%;
+  }
+}
+
+.solo--item--vv {
+  width: 100%;
+
+  height: 100%;
+}
+
+.controls-abs {
+  position: absolute;
+
+  top: 160px;
+
+  left: 332px;
+
+  cursor: pointer;
+}
+
+.controls-play {
+  -webkit-animation: fade-out 1s ease-out both;
+
+  animation: fade-out 1s ease-out both;
+}
+
+.expand-button {
+  position: absolute;
+
+  bottom: 0;
+
+  right: 0;
+
+  height: 40px;
+
+  margin: 1rem;
+
+  width: 40px;
+
+  z-index: 4;
+
+  cursor: pointer;
+}
+
+
+
+.solo-item-video {
+  width: 100%;
+
+  height: 100%;
+}
+
+@-webkit-keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .expand-button {
+    display: none;
+  }
+
+  .controls-abs {
+    top: 60px;
+    left: 129px;
+  }
+
+  .solo--item-content-button {
+    margin-left: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mode-create-lobby {
+    margin-top: 20%;
+  }
+}
+
+@media (max-width: 485px) {
+  .mode-create-lobby {
+    margin-top: 70%;
+    padding: 50px 40px;
+
+    overflow: auto;
+  }
+  .mode-solo.amount h3 {
+    font-size: 18px;
+  }
+
+  .subtitle-modes {
+    font-size: 16px;
+  }
+
+  .start-game-btn {
+    font-size: 20px;
+    width: 310px;
+  }
+  .mode--solo--c {
+    overflow-x: auto;
+  }
+  .terms-container {
+    width: 300px;
+  }
+  .mode-test-active {
+    font-size: 16px;
+  }
+  .balance-container {
+    display: block;
   }
 }

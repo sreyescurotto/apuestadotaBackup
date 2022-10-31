@@ -6,7 +6,10 @@ import dayjs from "dayjs";
 
 import Countdown from "react-countdown";
 
-const Apuestas = () => {
+const Apuestas = (props) => {
+
+  const profile = props.profile
+
   const dotaImageBase = "https://cdn.cloudflare.steamstatic.com";
 
   const [apuestas, setApuestas] = useState([]);
@@ -15,11 +18,8 @@ const Apuestas = () => {
 
   const [searching, setSearching] = useState(false);
 
-  const [processing, setProcessing] = useState(false);
 
-  const [finishing, setFinishing] = useState(false);
-
-  const Completionist = () => <span>Ya deberías estar jugando!</span>;
+  const Completionist = () => <span>{profile.shouldplaying}</span>;
 
   const renderer = ({ hours, minutes, seconds, completed }) => {
     if (completed) {
@@ -91,31 +91,31 @@ const Apuestas = () => {
         <table className="desktop-table">
           <thead>
             <tr>
-              <th>Fecha y hora de la apuesta</th>
+              <th>{profile.bettime}</th>
 
-              <th>Partida</th>
+              <th>{profile.match}</th>
 
-              <th>Match ID</th>
+              <th>{profile.mathId}</th>
 
-              <th>Monto apostado</th>
+              <th>{profile.amount}</th>
 
-              <th>Estado</th>
+              <th>{profile.status}</th>
 
-              <th>Resultado</th>
+              <th>{profile.result}</th>
             </tr>
           </thead>
 
           <tbody>
             {searching && (
               <tr>
-                <td colSpan="5">Buscando apuestas</td>
+                <td colSpan="5">{profile.searching}</td>
               </tr>
             )}
 
             {!searching && apuestas.length < 1 && (
               <tr>
                 <td colSpan="5" className="gc-record-not-found">
-                  No has realizado apuestas
+                  {profile.notbet}
                 </td>
               </tr>
             )}
@@ -165,11 +165,11 @@ const Apuestas = () => {
                           renderer={renderer}
                         />
                       ) : apuesta.estado == "0" ? (
-                        "En proceso"
+                        profile.process
                       ) : apuesta.estado > 0 && apuesta.match_id !== null ? (
-                        "Terminado"
+                        profile.finished
                       ) : (
-                        "Expirado"
+                        profile.failed
                       )}
                     </td>
 

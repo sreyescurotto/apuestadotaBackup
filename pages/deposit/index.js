@@ -3,10 +3,23 @@ import Dep from '../../components/Dep'
 import Layout from '../../components/Layout/Layout';
 import withAuth from "../../interceptors/auth";
 
-const Deposit = () => {
+export async function getStaticProps({ locale }) {
+  const response = await import(`../../lang/${locale}.json`);
+  return {
+    props: {
+      play: response.default.play,
+      navbar: response.default.navbar,
+      layout: response.default.layout,
+      leftbar: response.default.leftbar,
+    },
+  };
+}
+
+const Deposit = (props) => {
+  const { play , layout, navbar, leftbar } = props;
   return (
     <>
-      <Layout>
+      <Layout layout={layout} navbar={navbar} leftbar={leftbar}>
         <div className="interface">
           <Dep />
         </div>

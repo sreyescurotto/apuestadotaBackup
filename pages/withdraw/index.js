@@ -3,12 +3,25 @@ import With from "../../components/With";
 import Layout from '../../components/Layout/Layout';
 import withAuth from "../../interceptors/auth";
 
-const Withdraw = () => {
+export async function getStaticProps({ locale }) {
+  const response = await import(`../../lang/${locale}.json`);
+  return {
+    props: {
+      navbar: response.default.navbar,
+      layout: response.default.layout,
+      leftbar: response.default.leftbar,
+      withdraw: response.default.withdraw
+    },
+  };
+}
+
+const Withdraw = (props) => {
+  const { layout, navbar, leftbar, withdraw } = props;
   return (
     <>
-      <Layout>
+      <Layout layout={layout} navbar={navbar} leftbar={leftbar}>
         <div className="interface">
-          <With />
+          <With withdraw={withdraw}/>
         </div>
       </Layout>
 

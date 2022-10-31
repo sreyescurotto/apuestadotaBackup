@@ -2,12 +2,26 @@ import React from 'react';
 import Layout from '../../components/Layout/Layout';
 import ModePractice from '../../components/Practice';
 
-const Practice = () => {
+
+export async function getStaticProps({ locale }) {
+  const response = await import(`../../lang/${locale}.json`);
+  return {
+    props: {
+      play: response.default.play,
+      navbar: response.default.navbar,
+      layout: response.default.layout,
+      leftbar: response.default.leftbar,
+      profile: response.default.profile
+    },
+  };
+}
+const Practice = (props) => {
+    const { play , layout, navbar, leftbar, profile } = props;
     return (
         <>
-            <Layout>
+            <Layout layout={layout} navbar={navbar} leftbar={leftbar}>
                 <div className='interface'>
-                    <ModePractice />
+                    <ModePractice play={play} profile={profile}/>
                 </div>
             </Layout>
             <style jsx>

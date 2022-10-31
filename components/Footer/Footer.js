@@ -1,22 +1,22 @@
 import React from "react";
 import Image from "next/image";
 
-const Footer = () => {
+const Footer = (props) => {
+  const footer = props.props
   return (
     <>
-      <div className="root-footer">
+      <footer className="root-footer">
         <div className="footer-cont footer-logo">
           <Image src="/apuesta-logo.png" className="logo"  alt="Logo" height={30} width={210}/>
         </div>
 
         <div className="footer-cont footer-text">
-          Revolucionando el mundo de las apuestas en e-sports. <br />
-          Aquí ganas según tu habilidad, va más allá del azar. <br />
-          La victoria está en tus manos. <br />
-          El sitio web www.apuestadota.com se rige por las leyes de San Vicente
-          y las Granadinas.
+          {footer.subtitle} <br />
+          {footer.subtitle2} <br />
+          {footer.subtitle3} <br />
+          {footer.subtitle4}
         </div>
-      </div>
+      </footer>
 
       <style jsx>{`
         .root-footer {
@@ -26,9 +26,13 @@ const Footer = () => {
 
           z-index: 5;
 
-          padding: 30px 100px;
+          padding: 25px 100px;
 
           background-color: #000;
+
+          position: relative; 
+
+          top: -140px;
         }
 
         .footer-cont {
@@ -63,7 +67,8 @@ const Footer = () => {
 
         @media only screen and (max-width: 480px) {
           .root-footer {
-            padding: 30px 60px;
+            padding: 30px 60px 100px;
+            top: -160px;
           }
           .footer-text {
             font-size: 12px;

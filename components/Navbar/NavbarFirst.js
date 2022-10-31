@@ -1,17 +1,27 @@
 import React, { useEffect, useState } from "react";
-
 import { useRouter } from "next/router";
-
 import Link from "next/link";
 import Image from "next/image";
+import AppService from "../../services/app.service";
+import Selector from "../Lenguage/Selector";
 
-// import AppService from "../../services/app.service";
 
-const NavbarFirst = () => {
+
+// export async function getStaticProps({ locale }) {
+//   const response = await import(`../../lang/${locale}.json`);
+//   return {
+//     props: {
+//       navbar: response.default.navbar,
+//     },
+//   };
+// }
+
+const NavbarFirst = (props) => {
+
+  const navbar  = props.props;
+
   const router = useRouter();
-
   const [isOpen, setIsOpen] = useState(false);
-
   const [user, setUser] = useState(null);
 
   const handleClick = (event) => {
@@ -24,13 +34,13 @@ const NavbarFirst = () => {
     location.href = "/";
   };
 
-//   useEffect(() => {
-//     let s = new AppService();
+  useEffect(() => {
+    let s = new AppService();
 
-//     let _user = s.getUser();
+    let _user = s.getUser();
 
-//     if (_user !== null) setUser(_user);
-//   }, []);
+    if (_user !== null) setUser(_user);
+  }, []);
 
   return (
     <>
@@ -47,24 +57,24 @@ const NavbarFirst = () => {
         </div>
 
         <div className="menu-navigation-links">
-          <Link href="/start">
-            <a className="anchor">Juega</a>
+          <Link href="/play/normal" locale={router.locale}>
+            <a className="anchor">{props.play}</a>
           </Link>
 
-          <Link href="/profile">
-            <a className="anchor">Perfil</a>
+          <Link href="/profile" locale={router.locale}>
+            <a className="anchor">{navbar.profile}</a>
           </Link>
 
-          <Link href="/deposit">
-            <a className="anchor">Depósito</a>
+          <Link href="/deposit" locale={router.locale}>
+            <a className="anchor">{navbar.deposit}</a>
           </Link>
 
-          <Link href="/withdraw">
-            <a className="anchor">Retiro</a>
+          <Link href="/withdraw" locale={router.locale}>
+            <a className="anchor">{navbar.withdraw}</a>
           </Link>
 
-          <Link href="/tutorial">
-            <a className="anchor">Tutorial</a>
+          <Link href="/tutorial" locale={router.locale}>
+            <a className="anchor">{navbar.tutorial}</a>
           </Link>
         </div>
 
@@ -72,8 +82,8 @@ const NavbarFirst = () => {
 
         {user == null && (
           <div className="menu-navigation-btn">
-            <Link href={"/login"}>
-              <a className="anchor">Ingresar</a>
+            <Link href={"/login"} locale={router.locale}>
+              <a className="anchor">{navbar.login}</a>
             </Link>
           </div>
         )}
@@ -86,43 +96,48 @@ const NavbarFirst = () => {
                 logOut();
               }}
             >
-              Salir
+              {navbar.leave}
             </button>
           </div>
         )}
       </div>
 
       <div className="navbar main-navbar-desktop">
-        <Link href={"/"}>
+        <Link href={"/"} locale={router.locale}>
           <a>
             <Image src="/apuesta-logo.png" alt="logo" className="logo" height={30} width={210} />
           </a>
         </Link>
 
+        
+        <div className="right-c">
+        <Selector />
         {user == null && (
-          <div className="log-buttons">
-            <Link href={"/login"}>
-              <a>
-                <button className="btn outline">Ingresar</button>
-              </a>
-            </Link>
-          </div>
-        )}
+                  <div className="log-buttons">
+                    <Link href={"/login"} locale={router.locale}>
+                      <a>
+                        <button className="btn outline">{navbar.login}</button>
+                      </a>
+                    </Link>
+                  </div>
+                )}
 
-        {user !== null && (
-          <div className="log-buttons">
-            <button className="btn btn-md">Bienvenido {user.nickname}</button>
+                {user !== null && (
+                  <div className="log-buttons">
+                    <button className="btn btn-md">{navbar.title} {user.nickname}</button>
 
-            <button
-              className="btn outline"
-              onClick={() => {
-                logOut();
-              }}
-            >
-              Salir
-            </button>
-          </div>
-        )}
+                    <button
+                      className="btn outline"
+                      onClick={() => {
+                        logOut();
+                      }}
+                    >
+                      {navbar.leave}
+                    </button>
+                  </div>
+                )}
+        </div>
+        
 
         <div className="menu-button">
           <a onClick={handleClick}>

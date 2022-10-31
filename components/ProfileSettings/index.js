@@ -7,7 +7,9 @@ import Referrals from "../RefCont";
 import ProfileForm from "../ProfileForm";
 import Account from "../Account";
 
-const ProfileSettings = () => {
+const ProfileSettings = (props) => {
+
+  const profileProps = props.profile;
   const [record, setRecord] = useState(false);
   const [security, setSecurity] = useState(false);
   const [profile, setProfile] = useState(true);
@@ -16,7 +18,7 @@ const ProfileSettings = () => {
   const [accountTrans, setaccountTrans] = useState(false);
   const [transacciones, setTransacciones] = useState([]);
 
-  const [userProfile, setUserProfile] = useState('spinner.gif');
+  const [userProfile, setUserProfile] = useState('/spinner.gif');
 
   const handleClickSecurity = (event) => {
     setSecurity(true);
@@ -115,8 +117,8 @@ const ProfileSettings = () => {
               }
               id="info-button-g"
             >
-              <img src="/icons/account-details-outline.png" alt="Informacion" />
-              <h3 className="tab-h-active">Informacion Personal</h3>
+              <img src="/icons/account-details-outline.png" alt={profileProps.personalinfo} />
+              <h3 className="tab-h-active">{profileProps.personalinfo}</h3>
             </div>
           </a>
           <a href="#" onClick={handleClickRecord}>
@@ -128,7 +130,7 @@ const ProfileSettings = () => {
               }
             >
               <img src="/icons/cash-multiple.png" alt="Record" />
-              <h3>Historial de retiros</h3>
+              <h3>{profileProps.withdrawal}</h3>
             </div>
           </a>
           <a href="#" onClick={handleClickAccountTrans}>
@@ -140,8 +142,8 @@ const ProfileSettings = () => {
               }
               id="info-security-g"
             >
-              <img src="/icons/badge-account.png" alt="Seguridad" />
-              <h3>Estado de cuenta</h3>
+              <img src="/icons/badge-account.png" alt={profileProps.account} />
+              <h3>{profileProps.account}</h3>
             </div>
           </a>
           <a href="#" onClick={handleClickExtra}>
@@ -150,8 +152,8 @@ const ProfileSettings = () => {
                 extra ? "tabs-container-item tab-active" : "tabs-container-item"
               }
             >
-              <img src="/icons/trophy-outline.png" alt="Torneos" />
-              <h3>Apuestas totales</h3>
+              <img src="/icons/trophy-outline.png" alt={profileProps.bets} />
+              <h3>{profileProps.bets}</h3>
             </div>
           </a>
 
@@ -164,8 +166,8 @@ const ProfileSettings = () => {
               }
               id="info-security-g"
             >
-              <img src="/icons/security.png" alt="Seguridad" />
-              <h3>Referidos</h3>
+              <img src="/icons/security.png" alt={profileProps.referrals} />
+              <h3>{profileProps.referrals}</h3>
             </div>
           </a>
         </nav>
@@ -174,42 +176,43 @@ const ProfileSettings = () => {
             {user.dni_status == 0 || user.dni_status == 3 ? (
               <div className="gc-profile-box">
                 <h4 className="gc-profile-title">
-                  Hola <span>{user.nickname}</span>, completa tu informacion
+                  {profileProps.hello} <span>{user.nickname}</span>
+                  {profileProps.completeinfo}
                 </h4>
                 <ProfileForm onSubmit={updateUser} />
               </div>
             ) : (
               <div className="gc-profile-box">
-                <h4 className="gc-profile-title">General</h4>
+                <h4 className="gc-profile-title">{profileProps.general}</h4>
                 <ul className="gc-profile-list">
                   <li className="gc-profile-list-item">
-                    <h6 className="gc-list-title">Nombre de usuario</h6>
+                    <h6 className="gc-list-title">{profileProps.username}</h6>
                     <div className="gc-list-text">
                       <p className="gc-list-text">{user.nickname} </p>
                     </div>
                   </li>
                   <li className="gc-profile-list-item">
-                    <h6 className="gc-list-title">Nombre</h6>
+                    <h6 className="gc-list-title">{profileProps.name}</h6>
                     <div className="gc-list-text">
                       <p className="gc-list-text">{user.nombre} </p>
                     </div>
                   </li>
 
                   <li className="gc-profile-list-item">
-                    <h6 className="gc-list-title">Apellido</h6>
+                    <h6 className="gc-list-title">{profileProps.lastname}</h6>
                     <div className="gc-list-text">
                       <p className="gc-list-text">{user.apellido} </p>
                     </div>
                   </li>
                   <li className="gc-profile-list-item">
-                    <h6 className="gc-list-title">Email</h6>
+                    <h6 className="gc-list-title">{profileProps.email}</h6>
                     <div className="gc-list-text">
                       <p className="gc-list-text">{user.email} </p>
                     </div>
                   </li>
 
                   <li className="gc-profile-list-item">
-                    <h6 className="gc-list-title">Documento de identidad</h6>
+                    <h6 className="gc-list-title">{profileProps.id}</h6>
 
                     <div className="gc-list-text">
                       <p className="gc-list-text">{user.dni} </p>
@@ -217,17 +220,18 @@ const ProfileSettings = () => {
                   </li>
 
                   <li className="gc-profile-list-item">
-                    <h6 className="gc-list-title">Proceso de verificacin</h6>
+                    <h6 className="gc-list-title">{profileProps.verify}</h6>
 
                     <div className="gc-list-text">
                       <p className="gc-list-text">
                         {user.dni_status == 0
-                          ? "No verificado"
+                          ? 
+                          profileProps.notVerify
                           : user.dni_status == 1
-                          ? "Por verificar"
+                          ? profileProps.verify1
                           : user.dni_status == 2
-                          ? "Verificado"
-                          : "Fallo la verificación"}{" "}
+                          ? profileProps.verified
+                          : profileProps.verify2}
                       </p>
                     </div>
                   </li>
@@ -236,23 +240,23 @@ const ProfileSettings = () => {
             )}
 
             <div className="gc-profile-box">
-              <h4 className="gc-profile-title">Extra</h4>
+              <h4 className="gc-profile-title">{profileProps.extra}</h4>
 
               <ul className="gc-profile-list">
                 <li className="gc-profile-list-item">
-                  <h6 className="gc-list-title">Fecha de registro</h6>
+                  <h6 className="gc-list-title">{profileProps.registrationdate}</h6>
 
                   <p className="gc-list-text">{user.date_time_created}</p>
                 </li>
 
                 <li className="gc-profile-list-item">
-                  <h6 className="gc-list-title">Steam ID</h6>
+                  <h6 className="gc-list-title">{profileProps.steamid}</h6>
 
                   <p className="gc-list-text">{user.steamid}</p>
                 </li>
 
                 <li className="gc-profile-list-item">
-                  <h6 className="gc-list-title">Steam ID 64</h6>
+                  <h6 className="gc-list-title">{profileProps.steamid64}</h6>
 
                   <p className="gc-list-text blue">{user.steamid64}</p>
                 </li>
@@ -264,7 +268,7 @@ const ProfileSettings = () => {
         <div className={record ? "d-block" : "d-none"}>
           <div className="history-flex-c">
             <h4 className="gc-profile-title">
-              Solicitud para la retirada de fondos
+              {profileProps.withDes}
             </h4>
 
             {/* TABLA EN DESKTOP */}
@@ -272,13 +276,13 @@ const ProfileSettings = () => {
             <table className="desktop-table">
               <thead>
                 <tr>
-                  <th>Fecha</th>
+                  <th>{profileProps.date}</th>
 
-                  <th>Importe</th>
+                  <th>{profileProps.amount}</th>
 
-                  <th>Estado</th>
+                  <th>{profileProps.status}</th>
 
-                  <th>Medio</th>
+                  <th>{profileProps.method}</th>
                 </tr>
               </thead>
 
@@ -287,7 +291,7 @@ const ProfileSettings = () => {
                   {transacciones.length < 1 && (
                     <tr>
                       <td colpan="5" className="gc-record-not-found">
-                        No has realizado solicitudes de retiro
+                        {profileProps.notwith}
                       </td>
                     </tr>
                   )}
@@ -300,7 +304,7 @@ const ProfileSettings = () => {
 
                           <td>{t.monto}</td>
 
-                          <td>{t.estado == 1 ? "Completado" : "Pendiente"}</td>
+                          <td>{t.estado == 1 ? profileProps.completed : profileProps.pending}</td>
 
                           <td>{t.metodo}</td>
                         </tr>
@@ -315,11 +319,11 @@ const ProfileSettings = () => {
             <table className="mobile-table">
               <thead>
                 <tr>
-                  <th>Fecha</th>
+                  <th>{profileProps.date}</th>
 
-                  <th>Importe</th>
+                  <th>{profileProps.amount}</th>
 
-                  <th>Estado</th>
+                  <th>{profileProps.status}</th>
                 </tr>
               </thead>
 
@@ -328,7 +332,7 @@ const ProfileSettings = () => {
                   {transacciones.length < 1 && (
                     <tr>
                       <td colpan="5" className="gc-record-not-found">
-                        No has realizado solicitudes de retiro
+                        {profileProps.notwith}
                       </td>
                     </tr>
                   )}
@@ -355,7 +359,7 @@ const ProfileSettings = () => {
 
                           <td className="mobile-table-td">
                             <span className="gc-green-text">
-                              {t.estado == 1 ? "Completado" : "Pendiente"}
+                              {t.estado == 1 ? profileProps.completed : profileProps.pending}
                             </span>
                           </td>
                         </tr>
@@ -368,23 +372,23 @@ const ProfileSettings = () => {
         </div>
 
         <div className={accountTrans ? "d-block" : "d-none"}>
-          <Account />
+          <Account profile={profileProps}/>
         </div>
 
         <div className={extra ? "d-block" : "d-none"}>
           <div className="mode--solo--c">
             <div className="solo--title">
-              <h3>Apuestas realizadas</h3>
+              <h3>{profileProps.betsmade}</h3>
             </div>
 
             <div className="solo--content">
-              <ApuestasAll />
+              <ApuestasAll profile={profileProps}/>
             </div>
           </div>
         </div>
 
         <div className={security ? "d-block" : "d-none"}>
-          <Referrals user={user} />
+          <Referrals user={user} profile={profileProps}/>
         </div>
       </div>
 

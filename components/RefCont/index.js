@@ -3,6 +3,9 @@ import React, { useEffect, useRef, useState } from "react";
 import ReferidosAll from "../Referidos";
 
 export default function Referrals({ user, ...props }) {
+
+  const profile = props.profile 
+
   const [copySuccess, setCopySuccess] = useState("");
 
   const [loading, setLoading] = useState(false);
@@ -30,7 +33,7 @@ export default function Referrals({ user, ...props }) {
       {!loading && (
         <>
           <h4 className="profile-sub-title">
-            Recomienda ApuestaDota a un amigo y gana dinero extra.
+           {profile.refTitle}
           </h4>
 
           <div className="referrals-section">
@@ -38,22 +41,20 @@ export default function Referrals({ user, ...props }) {
               <div className="referrals-step step-01">
                 <div className="referrals-step-number">1</div>
 
-                <h4>Invita a tus amigos a unirse a ApuestaDota</h4>
+                <h4>{profile.refSubtitle}</h4>
               </div>
 
               <div className="referrals-step step-02">
                 <div className="referrals-step-number">2</div>
 
                 <p>
-                  Cuando tu amigo utilice tu código deberá realizar su primera
-                  apuesta. Después de completar con los requisitos, tu recibirás
-                  1 USD <span>por cada referido!</span>
+                  {profile.refSubtitle2} <span className="white-span">{profile.each}</span>
                 </p>
               </div>
             </div>
 
             <div className="referrals-code-sec">
-              <p className="referrals-code-p">Tú código de referido es:</p>
+              <p className="referrals-code-p">{profile.refSubtitle3}</p>
 
               <div className="referral-code-c">
                 <img
@@ -143,8 +144,9 @@ export default function Referrals({ user, ...props }) {
           font-family: "Roboto Mono", monospace;
         }
 
-        .step-02 p span {
+        .white-span {
           color: #fff;
+          font-weight: 600;
         }
 
         .referrals-code-sec {

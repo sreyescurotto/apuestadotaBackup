@@ -10,7 +10,14 @@ import { useRouter } from "next/router";
 
 import Apuestas from "../Apuestas/Apuestas";
 
-const ModePractice = () => {
+import Image from "next/image";
+
+const ModePractice = (props) => {
+
+    const play = props.play;
+
+    const profile = props.profile;
+
     const router = useRouter();
 
     const [user, setUser] = useState(null);
@@ -218,13 +225,11 @@ const ModePractice = () => {
   
   
     const handleClick2 = (e) => {
-  
-      location.replace("/practice");
+      router.push("/play/practice");
     };
   
     const handleClick3 = (e) => {
-  
-      location.replace("/start");
+      router.push("/play/normal");
     };
   
     useEffect(() => {
@@ -252,13 +257,13 @@ const ModePractice = () => {
               onClick={handleClick}
             />
   
-            <div className="mode-test-active">Modo práctica activado</div>
+            <div className="mode-test-active">{play.modeTest}</div>
   
-            <h4 className="mb-sm subtitle-modes">Elige el monto de tu apuesta</h4>
+            <h4 className="mb-sm subtitle-modes">{play.modesubtitle}</h4>
   
             <div className="mode-solo-amount">
               <div className="mode-solo-amount-inp">
-                <h3>Importe:</h3>
+                <h3>{play.modeAmount}:</h3>
   
                 <span className="dollarsign">$</span>
   
@@ -297,8 +302,8 @@ const ModePractice = () => {
                 />
   
                 <label className="checkbox-terms" htmlFor="terms">
-                  Declaro haber leído y estar de acuerdo con los
-                  <a href="/rules">Términos y Condiciones</a>
+                {play.modeTerms}
+                  <a href="/rules">{play.modeTerms1}</a>
                 </label>
               </div>
   
@@ -311,36 +316,34 @@ const ModePractice = () => {
                 />
   
                 <label className="checkbox-terms" htmlFor="terms">
-                  Acepto que una vez registrada mi apuesta, tendré 25 minutos para
-                  iniciar mi partida de Dota 2, caso contrario se invalidará mi
-                  apuesta y se considerará perdida.
+                {play.modeTerms2}
                 </label>
               </div>
             </div>
   
             <div className="start-game-btn-container">
               <button className="start-game-btn" onClick={apostar}>
-                {searching ? "Procesando apuesta..." : "Apostar"}
+                {searching ? "Procesando apuesta..." : play.bet}
               </button>
             </div>
   
             <div>
               <h4 className="mb-sm subtitle-modes lighterr">
-                Detalles de la apuesta:
+              {play.betdetails}
               </h4>
   
               <div className="profit-container">
                 <h4 className="subtitle-modes lighterr">
-                  Beneficio %: <span className="bold">+ 40%</span>
+                {play.betdetails2} <span className="bold">+ 40%</span>
                 </h4>
   
                 <h4 className="subtitle-modes lighterr">
-                  Beneficio Q:{" "}
+                {play.betdetails3}
                   <span className="bold">+ $ {(bet * 0.4).toFixed(2)}</span>
                 </h4>
   
                 <h4 className="subtitle-modes lighterr">
-                  Cálculo de ganancia:{" "}
+                {play.betdetails4}
                   <span className="bold">$ {(bet * 1.4).toFixed(2)}</span>
                 </h4>
               </div>
@@ -351,21 +354,21 @@ const ModePractice = () => {
         <div className="mode--solo">
           <div className="mode--solo--c">
             <div className="solo--title">
-              <h3>JUEGA RANKED Y GANA DINERO</h3>
+              <h3>{play.title}</h3>
             </div>
   
             <div className="balance-container">
               {user !== null && (
                 <button className="btn btn-md welcomebtn">
-                  Bienvenido {user?.nickname}
+                {play.welcome} {user?.nickname}
                 </button>
               )}
   
-              <h3>Tu Saldo</h3>
+              <h3>{play.balance}</h3>
   
               <div className="pad--s" onClick={handleClick3}>
                 <div className="pad--int">
-                  <h3 className="left-container-h3 real-acc">Cuenta real:</h3>
+                  <h3 className="left-container-h3 real-acc">{play.realacc}</h3>
   
                   <h3 className="left-container-h3 left-flex-container-h real-acc">
                     {" "}
@@ -381,7 +384,7 @@ const ModePractice = () => {
               <div className="pad--s" onClick={handleClick2}>
                 <div className="pad--int active-mode">
                   <h3 className="left-container-h3 orange">
-                    Cuenta de practica:
+                  {play.practiceacc}
                   </h3>
   
                   <h3 className="left-container-h3 left-flex-container-h">
@@ -405,57 +408,68 @@ const ModePractice = () => {
                     ref={videoRef}
                     onClick={handlePlay}
                   >
-                    <source src="../tutorial/pruebavideo.mp4" type="video/mp4" />
+                    <source src="/tutorial/pruebavideo.mp4" type="video/mp4" />
                   </video>
   
                   <div onClick={handlePlay} className="controls-abs">
-                    {isPlaying ? (
-                      <img
-                        src="../icons/controls/stop.png"
-                        className="controls-play"
-                      />
-                    ) : (
-                      <img
-                        src="../icons/controls/play.png"
-                        className="controls-pause"
-                      />
-                    )}
+                  {isPlaying ? (
+                    <div className="controls-play"> 
+                    <Image
+                      src="/icons/controls/stop.png"
+                      height={50}
+                        width={50}
+                        alt="stop"
+                    />
+                    </div>
+                  ) : (
+                    <div className="controls-pause">
+                    <Image
+                      src="/icons/controls/play.png"
+                      
+                      height={50}
+                        width={50}
+                        alt="play"
+                    />
+                    </div>
+                  )}
                   </div>
                 </div>
   
-                <img
-                  src="../icons/controls/arrow-expand.png"
-                  onClick={openFullscreen}
-                  className="expand-button"
+                <div onClick={openFullscreen}
+                    className="expand-button">
+                    <Image
+                    src="/icons/controls/arrow-expand.png"
+                    
+                    height={50}
+                    width={50}
                 />
+                </div>
               </div>
   
               <div className="solo--item-content">
                 <div className="solo--item-content-head">
-                  <span>Apuesta en tu propia partida</span>
-  
-                  <h2>Modo Individual</h2>
+                <span>{play.subtitle}</span>
+
+<h2>{play.subtitle2}</h2>
                 </div>
   
                 <div className="solo--item-content-desc">
-                  <p>
-                    
-                    Te pagamos el 40% de tu apuesta por cada partida ganada.
-                    <br></br>
-                    ¿Cansado de que te digan que busques un trabajo? Gana dinero
-                    jugando Dota2.
-                  </p>
+                <p>
+                  {play.subtitle3}
+                  <br></br>
+                  {play.subtitle4}
+                </p>
                 </div>
   
                 <div className="solo--item-content-button">
-                  <a
-                    href="#"
-                    className="solo--btn-c"
-                    id="openbutton"
-                    onClick={handleClick}
-                  >
-                    Iniciar
-                  </a>
+                <a
+                  href="#"
+                  className="solo--btn-c"
+                  id="openbutton"
+                  onClick={handleClick}
+                >
+                  {play.start}
+                </a>
                 </div>
               </div>
             </div>
@@ -467,601 +481,12 @@ const ModePractice = () => {
   
           <div className="mode--solo--c">
             <div className="solo--title">
-              <h3>Apuestas realizadas en modo Práctica</h3>
+            <h3>{play.betsmade}</h3>
             </div>
   
-            <div className="solo--content">{loadApuestas && <Apuestas />}</div>
+            <div className="solo--content">{loadApuestas && <Apuestas profile={profile}/>}</div>
           </div>
         </div>
-  
-        <style jsx>
-          {`
-          
-          #terms {
-              
-              min-width:13px;
-          }
-          #rules {
-              
-              min-width:13px;
-          }
-            .mode-unactive a h4 {
-              color: #999;
-            }
-  
-            /* crear apuesta - MODO SOLO */
-  
-            .sss {
-              position: absolute;
-  
-              width: 100%;
-  
-              height: 106%;
-  
-              background-color: rgba(55, 55, 55, 0.631);
-  
-              top: -5%;
-  
-              z-index: 5;
-            }
-  
-            .menu-bet {
-              display: flex;
-  
-              justify-content: center;
-  
-              align-items: flex-start;
-  
-              width: 100%;
-  
-              height: 100%;
-  
-              visibility: hidden;
-  
-              position: absolute;
-  
-              z-index: 5;
-            }
-  
-            .subtitle-modes {
-              color: #fff;
-  
-              /* text-align: center; */
-  
-              font-size: 25px;
-  
-              font-family: "Roboto Mono", monospace;
-            }
-  
-            .mb-sm {
-              margin-bottom: 20px;
-            }
-  
-            .mode-solo-amount {
-              margin-top: 10px;
-  
-              margin-bottom: 10px;
-  
-              display: flex;
-  
-              flex-direction: column;
-  
-              align-items: center;
-  
-              width: 100%;
-            }
-  
-            .mode-solo-amount-inp {
-              background-color: #0e1018;
-  
-              width: 320px;
-  
-              border-radius: 10px;
-  
-              margin-bottom: 10px;
-  
-              padding-top: 10px;
-  
-              padding-bottom: 10px;
-  
-              position: relative;
-            }
-  
-            .mode-test-active {
-              color: rgb(255 255 255 / 60%);
-  
-              position: absolute;
-  
-              top: 0;
-  
-              margin: 14px 0;
-  
-              font-size: 20px;
-  
-              font-family: "Roboto Mono", monospace;
-            }
-  
-            .mode-solo-amount div h3 {
-              font-size: 22px;
-  
-              font-weight: lighter;
-  
-              text-align: center;
-            }
-  
-            .mode-solo-amount-btn {
-              width: 320px;
-  
-              border-radius: 10px;
-  
-              display: flex;
-  
-              gap: 5px;
-            }
-  
-            .balance-container {
-              display: none;
-  
-              margin-top: 2rem;
-            }
-  
-            .welcomebtn {
-              margin: 0px 0px 20px 0;
-  
-              width: 100%;
-            }
-  
-            .left-container-h3 {
-              font-size: 1.5rem;
-  
-              font-family: "Teko", sans-serif;
-            }
-  
-            .large-btn {
-              padding-left: 25px;
-  
-              padding-right: 25px;
-  
-              border-radius: 20px;
-  
-              font-size: 20px;
-  
-              background-color: #0e1018;
-  
-              border: none;
-  
-              color: #fff;
-  
-              width: 50%;
-            }
-  
-            .dollarsign {
-              color: white;
-  
-              font-size: 22px;
-  
-              position: absolute;
-  
-              left: 35%;
-  
-              font-family: "Roboto Mono", monospace;
-            }
-  
-            .start-game-btn-container {
-              width: 100%;
-  
-              display: flex;
-  
-              justify-content: center;
-  
-              margin-top: 2rem;
-  
-              margin-bottom: 2rem;
-            }
-  
-            .start-game-btn {
-              background-color: #b6ff40;
-  
-              color: #081325;
-  
-              border: none;
-  
-              border-radius: 20px;
-  
-              font-size: 22px;
-  
-              line-height: 28px;
-  
-              width: 370px;
-  
-              padding-left: 1rem;
-  
-              padding-right: 1rem;
-  
-              padding-top: 0.4rem;
-  
-              padding-bottom: 0.4rem;
-  
-              font-family: "Roboto Mono", monospace;
-  
-              text-transform: uppercase;
-            }
-  
-            .lighterr {
-              font-weight: 300;
-            }
-  
-            .visible {
-              visibility: visible !important;
-            }
-  
-            .scaleuptr {
-              -webkit-animation: scale-up-tr 0.4s ease-in-out both;
-  
-              animation: scale-up-tr 0.4s ease-in-out both;
-            }
-  
-            .scaledowntop {
-              -webkit-animation: scale-down-top 0.4s
-                cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  
-              animation: scale-down-top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-                both;
-            }
-  
-            .mode-create-lobby {
-              padding: 68px 40px;
-  
-              margin-top: 6%;
-  
-              position: relative;
-  
-              z-index: 10;
-            }
-  
-            .normal-lobby {
-              background-color: #25273d;
-            }
-  
-            .practice-lobby {
-              background-color: #f55b01;
-            }
-  
-            .mode-create-lobby img {
-              position: absolute;
-  
-              right: 0;
-  
-              top: 0;
-  
-              padding: 10px;
-  
-              cursor: pointer;
-            }
-  
-            .inputBetAmount {
-              background: transparent;
-  
-              color: #fff;
-  
-              border: none;
-  
-              text-align: center;
-  
-              width: 100%;
-  
-              font-size: 22px;
-  
-              font-weight: lighter;
-  
-              font-family: "Roboto Mono", monospace;
-            }
-  
-            .gc-profile-title {
-              margin-bottom: 40px;
-  
-              font-size: 20px;
-  
-              font-weight: 300;
-  
-              font-family: "Poppins", sans-serif;
-  
-              text-transform: uppercase;
-  
-              color: #fff;
-            }
-  
-            .terms-container label {
-              color: rgba(255, 255, 255, 0.6);
-  
-              font-size: 14px;
-            }
-  
-            .terms-container label a {
-              color: #fff;
-            }
-  
-            .terms-container {
-              margin-top: 20px;
-  
-              display: flex;
-  
-              flex-direction: row;
-  
-              gap: 10px;
-  
-              width: 480px;
-            }
-  
-            /* cerrar */
-  
-            @-webkit-keyframes scale-down-top {
-              0% {
-                -webkit-transform: scale(1);
-  
-                transform: scale(1);
-  
-                -webkit-transform-origin: 50% 0%;
-  
-                transform-origin: 50% 0%;
-              }
-  
-              100% {
-                -webkit-transform: scale(0.3);
-  
-                transform: scale(0.3);
-  
-                -webkit-transform-origin: 0% 0%;
-  
-                transform-origin: 0% 0%;
-  
-                opacity: 0;
-  
-                visibility: hidden;
-              }
-            }
-  
-            @keyframes scale-down-top {
-              0% {
-                -webkit-transform: scale(1);
-  
-                transform: scale(1);
-  
-                -webkit-transform-origin: 100% 0%;
-  
-                transform-origin: 100% 0%;
-              }
-  
-              100% {
-                -webkit-transform: scale(0.3);
-  
-                transform: scale(0.3);
-  
-                -webkit-transform-origin: 100% 0%;
-  
-                transform-origin: 100% 0%;
-  
-                opacity: 0;
-  
-                visibility: hidden;
-              }
-            }
-  
-            /* abrir */
-  
-            @-webkit-keyframes scale-up-tr {
-              0% {
-                -webkit-transform: scale(0.3);
-  
-                transform: scale(0.3);
-  
-                -webkit-transform-origin: 100% 0%;
-  
-                transform-origin: 100% 0%;
-  
-                opacity: 0;
-              }
-  
-              100% {
-                -webkit-transform: scale(1);
-  
-                transform: scale(1);
-  
-                -webkit-transform-origin: 100% 0%;
-  
-                transform-origin: 100% 0%;
-              }
-            }
-  
-            @keyframes scale-up-tr {
-              0% {
-                -webkit-transform: scale(0.3);
-  
-                transform: scale(0.3);
-  
-                -webkit-transform-origin: 100% 0%;
-  
-                transform-origin: 100% 0%;
-  
-                opacity: 0;
-              }
-  
-              100% {
-                -webkit-transform: scale(1);
-  
-                transform: scale(1);
-  
-                -webkit-transform-origin: 100% 0%;
-  
-                transform-origin: 100% 0%;
-              }
-            }
-  
-            .solo--item--vv {
-              width: 100%;
-  
-              height: 100%;
-            }
-  
-            .controls-abs {
-              position: absolute;
-  
-              top: 160px;
-  
-              left: 332px;
-  
-              cursor: pointer;
-            }
-  
-            .controls-play {
-              -webkit-animation: fade-out 1s ease-out both;
-  
-              animation: fade-out 1s ease-out both;
-            }
-  
-            .expand-button {
-              position: absolute;
-  
-              bottom: 0;
-  
-              right: 0;
-  
-              height: 40px;
-  
-              margin: 1rem;
-  
-              width: 40px;
-  
-              z-index: 4;
-  
-              cursor: pointer;
-            }
-  
-             {
-              /* .controls-abs:hover {
-  
-  
-  
-      -webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  
-  
-  
-              animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  
-  
-  
-  } */
-            }
-  
-            .solo-item-video {
-              width: 100%;
-  
-              height: 100%;
-            }
-  
-            @-webkit-keyframes fade-out {
-              0% {
-                opacity: 1;
-              }
-  
-              100% {
-                opacity: 0;
-              }
-            }
-  
-            @keyframes fade-out {
-              0% {
-                opacity: 1;
-              }
-  
-              100% {
-                opacity: 0;
-              }
-            }
-  
-            @-webkit-keyframes fade-in {
-              0% {
-                opacity: 0;
-              }
-  
-              100% {
-                opacity: 1;
-              }
-            }
-  
-            @keyframes fade-in {
-              0% {
-                opacity: 0;
-              }
-  
-              100% {
-                opacity: 1;
-              }
-            }
-  
-            @media screen and (max-width: 500px) {
-              .expand-button {
-                display: none;
-              }
-  
-              .controls-abs {
-                top: 60px;
-  
-                left: 129px;
-              }
-  
-              .solo--item-content-button {
-                margin-left: 15px;
-              }
-            }
-  
-            @media (max-width: 768px) {
-              .mode-create-lobby {
-                margin-top: 20%;
-              }
-            }
-  
-            @media (max-width: 485px) {
-              .mode-create-lobby {
-                margin-top: 70%;
-  
-                padding: 50px 40px;
-  
-                overflow: auto;
-              }
-  
-              .mode-solo.amount h3 {
-                font-size: 18px;
-              }
-  
-              .subtitle-modes {
-                font-size: 16px;
-              }
-  
-              .start-game-btn {
-                font-size: 20px;
-  
-                width: 310px;
-              }
-  
-              .mode--solo--c {
-                overflow-x: auto;
-              }
-  
-              .terms-container {
-                width: 300px;
-              }
-  
-              .mode-test-active {
-                font-size: 16px;
-              }
-  
-              .balance-container {
-                display: block;
-              }
-            }
-          `}
-        </style>
       </>
     );
   };

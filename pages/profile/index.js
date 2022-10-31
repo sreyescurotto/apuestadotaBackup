@@ -6,12 +6,25 @@ import withAuth from "../../interceptors/auth";
 
 import Layout from "../../components/Layout/Layout";
 
-const Profile = () => {
+export async function getStaticProps({ locale }) {
+  const response = await import(`../../lang/${locale}.json`);
+  return {
+    props: {
+      profile: response.default.profile,
+      navbar: response.default.navbar,
+      layout: response.default.layout,
+      leftbar: response.default.leftbar,
+    },
+  };
+}
+
+const Profile = (props) => {
+  const { profile , layout, navbar, leftbar } = props;
   return (
     <>
-      <Layout>
+      <Layout layout={layout} navbar={navbar} leftbar={leftbar}>
         <div className="interface">
-          <ProfileSettings />
+          <ProfileSettings profile={profile}/>
         </div>
       </Layout>
 
