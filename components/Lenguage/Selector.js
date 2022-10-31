@@ -38,6 +38,7 @@ export default function Selector() {
     <ReactSelect
         onChange={changeLanguage}
         value={countries.find(obj => obj.value === router.locale)}
+        instanceId="language-selector"
         options={countries}
         styles={customStyles}
         theme={(theme) => ({

@@ -15,7 +15,10 @@
         "section3title1": "¿ COMO ",
         "section3title2": "EMPEZAR",
         "section3title3": "EMPEZAR ?",
-        "section3subtitle": "APUESTA Y APROVECHA AL MAXIMO TUS HABILIDADES DOTERAS."
+        "section3subtitle": "APUESTA Y APROVECHA AL MAXIMO TUS HABILIDADES DOTERAS.",
+        "info1":"Dale click en Empezar",
+        "info2":"Deposita desde 10 USD",
+        "info3":"Disfruta tus ganancias"
     },
     "navbar": {
         "title": "BIENVENIDO",
@@ -26,7 +29,9 @@
         "deposit": "Depositar",
         "withdraw": "Retirar",
         "tutorial": "Tutorial",
-        "rules": "Reglas"
+        "rules": "Reglas",
+        "terms": "Términos y condiciones",
+        "monetize": "Monetiza tu Stream"
     },
     "footer": {
         "subtitle": "Revolucionando el mundo de las apuestas en e-sports.",

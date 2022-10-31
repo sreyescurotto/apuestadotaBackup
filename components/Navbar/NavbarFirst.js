@@ -76,6 +76,14 @@ const NavbarFirst = (props) => {
           <Link href="/tutorial" locale={router.locale}>
             <a className="anchor">{navbar.tutorial}</a>
           </Link>
+
+          <Link href="/rules" locale={router.locale}>
+            <a className="anchor">{navbar.terms}</a>
+          </Link>
+
+          <Link href="/monetize" locale={router.locale}>
+            <a className="anchor">{navbar.monetize}</a>
+          </Link>
         </div>
 
         <hr className="nav-divider"></hr>

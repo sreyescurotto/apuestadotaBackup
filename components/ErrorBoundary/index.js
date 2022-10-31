@@ -29,9 +29,12 @@ class ErrorBoundary extends React.Component {
             <h2>Oops, there is an error!</h2>
             <button
               type="button"
-              onClick={() => router.push('/')}
+              className='btn btn-md'
+              onClick={() => 
+              window.location.href('/')
+              }
             >
-              Try again?
+              Return
             </button>
           </div>
         )

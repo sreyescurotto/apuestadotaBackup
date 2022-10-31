@@ -226,6 +226,10 @@ const Home = (props) => {
                 <div className="intro-content">
                   <div className="info-cont">
                     <div className="info-img">
+                      <p className="info-text-cont first-text-c">
+                          
+                          {home.info1}
+                        </p>
                       <Image
                         src="/heros/shaman.png"
                         alt="Shaman"
@@ -237,6 +241,10 @@ const Home = (props) => {
 
                   <div className="info-cont">
                     <div className="info-img">
+                      <p className="info-text-cont mid-text-c">
+                        
+                        {home.info2}
+                      </p>
                       <Image
                         src="/heros/shops.png"
                         className="info-img"
@@ -249,6 +257,10 @@ const Home = (props) => {
 
                   <div className="info-cont">
                     <div className="info-img">
+                      <p className="info-text-cont last-text-c">
+                        
+                        {home.info3}
+                      </p>
                       <Image
                         src="/heros/beast.png"
                         className="info-img"
@@ -367,9 +379,10 @@ const Home = (props) => {
 
           -webkit-background-clip: text;
 
-          -webkit-text-fill-color: transparent;
-
           filter: drop-shadow(0px 0px 30px #00a2ffaf);
+        }
+        .info-cont .info-img:hover .info-text-cont {
+          color: #00a2ffaf;
         }
 
         .absolute-social-c {
@@ -394,12 +407,39 @@ const Home = (props) => {
           filter: brightness(1.3);
         }
 
+        .info-img {
+          position: relative;
+        }
 
+        .info-text-cont {
+          position: absolute;
+        z-index: 2;
+        color: #000;
+        font-family: Geometrik Blk,sans-serif;
+        font-size: 2.1rem;
+        pointer-events: none;
+        top: 11%;
+        }
+
+        .first-text-c {
+          left: 50%;
+        }
+
+        .mid-text-c {
+          left: 45%;
+        }
+
+        .last-text-c {
+          left: 40%;
+        }
         
 
         @media only screen and (max-width: 485px) {
           .absolute-social-c img {
             width: 60px;
+          }
+          .info-text-cont{ 
+            font-size: 1rem;
           }
         }
       `}</style>

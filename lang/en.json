@@ -15,7 +15,10 @@
         "section3title1": "HOW TO",
         "section3title2": "START",
         "section3title3": "START ?",
-        "section3subtitle": "BET AND MAKE THE MOST OF YOUR DOTA SKILLS"
+        "section3subtitle": "BET AND MAKE THE MOST OF YOUR DOTA SKILLS",
+        "info1":"Click on Start",
+        "info2":"Deposit from 10 USD",
+        "info3":"Enjoy your earnings"
     },
     "navbar": {
         "title": "WELCOME",
@@ -26,7 +29,9 @@
         "deposit": "Deposit",
         "withdraw": "Withdraw",
         "tutorial": "Tutorial",
-        "rules": "Reglas"
+        "rules": "Rules",
+        "terms": "Terms and Conditions",
+        "monetize": "Monetize your Stream"
     },
     "footer": {
         "subtitle": "Revolutionizing the world of e-sports betting.",
@@ -134,43 +139,43 @@
         "madeDeposit" : ", make your deposit:",
         "amount" : "Amount:",
         "refcode": "Referral Code:",
-        "terms": "Acepto que al usar un código de referido recibiré el 10% adicional al valor del primer depósito y me obligo a jugar por lo menos 10 partidas antes de solicitar algún retiro de fondos.",
+        "terms": "I accept that by using a referral code I will receive an additional 10% to the value of the first deposit and I agree to play at least 10 games before requesting any withdrawal of funds.",
         "deposit": "Deposit",
         "text": "Remember, minimal amount to deposit is 10 $."
     },
     "withdraw" : {
-        "title": "Retiro de fondos",
-        "hello": "Ingresa tu solicitud de retiro",
-        "accNum" : "Número de cuenta:",
-        "accCCI" : "Código Interbancario:",
-        "nameA": "Nombre completo del titular:",
-        "amount": "Monto:",
-        "withdraw": "Retirar",
-        "text": "El monto minimo para retirar es de 20 $.",
-        "text2": "Los retiros se realizan en un plazo de 24 horas hbiles y pueden tardar hasta 48 horas hábiles.",
-        "text3": "No se puede retirar dinero a cuentas que no pertenezcan al titular de la cuenta.",
-        "higher20": "El monto debe ser mayor a 20 dólares",
-        "notBalance": "No cuentas con saldo suficiente para realizar el retiro",
-        "confirmText": "¿AEA realizar el retiro de ",
-        "for": " por ",
-        "confirm": "Sí, retirar",
+        "title": "Withdrawal your funds",
+        "hello": "Enter your withdrawal request",
+        "accNum" : "Account Number:",
+        "accCCI" : "Interbank Code:",
+        "nameA": "Holder's full name:",
+        "amount": "Amount:",
+        "withdraw": "Withdraw",
+        "text": "The minimum amount to withdraw is $20.",
+        "text2": "Withdrawals are made within 24 business hours and can take up to 48 business hours.",
+        "text3": "Money cannot be withdrawn to accounts that do not belong to the account holder.",
+        "higher20": "The amount must be greater than 20 dollars",
+        "notBalance": "You do not have enough balance to make the withdrawal",
+        "confirmText": "Do you want to withdraw of",
+        "for": " through",
+        "confirm": "Yes, withdraw",
         "cancel": "Cancel",
         "success": "Withdraw successful",
-        "errorWith": "Error with withdraw"
+        "errorWith": "There was an error making the withdraw"
     },
     "terms" : {
         "title" : "Terms & Conditions",
         "date" : "Last update "
     },
     "monetize" : {
-        "title" : "¿QUE BUSCAMOS?",
-        "subtitle" : "Estamos buscando asociaciones con personas que quieran crecer junto a nosotros, todos son bienvenidos desde los que recién empiezan hasta los más reconocidos.",
-        "text1": "Pagos mensuales según audiencia",
-        "text2": "Códigos de referidos personalizados",
-        "text3": "Equipo de marketing especializado",
-        "text4": "Merchandising oficial",
-        "purple": "Puedes contactarnos a través del correo: ",
+        "title" : "WHAT ARE WE LOOKING FOR?",
+        "subtitle" : "We are looking for associations with people who want to grow with us, everyone is welcome from those who are just starting out to the most recognized.",
+        "text1": "Monthly payments according to audience",
+        "text2": "Custom referral codes",
+        "text3": "Specialized marketing team",
+        "text4": "Official merchandise",
+        "purple": "You can contact us by email: ",
         "email": "publicidad@apuestadota.com",
-        "purple2": " o también directamente por Whatsapp."
+        "purple2": " or also directly by Whatsapp."
     }
 }

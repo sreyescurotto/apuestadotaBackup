@@ -89,8 +89,12 @@ const Navbar = (props) => {
 
           <Link  href="/rules" locale={router.locale}>
             <a className="anchor">
-              {navbar.rules}
+              {navbar.terms}
             </a>
+          </Link>
+
+          <Link href="/monetize" locale={router.locale}>
+            <a className="anchor">{navbar.monetize}</a>
           </Link>
         </div>
 
