@@ -274,7 +274,14 @@ const Home = (props) => {
           src: url("font/geometric.ttf") format("opentype");
         }
 
-       
+        .App {
+          height: 1080px;
+          overflow-y: scroll;
+        }
+
+        .main {
+          position: relative;
+        }
 
         .spacer-container {
           width: 100%;
