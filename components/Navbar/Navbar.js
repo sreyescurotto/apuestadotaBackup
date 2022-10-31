@@ -131,7 +131,11 @@ const Navbar = (props) => {
           </a>
         </Link>
 
-        {user == null && (
+        <div className="right-c">
+
+       
+          <Selector />
+          {user == null && (
           <div className="log-buttons">
             <Link href={"/login"} locale={router.locale}>
               <a>
@@ -140,28 +144,25 @@ const Navbar = (props) => {
             </Link>
           </div>
         )}
-
-        <div className="right-c">
-        <Selector />
-        {user !== null && (
-          <div className="log-buttons">
-            <div
-              className={
-                user.dni_status === 2
-                  ? "profile-photo verified"
-                  : "profile-photo noverified"
-              }
-            >
-              <Link href={"/profile"} locale={router.locale}>
-                <a>
-                  <img
-                    src={user.foto}
-                    alt={user.dni_status}
-                    className="round-profile-img"
-                  />
-                </a>
-              </Link>
-            </div>
+          {user !== null && (
+            <div className="log-buttons">
+              <div
+                className={
+                  user.dni_status === 2
+                    ? "profile-photo verified"
+                    : "profile-photo noverified"
+                }
+              >
+                <Link href={"/profile"} locale={router.locale}>
+                  <a>
+                    <img
+                      src={user.foto}
+                      alt={user.dni_status}
+                      className="round-profile-img"
+                    />
+                  </a>
+                </Link>
+              </div>
 
             <button className="btn btn-md">{navbar.title} {user.nickname}</button>
 
