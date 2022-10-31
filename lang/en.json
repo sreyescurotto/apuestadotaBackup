@@ -16,9 +16,9 @@
         "section3title2": "START",
         "section3title3": "START ?",
         "section3subtitle": "BET AND MAKE THE MOST OF YOUR DOTA SKILLS",
-        "info1":"Click on Start",
-        "info2":"Deposit from 10 USD",
-        "info3":"Enjoy your earnings"
+        "info1": "Click on Start",
+        "info2": "Deposit from 10 USD",
+        "info3": "Enjoy your earnings"
     },
     "navbar": {
         "title": "WELCOME",
@@ -38,7 +38,6 @@
         "subtitle2": "Here you win according to your ability, it goes beyond chance.",
         "subtitle3": "Victory is in your hands",
         "subtitle4": "The website www.apuestadota.com is governed by the laws of Saint Vicent and the Grenadines."
-
     },
     "layout": {
         "title": "Contact"
@@ -86,7 +85,7 @@
         "withdrawal": "Withdrawal History",
         "account": "Account Status",
         "bets": "Total Bets",
-        "referrals" : "Referrals",
+        "referrals": "Referrals",
         "username": "Username",
         "name": "Name",
         "lastname": "Last Name",
@@ -109,8 +108,8 @@
         "betsmade": "Apuestas Realizadas",
         "datetime": "Date and Time",
         "source": "Source",
-        "bettime" : "Bet Time",
-        "match" : "Match",
+        "bettime": "Bet Time",
+        "match": "Match",
         "matchId": "Match ID",
         "result": "Result",
         "refTitle": "Recommend ApuestaDota to a friend and earn extra money.",
@@ -134,20 +133,20 @@
         "verify1": "to be Verified",
         "verify2": "Verify failed"
     },
-    "deposit" : {
+    "deposit": {
         "hello": "Hello",
-        "madeDeposit" : ", make your deposit:",
-        "amount" : "Amount:",
+        "madeDeposit": ", make your deposit:",
+        "amount": "Amount:",
         "refcode": "Referral Code:",
         "terms": "I accept that by using a referral code I will receive an additional 10% to the value of the first deposit and I agree to play at least 10 games before requesting any withdrawal of funds.",
         "deposit": "Deposit",
         "text": "Remember, minimal amount to deposit is 10 $."
     },
-    "withdraw" : {
+    "withdraw": {
         "title": "Withdrawal your funds",
         "hello": "Enter your withdrawal request",
-        "accNum" : "Account Number:",
-        "accCCI" : "Interbank Code:",
+        "accNum": "Account Number:",
+        "accCCI": "Interbank Code:",
         "nameA": "Holder's full name:",
         "amount": "Amount:",
         "withdraw": "Withdraw",
@@ -163,13 +162,13 @@
         "success": "Withdraw successful",
         "errorWith": "There was an error making the withdraw"
     },
-    "terms" : {
-        "title" : "Terms & Conditions",
-        "date" : "Last update "
+    "terms": {
+        "title": "Terms & Conditions",
+        "date": "Last update "
     },
-    "monetize" : {
-        "title" : "WHAT ARE WE LOOKING FOR?",
-        "subtitle" : "We are looking for associations with people who want to grow with us, everyone is welcome from those who are just starting out to the most recognized.",
+    "monetize": {
+        "title": "WHAT ARE WE LOOKING FOR?",
+        "subtitle": "We are looking for associations with people who want to grow with us, everyone is welcome from those who are just starting out to the most recognized.",
         "text1": "Monthly payments according to audience",
         "text2": "Custom referral codes",
         "text3": "Specialized marketing team",
@@ -177,5 +176,43 @@
         "purple": "You can contact us by email: ",
         "email": "publicidad@apuestadota.com",
         "purple2": " or also directly by Whatsapp."
+    },
+    "tutorial": {
+        "title": "Frequent questions",
+        "subtitle": "Do you have any additional questions?",
+        "subtitle2": "Send us an email and we will help you: ",
+        "email": " support@apuestadota.com",
+        "q1": "How can I withdraw my winnings?",
+        "a1": "Go to the Withdrawal section on the left side of the screen, fill in the form data and indicate the amount to be withdrawn, this withdrawal can only be made to the bank accounts of the owner registered in Betadota.com, it is not allowed to transfer to bank accounts of third parties.",
+        "q2": "Can I have more than one account?",
+        "a2": "No, each account is registered with an identity document, it is only allowed to use one account per person to avoid unfair matchmaking abuse.",
+        "q3": "Why do I need to verify my account?",
+        "a3": "In order to withdraw the money, it is necessary to fully identify the recipient, so we need you to upload your identity document corresponding to your country to the server, which will be corroborated at the time you request to withdraw your funds.",
+        "q4": "What documents can I use to verify my account?",
+        "a4": "You must upload your required legal identification document according to your country, for example but not limited to: Identity card, National identity document, Citizenship card, Identity card, Unique population registration key, Personal Identification Document, Unique document of identity, Identification, among others determined according to their nationality.",
+        "q5": "Is there a minimum deposit amount?",
+        "a5": "You can open your account without the need to deposit but you will need to make a deposit to be able to bet.",
+        "q6": "Is there a minimum deposit amount?",
+        "a6": "You can deposit from 10 USD.",
+        "q7": "Is there a maximum deposit amount?",
+        "a7": "You can deposit up to 1,000 USD at a time.",
+        "q8": "What is the minimum and maximum amount to place a bet?",
+        "a8": "The minimum bet amount is 1 USD and the maximum is 100 USD.",
+        "q9": "What happens if I stop sharing my public Dota 2 information in the middle of a game?",
+        "a9": "The bet will be terminated resulting in the loss of funds, this action is considered as attempted fraud.",
+        "q10": "What happens if I commit fraudulent actions?",
+        "a10": "Your bet in progress will be considered lost, the balance of your account will be refunded to your bank account, your registered account in betadota.com and the registered identification document will be blocked. You will be beta forever from the use of this platform and the following that are part of the business group.",
+        "q11": "What is considered fraudulent actions?",
+        "a11a": "Those expert players within the game who use secondary accounts to enter games full of newbies abusing players who are just starting out.",
+        "a11b": "Stop sharing match statistics during a bet in progress.",
+        "a11c": "Those who resort to third parties to play in their place, keep in mind that Steam provides a large amount of data that allows you to identify where the game is taking place, this data ranges from the PC code to the exact geographical location. Any irregularity will be detected.",
+        "a11d": "Change Steam privacy settings from public to private during a bet in progress.",
+        "q12": "What happens if I start a bet and it takes more than 25 minutes to start the game?",
+        "a12": "If the game takes more than 25 minutes to start automatically, it will be considered as a loss, it will be investigated if in that time you have not stopped sharing your statistics or if you have tried to perform any fraudulent action. If there has been no irregularity and this happens to you, you can contact support@apuestadota.com and we will contact you to request evidence of what happened.",
+        "q13": "What if when I'm waiting for the game to start, some player has a connection error and the game doesn't start?",
+        "a13": "In that case your next game will be the one that counts, don't worry.",
+        "q14": "Is there a minimum and maximum withdrawal amount?",
+        "a14": "The minimum withdrawal amount is 20 dollars but there is no maximum withdrawal amount, you can withdraw your entire balance as long as it is greater than 20 dollars.",
+        "videotutorial": "How to configure Bet?"
     }
 }

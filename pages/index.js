@@ -68,7 +68,6 @@ const Home = (props) => {
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
-
           gtag('config', 'G-K63L1CV95V');
         `}
       </Script>
@@ -282,164 +281,128 @@ const Home = (props) => {
       <style jsx>{`
         @font-face {
           font-family: Geometrik Blk;
-
           src: url("font/geometric.ttf") format("opentype");
         }
-
         .App {
           height: 1080px;
           overflow-y: scroll;
         }
-
         .main {
           position: relative;
         }
-
         .spacer-container {
           width: 100%;
           height: 240px;
           position: relative;
         }
-
         .aegis-background {
           width: 100%;
-
           height: 120%;
-
           object-fit: cover;
         }
-
         .section2-text {
           position: absolute;
-
           margin: 1rem 8rem;
         }
-
         .second-section {
           height: 115vh;
           margin-bottom: 3%;
         }
-
         .relative {
           position: relative;
         }
-
         .relative h1 {
           position: absolute;
-
           left: 30%;
-
           top: 20%;
-
           text-shadow: 2px 2px 4px #000000;
-
           z-index: 2;
         }
-
         .text-01 {
           top: 27%;
         }
-
         .text-02 {
           top: 27%;
-
           right: 0;
         }
-
         .text-03 {
           bottom: 90px;
-
           left: 31%;
         }
-
         .section2-text h3 {
           text-shadow: 5px 5px 6px #000000;
-
           font-size: 2.2rem;
-
           font-family: Geometrik Blk, sans-serif;
         }
-
         .intro-content {
           display: flex;
         }
-
         .info-cont img {
           width: 100%;
-
           height: 100%;
-
           transition: all 0.3s ease;
         }
-
         .info-cont .info-img:hover {
           background: -webkit-linear-gradient(#cefcff 10%, #2a748b 90%);
-
           background-clip: text;
-
           -webkit-background-clip: text;
-
           filter: drop-shadow(0px 0px 30px #00a2ffaf);
         }
         .info-cont .info-img:hover .info-text-cont {
           color: #00a2ffaf;
         }
-
         .absolute-social-c {
           position: absolute;
-
           top: 0;
-
           left: 0;
-
           margin: 1rem 4rem;
         }
-
         .social-c {
           margin: 1rem 0.5rem;
-
           width: 70px;
-
           cursor: pointer;
         }
-
         .social-c:hover {
           filter: brightness(1.3);
         }
-
         .info-img {
           position: relative;
         }
-
         .info-text-cont {
           position: absolute;
         z-index: 2;
         color: #000;
-        font-family: Geometrik Blk,sans-serif;
-        font-size: 2.1rem;
+        font-family: "Bebas Neue", cursive;
+        font-size: 2.5rem;
         pointer-events: none;
+        text-align: center;
+        font-weight: 600;
         top: 11%;
         }
-
         .first-text-c {
-          left: 50%;
-        }
-
-        .mid-text-c {
           left: 45%;
         }
-
+        .mid-text-c {
+          left: 51%;
+          width: 180px;
+        }
         .last-text-c {
-          left: 40%;
+          left: 32%;
         }
         
-
         @media only screen and (max-width: 485px) {
           .absolute-social-c img {
             width: 60px;
           }
           .info-text-cont{ 
-            font-size: 1rem;
+            font-size: 1.2rem;
+          }
+          .first-text-c {
+          left: 42%;
+          }
+          .mid-text-c {
+            left: 44%;
+            width: auto;
           }
         }
       `}</style>

@@ -5,17 +5,17 @@ export async function getStaticProps({ locale }) {
   const response = await import(`../../lang/${locale}.json`);
   return {
     props: {
-      play: response.default.play,
       navbar: response.default.navbar,
       layout: response.default.layout,
       leftbar: response.default.leftbar,
+      tutorial : response.default.tutorial,
     },
   };
 }
 
 export default function Tutorial(props) {
 
-  const { play , layout, navbar, leftbar } = props;
+  const { layout, navbar, leftbar, tutorial } = props;
   
   const [active2, setActive2] = useState(false);
 
@@ -107,19 +107,19 @@ export default function Tutorial(props) {
         <div className="interface">
           <div className="faq-container">
             <div className="faq-container-title">
-              <h4>Preguntas Frecuentes</h4>
+              <h4>{tutorial.title}</h4>
             </div>
 
             <div className="faq-container-box">
               <div className="interface-item-02">
                 <div className="tutorial-subtitle">
-                  <h4>¿Tienes alguna duda adicional?</h4>
+                  <h4>{tutorial.subtitle}</h4>
                 </div>
 
                 <div className="tutorial-p">
                   <p>
-                    Envianos un correo y te ayudaremos:
-                    <span className="green">soporte@apuestadota.com </span>
+                  {tutorial.subtitle2}
+                    <span className="green">{tutorial.email}</span>
                   </p>
                 </div>
               </div>
@@ -127,7 +127,7 @@ export default function Tutorial(props) {
               <div className="faq-container-box-item">
                 <div className="faq-container-box-item-title">
                   <h4 onClick={handleClick2}>
-                    ¿Cómo puedo retirar mis ganancias?
+                  {tutorial.q1}
                     <img
                       className={active2 ? "chevron chevron-top" : "chevron"}
                       src="/icons/chevron-down.png"
@@ -136,12 +136,7 @@ export default function Tutorial(props) {
                   </h4>
 
                   <p className={active2 ? "active" : "disable"}>
-                    Ir a la sección de Retiro en la parte izquierda de la
-                    pantalla, llenar los datos del formulario e indicar el monto
-                    a retirar, este retiro solo puede realizarse a las cuentas
-                    bancarias del titular registrado en apuestadota.com, no está
-                    permitido transferir a cuentas bancarias de terceras
-                    personas.
+                  {tutorial.a1}
                   </p>
                 </div>
               </div>
@@ -149,7 +144,7 @@ export default function Tutorial(props) {
               <div className="faq-container-box-item">
                 <div className="faq-container-box-item-title">
                   <h4 onClick={handleClick3}>
-                    ¿Puedo tener más de una cuenta?
+                  {tutorial.q2}
                     <img
                       className={active3 ? "chevron chevron-top" : "chevron"}
                       src="/icons/chevron-down.png"
@@ -158,9 +153,7 @@ export default function Tutorial(props) {
                   </h4>
 
                   <p className={active3 ? "active" : "disable"}>
-                    No, cada cuenta est registrada con un documento de
-                    identidad, solo está permitido usar una cuenta por persona
-                    para evitar el abuso de emparejamiento desleal.
+                  {tutorial.a2}
                   </p>
                 </div>
               </div>
@@ -168,7 +161,7 @@ export default function Tutorial(props) {
               <div className="faq-container-box-item">
                 <div className="faq-container-box-item-title">
                   <h4 onClick={handleClick4}>
-                    ¿Por qué necesito verificar mi cuenta?
+                  {tutorial.q3}
                     <img
                       className={active4 ? "chevron chevron-top" : "chevron"}
                       src="/icons/chevron-down.png"
@@ -177,11 +170,7 @@ export default function Tutorial(props) {
                   </h4>
 
                   <p className={active4 ? "active" : "disable"}>
-                    Para poder retirar el dinero es necesario identificar
-                    completamente al receptor, por ello necesitamos que subas al
-                    servidor tu documento de identidad correspondiente a tu
-                    país, el cual será corroborado al momento en que solicites
-                    retirar tus fondos.
+                  {tutorial.a3}
                   </p>
                 </div>
               </div>
@@ -189,7 +178,7 @@ export default function Tutorial(props) {
               <div className="faq-container-box-item">
                 <div className="faq-container-box-item-title">
                   <h4 onClick={handleClick5}>
-                    ¿Qué documentos puedo utilizar para verificar mi cuenta?
+                  {tutorial.q4}
                     <img
                       className={active5 ? "chevron chevron-top" : "chevron"}
                       src="/icons/chevron-down.png"
@@ -198,13 +187,7 @@ export default function Tutorial(props) {
                   </h4>
 
                   <p className={active5 ? "active" : "disable"}>
-                    Debes subir tu documento de identificación legal exigible
-                    según tu país, por ejemplo pero no limitando a: Cédula de
-                    identidad, Documento nacional de identidad, Cédula de
-                    ciudadanía, Carnet de Identidad, Clave única de registro de
-                    población, Documento Personal de Identificación, Documento
-                    único de identidad, Identificación, entre otros determinados
-                    según su nacionalidad.
+                  {tutorial.a4}
                   </p>
                 </div>
               </div>
@@ -212,7 +195,7 @@ export default function Tutorial(props) {
               <div className="faq-container-box-item">
                 <div className="faq-container-box-item-title">
                   <h4 onClick={handleClick6}>
-                    ¿Hay un monto de depósito mínimo para abrir mi cuenta?
+                  {tutorial.q5}
                     <img
                       className={active6 ? "chevron chevron-top" : "chevron"}
                       src="/icons/chevron-down.png"
@@ -221,8 +204,7 @@ export default function Tutorial(props) {
                   </h4>
 
                   <p className={active6 ? "active" : "disable"}>
-                    Puedes abrir tu cuenta sin necesidad de depositar pero si
-                    necesitarás hacer un depósito para poder apostar.
+                  {tutorial.a5}
                   </p>
                 </div>
               </div>
@@ -230,7 +212,7 @@ export default function Tutorial(props) {
               <div className="faq-container-box-item">
                 <div className="faq-container-box-item-title">
                   <h4 onClick={handleClick7}>
-                    ¿Hay un monto mínimo de depósito?
+                  {tutorial.q6}
                     <img
                       className={active7 ? "chevron chevron-top" : "chevron"}
                       src="/icons/chevron-down.png"
@@ -239,7 +221,7 @@ export default function Tutorial(props) {
                   </h4>
 
                   <p className={active7 ? "active" : "disable"}>
-                    Puedes depósitar desde 10 USD.
+                  {tutorial.a6}
                   </p>
                 </div>
               </div>
@@ -247,7 +229,7 @@ export default function Tutorial(props) {
               <div className="faq-container-box-item">
                 <div className="faq-container-box-item-title">
                   <h4 onClick={handleClick8}>
-                    ¿Hay un monto máximo de depósito?
+                  {tutorial.q7}
                     <img
                       className={active8 ? "chevron chevron-top" : "chevron"}
                       src="/icons/chevron-down.png"
@@ -256,7 +238,7 @@ export default function Tutorial(props) {
                   </h4>
 
                   <p className={active8 ? "active" : "disable"}>
-                    Puedes depósitar hasta 1000 USD por vez.
+                  {tutorial.a7}
                   </p>
                 </div>
               </div>
@@ -264,7 +246,7 @@ export default function Tutorial(props) {
               <div className="faq-container-box-item">
                 <div className="faq-container-box-item-title">
                   <h4 onClick={handleClick9}>
-                    ¿Cuál es el monto mínimo y máximo para realizar una apuesta?
+                  {tutorial.q8}
                     <img
                       className={active9 ? "chevron chevron-top" : "chevron"}
                       src="/icons/chevron-down.png"
@@ -273,8 +255,7 @@ export default function Tutorial(props) {
                   </h4>
 
                   <p className={active9 ? "active" : "disable"}>
-                    El monto mínimo de apuesta es 1 USD y el máximo es de 100
-                    USD.
+                  {tutorial.a8}
                   </p>
                 </div>
               </div>
@@ -282,8 +263,7 @@ export default function Tutorial(props) {
               <div className="faq-container-box-item">
                 <div className="faq-container-box-item-title">
                   <h4 onClick={handleClick10}>
-                    ¿Qué pasa si dejo de compartir mi información pública de
-                    Dota 2 en medio de una partida?
+                  {tutorial.q9}
                     <img
                       className={active10 ? "chevron chevron-top" : "chevron"}
                       src="/icons/chevron-down.png"
@@ -292,8 +272,7 @@ export default function Tutorial(props) {
                   </h4>
 
                   <p className={active10 ? "active" : "disable"}>
-                    Se terminará la apuesta dando como resultado la pérdida de
-                    fondos, esta acción es considerada como intento de fraude.
+                  {tutorial.a9}
                   </p>
                 </div>
               </div>
@@ -301,7 +280,7 @@ export default function Tutorial(props) {
               <div className="faq-container-box-item">
                 <div className="faq-container-box-item-title">
                   <h4 onClick={handleClick11}>
-                    ¿Qué pasa si cometo acciones fraudulentas?
+                  {tutorial.q10}
                     <img
                       className={active11 ? "chevron chevron-top" : "chevron"}
                       src="/icons/chevron-down.png"
@@ -310,12 +289,7 @@ export default function Tutorial(props) {
                   </h4>
 
                   <p className={active11 ? "active" : "disable"}>
-                    Tu apuesta en curso será considerada en perdida, el saldo de
-                    tu cuenta será reembolsado a tu cuenta bancaria, se
-                    bloqueará tu cuenta registrada en apuestadota.com y el
-                    documento de identificación registrado. Quedarás betado para
-                    siempre del uso de esta plataforma y de las siguientes que
-                    formen parte del grupo empresarial.
+                    {tutorial.a10}
                   </p>
                 </div>
               </div>
@@ -323,7 +297,7 @@ export default function Tutorial(props) {
               <div className="faq-container-box-item">
                 <div className="faq-container-box-item-title">
                   <h4 onClick={handleClick12}>
-                    ¿Qué se considera acciones fraudulentas?
+                  {tutorial.q11}
                     <img
                       className={active12 ? "chevron chevron-top" : "chevron"}
                       src="/icons/chevron-down.png"
@@ -332,19 +306,10 @@ export default function Tutorial(props) {
                   </h4>
 
                   <p className={active12 ? "active" : "disable"}>
-                    Aquellos jugadores expertos dentro del juego que utilicen
-                    cuentas secundarias para ingresar a partidas repletas de
-                    novatos abusando de jugadores que recién empiezan. <br />
-                    Dejar de compartir las estadísticas de partidas durante una
-                    apuesta en curso. <br />
-                    Aquellos que recurran a terceros para jugar en suplantación
-                    suya, ten en cuenta que Steam proporciona una gran cantidad
-                    de datos que permiten identificar dónde se está realizando
-                    la partida, estos datos van desde el código de la PC hasta
-                    la ubicación geográfica exacta. Toda irregularidad será
-                    detectada. <br />
-                    Cambiar los ajustes de privacidad de Steam de público a
-                    privado durante una apuesta en curso.
+                  {tutorial.a11a} <br />
+                  {tutorial.a11b} <br />
+                  {tutorial.a11c} <br />
+                  {tutorial.a11d}
                   </p>
                 </div>
               </div>
@@ -352,8 +317,7 @@ export default function Tutorial(props) {
               <div className="faq-container-box-item">
                 <div className="faq-container-box-item-title">
                   <h4 onClick={handleClick13}>
-                    ¿Qué pasa si empiezo una apuesta y tarda más de 25 minutos
-                    en comenzar la partida?
+                  {tutorial.q12}
                     <img
                       className={active13 ? "chevron chevron-top" : "chevron"}
                       src="/icons/chevron-down.png"
@@ -362,14 +326,7 @@ export default function Tutorial(props) {
                   </h4>
 
                   <p className={active13 ? "active" : "disable"}>
-                    Si la partida tarda más de 25 minutos en comenzar de forma
-                    automatica se considerará como pérdida, se investigará si en
-                    ese tiempo no haz dejado de compartir tus estadísticas o haz
-                    intentado realizar alguna acción fraudulenta. Si no ha
-                    habido alguna irregularidad y te sucede esto puedes
-                    comunicarte a soporte@apuestadota.com y nos pondremos en
-                    contacto con usted para solicitarle evidencias de lo
-                    ocurrido.
+                  {tutorial.a12}
                   </p>
                 </div>
               </div>
@@ -377,9 +334,7 @@ export default function Tutorial(props) {
               <div className="faq-container-box-item">
                 <div className="faq-container-box-item-title">
                   <h4 onClick={handleClick14}>
-                    ¿Qué pasa si cuando estoy esperando a que la partida inicie,
-                    algún jugador tiene un error de conexión y la partida no
-                    empieza?
+                  {tutorial.q13}
                     <img
                       className={active14 ? "chevron chevron-top" : "chevron"}
                       src="/icons/chevron-down.png"
@@ -388,8 +343,7 @@ export default function Tutorial(props) {
                   </h4>
 
                   <p className={active14 ? "active" : "disable"}>
-                    En ese caso tu siguiente partida será la que va a contar, no
-                    te preocupes.
+                  {tutorial.a13}
                   </p>
                 </div>
               </div>
@@ -397,7 +351,7 @@ export default function Tutorial(props) {
               <div className="faq-container-box-item">
                 <div className="faq-container-box-item-title">
                   <h4 onClick={handleClick15}>
-                    ¿Existe un monto mínimo y máximo de retiro?
+                  {tutorial.q14}
                     <img
                       className={active15 ? "chevron chevron-top" : "chevron"}
                       src="/icons/chevron-down.png"
@@ -406,9 +360,7 @@ export default function Tutorial(props) {
                   </h4>
 
                   <p className={active15 ? "active" : "disable"}>
-                    El monto mínimo de retiro es de 20 dólares pero no existe
-                    monto máximo de retiro, puedes retirar la totalidad de tu
-                    saldo siempre y cuando este sea mayor a 20 dólares.
+                  {tutorial.a14}
                   </p>
                 </div>
               </div>
@@ -417,7 +369,7 @@ export default function Tutorial(props) {
 
           <section className="container-interface" id="expose-public">
             <div className="int interface-item-01">
-              <h4>¿Cómo configurar Apuestadota?</h4>
+              <h4>{tutorial.videotutorial}</h4>
 
               <div className="multimedia-container">
                 <video
