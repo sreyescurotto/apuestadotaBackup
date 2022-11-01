@@ -98,6 +98,8 @@ export default function rules(props) {
 
           .rules-container p {
             margin-bottom: 4rem;
+            font-family: Teko,sans-serif;
+            font-size: 1.5rem;
           }
 
           .terms-link-container {

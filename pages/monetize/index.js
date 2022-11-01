@@ -179,10 +179,7 @@ const Profile = (props) => {
           }
 
           @media (max-width: 480px) {
-            .interface {
-              height: auto;
-              overflow-y: visible;
-            }
+            
             .monetize-title {
               margin: 2rem 1rem;
             }

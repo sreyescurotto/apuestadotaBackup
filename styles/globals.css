@@ -857,6 +857,7 @@ input[type=number] {
   margin: 2.5rem 2rem;
   background-color: #b6ff40;
   color: #081325;
+  border: none;
   border-radius: 4px;
   font-family: "Roboto Mono", monospace;
   font-size: 16px;
@@ -1023,6 +1024,11 @@ MEDIA QUERY MAXW WIDTH 768PX  APLICACION POR DENTRO */
 MEDIA QUERY MAXW WIDTH 415PX  */
 
 @media (max-width: 480px) {
+
+  .interface {
+    padding-bottom: 8rem;
+  }
+
   .videocontainer {
     display: none;
   }

@@ -87,9 +87,7 @@ const Layout = (props) => {
           }
 
           @media (max-width: 768px) {
-            .mode-play {
-              overflow-y: scroll;
-            }
+            
             .contact {
               font-size: .8rem;
             }
