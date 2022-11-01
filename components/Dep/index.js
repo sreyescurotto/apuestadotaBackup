@@ -399,7 +399,7 @@ const Dep = () => {
                     </p>
 
                     <button
-                      className="btn-submit-dep"
+                      className="deposit-btn-submit"
                       type="submit"
                       onClick={handleDeposit}
                     >
