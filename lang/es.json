@@ -131,7 +131,14 @@
         "notVerify": "No Verificado",
         "verified": "Verificado",
         "verify1": "Por Verificar",
-        "verify2": "Verificacion Fallida"
+        "verify2": "Verificacion Fallida",
+        "frontid": "Parte frontal del Documento de identidad",
+        "writename": "Escribe tu nombre",
+        "writelastname": "Escribe tus apellidos",
+        "writaemail": "Escribe tu email",
+        "writeid": "Escrite tu DNi",
+        "adj": "Adjunta tu documento",
+        "register": "Registrar"
     },
     "deposit": {
         "hello": "Hola",

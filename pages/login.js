@@ -39,9 +39,17 @@ const Login = () => {
 
       "openid.mode": "checkid_setup",
 
-      "openid.return_to": "https://apuestadotabackup.vercel.app/login", // Esto es la url donde va a recibir los get params despues de iniciar sesion
+      // "openid.return_to": "https://apuestadota.com/login", Esto es la url donde va a recibir los get params despues de iniciar sesion
 
-      "openid.realm": "https://apuestadotabackup.vercel.app", // Esto es el origen de la peticion
+      //"openid.realm": "https://apuestadota.com",  Esto es el origen de la peticion
+
+      "openid.return_to": "https://apuestadotabackup.vercel.app/login", 
+
+      "openid.realm": "https://apuestadotabackup.vercel.app", 
+
+      //"openid.return_to": "http://localhost:3000/login", 
+
+      //"openid.realm": "http://localhost:3000", 
 
       "openid.identity": "http://specs.openid.net/auth/2.0/identifier_select",
 

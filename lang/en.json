@@ -102,10 +102,10 @@
         "status": "Status",
         "method": "Method",
         "withDes": "REQUEST FOR WITHDRAWAL OF FUNDS",
-        "notwith": "No has realizado solicitudes de retiro",
+        "notwith": "No withdraw request yet",
         "completed": "Completed",
         "pending": "Pending",
-        "betsmade": "Apuestas Realizadas",
+        "betsmade": "Bets made ",
         "datetime": "Date and Time",
         "source": "Source",
         "bettime": "Bet Time",
@@ -131,7 +131,14 @@
         "notVerify": "Not verified",
         "verified": "Verified",
         "verify1": "to be Verified",
-        "verify2": "Verify failed"
+        "verify2": "Verify failed",
+        "frontid": "Front part of the ID",
+        "writename": "Enter your name",
+        "writelastname": "Enter your lastname",
+        "writaemail": "Enter your email",
+        "writeid": "Enter your ID",
+        "adj": "Attach your ID",
+        "register": "Register"
     },
     "deposit": {
         "hello": "Hello",

@@ -179,7 +179,7 @@ const ProfileSettings = (props) => {
                   {profileProps.hello} <span>{user.nickname}</span>
                   {profileProps.completeinfo}
                 </h4>
-                <ProfileForm onSubmit={updateUser} />
+                <ProfileForm onSubmit={updateUser}  profileProps={profileProps}/>
               </div>
             ) : (
               <div className="gc-profile-box">

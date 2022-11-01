@@ -850,16 +850,37 @@ input[type=number] {
   position: relative;
   padding: 1rem;
   margin: 2.5rem 2rem;
-  background-color: transparent;
-  border: 2px solid #b6ff40;
-  color: #b6ff40;
+  background-color: #b6ff40;
+  color: #081325;
   border-radius: 4px;
   font-family: "Roboto Mono", monospace;
   font-size: 16px;
+  border-radius: 20px;
+}
+
+.start-game-btn {
+  background-color: #b6ff40;
+  color: #081325;
+  border: none;
+  border-radius: 20px;
+  font-size: 22px;
+  line-height: 28px;
+  width: 370px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  font-family: "Roboto Mono", monospace;
+  text-transform: uppercase;
+}
+
+.start-game-btn:hover {
+  background-color: #ffffff;
+  color: #000;
 }
 
 .deposit-btn-submit:hover {
-  background-color: #b6ff40;
+  background-color: #ffffff;
   color: #000;
 }
 
@@ -1328,21 +1349,9 @@ MEDIA QUERY MAXW WIDTH 415PX  */
   margin-bottom: 2rem;
 }
 
-.start-game-btn {
-  background-color: #b6ff40;
-  color: #081325;
-  border: none;
-  border-radius: 20px;
-  font-size: 22px;
-  line-height: 28px;
-  width: 370px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.4rem;
-  padding-bottom: 0.4rem;
-  font-family: "Roboto Mono", monospace;
-  text-transform: uppercase;
-}
+
+
+
 
 .lighterr {
   font-weight: 300;

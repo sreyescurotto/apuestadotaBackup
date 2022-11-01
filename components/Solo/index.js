@@ -31,9 +31,9 @@ const Solo = (props) => {
 
   const [searching, setSearching] = useState(false);
 
-  const [saldo, setSaldo] = useState("0.00");
+  const [saldo, setSaldo] = useState("Cargando ...");
 
-  const [saldoPrueba, setSaldoPrueba] = useState("0.00");
+  const [saldoPrueba, setSaldoPrueba] = useState("Cargando ...");
 
   const [bet, setBet] = useState(10);
 

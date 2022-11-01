@@ -192,6 +192,9 @@ const Profile = (props) => {
             .monetize-subtitle {
               width: 85%;
             }
+            .monetize-offer {
+              flex-direction: column;
+            }
             .monetize-offer-item-img img {
               width: 280px;
             }
@@ -204,7 +207,8 @@ const Profile = (props) => {
             .benefits-item-img {
               width: 30px;
               height: 30px;
-              font-size: 8em;
+              font-size: .8em;
+              line-height: 25px;
             }
             .benefits-item p {
               font-size: .8em;

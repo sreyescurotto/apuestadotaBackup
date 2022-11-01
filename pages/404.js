@@ -14,7 +14,7 @@ export default function Custom404() {
             }
         }>
             <h3> BOTA TU GAAA para que se arregle la página</h3>
-
+            <p> Estamos trabajando para solucionarlo</p>
             <button className="btn btn-md" onClick={
                 () => {
                     router.push("/");
