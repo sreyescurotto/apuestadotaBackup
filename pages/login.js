@@ -27,7 +27,7 @@ const Login = () => {
         router.push("/play/normal");
       })
       .catch(() => {
-        alert("Hubo un problema al realizar el inicio de Sesión");
+        alert("Hubo un problema al realizar el Inicio de Sesión");
 
         setIsLoading(false);
       });
