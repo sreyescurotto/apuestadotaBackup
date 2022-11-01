@@ -32,7 +32,7 @@ const Footer = (props) => {
 
           position: relative; 
 
-          top: -140px;
+          top: -115px;
         }
 
         .footer-cont {
