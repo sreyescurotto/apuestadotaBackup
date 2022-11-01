@@ -10,7 +10,8 @@ export default function Custom404() {
                 alignItems: "center",
                 width: "100vw",
                 height: "100vh",
-                flexDirection: "column"
+                flexDirection: "column",
+                gap:"20px"
             }
         }>
             <h3> BOTA TU GAAA para que se arregle la página</h3>

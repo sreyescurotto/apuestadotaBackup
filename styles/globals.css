@@ -738,7 +738,12 @@ input[type=number] {
   align-items: center;
   line-height: 1.5rem;
   color: rgba(0, 0, 0, 1);
-  border-radius: 3px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.solo--btn-c:hover {
+  background-color: #fff;
 }
 
 
@@ -855,14 +860,15 @@ input[type=number] {
   border-radius: 4px;
   font-family: "Roboto Mono", monospace;
   font-size: 16px;
-  border-radius: 20px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
 }
 
 .start-game-btn {
   background-color: #b6ff40;
   color: #081325;
   border: none;
-  border-radius: 20px;
+  border-radius: 15px;
   font-size: 22px;
   line-height: 28px;
   width: 370px;
@@ -872,6 +878,7 @@ input[type=number] {
   padding-bottom: 0.4rem;
   font-family: "Roboto Mono", monospace;
   text-transform: uppercase;
+  transition: all 0.3s ease;
 }
 
 .start-game-btn:hover {
