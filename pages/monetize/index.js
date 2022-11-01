@@ -177,6 +177,45 @@ const Profile = (props) => {
               width: 375px;
             }
           }
+
+          @media (max-width: 480px) {
+            .interface {
+              height: auto;
+              overflow-y: visible;
+            }
+            .monetize-title {
+              margin: 2rem 1rem;
+            }
+            .sec-title-h {
+              line-height: 60px;
+            }
+            .monetize-subtitle {
+              width: 85%;
+            }
+            .monetize-offer-item-img img {
+              width: 280px;
+            }
+            .monetize-offer-item {
+              padding: 1rem;
+            }
+            .benefits-container {
+              min-width: 300px;
+            }
+            .benefits-item-img {
+              width: 30px;
+              height: 30px;
+              font-size: 8em;
+            }
+            .benefits-item p {
+              font-size: .8em;
+            }
+            .last-item-monetize {
+              margin: 1rem 1rem 2rem;
+            }
+            .arrow-container{
+              display: none;
+            }
+          }
         `}
       </style>
     </>

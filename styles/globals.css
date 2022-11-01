@@ -1144,6 +1144,10 @@ MEDIA QUERY MAXW WIDTH 415PX  */
     font-size: 0.8rem;
     padding: 1rem 2rem;
   }
+
+  .subtitle-1 {
+    font-size: 0.8em;
+  }
 }
 
 @media (max-width: 425px) {
@@ -1176,9 +1180,7 @@ MEDIA QUERY MAXW WIDTH 415PX  */
     margin-bottom: 1rem;
   }
 
-  .subtitle-1 {
-    font-size: 0.8em;
-  }
+
 
   .absolute-social-c {
     margin: 0.5rem 3rem;

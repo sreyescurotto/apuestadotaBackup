@@ -254,7 +254,7 @@ const Dep = () => {
                       />
                     </div>
 
-                    <button className="btn-submit-dep" type="submit">
+                    <button className="deposit-btn-submit"  type="submit">
                       Depositar
                     </button>
                   </form>
@@ -665,34 +665,6 @@ const Dep = () => {
             outline: none;
 
             background-color: #3c5376;
-          }
-
-          .btn-submit-dep {
-            position: relative;
-
-            padding: 1rem;
-
-            margin: 2.5rem 2rem;
-
-            background-color: #b6ff40;
-
-            color: #000;
-
-            border-radius: 4px;
-
-            font-family: "Roboto Mono", monospace;
-
-            font-size: 16px;
-
-            transition: all 0.3s ease;
-          }
-
-          .btn-submit-dep:hover {
-            background-color: transparent;
-
-            color: #b6ff40;
-
-            border: 2px solid #b6ff40;
           }
 
           .warning-text {
