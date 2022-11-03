@@ -401,8 +401,14 @@ const With = (props) => {
           }
 
           @media screen and (max-width: 485px) {
+            .withdraw-container {
+              padding: 2rem 2rem 6.5rem;
+            }
             .widthdraw-form {
               width: 100%;
+            }
+            .intro-title {
+              font-size: 2.2rem;
             }
           }
         `}

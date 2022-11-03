@@ -389,6 +389,47 @@ const Home = (props) => {
         .last-text-c {
           left: 32%;
         }
+        @media only screen and (max-width: 1366px) {
+          .App {
+            height: 768px;
+          }
+            .overlay-gradient {
+              top: 18%;
+            }
+            .title-1 {
+              font-size: 2.8em;
+              line-height: 46px;
+            }
+            .subtitle-1 {
+              font-size: 1em;
+            }
+            .videocontainer {
+              height: 80vh;
+            }
+            .section-text h3 {
+              font-size: 1.8rem;
+            }
+            .text-03 {
+              bottom: 175px;
+              left: 25%;
+            }
+            .relative h1 {
+              top: 30%;
+              left: 30%;
+            }
+            .info-cont {
+              width: 300px;
+            }
+            .mid-text-c {
+              left:48%;
+              width: 140px;
+            }
+            .info-text-cont {
+              font-size: 2rem;
+            }
+            
+
+        }
         
         @media only screen and (max-width: 485px) {
           .absolute-social-c img {
