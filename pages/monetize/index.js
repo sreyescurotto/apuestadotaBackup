@@ -31,7 +31,7 @@ const Profile = (props) => {
                 {monetize.subtitle}
             </p>
           </div>
-          <div>
+          <div className="mb-4">
            
             <div className="monetize-offer">
               <div className="monetize-offer-item">
@@ -110,6 +110,9 @@ const Profile = (props) => {
             );
           }
 
+          .mb-4 {
+            padding-bottom: 4rem;
+          }
           .monetize-title {
             margin-top: 2rem;
            

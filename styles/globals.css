@@ -1027,7 +1027,8 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 @media (max-width: 480px) {
 
   .interface {
-    padding-bottom: 8rem;
+    padding-bottom: 4rem;
+    height: auto;
   }
 
   .videocontainer {

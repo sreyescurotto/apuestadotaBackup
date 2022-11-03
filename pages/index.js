@@ -426,9 +426,7 @@ const Home = (props) => {
             }
             .info-text-cont {
               font-size: 2rem;
-            }
-            
-
+            }     
         }
         
         @media only screen and (max-width: 485px) {

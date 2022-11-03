@@ -41,6 +41,7 @@ export default function Selector() {
         instanceId="language-selector"
         options={countries}
         styles={customStyles}
+        isSearchable={false}
         theme={(theme) => ({
       ...theme,
       borderRadius: 0,
