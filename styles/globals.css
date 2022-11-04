@@ -1595,6 +1595,25 @@ MEDIA QUERY MAXW WIDTH 415PX  */
   }
 }
 
+@media only screen and (max-width: 1366px) {
+  .profile-photo {
+    width: 45px;
+    height: 45px;
+  }
+
+  .interface {
+    height: auto;
+  }
+
+  .btn {
+    font-size: 15px;
+  }
+
+  .left-container-h3 {
+    font-size: 1rem;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .expand-button {
     display: none;

@@ -314,6 +314,7 @@ const routeReal = () => {
 
           .left-container-title {
             padding: 0 0 0 2rem;
+            font-family: "Teko", sans-serif;
           }
 
           .fontw-l {
@@ -415,6 +416,22 @@ const routeReal = () => {
 
           .disable-test {
             display: none;
+          }
+
+          @media only screen and (max-width: 1366px) { 
+            .reloadpng {
+              margin: 1rem;
+            }
+            .left-container-body-item {
+              padding-top: .4rem;
+              padding-bottom: .4rem;
+            }
+            .left-container-h3 {
+              font-size: 1rem;
+            }
+            .pad--s {
+              padding: .5rem 1rem .5rem 1.5rem;
+            }
           }
 
           @media screen and (max-width: 767px) {

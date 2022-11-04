@@ -65,6 +65,12 @@ const Footer = (props) => {
           font-family: "Geometrik Blk";
         }
 
+        @media only screen and (max-width: 1366px) {
+          .root-footer {
+            top: 0;
+          }
+        }
+
         @media only screen and (max-width: 480px) {
           .root-footer {
             padding: 30px 60px 100px;

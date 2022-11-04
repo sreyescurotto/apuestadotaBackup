@@ -655,6 +655,22 @@ export default function Tutorial(props) {
             color: #b6ff40;
           }
 
+          @media only screen and (max-width: 1366px) { 
+            .interface-item-02 {
+              width: 460px;
+            }
+            .tutorial-subtitle {
+              font-size : 32px;
+              padding: 1rem 2rem;
+            }
+            .tutorial-p {
+              font-size : 18px;
+            }
+            .multimedia-container {
+              width: 85%;
+            }
+          }
+
           @media (max-width: 768px) {
             .mode-play {
               overflow-x: hidden;

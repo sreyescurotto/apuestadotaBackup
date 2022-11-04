@@ -47,9 +47,9 @@ const Login = () => {
 
       "openid.realm": "https://apuestadotabackup.vercel.app", 
 
-      // "openid.return_to": "http://localhost:3000/login", 
+      //"openid.return_to": "http://localhost:3000/login", 
 
-      // "openid.realm": "http://localhost:3000", 
+      //"openid.realm": "http://localhost:3000", 
 
       "openid.identity": "http://specs.openid.net/auth/2.0/identifier_select",
 

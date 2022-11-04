@@ -86,6 +86,17 @@ const Layout = (props) => {
             transform: scale(1.2);
           }
 
+          @media only screen and (max-width: 1366px) {
+
+          .social-container {
+            height: 80px;
+            width: 65px;
+          }
+          .contact  {
+            font-size: 1rem;
+          }
+        }
+
           @media (max-width: 768px) {
             
             .contact {
