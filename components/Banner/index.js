@@ -32,43 +32,15 @@ export default function Banner() {
             setHeroes(json);
           });
     
-        getApuestas();
+        // getApuestas();
       }, []);
   return (
     <>
         <div className='banner-container'>
             <div className='container-bets'>
                 <div className='last-bets-c'>
-                {apuestas.slice(0, 10).map((apuesta) => {
-                if(apuesta.estado == 2){
-                    return (
-                    <div className='item-00'>
-                        <div className='item-border-bottom'>
-                            <div className='hero-c-img'>
-                                    <img
-                                    src={
-                                        dotaImageBase +
-                                        heroes[apuesta.match_hero_id]?.img
-                                    }
-                                    className="hero_img"
-                                    />
-                            </div>
-                            <div className='hero-description'>
-                                <p className='win-price '>S/ {apuesta.monto}</p>
-                            </div>
-                        </div>        
-                        <div className='person-info-content'>
-                            <img src='https://avatars.akamai.steamstatic.com/bbab60b14d06a52a61c41b65ec2fb3e20d9a23f2_full.jpg' className='profile-img' alt='profile' />      
-                            <h4 className='profile-nickname'>21</h4>
-                            <p>a few seconds ago</p>
-                        </div>
-                    </div>
-
-                )
-                }
-              })}
-
-                {/* <div className='item-00'>
+                
+                <div className='item-00'>
                         <div className='item-border-bottom'>
                             <div className='hero-c-img'>
                                     <img
@@ -241,7 +213,7 @@ export default function Banner() {
                             <h4 className='profile-nickname'>21</h4>
                             <p>a few seconds ago</p>
                         </div>
-                    </div>                     */}
+                    </div>                    
                     
                 </div>
                 <div>

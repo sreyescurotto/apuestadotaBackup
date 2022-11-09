@@ -69,6 +69,8 @@ const particlesLoaded = useCallback(async container => {
 
         <meta property="og:image" content="/logo-morado.jpg" />
 
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+
         <link rel="shortcut icon" href="/icons/favicon/favicon-32.png" />
       </Head>
 
