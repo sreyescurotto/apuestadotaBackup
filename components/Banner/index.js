@@ -32,7 +32,7 @@ export default function Banner() {
             setHeroes(json);
           });
     
-        // getApuestas();
+        getApuestas();
       }, []);
   return (
     <>
