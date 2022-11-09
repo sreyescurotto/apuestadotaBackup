@@ -420,7 +420,9 @@ const routeReal = () => {
 
           @media only screen and (max-width: 1366px) { 
             .reloadpng {
-              margin: 1rem;
+              margin: 1.5rem;
+              width: 20px;
+              height: 20px;
             }
             .left-container-body-item {
               padding-top: .4rem;

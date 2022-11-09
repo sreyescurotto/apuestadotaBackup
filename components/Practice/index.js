@@ -83,8 +83,8 @@ const ModePractice = (props) => {
   
     const handleInputMonto = (event) => {
       const n = parseInt(event.target.value);
-  
-      setBet(n);
+      const b = event.target.value;
+      b.length > 3 ? setBet(100): setBet(n);
     };
   
     const decreaseBet = () => {
@@ -128,7 +128,7 @@ const ModePractice = (props) => {
       } else {
         // validar si cuenta con saldo
   
-        if ((test2 == false && bet > saldo) || (test2 && bet > saldoPrueba)) {
+        if (bet > saldoPrueba) {
           Swal.fire({
             icon: "error",
   
@@ -265,7 +265,7 @@ const ModePractice = (props) => {
               <div className="mode-solo-amount-inp">
                 <h3>{play.modeAmount}:</h3>
   
-                <span className="dollarsign">$</span>
+                <span className="dollarsign">S/</span>
   
                 <input
                   className="inputBetAmount"
@@ -339,12 +339,12 @@ const ModePractice = (props) => {
   
                 <h4 className="subtitle-modes lighterr">
                 {play.betdetails3}
-                  <span className="bold">+ $ {(bet * 0.4).toFixed(2)}</span>
+                  <span className="bold">+ S/ {(bet * 0.4).toFixed(2)}</span>
                 </h4>
   
                 <h4 className="subtitle-modes lighterr">
                 {play.betdetails4}
-                  <span className="bold">$ {(bet * 1.4).toFixed(2)}</span>
+                  <span className="bold">S/ {(bet * 1.4).toFixed(2)}</span>
                 </h4>
               </div>
             </div>
@@ -450,7 +450,7 @@ const ModePractice = (props) => {
                 <div className="solo--item-content-head">
                 <span>{play.subtitle}</span>
 
-<h2>{play.subtitle2}</h2>
+                <h2>{play.subtitle2}</h2>
                 </div>
   
                 <div className="solo--item-content-desc">

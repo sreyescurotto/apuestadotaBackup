@@ -74,6 +74,9 @@ const Solo = (props) => {
     setRules(checked);
   };
 
+
+
+
   const handleClick = (event) => {
     user !== null ? setActive((current) => !current) : router.push("/login");
   };
@@ -256,7 +259,7 @@ const Solo = (props) => {
             <div className="mode-solo-amount-inp">
               <h3>{play.modeAmount}:</h3>
 
-              <span className="dollarsign">$</span>
+              <span className="dollarsign">S/</span>
 
               <input
                 className="inputBetAmount"
@@ -333,12 +336,12 @@ const Solo = (props) => {
 
               <h4 className="subtitle-modes lighterr">
                 {play.betdetails3}
-                <span className="bold">+ $ {(bet * 0.4).toFixed(2)}</span>
+                <span className="bold">+ S/ {(bet * 0.4).toFixed(2)}</span>
               </h4>
 
               <h4 className="subtitle-modes lighterr">
                 {play.betdetails4}
-                <span className="bold">$ {(bet * 1.4).toFixed(2)}</span>
+                <span className="bold">S/ {(bet * 1.4).toFixed(2)}</span>
               </h4>
             </div>
           </div>

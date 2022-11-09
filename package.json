@@ -18,7 +18,9 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.36.0",
     "react-select": "^5.5.7",
-    "sweetalert2": "^11.6.2"
+    "react-tsparticles": "^2.5.3",
+    "sweetalert2": "^11.6.2",
+    "tsparticles": "^2.5.3"
   },
   "devDependencies": {
     "eslint": "8.25.0",

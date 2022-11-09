@@ -13,7 +13,7 @@ const Footer = (props) => {
         <div className="footer-cont footer-text">
           {footer.subtitle} <br />
           {footer.subtitle2} <br />
-          {footer.subtitle3} <br />
+          {/* {footer.subtitle3} <br /> */}
           {footer.subtitle4}
         </div>
       </footer>

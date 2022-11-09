@@ -95,7 +95,7 @@ const ApuestasAll = (props) => {
 
             <th>{profile.match}</th>
 
-            <th>{profile.mathId}</th>
+            <th>{profile.matchId}</th>
 
             <th>{profile.amount}</th>
 
@@ -154,7 +154,7 @@ const ApuestasAll = (props) => {
 
                     <td>{apuesta.match_id ? apuesta.match_id : "-"}</td>
 
-                    <td>USD {apuesta.monto}</td>
+                    <td>PEN {apuesta.monto}</td>
 
                     <td>
                       {apuesta.estado == "0" && apuesta.match_id == null ? (
