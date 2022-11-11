@@ -1068,6 +1068,7 @@ MEDIA QUERY MAXW WIDTH 415PX  */
     transform: translateY(-60px);
     width: 100%;
     height: 76%;
+    position: relative;
   }
 
   .logo {

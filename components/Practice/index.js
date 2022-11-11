@@ -84,7 +84,7 @@ const ModePractice = (props) => {
     const handleInputMonto = (event) => {
       const n = parseInt(event.target.value);
       const b = event.target.value;
-      b.length > 3 ? setBet(100): setBet(n);
+      b.length > 4 ? setBet(100): setBet(n);
     };
   
     const decreaseBet = () => {
@@ -136,11 +136,11 @@ const ModePractice = (props) => {
           });
   
           return;
-        } else if (bet > 100) {
+        } else if (bet > 500) {
           Swal.fire({
             icon: "error",
   
-            text: "No puedes apostar mas de 100 USD",
+            text: "No puedes apostar mas de 500 PEN",
           });
   
           return;
@@ -279,7 +279,7 @@ const ModePractice = (props) => {
                 <button
                   className="large-btn"
                   onClick={increaseBet}
-                  disabled={bet >= 100}
+                  disabled={bet >= 500}
                 >
                   +
                 </button>

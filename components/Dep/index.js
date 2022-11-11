@@ -41,6 +41,11 @@ const Dep = () => {
       img_url: "/icons/methods/visa-mastercard.png",
       label: "Pago con tarjeta",
     },
+    {
+      id: "niubiz",
+      img_url: "/icons/methods/pagoefectivo.png",
+      label: "Pago Efectivo, Yape, Plin",
+    }
 
     // {id:'paypal', img_url: '/icons/methods/paypal.png', label: 'Paypal'}
   ];
@@ -64,7 +69,7 @@ const Dep = () => {
   const handleChange = (e) => {
     const b = e.target.value;
     const amount = refM.current.value;
-    b.length > 4 ? setMonto(100) : setMonto(amount);
+    b.length > 5 ? setMonto(100) : setMonto(amount);
   };
 
   const handleCodRefChange = (e) => {
@@ -90,6 +95,25 @@ const Dep = () => {
   const style = { layout: "vertical" };
 
   const amount = monto >= 10 ? monto : 10;
+
+  async function createToken () {
+    const credentials = Buffer.from(`${process.env.NIUBIZ_USER}:${process.env.NIUBIZ_PASSWORD}`).toString('base64');
+    const response = await fetch("https://apisandbox.vnforappstest.com/api.security/v1/security", {
+      method: "POST",
+      headers: {
+        "Authorization": `Basic ${credentials}`,
+    }
+    })
+    const data = await response.json()
+    return data
+  }
+
+  useEffect(() => {
+    //make a fetch to get session id 
+    // const a = createToken()
+    // console.log(a)
+    
+  }, []);
 
   const ButtonWrapper = ({ currency, showSpinner }) => {
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
@@ -223,43 +247,24 @@ const Dep = () => {
                 })}
               </div>
 
-              {metodo != "izipay" ? (
-                <div className="withdraw-flex-payment-main paypal-method">
-                  <div className="withdraw-flex-payment-main-item">
-                    <label htmlFor="amount">Monto:</label>
-
-                    <input type="number" min="10" step="0.01" defaultValue={10} value={monto}/>
-                  </div>
-
-                  <PayPalScriptProvider
-                    options={{ "client-id": PAYPAL_CLIENT_ID }}
-                  >
-                    <PayPalButtons style={{ layout: "horizontal" }} />
-                  </PayPalScriptProvider>
-                </div>
-              ) : (
+             
                 <div className="withdraw-flex-payment-main">
                   <form className="widthdraw-form">
                     <div className="withdraw-flex-payment-main-item">
-                      <input type="hidden" name="userId" value={usuarioId} />
-
                       <label htmlFor="amount">Monto:</label>
 
                       <input
                         name="monto"
                         type="number"
-                        value={monto}
                         defaultValue={10}
                         required
                       />
                     </div>
-
-                    <button className="deposit-btn-submit"  type="submit">
+                    <button className="deposit-btn-submit"  type="submit" disabled>
                       Depositar
                     </button>
                   </form>
                 </div>
-              )}
             </div>
           </div>
         </>
@@ -295,51 +300,22 @@ const Dep = () => {
               {metodo != "izipay" ? (
                 <div className="withdraw-flex-payment-main paypal-method">
                   <div className="withdraw-flex-payment-main-item">
-                    <label htmlFor="amount">Monto:</label>
-
-                    <input
-                      type="number"
-                      id="amount"
-                      name="amount"
-                      value={monto}
-                      ref={refM}
-                      onChange={handleChange}
-                      min="10"
-                      step="1"
+                    
+                  <form action="paginaRespuesta" method="post">
+                    <script type="text/javascript" src="https://static-
+                    content-qas.vnforapps.com/v2/js/checkout.js"
+                    data-sessiontoken="67cf73735f83590eabf1382ff49e5e
+                    08b261976326c6897cb764fd160a15a8ca"
+                    data-channel="web"
+                    data-merchantid="341198210"
+                    data-purchasenumber="2020100901"
+                    data-amount="10.5"
+                    data-expirationminutes="20"
+                    data-timeouturl="about:blank"
+                    data-merchantlogo="img/comercio.png"
+                    data-formbuttoncolor="#000000"
                     />
-                  </div>
-
-                  <div className="withdraw-flex-payment-main-item">
-                    <label htmlFor="cod_ref">Código de Referido:</label>
-
-                    <input
-                      type="text"
-                      id="cod_ref"
-                      name="cod_ref"
-                      ref={refCR}
-                      onChange={handleCodRefChange}
-                    />
-                  </div>
-
-                  <p className="text-t">
-                    Acepto que al usar un código de referido recibiré el 10%
-                    adicional al valor del primer depósito y me obligo a jugar
-                    por lo menos 10 partidas antes de solicitar algn retiro de
-                    fondos.
-                  </p>
-
-                  <div style={{ maxWidth: "750px", minHeight: "200px" }}>
-                    <PayPalScriptProvider
-                      options={{
-                        "client-id": PAYPAL_CLIENT_ID,
-
-                        components: "buttons",
-
-                        currency: "USD",
-                      }}
-                    >
-                      <ButtonWrapper currency={currency} showSpinner={false} />
-                    </PayPalScriptProvider>
+                    </form>
 
                     <p className="warning-text">
                       Recuerda que el monto mínimo para recargar es de 10 $.
@@ -371,7 +347,7 @@ const Dep = () => {
                         value={monto}
                         ref={refM}
                         onChange={handleChange}
-                        max="100"
+                        max="500"
                         min="10"
                         step="1"
                         required

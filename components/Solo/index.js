@@ -84,7 +84,7 @@ const Solo = (props) => {
   const handleInputMonto = (event) => {
     const n = parseInt(event.target.value);
     const b = event.target.value;
-    b.length > 3 ? setBet(100): setBet(n);
+    b.length > 4 ? setBet(100): setBet(n);
   };
 
 
@@ -129,10 +129,10 @@ const Solo = (props) => {
           text: "No cuentas con saldo suficiente para realizar la apuesta",
         });
         return;
-      } else if (bet > 100) {
+      } else if (bet > 500) {
         Swal.fire({
           icon: "error",
-          text: "No puedes apostar mas de 100 USD",
+          text: "No puedes apostar mas de 500 PEN",
         });
         return;
       } else if (terms !== true) {
@@ -266,7 +266,7 @@ const Solo = (props) => {
                 type="number"
                 onChange={handleInputMonto}
                 value={bet}
-                max="100"
+                max="500"
                 min="0"
               />
             </div>
@@ -275,7 +275,7 @@ const Solo = (props) => {
               <button
                 className="large-btn"
                 onClick={increaseBet}
-                disabled={bet >= 100}
+                disabled={bet >= 500}
               >
                 +
               </button>

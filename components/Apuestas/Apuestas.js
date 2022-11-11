@@ -166,11 +166,11 @@ const Apuestas = (props) => {
                         />
                       ) : apuesta.estado == "0" ? (
                         profile.process
-                      ) : apuesta.estado > 0 && apuesta.match_id !== null ? (
+                      ) : apuesta.estado < 3 && apuesta.match_id !== null ? (
                         profile.finished
-                      ) : (
-                        profile.failed
-                      )}
+                      ) : apuesta.estado == 3 ?
+                        ( profile.party )
+                      : ( profile.failed )}
                     </td>
 
                     <td className="lastCol">

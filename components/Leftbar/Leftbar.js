@@ -124,13 +124,13 @@ const routeReal = () => {
             </div>
           </div>
 
-          <div className="reloadpng" onClick={depositarPrueba}>
+          {/* <div className="reloadpng" onClick={depositarPrueba}>
             <Image
               src="/icons/reload.png"   
               width={24}
               height={24}
             />
-          </div>
+          </div> */}
 
         </div>
 
