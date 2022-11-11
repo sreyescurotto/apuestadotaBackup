@@ -111,7 +111,7 @@ export default function Banner() {
                                 <div className='hero-description'>
                                     <p className='win-price '>+ S/ {apuesta.monto}</p>
                                     <div className='ad-icon-c'>
-                                        <Image src='/icons/favicon/favicon-32.png' width={32} height={32} />
+                                        <Image src='/icons/favicon/favicon-32.png' width={50} height={50} />
                                     </div>
                                 </div>
                             </div>        
@@ -154,11 +154,11 @@ export default function Banner() {
 
             .item-00 {
                 position:relative;
-                border: 2px solid #8847ff;
+               
                 overflow:hidden;
-                background-color: #121232;
+               
                 min-width: 170px;
-                height: 150px;
+                height: 160px;
             }
             .item-border-bottom {
                 position:relative;
@@ -173,16 +173,20 @@ export default function Banner() {
             .hero-description {
                 position: relative;
                 width: 100%;
-        
+                height: 67px;
+                background-image: url('/banner/banner.png');
+                border-bottom: 4px solid #fff;
             }
             .ad-icon-c {
                 position: absolute;
                 right: 0;
+                left:35%;
                 margin: 10px;
-                opacity: .3;
+                opacity: .2;
+                
             }
             .win-price {
-                font-size: 24px;
+                font-size: 26px;
                 line-height:20px;
                 font-weight: 600;
                 color: #fff;
@@ -191,17 +195,23 @@ export default function Banner() {
                 padding: 8px;
                 padding-left: 0px;
    
-    background: -webkit-linear-gradient(#FFFFFF 10%, #00A3D7 90%);
+    background: -webkit-linear-gradient(#FFFFFF 10%, #b6ff40 90%);
                 background-clip: text;
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
-                filter: drop-shadow(0px 0px 5px #0089d8);
+                filter: drop-shadow(0px 0px 5px #b6ff40);
                 position: absolute;
                 left: 0px;
                 
-                margin: 10px;
+                margin: 12px 10px;
                
             }
+
+            {/* background: -webkit-linear-gradient(#FFFFFF 10%, #00A3D7 90%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                filter: drop-shadow(0px 0px 5px #0089d8); */}
 
             .hero-c-img {
                 width: 170px;
