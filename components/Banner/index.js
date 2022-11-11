@@ -9,6 +9,8 @@ export default function Banner() {
 
     const [apuestas, setApuestas] = useState([]);
 
+    const [user, setUser] = useState(null);
+
     const [heroes, setHeroes] = useState({});
 
     const [searching, setSearching] = useState(false);
@@ -33,8 +35,13 @@ export default function Banner() {
     const getApuestas = () => {
         // fetching bets from api
         let s = new AppService()
+
+        let _user = s.getUser();
+        setUser(_user);
+
         setApuestas([])
         setSearching(true)
+        if(_user !== null){
         s.makeGet("apuestasAll", {}, true).then((res) => {
             setApuestas(
               res.data.map((item) => {
@@ -55,7 +62,7 @@ export default function Banner() {
             )
             setSearching((current) => !current)
         
-          })
+          })}
       };
     
       useEffect(() => {
