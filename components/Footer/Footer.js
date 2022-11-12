@@ -26,7 +26,7 @@ const Footer = (props) => {
 
           z-index: 5;
 
-          padding: 25px 100px;
+          padding: 40px 100px;
 
           background-color: #000;
 

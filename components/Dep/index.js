@@ -12,6 +12,8 @@ import Swal from "sweetalert2";
 
 import { useRouter } from "next/router";
 
+import axios from "axios";
+
 const Dep = () => {
   const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
 
@@ -99,16 +101,51 @@ const Dep = () => {
 
   const amount = monto >= 10 ? monto : 10;
 
-  async function createToken () {
-    const credentials = Buffer.from(`axel.gallardo.e@gmail.com:dfg456dfg*`).toString('base64');
-    const response = await fetch("https://apisandbox.vnforappstest.com/api.security/v1/security", {
-      method: "POST",
+  // async function createToken () {
+  //   const credentials = Buffer.from(`axel.gallardo.e@gmail.com:dfg456dfg*`).toString('base64');
+  //   const response = await fetch("https://apisandbox.vnforappstest.com/api.security/v1/security", {
+  //     method: "POST",
+  //     headers: {
+  //       "Authorization": `Basic ${credentials}`,
+  //   },
+  //   url :  testapiUrl,
+  //   })
+  //   return response
+  // }
+
+  // function createToken () {
+  //   const options = {
+  //     method: 'GET',
+  //     headers: {
+  //       accept: 'text/plain',
+  //       authorization: 'Basic aW50ZWdyYWNpb25lc0BuaXViaXouY29tLnBlOl83ejNAOGZG'
+  //     }
+  //   };
+    
+  //   fetch('https://apitestenv.vnforapps.com/api.security/v1/security', options)
+  //     .then(response => console.log(response.data))
+   
+  //     .catch(err => console.error(err));
+  // }
+
+  function createToken () {
+    const options = {
+      method: 'GET',
+      url: 'https://apitestenv.vnforapps.com/api.security/v1/security',
       headers: {
-        "Authorization": `Basic ${credentials}`,
-    },
-    url :  testapiUrl,
-    })
-    return response
+        accept: 'text/plain',
+        authorization: 'Basic aW50ZWdyYWNpb25lc0BuaXViaXouY29tLnBlOl83ejNAOGZG'
+      }
+    };
+    
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
   }
 
   // function createToken() {
@@ -139,12 +176,13 @@ const Dep = () => {
   //       });
   //   });
   // }
+ 
+   
 
-  // useEffect(() => {
-  //   const a = createToken()
-  //   console.log(a)
+  useEffect(() => {
+    createToken()
     
-  // }, []);
+  }, []);
 
   const ButtonWrapper = ({ currency, showSpinner }) => {
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();

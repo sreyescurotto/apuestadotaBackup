@@ -41,7 +41,7 @@ export default function Banner() {
 
         setApuestas([])
         setSearching(true)
-        if(_user !== null){
+     
         s.makeGet("apuestasAll", {}, true).then((res) => {
             setApuestas(
               res.data.map((item) => {
@@ -62,7 +62,7 @@ export default function Banner() {
             )
             setSearching((current) => !current)
         
-          })}
+          })
       };
     
       useEffect(() => {
@@ -134,7 +134,7 @@ export default function Banner() {
 .banner-container {
     position: relative;
     z-index: 10;
-    margin-top: -1rem;
+    margin-top: 2.2rem;
 }
 .container-bets {
     display: flex;
@@ -266,6 +266,19 @@ export default function Banner() {
                
               
                 transform: translateY(0);
+            }
+
+            @media (max-width: 480px) {
+                .container-bets {
+                    padding: 0px 20px;
+                }
+                .item-00 {
+                    min-width: 94px;
+                }
+                .hero-c-img {
+                    width: 120px;
+                    height: 70px;
+                }
             }
 
         `}</style>

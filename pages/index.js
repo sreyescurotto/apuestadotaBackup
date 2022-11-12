@@ -10,6 +10,7 @@ import { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import Banner from "../components/Banner";
+import Share from "../components/Share";
 
 
 
@@ -319,6 +320,8 @@ const particlesLoaded = useCallback(async container => {
 
           <div className="overlay-gradient"></div>
 
+          <Share />
+
           <section className="second-section">
             <Image
               src="/aegis-background.png"
@@ -370,6 +373,8 @@ const particlesLoaded = useCallback(async container => {
             </div>
           </div>
 
+      
+
           <section className="third-section">
             <div className="third-section-large-header">
               <Image
@@ -380,38 +385,7 @@ const particlesLoaded = useCallback(async container => {
               />
 
               <div className="third-section-intro-content">
-                <div className="absolute-social-c">
-                  <a
-                    href="https://www.instagram.com/apuestadota/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <div className="social-c">
-                      <Image
-                        src="/social/social_insta.png"
-                        alt="Instagram"
-                        width={70}
-                        height={70}
-                      />
-                    </div>
-                  </a>
-
-                  <a
-                    href="https://www.facebook.com/profile.php?id=100086433217956"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <div className="social-c">
-                      <Image
-                        src="/social/social_fb.png"
-                        className="social-c"
-                        alt="Facebook"
-                        width={70}
-                        height={70}
-                      />
-                    </div>
-                  </a>
-                </div>
+                
 
                 <div className="intro-content">
                   <div className="info-cont">
@@ -542,20 +516,7 @@ const particlesLoaded = useCallback(async container => {
         .info-cont .info-img:hover .info-text-cont {
           color: #00a2ffaf;
         }
-        .absolute-social-c {
-          position: absolute;
-          top: 0;
-          left: 0;
-          margin: 1rem 4rem;
-        }
-        .social-c {
-          margin: 1rem 0.5rem;
-          width: 70px;
-          cursor: pointer;
-        }
-        .social-c:hover {
-          filter: brightness(1.3);
-        }
+       
         .info-img {
           position: relative;
         }
@@ -621,9 +582,7 @@ const particlesLoaded = useCallback(async container => {
         }
         
         @media only screen and (max-width: 485px) {
-          .absolute-social-c img {
-            width: 60px;
-          }
+          
           .info-text-cont{ 
             font-size: 1.2rem;
           }

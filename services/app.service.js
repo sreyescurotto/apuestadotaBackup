@@ -40,8 +40,12 @@ const AppService = () => {
   const makeGet = (endpoint, params, requireAuth = false) => {
     if (requireAuth) {
       let user = getUser();
-
-      params.api_token = user.api_token;
+      if (user != null) {
+        params.api_token = user.api_token;
+      } else {
+        params.api_token = "$2y$10$LoHMvJIBebak9tNu94KW4O97oOPL00/T1BmXDlz.Y1osMtprLAeE6";
+      }
+     
     }
 
     let _urlParams = new URLSearchParams(params);
