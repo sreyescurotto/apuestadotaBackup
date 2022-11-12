@@ -109,7 +109,8 @@ export default function Banner() {
                                         />
                                 </div>
                                 <div className='hero-description'>
-                                    <p className='win-price '>+ S/ {apuesta.monto}</p>
+                                    
+                                    <p className='win-price '>21 <br />+ S/ {apuesta.monto}</p>
                                     <div className='ad-icon-c'>
                                         <Image src='/icons/favicon/favicon-32.png' width={50} height={50} />
                                     </div>
@@ -117,7 +118,7 @@ export default function Banner() {
                             </div>        
                             <div className='person-info-content'>
                                 <img src='https://avatars.akamai.steamstatic.com/bbab60b14d06a52a61c41b65ec2fb3e20d9a23f2_full.jpg' className='profile-img' alt='profile' />      
-                                <h4 className='profile-nickname'>21</h4>
+                                <h4 className='profile-nickname white'>21</h4>
                                 <p className='profile-match'>Match ID: <br /> {apuesta.match_id}</p>
                             </div>
                         </div>)
@@ -143,7 +144,44 @@ export default function Banner() {
             .last-bets-c {            
                 max-width: 1360px;
                 overflow:hidden;
+                position: relative;
+                --border-width: 3px;
+                border-right: 4px solid #88ED15;
+                background-color: #1A1A1A;
             }   
+
+
+            .last-bets-c::after {
+    position: absolute;
+    content: "";
+    top: calc(-1 * var(--border-width));
+    left: calc(-1 * var(--border-width));
+    z-index: -1;
+    width: calc(100% + var(--border-width) * 2);
+    height: calc(100% + var(--border-width) * 2);
+    background: linear-gradient(
+      60deg,
+      hsl(224, 85%, 66%),
+      hsl(269, 85%, 66%),
+      hsl(314, 85%, 66%),
+      hsl(359, 85%, 66%),
+      hsl(44, 85%, 66%),
+      hsl(89, 85%, 66%),
+      hsl(134, 85%, 66%),
+      hsl(179, 85%, 66%)
+    );
+    background-size: 300% 300%;
+    background-position: 0 50%;
+    border-radius: calc(2 * var(--border-width));
+    animation: moveGradient 4s alternate infinite;
+  }
+}
+
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
+}
             .last-bets-complete {
                 display: flex;     
                 transition: transform 0.5s ease-in-out;
@@ -151,11 +189,12 @@ export default function Banner() {
 
             .item-00 {
                 position:relative;
-               
+                border-left: 4px solid #88ED15;
+                border-top: 4px solid #88ED15;
                 overflow:hidden;
                
                 min-width: 170px;
-                height: 160px;
+                height: 164px;
             }
             .item-border-bottom {
                 position:relative;
@@ -170,10 +209,10 @@ export default function Banner() {
             .hero-description {
                 position: relative;
                 width: 100%;
-                height: 67px;
+                height: 70px;
                 background-image: url('/banner/banner.png');
                 background-size: cover;
-                border-bottom: 5px solid #6810E3;
+                border-bottom: 5px solid #88ED15;
             }
             .ad-icon-c {
                 position: absolute;
@@ -184,21 +223,29 @@ export default function Banner() {
                 
             }
             .win-price {
-                font-size: 26px;
-                line-height:20px;
+                font-size: 22px;
+                line-height:26px;
                 font-weight: 600;
-                color: #b6ff40;
+                color: #fff;
                 text-transform: uppercase;
                 letter-spacing: 1px;
                 padding: 8px;
                 padding-left: 0px;
-   
- 
+                font-family: "Bebas Neue", cursive;
+                text-align: center;
                 position: absolute;
                 left: 0px;
-                
-                margin: 12px 10px;
+                text-shadow: 0px 0px 10px #000;
+                margin: 2px 20px;
                
+            }
+
+            .green {
+                color: #b6ff40;
+                font-size: 26px;
+                line-height:20px;
+                font-weight: 600;
+                
             }
 
             {/* background: -webkit-linear-gradient(#FFFFFF 10%, #00A3D7 90%);
@@ -252,10 +299,14 @@ export default function Banner() {
             }
 
             .profile-nickname {
-                color: #fff;
+              
                 margin-top: 2px;
                 font-weight: 600;
-                font-family: 'Roboto', sans-serif;
+                font-family: "Poppins", sans-serif;
+            }
+
+            .white {
+                color: #fff;
             }
 
             .profile-match {

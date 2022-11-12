@@ -320,7 +320,7 @@ const particlesLoaded = useCallback(async container => {
 
           <div className="overlay-gradient"></div>
 
-          <Share />
+         
 
           <section className="second-section">
             <Image
@@ -353,7 +353,7 @@ const particlesLoaded = useCallback(async container => {
               </h3>
             </div>
           </section>
-
+          <Share />
           <div className="relative">
             <h1 className="title-1 cursive center">
               <span className="blue">{home.section3title1}</span> {home.section3title3}

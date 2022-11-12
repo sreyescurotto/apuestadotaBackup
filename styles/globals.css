@@ -263,7 +263,7 @@ li {
 
 .fixed-button-container {
   position: fixed;
-  bottom: 10px;
+  bottom: 60px;
   right: 0;
   margin: 20px 50px;
   z-index: 999;

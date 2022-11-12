@@ -148,7 +148,7 @@
         "refcode": "Código de Referido:",
         "terms": "Acepto que al usar un código de referido recibiré el 10% adicional al valor del primer depósito y me obligo a jugar por lo menos 10 partidas antes de solicitar algún retiro de fondos.",
         "deposit": "Depositar",
-        "text": "Recuerda que el monto mínimo para recargar es de 10 $."
+        "text": "Recuerda que el monto mínimo para recargar es de S/ 10."
     },
     "withdraw": {
         "title": "Retiro de fondos",
@@ -158,7 +158,7 @@
         "nameA": "Nombre completo del titular:",
         "amount": "Monto:",
         "withdraw": "Retirar",
-        "text": "El monto minimo para retirar es de 20 $.",
+        "text": "El monto minimo para retirar es de S/ 20.",
         "text2": "Los retiros se realizan en un plazo de 24 horas hbiles y pueden tardar hasta 48 horas hábiles.",
         "text3": "No se puede retirar dinero a cuentas que no pertenezcan al titular de la cuenta.",
         "higher20": "El monto debe ser mayor a 20 dólares",
