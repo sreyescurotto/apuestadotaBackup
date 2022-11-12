@@ -118,16 +118,13 @@ export default function Banner() {
                             <div className='person-info-content'>
                                 <img src='https://avatars.akamai.steamstatic.com/bbab60b14d06a52a61c41b65ec2fb3e20d9a23f2_full.jpg' className='profile-img' alt='profile' />      
                                 <h4 className='profile-nickname'>21</h4>
-                                <p>{apuesta.match_id}</p>
+                                <p className='profile-match'>Match ID: <br /> {apuesta.match_id}</p>
                             </div>
                         </div>)
                     
                     })
                 }     
                 </div>
-                </div>
-                <div>
-                    <Image src="/heros/alchemist.png" alt="Gana dinero" width={200} height={125} />
                 </div>
             </div>
         </div>
@@ -141,10 +138,10 @@ export default function Banner() {
 }
 .container-bets {
     display: flex;
-    padding: 0 2rem;
+    padding: 0 50px;
 }
             .last-bets-c {            
-                max-width: 1190px;
+                max-width: 1360px;
                 overflow:hidden;
             }   
             .last-bets-complete {
@@ -175,7 +172,8 @@ export default function Banner() {
                 width: 100%;
                 height: 67px;
                 background-image: url('/banner/banner.png');
-                border-bottom: 4px solid #fff;
+                background-size: cover;
+                border-bottom: 5px solid #6810E3;
             }
             .ad-icon-c {
                 position: absolute;
@@ -189,17 +187,13 @@ export default function Banner() {
                 font-size: 26px;
                 line-height:20px;
                 font-weight: 600;
-                color: #fff;
+                color: #b6ff40;
                 text-transform: uppercase;
                 letter-spacing: 1px;
                 padding: 8px;
                 padding-left: 0px;
    
-    background: -webkit-linear-gradient(#FFFFFF 10%, #b6ff40 90%);
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                filter: drop-shadow(0px 0px 5px #b6ff40);
+ 
                 position: absolute;
                 left: 0px;
                 
@@ -211,7 +205,13 @@ export default function Banner() {
                 background-clip: text;
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
-                filter: drop-shadow(0px 0px 5px #0089d8); */}
+                filter: drop-shadow(0px 0px 5px #0089d8); 
+                
+                   background: -webkit-linear-gradient(#FFFFFF 10%, #b6ff40 90%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                filter: drop-shadow(0px 0px 5px #b6ff40);*/}
 
             .hero-c-img {
                 width: 170px;
@@ -253,7 +253,13 @@ export default function Banner() {
 
             .profile-nickname {
                 color: #fff;
-                margin-top: 1px;
+                margin-top: 2px;
+                font-weight: 600;
+                font-family: 'Roboto', sans-serif;
+            }
+
+            .profile-match {
+                text-align: center;
             }
 
             .item-00:hover .person-info-content {

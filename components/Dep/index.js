@@ -62,6 +62,9 @@ const Dep = () => {
 
   const refCR = useRef(null);
 
+
+  const testapiUrl = "https://apisandbox.vnforappstest.com/api.security/v1/security"
+
   const selectMetodo = (metodo) => {
     setMetodo(metodo);
   };
@@ -97,23 +100,51 @@ const Dep = () => {
   const amount = monto >= 10 ? monto : 10;
 
   async function createToken () {
-    const credentials = Buffer.from(`${process.env.NIUBIZ_USER}:${process.env.NIUBIZ_PASSWORD}`).toString('base64');
+    const credentials = Buffer.from(`axel.gallardo.e@gmail.com:dfg456dfg*`).toString('base64');
     const response = await fetch("https://apisandbox.vnforappstest.com/api.security/v1/security", {
       method: "POST",
       headers: {
         "Authorization": `Basic ${credentials}`,
-    }
+    },
+    url :  testapiUrl,
     })
-    const data = await response.json()
-    return data
+    return response
   }
 
-  useEffect(() => {
-    //make a fetch to get session id 
-    // const a = createToken()
-    // console.log(a)
+  // function createToken() {
+  //   return new Promise( (resolve, reject) => {
+
+  //     const credentials = Buffer
+  //     .from(`axel.gallardo.e@gmail.com:dfg456dfg*`)
+  //     .toString('base64');
+
+  //     request({
+  //         headers: {
+  //           'Authorization': `Basic ${credentials}`
+  //         },
+  //         url: `${testapiUrl}/api.security/v1/security`,
+  //         method: 'POST'
+  //       }, function (err, res, body) {
+  //         if (!err && res.statusCode == 201) {
+  //           resolve(body);
+  //         } else if (!err) {
+  //           console.error(res.statusCode);
+  //           // reject({status: res.statusCode});
+  //           reject({status: res.statusCode, error: JSON.parse(Buffer.from(body).toString())});
+            
+  //         }
+  //         else{
+  //           reject(err);
+  //         }
+  //       });
+  //   });
+  // }
+
+  // useEffect(() => {
+  //   const a = createToken()
+  //   console.log(a)
     
-  }, []);
+  // }, []);
 
   const ButtonWrapper = ({ currency, showSpinner }) => {
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
