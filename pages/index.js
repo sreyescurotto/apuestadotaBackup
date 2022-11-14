@@ -111,7 +111,7 @@ const particlesLoaded = useCallback(async container => {
             options={{
     "fullScreen": {
         "enable": true,
-        "zIndex": 1
+  
     },
     "detectRetina": false,
     "fpsLimit": 120,
@@ -177,15 +177,15 @@ const particlesLoaded = useCallback(async container => {
     },
     "particles": {
         "color": {
-            "value": ["#4285f4", "#34A853", "#FBBC05", "#EA4335"]
+            "value": "#b6ff40"
         },
         "lineLinked": {
             "blink": false,
-            "color": "random",
+            "color": "#b6ff40",
             "consent": false,
-            "distance": 40,
+            "distance": 30,
             "enable": true,
-            "opacity": 1,
+            "opacity": 0.4,
             "width": 1
         },
         "move": {
@@ -238,7 +238,7 @@ const particlesLoaded = useCallback(async container => {
     },
     "polygon": {
         "draw": {
-            "enable": false,
+            "enable": true,
             "lineColor": "rgba(255,255,255,0.2)",
             "lineWidth": 0.5
         },
@@ -246,16 +246,12 @@ const particlesLoaded = useCallback(async container => {
         "move": {
             "radius": 10
         },
-        "position": {
-            "x": 30,
-            "y": 10
-        },
         "inline": {
             "arrangement": "equidistant"
         },
-        "scale": 1,
+        "scale": 0.5,
         "type": "inline",
-        "url": "https://particles.js.org/images/google.svg"
+        "url": "https://particles.js.org/images/smalldeer.svg"
     },
     "background": {
         "color": "transparent",

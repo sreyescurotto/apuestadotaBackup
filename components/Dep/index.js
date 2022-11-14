@@ -13,29 +13,20 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/router";
 
 import axios from "axios";
+import Script from "next/script";
+
+
 
 const Dep = () => {
   const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
 
   const router = useRouter();
 
-  const [usuarioId, setUsuarioId] = useState();
-
   const [user, setUser] = useState({});
 
   const [codRef, setCodRef] = useState("");
 
   const [baseURL, setBaseURL] = useState(null);
-
-  useEffect(() => {
-    let s = new AppService();
-
-    setBaseURL(s.getBaseUrl());
-
-    s.makeGet("profile", {}, true).then((res) => {
-      setUser(res.data);
-    });
-  }, []);
 
   const methods = [
     {
@@ -46,7 +37,12 @@ const Dep = () => {
     {
       id: "niubiz",
       img_url: "/icons/methods/pagoefectivo.png",
-      label: "Pago Efectivo, Yape, Plin",
+      label: "Pago Efectivo",
+    },
+    {
+      id: "niubiz2",
+      img_url: "/icons/methods/yapeplin.png",
+      label: "Pago con Yape o Plin",
     }
 
     // {id:'paypal', img_url: '/icons/methods/paypal.png', label: 'Paypal'}
@@ -95,43 +91,22 @@ const Dep = () => {
     }
   };
 
-  const currency = "USD";
-
   const style = { layout: "vertical" };
 
   const amount = monto >= 10 ? monto : 10;
 
-  // async function createToken () {
-  //   const credentials = Buffer.from(`axel.gallardo.e@gmail.com:dfg456dfg*`).toString('base64');
-  //   const response = await fetch("https://apisandbox.vnforappstest.com/api.security/v1/security", {
-  //     method: "POST",
-  //     headers: {
-  //       "Authorization": `Basic ${credentials}`,
-  //   },
-  //   url :  testapiUrl,
-  //   })
-  //   return response
-  // }
+  const [token, setToken] = useState("");
 
-  // function createToken () {
-  //   const options = {
-  //     method: 'GET',
-  //     headers: {
-  //       accept: 'text/plain',
-  //       authorization: 'Basic aW50ZWdyYWNpb25lc0BuaXViaXouY29tLnBlOl83ejNAOGZG'
-  //     }
-  //   };
-    
-  //   fetch('https://apitestenv.vnforapps.com/api.security/v1/security', options)
-  //     .then(response => console.log(response.data))
-   
-  //     .catch(err => console.error(err));
-  // }
+  const [session, setSession] = useState("");
+  
+  const [loading, setLoading] = useState(false);
+
+  const [form, setForm] = useState(false);
 
   function createToken () {
     const options = {
       method: 'GET',
-      url: 'https://apitestenv.vnforapps.com/api.security/v1/security',
+      url: 'https://apisandbox.vnforappstest.com/api.security/v1/security',
       headers: {
         accept: 'text/plain',
         authorization: 'Basic aW50ZWdyYWNpb25lc0BuaXViaXouY29tLnBlOl83ejNAOGZG'
@@ -141,48 +116,96 @@ const Dep = () => {
     axios
       .request(options)
       .then(function (response) {
+        setToken(response.data);
         console.log(response.data);
+        setLoading(true);
       })
       .catch(function (error) {
         console.error(error);
       });
   }
 
-  // function createToken() {
-  //   return new Promise( (resolve, reject) => {
 
-  //     const credentials = Buffer
-  //     .from(`axel.gallardo.e@gmail.com:dfg456dfg*`)
-  //     .toString('base64');
-
-  //     request({
-  //         headers: {
-  //           'Authorization': `Basic ${credentials}`
-  //         },
-  //         url: `${testapiUrl}/api.security/v1/security`,
-  //         method: 'POST'
-  //       }, function (err, res, body) {
-  //         if (!err && res.statusCode == 201) {
-  //           resolve(body);
-  //         } else if (!err) {
-  //           console.error(res.statusCode);
-  //           // reject({status: res.statusCode});
-  //           reject({status: res.statusCode, error: JSON.parse(Buffer.from(body).toString())});
-            
-  //         }
-  //         else{
-  //           reject(err);
-  //         }
-  //       });
-  //   });
-  // }
- 
-   
-
-  useEffect(() => {
-    createToken()
+  function createOrder() {
+    if (loading) {
+    const options = {
+      method: 'POST',
+      url: 'https://apisandbox.vnforappstest.com/api.ecommerce/v2/ecommerce/token/session/456879852',
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        Authorization: token
+      },
+      data: {
+        antifraud: {
+          merchantDefineData: {MDD15: 'Valor MDD 15', MDD20: 'Valor MDD 20', MDD33: 'Valor MDD 33'}
+        },
+        channel: 'web',
+        amount: '100.00'
+      }
+    };
     
-  }, []);
+    axios
+      .request(options)
+      .then(function (response) {
+        setSession(response.data.sessionKey);
+        console.log(response.data);
+
+        setForm(true);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }}
+
+  function pagoEfectivo() {
+  const options = {
+    method: 'POST',
+    url: 'https://apisandbox.vnforappstest.com/api.pagoefectivo/v1/create/456879852',
+    headers: {accept: 'application/json', 'content-type': 'application/json', Authorization: token},
+    data: {
+      channel: 'web',
+      email: user.email,
+      amount: `${monto}.00`,
+      externalTransactionId: '218f9cff-9131-1154-2919-d0b319912351'
+    }
+  };
+
+  axios
+    .request(options)
+    .then(function (response) {
+      console.log(response.data);
+      router.push(response.data.cipUrl)
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+  }
+
+  const openForm = () => { 
+      
+    // Este formulario funciona y levanta correctamente pero redirecciona directamente a lo que esta en el action del form
+    // la function complete no recibe el resultado del form. 
+      VisanetCheckout.configure({
+        sessiontoken: 'b5bd42d67abb3da32a89a45e096338c993852c751c0b2868a10e133e6e4b638b', //lo tengo que retornar del back
+        channel: 'web',
+        merchantid: '456879852', //numero de comercio
+        purchasenumber: '1667328361587',//'16673216591', //numero de compra
+        amount: `${monto}.00`, //monto de la compra
+        expirationminutes: '20',
+        timeouturl: 'about:blank',
+        merchantlogo: '/apuesta-logo.png',
+        formbuttoncolor: '#000000',
+        method: 'post',
+        action: `${baseURL}/depositar`,
+        isrecurrence: false,
+        complete: function (params) {
+            console.log('print key complete: ',params);
+        }
+    });
+    VisanetCheckout.open();
+}
+
 
   const ButtonWrapper = ({ currency, showSpinner }) => {
     const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
@@ -190,10 +213,8 @@ const Dep = () => {
     useEffect(() => {
       dispatch({
         type: "resetOptions",
-
         value: {
           ...options,
-
           currency: currency,
         },
       });
@@ -264,6 +285,22 @@ const Dep = () => {
       </>
     );
   };
+
+  useEffect(() => {
+    let s = new AppService();
+    createToken()
+    createOrder()
+    setBaseURL(s.getBaseUrl());
+
+    s.makeGet("profile", {}, true).then((res) => {
+      setUser(res.data);
+    });
+  }, []);
+
+  // useEffect(() => {
+    
+  //   createOrder()
+  // }, [loading]);
 
   return (
     <>
@@ -366,33 +403,7 @@ const Dep = () => {
                 })}
               </div>
 
-              {metodo != "izipay" ? (
-                <div className="withdraw-flex-payment-main paypal-method">
-                  <div className="withdraw-flex-payment-main-item">
-                    
-                  <form action="paginaRespuesta" method="post">
-                    <script type="text/javascript" src="https://static-
-                    content-qas.vnforapps.com/v2/js/checkout.js"
-                    data-sessiontoken="67cf73735f83590eabf1382ff49e5e
-                    08b261976326c6897cb764fd160a15a8ca"
-                    data-channel="web"
-                    data-merchantid="341198210"
-                    data-purchasenumber="2020100901"
-                    data-amount="10.5"
-                    data-expirationminutes="20"
-                    data-timeouturl="about:blank"
-                    data-merchantlogo="img/comercio.png"
-                    data-formbuttoncolor="#000000"
-                    />
-                    </form>
-
-                    <p className="warning-text">
-                      Recuerda que el monto mínimo para recargar es de 10 $.
-                    </p>
-                  </div>
-                </div>
-              ) : (
-                <div className="withdraw-flex-payment-main">
+              {metodo == "izipay" && (<div className="withdraw-flex-payment-main">
                   <form
                     className="widthdraw-form"
                     method="POST"
@@ -455,8 +466,54 @@ const Dep = () => {
                   <p className="warning-text">
                     Recuerda que el monto mínimo para recargar es de 10 $.
                   </p>
-                </div>
-              )}
+                </div>)
+              }
+               {metodo == 'niubiz' && (<div className="withdraw-flex-payment-main paypal-method">
+                  <div className="withdraw-flex-payment-main-item">                                
+                      <label htmlFor="amount">Monto:</label>
+                      <input
+                        type="number"
+                        name="monto"
+                        value={monto}
+                        ref={refM}
+                        onChange={handleChange}
+                        max="500"
+                        min="10"
+                        step="1"
+                      />
+                      <button onClick={pagoEfectivo}> Paga con pago efectivo </button>
+                    <p className="warning-text">
+                      Recuerda que el monto mínimo para recargar es de 10 $.
+                    </p>
+                  </div>
+                </div>)}
+
+
+                {metodo == 'niubiz2' && (<div className="withdraw-flex-payment-main paypal-method">
+                  <div className="withdraw-flex-payment-main-item">
+                    
+                
+                  
+                     
+                      <label htmlFor="amount">Monto:</label>
+                      <input
+                        type="number"
+                        name="monto"
+                        value={monto}
+                        ref={refM}
+                        onChange={handleChange}
+                        max="500"
+                        min="10"
+                        step="1"
+                      />
+                       <button onClick={createOrder}> Crear orden </button>
+                       <button onClick={openForm} >abrir form</button>
+                    <p className="warning-text">
+                      Recuerda que el monto mínimo para recargar es de 10 $.
+                    </p>
+                  </div>
+                </div>)}
+             
             </div>
           </div>
         </>

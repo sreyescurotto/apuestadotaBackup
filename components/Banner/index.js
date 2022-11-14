@@ -1,21 +1,23 @@
 import React from 'react'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
 import AppService from '../../services/app.service';
 import dayjs from "dayjs";
+import { set } from 'react-hook-form';
 
 export default function Banner() {
     const dotaImageBase = "https://cdn.cloudflare.steamstatic.com";
 
     const [apuestas, setApuestas] = useState([]);
 
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState([]);
 
     const [heroes, setHeroes] = useState({});
 
     const [searching, setSearching] = useState(false);
 
     const [cont, setCont] = useState(0);
+
 
     const updateCont = () => {
         if(cont > -1700){
@@ -25,26 +27,33 @@ export default function Banner() {
         }
     }
 
-    const getCurrentRestTime = (date) => {
-        const now = dayjs();
-        const matchStart = dayjs(date);
-        const diff = matchStart.diff(now);
-        return diff;
+    const findIndex =(identificador) => {
+        //find index of user where id = identificador
+        const index = user.findIndex((user) => user.id === identificador);
+        return index
     }
 
-    const getApuestas = () => {
+    async function getApuestas () {
         // fetching bets from api
         let s = new AppService()
 
-        let _user = s.getUser();
-        setUser(_user);
-
-        setApuestas([])
         setSearching(true)
+       
+
+       const res = await s.makeGet("profileAll", {}, true)
+            setUser(
+                res.data.map((item) => {
+                    item.timestamp = dayjs(item.created_at).format(
+                      "MM/DD/YYYY HH:mm:ss"
+                    )
+                    return item
+               })
+            )
+      
      
-        s.makeGet("apuestasAll", {}, true).then((res) => {
+        const betsres = await s.makeGet("apuestasAll", {}, true)
             setApuestas(
-              res.data.map((item) => {
+                betsres.data.map((item) => {
                 item.timestamp = dayjs(item.created_at).format(
                   "MM/DD/YYYY HH:mm:ss"
                 )
@@ -56,16 +65,20 @@ export default function Banner() {
                 item.fecha_proceso = dayjs(item.fecha_proceso * 1000).format(
                   "DD/MM/YYYY hh:mm a"
                 )
+        
+            
     
                 return item
               })
             )
-            setSearching((current) => !current)
+         setSearching((current) => !current)
         
-          })
       };
+
+  
     
       useEffect(() => {
+        getApuestas(); 
         fetch("/json/heroes.json")
           .then((resp) => {
             return resp.json();
@@ -73,8 +86,6 @@ export default function Banner() {
           .then((json) => {
             setHeroes(json);
           });
-    
-        getApuestas();
       }, []);
 
       useEffect(() => {
@@ -84,6 +95,9 @@ export default function Banner() {
         }, 6000);
         return () => clearInterval(interval);
       }, [cont]);
+
+
+     
   return (
     <>
         <div className='banner-container'>
@@ -110,15 +124,21 @@ export default function Banner() {
                                 </div>
                                 <div className='hero-description'>
                                     
-                                    <p className='win-price '>21 <br />+ S/ {apuesta.monto}</p>
+                                    <p className='win-price '>
+                                    {
+                                        user[findIndex(apuesta.usuario_id)].nickname 
+                                    }
+                                     <br />+ S/ {apuesta.monto}</p>
                                     <div className='ad-icon-c'>
-                                        <Image src='/icons/favicon/favicon-32.png' width={50} height={50} />
+                                        <Image src='/icons/favicon/logo-gris.png' width={80} height={55} />
                                     </div>
                                 </div>
                             </div>        
                             <div className='person-info-content'>
-                                <img src='https://avatars.akamai.steamstatic.com/bbab60b14d06a52a61c41b65ec2fb3e20d9a23f2_full.jpg' className='profile-img' alt='profile' />      
-                                <h4 className='profile-nickname white'>21</h4>
+                                <img src={ user[findIndex(apuesta.usuario_id)].foto } className='profile-img' alt='profile' />      
+                                <h4 className='profile-nickname white'>{
+                                    user[findIndex(apuesta.usuario_id)].nickname 
+                                    }</h4>
                                 <p className='profile-match'>Match ID: <br /> {apuesta.match_id}</p>
                             </div>
                         </div>)
@@ -140,16 +160,18 @@ export default function Banner() {
 .container-bets {
     display: flex;
     padding: 0 50px;
+    
 }
             .last-bets-c {            
                 max-width: 1360px;
                 overflow:hidden;
                 position: relative;
                 --border-width: 3px;
-                border-right: 4px solid #88ED15;
-                background-color: #1A1A1A;
+                border-right: 5px solid #2c62fe;
+                
             }   
-
+            {/* 
+             background-color: #1A1A1A; */}
 
             .last-bets-c::after {
     position: absolute;
@@ -174,6 +196,8 @@ export default function Banner() {
     background-position: 0 50%;
     border-radius: calc(2 * var(--border-width));
     animation: moveGradient 4s alternate infinite;
+
+    
   }
 }
 
@@ -184,18 +208,25 @@ export default function Banner() {
 }
             .last-bets-complete {
                 display: flex;     
-                transition: transform 0.5s ease-in-out;
+                transition: transform 0.5s ease-in-out;               
             }
 
             .item-00 {
                 position:relative;
-                border-left: 4px solid #88ED15;
-                border-top: 4px solid #88ED15;
                 overflow:hidden;
-               
                 min-width: 170px;
                 height: 164px;
+                border-bottom: 10px solid;
+                border-image-slice: 1;
+                border-width: 5px;
+                border-image-source: linear-gradient(to left, rgba(116,58,213,0.4), rgba(116,58,213,0.4));
+                
             }
+
+            {/* rgba(116,58,213,0.4) 
+            
+            rgba(240,240,240,0.15)*/}
+
             .item-border-bottom {
                 position:relative;
                 transition: all 0.3s ease;
@@ -212,13 +243,15 @@ export default function Banner() {
                 height: 70px;
                 background-image: url('/banner/banner.png');
                 background-size: cover;
-                border-bottom: 5px solid #88ED15;
+                
             }
+
+            {/* border-bottom: 5px solid #88ED15; */}
             .ad-icon-c {
                 position: absolute;
-                right: 0;
-                left:35%;
-                margin: 10px;
+       
+                left:30%;
+                margin: 0 10px 10px;
                 opacity: .2;
                 
             }

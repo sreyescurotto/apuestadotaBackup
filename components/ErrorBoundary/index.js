@@ -30,11 +30,10 @@ class ErrorBoundary extends React.Component {
             <button
               type="button"
               className='btn btn-md'
-              onClick={() => 
-              window.location.href('/')
-              }
+            
             >
-              Return
+            <a href='https://apuestadota.com/'>Return</a>
+              
             </button>
           </div>
         )

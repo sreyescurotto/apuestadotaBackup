@@ -2,6 +2,7 @@ import React from "react";
 import Dep from '../../components/Dep'
 import Layout from '../../components/Layout/Layout';
 import withAuth from "../../interceptors/auth";
+import Script from "next/script";
 
 export async function getStaticProps({ locale }) {
   const response = await import(`../../lang/${locale}.json`);
@@ -19,6 +20,7 @@ const Deposit = (props) => {
   const { play , layout, navbar, leftbar } = props;
   return (
     <>
+    <Script type="text/javascript" src="https://static-content-qas.vnforapps.com/v2/js/checkout.js" />
       <Layout layout={layout} navbar={navbar} leftbar={leftbar}>
         <div className="interface">
           <Dep />
