@@ -1,136 +1,139 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import AppService from "../../services/app.service";
 import dayjs from "dayjs";
 
 const DepReq = (props) => {
-    const profileProps = props.profile;
-    const [transacciones, setTransacciones] = useState([]);
+  const profileProps = props.profile;
+  const [transacciones, setTransacciones] = useState([]);
 
-    useEffect(() => {
-        let s = new AppService();
-        s.makeGet("retiros", {}, true).then((res) => {
-          setTransacciones(
-            res.data.map((i) => {
-              i.created_at = dayjs(i.created_at).format("DD/MM/YYYY hh:mm a");
-    
-              return i;
-            })
-          );
-        });
-    }, []);
+  useEffect(() => {
+    let s = new AppService();
+    s.makeGet("retiros", {}, true).then((res) => {
+      setTransacciones(
+        res.data.map((i) => {
+          i.created_at = dayjs(i.created_at).format("DD/MM/YYYY hh:mm a");
 
-    return (
-     
-        <div className="history-flex-c">
-            <h4 className="gc-profile-title">
-              {profileProps.withDes}
-            </h4>
+          return i;
+        })
+      );
+    });
+  }, []);
 
-            {/* TABLA EN DESKTOP */}
+  return (
+    <div className="history-flex-c">
+      <h4 className="gc-profile-title">{profileProps.withDes}</h4>
 
-            <table className="desktop-table">
-              <thead>
-                <tr>
-                  <th>{profileProps.date}</th>
+      {/* TABLA EN DESKTOP */}
 
-                  <th>{profileProps.amount}</th>
+      <table className="desktop-table">
+        <thead>
+          <tr>
+            <th>{profileProps.date}</th>
 
-                  <th>{profileProps.status}</th>
+            <th>{profileProps.amount}</th>
 
-                  <th>{profileProps.method}</th>
-                </tr>
-              </thead>
+            <th>{profileProps.status}</th>
 
-              {
-                <tbody>
-                  {transacciones.length < 1 && (
-                    <tr>
-                      <td colpan="5" className="gc-record-not-found">
-                        {profileProps.notwith}
-                      </td>
-                    </tr>
-                  )}
+            <th>{profileProps.method}</th>
+          </tr>
+        </thead>
 
-                  {transacciones.length > 0 &&
-                    transacciones.map((t) => {
-                      return (
-                        <tr key={`trans_${t.id}`}>
-                          <td>{t.created_at}</td>
+        {
+          <tbody>
+            {transacciones.length < 1 && (
+              <tr>
+                <td colpan="5" className="gc-record-not-found">
+                  {profileProps.notwith}
+                </td>
+              </tr>
+            )}
 
-                          <td>{t.monto}</td>
+            {transacciones.length > 0 &&
+              transacciones.map((t) => {
+                return (
+                  <tr key={`trans_${t.id}`}>
+                    <td>{t.created_at}</td>
 
-                          <td>{t.estado == 1 ? profileProps.completed : profileProps.pending}</td>
+                    <td>{t.monto}</td>
 
-                          <td>{t.metodo}</td>
-                        </tr>
-                      );
-                    })}
-                </tbody>
-              }
-            </table>
+                    <td>
+                      {t.estado == 1
+                        ? profileProps.completed
+                        : profileProps.pending}
+                    </td>
 
-            {/* TABLA EN MOBILE */}
+                    <td>{t.metodo}</td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        }
+      </table>
 
-            <table className="mobile-table">
-              <thead>
-                <tr>
-                  <th>{profileProps.date}</th>
+      {/* TABLA EN MOBILE */}
 
-                  <th>{profileProps.amount}</th>
+      <table className="mobile-table">
+        <thead>
+          <tr>
+            <th>{profileProps.date}</th>
 
-                  <th>{profileProps.status}</th>
-                </tr>
-              </thead>
+            <th>{profileProps.amount}</th>
 
-              {
-                <tbody>
-                  {transacciones.length < 1 && (
-                    <tr>
-                      <td colpan="5" className="gc-record-not-found">
-                        {profileProps.notwith}
-                      </td>
-                    </tr>
-                  )}
+            <th>{profileProps.status}</th>
+          </tr>
+        </thead>
 
-                  {transacciones.length > 0 &&
-                    transacciones.map((t) => {
-                      return (
-                        <tr key={`trans_${t.id}`}>
-                          <td className="mobile-table-td">
-                            <span>
-                              {t.created_at} <br />
-                            </span>
+        {
+          <tbody>
+            {transacciones.length < 1 && (
+              <tr>
+                <td colpan="5" className="gc-record-not-found">
+                  {profileProps.notwith}
+                </td>
+              </tr>
+            )}
 
-                            <span>{t.metodo}</span>
-                          </td>
+            {transacciones.length > 0 &&
+              transacciones.map((t) => {
+                return (
+                  <tr key={`trans_${t.id}`}>
+                    <td className="mobile-table-td">
+                      <span>
+                        {t.created_at} <br />
+                      </span>
 
-                          <td className="mobile-table-td">
-                            <span>
-                              {t.monto} <br />
-                            </span>
+                      <span>{t.metodo}</span>
+                    </td>
 
-                            <span>__</span>
-                          </td>
+                    <td className="mobile-table-td">
+                      <span>
+                        {t.monto} <br />
+                      </span>
 
-                          <td className="mobile-table-td">
-                            <span className="gc-green-text">
-                              {t.estado == 1 ? profileProps.completed : profileProps.pending}
-                            </span>
-                          </td>
-                        </tr>
-                      );
-                    })}
-                </tbody>
-              }
-            </table>
+                      <span>__</span>
+                    </td>
 
-            <style jsx>
+                    <td className="mobile-table-td">
+                      <span className="gc-green-text">
+                        {t.estado == 1
+                          ? profileProps.completed
+                          : profileProps.pending}
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        }
+      </table>
+
+      <style jsx>
         {`
-        .gc-profile-title {
+          .gc-profile-title {
             margin-top: 2rem;
             text-align: center;
             text-shadow: 3px 3px 3px #000;
-        }
+          }
           .desktop-table {
             padding: 20px;
 
@@ -254,9 +257,8 @@ const DepReq = (props) => {
           }
         `}
       </style>
-          </div>
-    
-    );
-}
+    </div>
+  );
+};
 
 export default DepReq;

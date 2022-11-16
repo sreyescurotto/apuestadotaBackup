@@ -1,12 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-
 import Swal from "sweetalert2";
-
 import AppService from "../../services/app.service";
 import DepReq from "../DepReq";
 
 const With = (props) => {
-
   const withdraw = props.withdraw;
   const profileProps = props.profile;
 
@@ -19,6 +16,8 @@ const With = (props) => {
   const refN = useRef(null);
 
   const [monto, setMonto] = useState(0);
+
+  const [nickname, setNickname] = useState("...");
 
   const [acc, setAcc] = useState(" ");
 
@@ -39,7 +38,7 @@ const With = (props) => {
 
     if (_user !== null) {
       setUserid(_user.id);
-
+      setNickname(_user.nickname);
       s.makeGet("saldo", {}, true).then((resp) => {
         setSaldo(resp.data.saldo);
       });
@@ -151,9 +150,7 @@ const With = (props) => {
           })
           .catch((error) => {
             Swal.fire({
-              text:
-                error?.response?.data?.error ||
-                withdraw.errorWith,
+              text: error?.response?.data?.error || withdraw.errorWith,
 
               icon: "error",
             });
@@ -164,111 +161,104 @@ const With = (props) => {
 
   return (
     <>
-    <div className="withdraw-main-container">
-      <h2 className="intro-title">{withdraw.title}</h2>
+      <div className="withdraw-main-container">
+        <h2 className="intro-title">{withdraw.title}</h2>
 
-      <div className="withdraw-container">
-        <div className="withdraw-flex-first">
-
+        <div className="withdraw-container">
+          <div className="withdraw-flex-first">
             <div className="text-w-intro">
-              <h3 className="subtitle-w">Hola 21, tu saldo actual es:</h3>
-              <span className="balance-w">S/ 66.60</span>
+              <h3 className="subtitle-w">
+                Hola {nickname}, tu saldo actual es:
+              </h3>
+              <span className="balance-w">S/ {saldo}</span>
             </div>
-            <h4> {withdraw.hello}</h4>  
-            <input 
-            className="input-amount-withdraw"
-            ref={refM}
-            onChange={handleChange}
-            value={monto}
-                    />
+            <h4> {withdraw.hello}</h4>
+            <input
+              className="input-amount-withdraw"
+              ref={refM}
+              onChange={handleChange}
+              value={monto}
+            />
             <div className="bottom-text">
               <p className="text-t">{withdraw.text}</p>
 
-              <p className="text-t">
-                {withdraw.text2}
-              </p>
+              <p className="text-t">{withdraw.text2}</p>
 
-              <p className="text-t">
-                {withdraw.text3}
-              </p>
+              <p className="text-t">{withdraw.text3}</p>
             </div>
-        </div>
-        
-        <div className="withdraw-flex">
-          <h4>Ingresa los siguientes datos</h4>
-          <div className="withdraw-flex-payment-main">
-            <form onSubmit={retirar}>
-              <div className="widthdraw-form">
-                <div className="withdraw-flex-payment-main-item">
-                  <input
-                    type="number"
-                    id="accNumber"
-                    name="accNumber"
-                    ref={refA}
-                    onChange={handleChangeAcc}
-                    placeholder={withdraw.accNum}
-                    required
-                  />
-                </div>
+          </div>
 
-                <div className="withdraw-flex-payment-main-item">
-                  <input
-                    type="number"
-                    id="cciNumber"
-                    name="cciNumber"
-                    ref={refC}
-                    onChange={handleChangeCci}
-                    placeholder={withdraw.accCCI}
-                    required
-                  />
-                </div>
+          <div className="withdraw-flex">
+            <h4>Ingresa los siguientes datos</h4>
+            <div className="withdraw-flex-payment-main">
+              <form onSubmit={retirar}>
+                <div className="widthdraw-form">
+                  <div className="withdraw-flex-payment-main-item">
+                    <input
+                      type="number"
+                      id="accNumber"
+                      name="accNumber"
+                      ref={refA}
+                      onChange={handleChangeAcc}
+                      placeholder={withdraw.accNum}
+                      required
+                    />
+                  </div>
 
-                <div className="withdraw-flex-payment-main-item">
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder={withdraw.nameA}
-                    ref={refN}
-                    onChange={handleChangeName}
-                    maxLength={30}
-                    required
-                  />
-                </div>
+                  <div className="withdraw-flex-payment-main-item">
+                    <input
+                      type="number"
+                      id="cciNumber"
+                      name="cciNumber"
+                      ref={refC}
+                      onChange={handleChangeCci}
+                      placeholder={withdraw.accCCI}
+                      required
+                    />
+                  </div>
 
-                <div className="withdraw-flex-payment-main-item">
-                  <input
-                    type="number"
-                    id="amount"
-                    name="amount"
-                    value={monto}
-                    hidden
-                    required
-                  />
-                </div>
+                  <div className="withdraw-flex-payment-main-item">
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder={withdraw.nameA}
+                      ref={refN}
+                      onChange={handleChangeName}
+                      maxLength={30}
+                      required
+                    />
+                  </div>
 
-                <button className="deposit-btn-submit" type="submit">
-                  {withdraw.withdraw}
-                </button>
-              </div>
-            </form>
+                  <div className="withdraw-flex-payment-main-item">
+                    <input
+                      type="number"
+                      id="amount"
+                      name="amount"
+                      value={monto}
+                      readOnly
+                      hidden
+                      required
+                    />
+                  </div>
+
+                  <button className="deposit-btn-submit" type="submit">
+                    {withdraw.withdraw}
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
 
-        
+        <DepReq profile={profileProps} />
       </div>
-
-      <DepReq  profile={profileProps}/>
-    </div>
-      
-      
 
       <style jsx>
         {`
-
-        .withdraw-main-container {
-          margin-bottom: 4rem;
-        }
+          .withdraw-main-container {
+            margin-bottom: 4rem;
+          }
           .intro-title {
             padding: 2rem;
 
@@ -294,7 +284,7 @@ const With = (props) => {
           }
 
           .text-w-intro {
-            margin-bottom:2rem;
+            margin-bottom: 2rem;
           }
 
           .subtitle-w {
@@ -316,7 +306,6 @@ const With = (props) => {
 
           .withdraw-flex-first {
             width: 50%;
-           
           }
 
           .withdraw-container h4 {
@@ -334,7 +323,7 @@ const With = (props) => {
 
             width: 50%;
 
-            flex-direction: column; 
+            flex-direction: column;
 
             justify-content: center;
           }
@@ -344,7 +333,7 @@ const With = (props) => {
 
             display: flex;
 
-            flex-direction: column;          
+            flex-direction: column;
 
             padding-top: 0.5rem;
           }
@@ -353,10 +342,11 @@ const With = (props) => {
             margin-top: 1.5rem;
           }
 
-          {/* color: rgba(255, 255, 255, 0.6); */}
+           {
+            /* color: rgba(255, 255, 255, 0.6); */
+          }
 
           .text-t {
-           
             color: #b6ff40;
             font-family: "Teko", sans-serif;
           }
@@ -384,9 +374,9 @@ const With = (props) => {
             margin-left: 1rem;
             width: 90%;
             font-family: "Roboto Mono", monospace;
-        }
+          }
 
-        .input-amount-withdraw {
+          .input-amount-withdraw {
             background-color: transparent;
             border: none;
             border-bottom: 2px solid #b6ff40;
@@ -395,16 +385,14 @@ const With = (props) => {
             color: white;
             font-family: "Roboto Mono", monospace;
             font-size: 2.5rem;
-        }
-        .input-amount-withdraw:focus {
-          
-          outline: none;
-        }
-          
-        .withdraw-flex-payment-main-item input::placeholder {
-    
+          }
+          .input-amount-withdraw:focus {
+            outline: none;
+          }
+
+          .withdraw-flex-payment-main-item input::placeholder {
             color: white;
-        }
+          }
 
           .wallet-container {
             width: 300px;
@@ -414,7 +402,7 @@ const With = (props) => {
 
           .withdraw-flex-payment-main-item input:focus {
             font-family: "Roboto Mono", monospace;
-            outline: none;        
+            outline: none;
           }
 
           @media screen and (max-width: 485px) {

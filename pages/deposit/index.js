@@ -20,7 +20,7 @@ const Deposit = (props) => {
   const { play , layout, navbar, leftbar } = props;
   return (
     <>
-    <Script type="text/javascript" src="https://static-content-qas.vnforapps.com/v2/js/checkout.js" />
+    
       <Layout layout={layout} navbar={navbar} leftbar={leftbar}>
         <div className="interface">
           <Dep />

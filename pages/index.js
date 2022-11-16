@@ -12,8 +12,6 @@ import { loadFull } from "tsparticles";
 import Banner from "../components/Banner";
 import Share from "../components/Share";
 
-
-
 export async function getStaticProps({ locale }) {
   const response = await import(`../lang/${locale}.json`);
   return {
@@ -32,46 +30,42 @@ const Home = (props) => {
   const [xAxi, setxAxi] = useState(40);
   const ref1 = useRef();
   const [scroll, setScroll] = useState(true);
-  const particlesInit = useCallback(async engine => {
-  
+  const particlesInit = useCallback(async (engine) => {
     // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
     // starting from v2 you can add only the features you need reducing the bundle size
     await loadFull(engine);
-}, []);
+  }, []);
 
-const particlesLoaded = useCallback(async container => {
-   // set the container size
-   
-}, []);
+  const particlesLoaded = useCallback(async (container) => {
+    // set the container size
+  }, []);
   // Attach the scroll listener to the div
   useEffect(() => {
-
     const handleScroll = () => {
       const hand1 = ref1.current;
       const { y, x } = hand1.getBoundingClientRect();
       const minusY = yAxi + y;
-      const minusX = xAxi + (y*0.14);
+      const minusX = xAxi + y * 0.14;
       console.log(x, y, minusY);
 
-      if( minusY > 0){
-        setyAxi(minusY)
+      if (minusY > 0) {
+        setyAxi(minusY);
       } else {
-        setyAxi(0)
+        setyAxi(0);
       }
-      if( minusX > 0){
-        setxAxi(minusX)
+      if (minusX > 0) {
+        setxAxi(minusX);
       } else {
-        setxAxi(0)
+        setxAxi(0);
       }
-     
-    }
-    
-    window.addEventListener("scroll", handleScroll, true)
+    };
 
-    return () => window.removeEventListener("scroll", handleScroll, true)
-  }, [])
- 
+    window.addEventListener("scroll", handleScroll, true);
+
+    return () => window.removeEventListener("scroll", handleScroll, true);
+  }, []);
+
   return (
     <>
       <Head>
@@ -100,7 +94,10 @@ const particlesLoaded = useCallback(async container => {
 
         <meta property="og:image" content="/logo-morado.jpg" />
 
-        <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
+        />
 
         <link rel="shortcut icon" href="/icons/favicon/favicon-32.png" />
       </Head>
@@ -119,203 +116,198 @@ const particlesLoaded = useCallback(async container => {
       </Script>
 
       <div className="App">
-        <div className="main" >
-          <NavbarFirst  props={navbar}/>
-          <div className="fixed-button-container"  style={{
-            bottom: `${yAxi}px`,
-            right: `${xAxi}%`,
-          }}>
+        <div className="main">
+          <NavbarFirst props={navbar} />
+          <div
+            className="fixed-button-container"
+            style={{
+              bottom: `${yAxi}px`,
+              right: `${xAxi}%`,
+            }}
+          >
             <Particles
               id="tsparticles"
               className="particles"
               canvasClassName="particles-canvas"
               init={particlesInit}
               loaded={particlesLoaded}
-              style={ {
+              style={{
                 position: "fixed",
                 zIndex: "-1",
                 transform: "translate(75%, 75%)",
-
               }}
               options={{
-      "fullScreen": {
-          "enable": true,
-    
-      },
-      "detectRetina": false,
-      "fpsLimit": 120,
-      "interactivity": {
-          "events": {
-              "onClick": {
-                  "enable": false,
-                  "mode": "push"
-              },
-              "onDiv": {
-                  "elementId": "repulse-div",
-                  "enable": false,
-                  "mode": "repulse"
-              },
-              "onHover": {
-                  "enable": true,
-                  "mode": "bubble",
-                  "parallax": {
-                      "enable": false,
-                      "force": 2,
-                      "smooth": 10
-                  }
-              },
-              "resize": true
-          },
-          "modes": {
-              "bubble": {
-                  "distance": 40,
-                  "duration": 2,
-                  "opacity": 8,
-                  "size": 6,
-                  "speed": 3
-              },
-              "connect": {
-                  "distance": 80,
-                  "lineLinked": {
-                      "opacity": 0.5
+                fullScreen: {
+                  enable: true,
+                },
+                detectRetina: false,
+                fpsLimit: 120,
+                interactivity: {
+                  events: {
+                    onClick: {
+                      enable: false,
+                      mode: "push",
+                    },
+                    onDiv: {
+                      elementId: "repulse-div",
+                      enable: false,
+                      mode: "repulse",
+                    },
+                    onHover: {
+                      enable: true,
+                      mode: "bubble",
+                      parallax: {
+                        enable: false,
+                        force: 2,
+                        smooth: 10,
+                      },
+                    },
+                    resize: true,
                   },
-                  "radius": 60
-              },
-              "grab": {
-                  "distance": 400,
-                  "lineLinked": {
-                      "opacity": 1
-                  }
-              },
-              "push": {
-                  "quantity": 4
-              },
-              "remove": {
-                  "quantity": 2
-              },
-              "repulse": {
-                  "distance": 200,
-                  "duration": 0.4
-              },
-              "slow": {
-                  "active": false,
-                  "radius": 0,
-                  "factor": 1
-              }
-          }
-      },
-      "particles": {
-          "color": {
-              "value": "#b6ff40"
-          },
-          "lineLinked": {
-              "blink": false,
-              "color": "#b6ff40",
-              "consent": false,
-              "distance": 30,
-              "enable": true,
-              "opacity": 0.4,
-              "width": 1
-          },
-          "move": {
-              "attract": {
-                  "enable": false,
-                  "rotate": {
-                      "x": 600,
-                      "y": 1200
-                  }
-              },
-              "bounce": false,
-              "direction": "none",
-              "enable": true,
-              "outMode": "bounce",
-              "random": false,
-              "speed": 1,
-              "straight": false
-          },
-          "number": {
-              "density": {
-                  "enable": false,
-                  "area": 2000
-              },
-              "limit": 0,
-              "value": 200
-          },
-          "opacity": {
-              "animation": {
-                  "enable": true,
-                  "minimumValue": 0.05,
-                  "speed": 2,
-                  "sync": false
-              },
-              "random": false,
-              "value": 0.4
-          },
-          "shape": {
-              "type": "circle"
-          },
-          "size": {
-              "animation": {
-                  "enable": false,
-                  "minimumValue": 0.1,
-                  "speed": 40,
-                  "sync": false
-              },
-              "random": true,
-              "value": 1
-          }
-      },
-      "polygon": {
-          "draw": {
-              "enable": true,
-              "lineColor": "rgba(255,255,255,0.2)",
-              "lineWidth": 0.5
-          },
-          "enable": true,
-          "move": {
-              "radius": 10
-          },
-          "inline": {
-              "arrangement": "equidistant"
-          },
-          "scale": 0.5,
-          "type": "inline",
-          "url": "https://particles.js.org/images/smalldeer.svg"
-      },
-      "background": {
-          "color": "transparent",
-          "image": "",
-          "position": "50% 50%",
-          "repeat": "no-repeat",
-          "size": "cover"
-      }
-  }}
-          />
-              <Link href="/play/normal" locale={router.locale}>
-                <a>
-                  <button className="fixed-button" id="fixed-button">
-                    {
-                      home.section3title2
-                    }
-                  </button>
-                </a>
-              </Link>
+                  modes: {
+                    bubble: {
+                      distance: 40,
+                      duration: 2,
+                      opacity: 8,
+                      size: 6,
+                      speed: 3,
+                    },
+                    connect: {
+                      distance: 80,
+                      lineLinked: {
+                        opacity: 0.5,
+                      },
+                      radius: 60,
+                    },
+                    grab: {
+                      distance: 400,
+                      lineLinked: {
+                        opacity: 1,
+                      },
+                    },
+                    push: {
+                      quantity: 4,
+                    },
+                    remove: {
+                      quantity: 2,
+                    },
+                    repulse: {
+                      distance: 200,
+                      duration: 0.4,
+                    },
+                    slow: {
+                      active: false,
+                      radius: 0,
+                      factor: 1,
+                    },
+                  },
+                },
+                particles: {
+                  color: {
+                    value: "#b6ff40",
+                  },
+                  lineLinked: {
+                    blink: false,
+                    color: "#b6ff40",
+                    consent: false,
+                    distance: 30,
+                    enable: true,
+                    opacity: 0.4,
+                    width: 1,
+                  },
+                  move: {
+                    attract: {
+                      enable: false,
+                      rotate: {
+                        x: 600,
+                        y: 1200,
+                      },
+                    },
+                    bounce: false,
+                    direction: "none",
+                    enable: true,
+                    outMode: "bounce",
+                    random: false,
+                    speed: 1,
+                    straight: false,
+                  },
+                  number: {
+                    density: {
+                      enable: false,
+                      area: 2000,
+                    },
+                    limit: 0,
+                    value: 200,
+                  },
+                  opacity: {
+                    animation: {
+                      enable: true,
+                      minimumValue: 0.05,
+                      speed: 2,
+                      sync: false,
+                    },
+                    random: false,
+                    value: 0.4,
+                  },
+                  shape: {
+                    type: "circle",
+                  },
+                  size: {
+                    animation: {
+                      enable: false,
+                      minimumValue: 0.1,
+                      speed: 40,
+                      sync: false,
+                    },
+                    random: true,
+                    value: 1,
+                  },
+                },
+                polygon: {
+                  draw: {
+                    enable: true,
+                    lineColor: "rgba(255,255,255,0.2)",
+                    lineWidth: 0.5,
+                  },
+                  enable: true,
+                  move: {
+                    radius: 10,
+                  },
+                  inline: {
+                    arrangement: "equidistant",
+                  },
+                  scale: 0.5,
+                  type: "inline",
+                  url: "https://particles.js.org/images/smalldeer.svg",
+                },
+                background: {
+                  color: "transparent",
+                  image: "",
+                  position: "50% 50%",
+                  repeat: "no-repeat",
+                  size: "cover",
+                },
+              }}
+            />
+            <Link href="/play/normal" locale={router.locale}>
+              <a>
+                <button className="fixed-button" id="fixed-button">
+                  {home.section3title2}
+                </button>
+              </a>
+            </Link>
           </div>
 
           <section className="first-section" ref={ref1}>
             <div className="intro">
               <h1 className="title-1">
-                {
-                  home.title
-                } <br /> 
-                {
-                  home.title2
-                }
+                {home.title} <br />
+                {home.title2}
               </h1>
 
               <p className="subtitle-1">
-                { home.subtitle} <br />
-                { home.subtitle2}
+                {home.subtitle} <br />
+                {home.subtitle2}
               </p>
             </div>
 
@@ -332,8 +324,7 @@ const particlesLoaded = useCallback(async container => {
             </div>
 
             <div>
-
-              <Banner props={home}/>
+              <Banner props={home} />
             </div>
 
             {/* <h1 className="title-1 cursive center mtop">
@@ -344,15 +335,13 @@ const particlesLoaded = useCallback(async container => {
 
           <div className="overlay-gradient"></div>
 
-         
-
           <section className="second-section">
             <Image
               src="/aegis-background.png"
               className="aegis-background"
               alt="Aegis"
               layout="fill"
-            priority={true}
+              priority={true}
             />
 
             <div className="section2-text text-01">
@@ -380,10 +369,9 @@ const particlesLoaded = useCallback(async container => {
           <Share />
           <div className="relative">
             <h1 className="title-1 cursive center">
-              <span className="blue">{home.section3title1}</span> {home.section3title3}
-              <p className="poppins center font-m">
-               {home.section3subtitle}
-              </p>
+              <span className="blue">{home.section3title1}</span>{" "}
+              {home.section3title3}
+              <p className="poppins center font-m">{home.section3subtitle}</p>
             </h1>
 
             <div className="spacer-container">
@@ -392,12 +380,9 @@ const particlesLoaded = useCallback(async container => {
                 className="spacer"
                 alt="spacer"
                 layout="fill"
-
               />
             </div>
           </div>
-
-      
 
           <section className="third-section">
             <div className="third-section-large-header">
@@ -409,15 +394,12 @@ const particlesLoaded = useCallback(async container => {
               />
 
               <div className="third-section-intro-content">
-                
-
                 <div className="intro-content">
                   <div className="info-cont">
                     <div className="info-img">
                       <p className="info-text-cont first-text-c">
-                          
-                          {home.info1}
-                        </p>
+                        {home.info1}
+                      </p>
                       <Image
                         src="/heros/shaman.png"
                         alt="Shaman"
@@ -429,10 +411,7 @@ const particlesLoaded = useCallback(async container => {
 
                   <div className="info-cont">
                     <div className="info-img">
-                      <p className="info-text-cont mid-text-c">
-                        
-                        {home.info2}
-                      </p>
+                      <p className="info-text-cont mid-text-c">{home.info2}</p>
                       <Image
                         src="/heros/shops.png"
                         className="info-img"
@@ -445,10 +424,7 @@ const particlesLoaded = useCallback(async container => {
 
                   <div className="info-cont">
                     <div className="info-img">
-                      <p className="info-text-cont last-text-c">
-                        
-                        {home.info3}
-                      </p>
+                      <p className="info-text-cont last-text-c">{home.info3}</p>
                       <Image
                         src="/heros/beast.png"
                         className="info-img"
@@ -462,10 +438,9 @@ const particlesLoaded = useCallback(async container => {
               </div>
             </div>
           </section>
-          <Footer  props={footer}/>   
+          <Footer props={footer} />
         </div>
       </div>
-     
 
       <style jsx>{`
         @font-face {
@@ -540,20 +515,20 @@ const particlesLoaded = useCallback(async container => {
         .info-cont .info-img:hover .info-text-cont {
           color: #00a2ffaf;
         }
-       
+
         .info-img {
           position: relative;
         }
         .info-text-cont {
           position: absolute;
-        z-index: 2;
-        color: #000;
-        font-family: "Bebas Neue", cursive;
-        font-size: 2.5rem;
-        pointer-events: none;
-        text-align: center;
-        font-weight: 600;
-        top: 11%;
+          z-index: 2;
+          color: #000;
+          font-family: "Bebas Neue", cursive;
+          font-size: 2.5rem;
+          pointer-events: none;
+          text-align: center;
+          font-weight: 600;
+          top: 11%;
         }
         .first-text-c {
           left: 45%;
@@ -569,49 +544,48 @@ const particlesLoaded = useCallback(async container => {
           .App {
             height: 768px;
           }
-            .overlay-gradient {
-              top: 18%;
-            }
-            .title-1 {
-              font-size: 2.8em;
-              line-height: 46px;
-            }
-            .subtitle-1 {
-              font-size: 1em;
-            }
-            .videocontainer {
-              height: 80vh;
-            }
-            .section-text h3 {
-              font-size: 1.8rem;
-            }
-            .text-03 {
-              bottom: 175px;
-              left: 25%;
-            }
-            .relative h1 {
-              top: 30%;
-              left: 30%;
-            }
-            .info-cont {
-              width: 300px;
-            }
-            .mid-text-c {
-              left:48%;
-              width: 140px;
-            }
-            .info-text-cont {
-              font-size: 2rem;
-            }     
+          .overlay-gradient {
+            top: 18%;
+          }
+          .title-1 {
+            font-size: 2.8em;
+            line-height: 46px;
+          }
+          .subtitle-1 {
+            font-size: 1em;
+          }
+          .videocontainer {
+            height: 80vh;
+          }
+          .section-text h3 {
+            font-size: 1.8rem;
+          }
+          .text-03 {
+            bottom: 175px;
+            left: 25%;
+          }
+          .relative h1 {
+            top: 30%;
+            left: 30%;
+          }
+          .info-cont {
+            width: 300px;
+          }
+          .mid-text-c {
+            left: 48%;
+            width: 140px;
+          }
+          .info-text-cont {
+            font-size: 2rem;
+          }
         }
-        
+
         @media only screen and (max-width: 485px) {
-          
-          .info-text-cont{ 
+          .info-text-cont {
             font-size: 1.2rem;
           }
           .first-text-c {
-          left: 42%;
+            left: 42%;
           }
           .mid-text-c {
             left: 44%;

@@ -7,8 +7,7 @@ import dayjs from "dayjs";
 import Countdown from "react-countdown";
 
 const Apuestas = (props) => {
-
-  const profile = props.profile
+  const profile = props.profile;
 
   const dotaImageBase = "https://cdn.cloudflare.steamstatic.com";
 
@@ -17,7 +16,6 @@ const Apuestas = (props) => {
   const [heroes, setHeroes] = useState({});
 
   const [searching, setSearching] = useState(false);
-
 
   const Completionist = () => <span>{profile.shouldplaying}</span>;
 
@@ -168,9 +166,11 @@ const Apuestas = (props) => {
                         profile.process
                       ) : apuesta.estado < 3 && apuesta.match_id !== null ? (
                         profile.finished
-                      ) : apuesta.estado == 3 ?
-                        ( profile.party )
-                      : ( profile.failed )}
+                      ) : apuesta.estado == 3 ? (
+                        profile.party
+                      ) : (
+                        profile.failed
+                      )}
                     </td>
 
                     <td className="lastCol">

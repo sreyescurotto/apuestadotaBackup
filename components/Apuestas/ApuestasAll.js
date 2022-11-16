@@ -7,8 +7,7 @@ import dayjs from "dayjs";
 import Countdown from "react-countdown";
 
 const ApuestasAll = (props) => {
-
-  const profile = props.profile
+  const profile = props.profile;
 
   const dotaImageBase = "https://cdn.cloudflare.steamstatic.com";
 
@@ -18,7 +17,7 @@ const ApuestasAll = (props) => {
 
   const [searching, setSearching] = useState(false);
 
-   const Completionist = () => <span>{profile.shouldplaying}</span>;
+  const Completionist = () => <span>{profile.shouldplaying}</span>;
 
   const renderer = ({ hours, minutes, seconds, completed }) => {
     if (completed) {
@@ -84,24 +83,23 @@ const ApuestasAll = (props) => {
     getApuestas();
   }, []);
 
-
   return (
     <>
       <div>
         <table className="desktop-table">
           <thead>
             <tr>
-            <th>{profile.bettime}</th>
+              <th>{profile.bettime}</th>
 
-            <th>{profile.match}</th>
+              <th>{profile.match}</th>
 
-            <th>{profile.matchId}</th>
+              <th>{profile.matchId}</th>
 
-            <th>{profile.amount}</th>
+              <th>{profile.amount}</th>
 
-            <th>{profile.status}</th>
+              <th>{profile.status}</th>
 
-            <th>{profile.result}</th>
+              <th>{profile.result}</th>
             </tr>
           </thead>
 
@@ -115,7 +113,7 @@ const ApuestasAll = (props) => {
             {!searching && apuestas.length < 1 && (
               <tr>
                 <td colSpan="5" className="gc-record-not-found">
-                {profile.notbet}
+                  {profile.notbet}
                 </td>
               </tr>
             )}
@@ -164,7 +162,7 @@ const ApuestasAll = (props) => {
                           precision={3}
                           renderer={renderer}
                         />
-                       ) : apuesta.estado == "0" ? (
+                      ) : apuesta.estado == "0" ? (
                         profile.process
                       ) : apuesta.estado > 0 && apuesta.match_id !== null ? (
                         profile.finished

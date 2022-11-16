@@ -36,20 +36,19 @@ const Dep = () => {
       img_url: "/icons/methods/visa-mastercard.png",
       label: "Pago con tarjeta",
     },
-    // {
-    //   id: "niubiz",
-    //   img_url: "/icons/methods/pagoefectivo.png",
-    //   label: "Pago Efectivo",
-    // },
-    // {
-    //   id: "niubiz2",
-    //   img_url: "/icons/methods/yapeplin.png",
-    //   label: "Pago con Yape o Plin",
-    // }
-
-    // {id:'paypal', img_url: '/icons/methods/paypal.png', label: 'Paypal'}
+    {
+      id: "niubiz",
+      img_url: "/icons/methods/pagoefectivo.png",
+      label: "Pago Efectivo",
+    },
+    {
+      id: "niubiz2",
+      img_url: "/icons/methods/yapeplin.png",
+      label: "Pago con Yape o Plin",
+    }
   ];
 
+  // {id:'paypal', img_url: '/icons/methods/paypal.png', label: 'Paypal'}
   const [metodo, setMetodo] = useState("izipay");
 
   const [monto, setMonto] = useState(10);
@@ -61,7 +60,6 @@ const Dep = () => {
   const refM = useRef(null);
 
   const refCR = useRef(null);
-
 
   const testapiUrl = "https://apisandbox.vnforappstest.com/api.security/v1/security"
 
@@ -111,7 +109,7 @@ const Dep = () => {
       url: 'https://apisandbox.vnforappstest.com/api.security/v1/security',
       headers: {
         accept: 'text/plain',
-        authorization: 'Basic aW50ZWdyYWNpb25lc0BuaXViaXouY29tLnBlOl83ejNAOGZG'
+        authorization: 'Basic YXhlbC5nYWxsYXJkby5lQGdtYWlsLmNvbTpkZmc0NTZkZmcq'
       }
     };
     
@@ -143,7 +141,7 @@ const Dep = () => {
           merchantDefineData: {MDD15: 'Valor MDD 15', MDD20: 'Valor MDD 20', MDD33: 'Valor MDD 33'}
         },
         channel: 'web',
-        amount: '100.00'
+        amount: `${monto}.00`
       }
     };
     
@@ -184,6 +182,11 @@ const Dep = () => {
     });
   }
 
+  //generate a random purchase order number
+  const generateOrderNumber = () => {
+    return Math.floor(Math.random() * 1000000000);
+  }
+
   const openForm = () => { 
     // Este formulario funciona y levanta correctamente pero redirecciona directamente a lo que esta en el action del form
     // la function complete no recibe el resultado del form. 
@@ -191,7 +194,7 @@ const Dep = () => {
         sessiontoken: session, //lo tengo que retornar del back
         channel: 'web',
         merchantid: merchandid, //numero de comercio
-        purchasenumber: '22619936666',//'16673216591', //numero de compra
+        purchasenumber: generateOrderNumber,//'16673216591', //numero de compra
         amount: `${monto}.00`, //monto de la compra
         expirationminutes: '20',
         timeouturl: 'about:blank',
@@ -335,6 +338,7 @@ const Dep = () => {
     <>
       {user.email == null ? (
         <>
+        <Script type="text/javascript" src="https://static-content-qas.vnforapps.com/v2/js/checkout.js" />
           <div className="need-to-container">
             <h2 className="intro-title"> Te hace falta registrar tus datos</h2>
 
@@ -538,7 +542,7 @@ const Dep = () => {
                        <button onClick={createOrder}> Crear orden </button>
                        <button onClick={openForm} >abrir form</button>
                     <p className="warning-text">
-                      Recuerda que el monto mínimo para recargar es de 10 $.
+                      Recuerda que el monto mínimo para recargar es de S/ 10.
                     </p>
                   </div>
                 </div>)}
