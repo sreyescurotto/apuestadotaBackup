@@ -7,7 +7,7 @@ export default function Share() {
         <section className="share">
             <div className='shareText'>
                 <h2>Comparte tus victorias y gana dinero</h2>
-                <p>Recibe 1 sol cada vez que compartas en Facebook tu victoria epica</p>
+                <p>Recibe 1 sol cada vez que compartas en Facebook tu victoria épica</p>
 
 
                 <div className='runes-effect'>
@@ -18,7 +18,7 @@ export default function Share() {
                 
 
                 <div className="absolute-social-c">
-                    <div className='absolute-text'>Etiquetanos!</div>
+                    <div className='absolute-text'>Etiquétanos!</div>
                   <a
                     href="https://www.instagram.com/apuestadota/"
                     target="_blank"
@@ -64,7 +64,7 @@ export default function Share() {
             .share {
                 
                 height: 100vh;
-                
+                margin-bottom: 5rem;
                 position: relative;
             }
 
@@ -73,12 +73,12 @@ export default function Share() {
                 background-color: #222222;
                 border: 10px solid #fff;
                 border-radius: 60px;
-                width: 1000px;
-                height: 600px;
-                
-                top: 16.5%;
+                width: 90%;
+                height: 800px;  
+                top: 10.5%;
                 left: 3.8%;
                 position: relative;
+
             }
 
             .shareText h2 {
@@ -97,11 +97,13 @@ export default function Share() {
                 font-weight: 600;
                 text-align: center;
                 text-transform: uppercase;
+                position: relative;
+                z-index: 1;
             }
             .runes-effect {
                 position: absolute;
-                bottom: 40%;
-                right: 32%;
+                bottom: 55%;
+                left: 21%;
                 margin: 2rem 2rem 3.5rem;
             }
             .runes-effect img{
@@ -121,8 +123,13 @@ export default function Share() {
             .person-img {
                 position: absolute;
                 right: 0;
-                margin: 2rem;
+                margin: 9rem;
+                padding-left: 6rem;
                 bottom: 20px;
+                border-left: 2px solid rgba(255,255,255,.4);
+            }
+            .person-img img {
+              width: 600px;
             }
 
             .absolute-social-c {
@@ -187,8 +194,8 @@ export default function Share() {
             }
 
             .runes-effect {
-                bottom: 49%;
-                right: 29%;
+                left: 58%;
+               
             }
 
             .runes-effect img {
@@ -202,10 +209,12 @@ export default function Share() {
             .person-img {
                 right: 59px;
                 margin: 0;
-                bottom: 32px;
+                bottom: 250px;
+                border:none;
             }
             .person-img img {
                 height: 200px;
+                width: auto;
             }
           .absolute-social-c img {
             width: 60px;

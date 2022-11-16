@@ -28,22 +28,24 @@ const Dep = () => {
 
   const [baseURL, setBaseURL] = useState(null);
 
+  const merchandid = "456879856"
+
   const methods = [
     {
       id: "izipay",
       img_url: "/icons/methods/visa-mastercard.png",
       label: "Pago con tarjeta",
     },
-    {
-      id: "niubiz",
-      img_url: "/icons/methods/pagoefectivo.png",
-      label: "Pago Efectivo",
-    },
-    {
-      id: "niubiz2",
-      img_url: "/icons/methods/yapeplin.png",
-      label: "Pago con Yape o Plin",
-    }
+    // {
+    //   id: "niubiz",
+    //   img_url: "/icons/methods/pagoefectivo.png",
+    //   label: "Pago Efectivo",
+    // },
+    // {
+    //   id: "niubiz2",
+    //   img_url: "/icons/methods/yapeplin.png",
+    //   label: "Pago con Yape o Plin",
+    // }
 
     // {id:'paypal', img_url: '/icons/methods/paypal.png', label: 'Paypal'}
   ];
@@ -130,7 +132,7 @@ const Dep = () => {
     if (loading) {
     const options = {
       method: 'POST',
-      url: 'https://apisandbox.vnforappstest.com/api.ecommerce/v2/ecommerce/token/session/456879852',
+      url: `https://apisandbox.vnforappstest.com/api.ecommerce/v2/ecommerce/token/session/${merchandid}`,
       headers: {
         accept: 'application/json',
         'content-type': 'application/json',
@@ -183,22 +185,24 @@ const Dep = () => {
   }
 
   const openForm = () => { 
-      
     // Este formulario funciona y levanta correctamente pero redirecciona directamente a lo que esta en el action del form
     // la function complete no recibe el resultado del form. 
       VisanetCheckout.configure({
-        sessiontoken: 'b5bd42d67abb3da32a89a45e096338c993852c751c0b2868a10e133e6e4b638b', //lo tengo que retornar del back
+        sessiontoken: session, //lo tengo que retornar del back
         channel: 'web',
-        merchantid: '456879852', //numero de comercio
-        purchasenumber: '1667328361587',//'16673216591', //numero de compra
+        merchantid: merchandid, //numero de comercio
+        purchasenumber: '22619936666',//'16673216591', //numero de compra
         amount: `${monto}.00`, //monto de la compra
         expirationminutes: '20',
         timeouturl: 'about:blank',
-        merchantlogo: '/apuesta-logo.png',
+        merchantlogo: 'https://apuestadota.com/_next/image?url=%2Fapuesta-logo.png&w=256&q=75',
         formbuttoncolor: '#000000',
+        buttoncolor: 'navy',
         method: 'post',
+        cardholdername: user.name,
+        cardholderlastname: user.lastname,
+        cardholderemail:user.email,
         action: `${baseURL}/depositar`,
-        isrecurrence: false,
         complete: function (params) {
             console.log('print key complete: ',params);
         }
@@ -286,10 +290,35 @@ const Dep = () => {
     );
   };
 
+  const generQr = () => {
+    if (loading) {
+      const options = {
+        method: 'POST',
+        url: 'https://apitestenv.vnforapps.com/api.qr.manager/v1/qr/ascii',
+        headers: {
+          accept: 'application/json',
+          'content-type': 'application/json',
+          Authorization: token
+        },
+        data: {tagType: 'STATIC', validityDate: '30122022'}
+      };
+      
+      axios
+        .request(options)
+        .then(function (response) {
+          console.log(response.data);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+      }
+  }
+
   useEffect(() => {
     let s = new AppService();
     createToken()
     createOrder()
+    generQr()
     setBaseURL(s.getBaseUrl());
 
     s.makeGet("profile", {}, true).then((res) => {
@@ -464,7 +493,7 @@ const Dep = () => {
                   </form>
 
                   <p className="warning-text">
-                    Recuerda que el monto mínimo para recargar es de 10 $.
+                    Recuerda que el monto mínimo para recargar es de S/ 10.
                   </p>
                 </div>)
               }
@@ -483,7 +512,7 @@ const Dep = () => {
                       />
                       <button onClick={pagoEfectivo}> Paga con pago efectivo </button>
                     <p className="warning-text">
-                      Recuerda que el monto mínimo para recargar es de 10 $.
+                      Recuerda que el monto mínimo para recargar es de S/ 10.
                     </p>
                   </div>
                 </div>)}

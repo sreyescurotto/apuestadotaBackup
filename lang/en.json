@@ -18,7 +18,9 @@
         "section3subtitle": "BET AND MAKE THE MOST OF YOUR DOTA SKILLS",
         "info1": "First Click on Start",
         "info2": "Deposit from 10 PEN",
-        "info3": "Enjoy all your profits!"
+        "info3": "Enjoy all your profits!",
+        "victory": "Recent",
+        "recent" : "Victories"
     },
     "navbar": {
         "title": "WELCOME",
@@ -152,7 +154,7 @@
     },
     "withdraw": {
         "title": "Withdrawal your funds",
-        "hello": "Enter your withdrawal request",
+        "hello": "Enter the amount you want to withdraw",
         "accNum": "Account Number:",
         "accCCI": "Interbank Code:",
         "nameA": "Holder's full name:",

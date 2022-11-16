@@ -18,7 +18,9 @@
         "section3subtitle": "APUESTA Y APROVECHA AL MAXIMO TUS HABILIDADES DOTERAS.",
         "info1": "Dale click en Empezar",
         "info2": "Deposita desde 10 PEN",
-        "info3": "Disfruta tus ganancias"
+        "info3": "Disfruta tus ganancias",
+        "victory": "Victorias",
+        "recent" : "Recientes"
     },
     "navbar": {
         "title": "BIENVENIDO",
@@ -152,7 +154,7 @@
     },
     "withdraw": {
         "title": "Retiro de fondos",
-        "hello": "Ingresa tu solicitud de retiro",
+        "hello": "Ingresa el monto que deseas retirar",
         "accNum": "Número de cuenta:",
         "accCCI": "Código Interbancario:",
         "nameA": "Nombre completo del titular:",

@@ -15,17 +15,30 @@ const Leftbar = (props) => {
   const leftbar = props.leftbar
 
   const router = useRouter();
-  
-  const [saldo, setSaldo] = useState(leftbar.loading);
 
-  const [saldoPrueba, setSaldoPrueba] = useState(leftbar.loading);
+
+  
+  const [saldo, setSaldo] = useState(()=> {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('saldo');
+      const initialValue = JSON.parse(saved);
+      return initialValue || leftbar.loading;
+    }   
+  });
+
+  const [saldoPrueba, setSaldoPrueba] = useState(()=> {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('saldoPrueba');
+      const initialValue = JSON.parse(saved);
+      return initialValue || leftbar.loading;
+    }   
+  });
 
   const [charging, setCharging] = useState(false);
 
   const [test2, setTest2] = useState(false);
 
-
-
+  
   const depositarPrueba = () => {
     if (charging) return;
 
@@ -51,8 +64,6 @@ const Leftbar = (props) => {
       });
   };
 
-
-
   useEffect(() => {
     let s = new AppService();
 
@@ -68,7 +79,15 @@ const Leftbar = (props) => {
       setSaldo("...");
       setSaldoPrueba("...");
     }
-  }, []);
+    localStorage.setItem("saldo", saldo);
+    localStorage.setItem("saldoPrueba", saldoPrueba);
+    
+  }, [saldo, saldoPrueba]);
+
+
+
+
+  
 
 const routePractice = () => {
   router.push("/play/practice");
@@ -95,12 +114,7 @@ const routeReal = () => {
               <h3 className="left-container-h3 real-acc">{leftbar.realAcc}</h3>
 
               <h3 className="left-container-h3 left-flex-container-h real-acc">
-                <Image
-                  src="/icons/currency-usd-g.png"
-                  className="dollar--svg"
-                  width={24}
-                  height={24}
-                />
+                S/.
                 <span className="fontw-l"> {saldo}</span>
               </h3>
             </div>
@@ -115,9 +129,8 @@ const routeReal = () => {
 
               <h3 className="left-container-h3 left-flex-container-h">
            
-                <div className="dollar--svg"> 
-                  <Image src="/icons/currency-o.png"  width={24}
-                  height={24} alt='dollar'/>
+                <div className="dollar--svg orange"> 
+                  S/.
                 </div>
                 <span className="fontw-l orange"> {saldoPrueba}</span>
               </h3>
@@ -247,6 +260,10 @@ const routeReal = () => {
         {`
           .dollar--svg {
             height: 25px;
+          }
+
+          .orange {
+            color: rgba(242,92,4,1);
           }
 
           .right-arrow--svg {

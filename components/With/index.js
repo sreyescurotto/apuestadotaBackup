@@ -3,10 +3,12 @@ import React, { useState, useRef, useEffect } from "react";
 import Swal from "sweetalert2";
 
 import AppService from "../../services/app.service";
+import DepReq from "../DepReq";
 
 const With = (props) => {
 
   const withdraw = props.withdraw;
+  const profileProps = props.profile;
 
   const refM = useRef(null);
 
@@ -23,7 +25,6 @@ const With = (props) => {
   const [cci, setCii] = useState(" ");
 
   const [name, setName] = useState(" ");
-
 
   const [metodo, setMetodo] = useState("Transferencia");
 
@@ -163,49 +164,71 @@ const With = (props) => {
 
   return (
     <>
+    <div className="withdraw-main-container">
       <h2 className="intro-title">{withdraw.title}</h2>
 
       <div className="withdraw-container">
-        <h4> {withdraw.hello}</h4>
+        <div className="withdraw-flex-first">
 
+            <div className="text-w-intro">
+              <h3 className="subtitle-w">Hola 21, tu saldo actual es:</h3>
+              <span className="balance-w">S/ 66.60</span>
+            </div>
+            <h4> {withdraw.hello}</h4>  
+            <input 
+            className="input-amount-withdraw"
+            ref={refM}
+            onChange={handleChange}
+            value={monto}
+                    />
+            <div className="bottom-text">
+              <p className="text-t">{withdraw.text}</p>
+
+              <p className="text-t">
+                {withdraw.text2}
+              </p>
+
+              <p className="text-t">
+                {withdraw.text3}
+              </p>
+            </div>
+        </div>
+        
         <div className="withdraw-flex">
+          <h4>Ingresa los siguientes datos</h4>
           <div className="withdraw-flex-payment-main">
             <form onSubmit={retirar}>
               <div className="widthdraw-form">
                 <div className="withdraw-flex-payment-main-item">
-                  <label htmlFor="accNumber"> {withdraw.accNum} </label>
-
                   <input
                     type="number"
                     id="accNumber"
                     name="accNumber"
                     ref={refA}
                     onChange={handleChangeAcc}
+                    placeholder={withdraw.accNum}
                     required
                   />
                 </div>
 
                 <div className="withdraw-flex-payment-main-item">
-                  <label htmlFor="cciNumber">{withdraw.accCCI}</label>
-
                   <input
                     type="number"
                     id="cciNumber"
                     name="cciNumber"
                     ref={refC}
                     onChange={handleChangeCci}
+                    placeholder={withdraw.accCCI}
                     required
                   />
                 </div>
 
                 <div className="withdraw-flex-payment-main-item">
-                  <label htmlFor="name">{withdraw.nameA}</label>
-
                   <input
                     type="text"
                     id="name"
                     name="name"
-                   
+                    placeholder={withdraw.nameA}
                     ref={refN}
                     onChange={handleChangeName}
                     maxLength={30}
@@ -214,15 +237,12 @@ const With = (props) => {
                 </div>
 
                 <div className="withdraw-flex-payment-main-item">
-                  <label htmlFor="amount">{withdraw.amount}</label>
-
                   <input
                     type="number"
                     id="amount"
                     name="amount"
                     value={monto}
-                    ref={refM}
-                    onChange={handleChange}
+                    hidden
                     required
                   />
                 </div>
@@ -235,23 +255,24 @@ const With = (props) => {
           </div>
         </div>
 
-        <div className="bottom-text">
-          <p className="text-t">{withdraw.text}</p>
-
-          <p className="text-t">
-            {withdraw.text2}
-          </p>
-
-          <p className="text-t">
-            {withdraw.text3}
-          </p>
-        </div>
+        
       </div>
+
+      <DepReq  profile={profileProps}/>
+    </div>
+      
+      
 
       <style jsx>
         {`
+
+        .withdraw-main-container {
+          margin-bottom: 4rem;
+        }
           .intro-title {
             padding: 2rem;
+
+            text-align: center;
 
             font-size: 3.5rem;
 
@@ -261,7 +282,7 @@ const With = (props) => {
           }
 
           .withdraw-container {
-            max-width: 800px;
+            max-width: 1200px;
 
             margin: 0 auto;
 
@@ -270,6 +291,32 @@ const With = (props) => {
             background-color: #131e2fd9;
 
             border-radius: 10px;
+          }
+
+          .text-w-intro {
+            margin-bottom:2rem;
+          }
+
+          .subtitle-w {
+            font-size: 2.2rem;
+            letter-spacing: 0px;
+            line-height: 1.1;
+          }
+
+          .balance-w {
+            color: #b6ff40;
+            font-size: 2.5rem;
+            font-family: "Poppins";
+            margin: 0 0 0 7rem;
+          }
+
+          .withdraw-container {
+            display: flex;
+          }
+
+          .withdraw-flex-first {
+            width: 50%;
+           
           }
 
           .withdraw-container h4 {
@@ -285,47 +332,11 @@ const With = (props) => {
           .withdraw-flex {
             display: flex;
 
-            width: 100%;
+            width: 50%;
+
+            flex-direction: column; 
 
             justify-content: center;
-          }
-
-          .withdraw-flex-payment-method {
-            display: flex;
-
-            flex-direction: column;
-
-            font-family: "Teko", sans-serif;
-
-            color: #fff;
-
-            width: 33%;
-          }
-
-          .method-item {
-            display: flex;
-
-            flex-direction: row;
-
-            align-items: center;
-
-            gap: 10px;
-
-            padding: 1rem;
-
-            cursor: pointer;
-          }
-
-          .method-item:hover {
-            background-color: #1f2e44;
-
-            border-radius: 8px;
-          }
-
-          .method-item img {
-            width: 50px;
-
-            border-radius: 8px;
           }
 
           .widthdraw-form {
@@ -333,16 +344,20 @@ const With = (props) => {
 
             display: flex;
 
-            flex-direction: column;
-
-            align-items: center;
+            flex-direction: column;          
 
             padding-top: 0.5rem;
           }
 
-          .text-t {
-            color: rgba(255, 255, 255, 0.6);
+          .bottom-text {
+            margin-top: 1.5rem;
+          }
 
+          {/* color: rgba(255, 255, 255, 0.6); */}
+
+          .text-t {
+           
+            color: #b6ff40;
             font-family: "Teko", sans-serif;
           }
 
@@ -355,36 +370,41 @@ const With = (props) => {
           }
 
           .withdraw-flex-payment-main-item {
-            margin-bottom: 0.8rem;
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 5px;
-          }
-
-          .withdraw-flex-payment-main-item label {
-            color: rgba(255, 255, 255, 0.5);
-
-            font-family: "Teko", sans-serif;
+            margin-bottom: 1.4rem;
           }
 
           .withdraw-flex-payment-main-item input {
-            border-radius: 8px;
-
-            background-color: #1f2e44;
-
+            background-color: transparent;
             border: none;
-
+            border-bottom: 2px solid #b6ff40;
+            font-size: 1.2rem;
             height: 30px;
-
-            color: #fff;
-
+            color: white;
             padding: 0.5rem;
-
             margin-left: 1rem;
-          }
+            width: 90%;
+            font-family: "Roboto Mono", monospace;
+        }
+
+        .input-amount-withdraw {
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid #b6ff40;
+            width: 80%;
+            text-align: center;
+            color: white;
+            font-family: "Roboto Mono", monospace;
+            font-size: 2.5rem;
+        }
+        .input-amount-withdraw:focus {
+          
+          outline: none;
+        }
+          
+        .withdraw-flex-payment-main-item input::placeholder {
+    
+            color: white;
+        }
 
           .wallet-container {
             width: 300px;
@@ -394,10 +414,7 @@ const With = (props) => {
 
           .withdraw-flex-payment-main-item input:focus {
             font-family: "Roboto Mono", monospace;
-
-            outline: none;
-
-            background-color: #3c5376;
+            outline: none;        
           }
 
           @media screen and (max-width: 485px) {

@@ -1,11 +1,14 @@
 import React from 'react'
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import AppService from '../../services/app.service';
 import dayjs from "dayjs";
-import { set } from 'react-hook-form';
 
-export default function Banner() {
+
+export default function Banner(props) {
+
+    const home = props.props
+
     const dotaImageBase = "https://cdn.cloudflare.steamstatic.com";
 
     const [apuestas, setApuestas] = useState([]);
@@ -16,14 +19,14 @@ export default function Banner() {
 
     const [searching, setSearching] = useState(false);
 
-    const [cont, setCont] = useState(0);
+    const [cont, setCont] = useState(-1700);
 
 
     const updateCont = () => {
-        if(cont > -1700){
-            setCont(cont -170)
+        if(cont < 0){
+            setCont(cont + 170)
         } else {
-            setCont(0)
+            setCont(-1700)
         }
     }
 
@@ -92,7 +95,7 @@ export default function Banner() {
         const interval = setInterval(() => {
 
           updateCont()
-        }, 6000);
+        }, 2500);
         return () => clearInterval(interval);
       }, [cont]);
 
@@ -101,51 +104,55 @@ export default function Banner() {
   return (
     <>
         <div className='banner-container'>
+            
             <div className='container-bets'>
+            <div className='banner-text-c'>
+                <h2>{home.victory} <br/> {home.recent}</h2>
+            </div>
                 <div className='last-bets-c'>
-                <div className='last-bets-complete' style={
-                    {
-                        transform: `translateX(${cont}px)`
-                    }
-                }>
-                {!searching &&
-                    apuestas.map((apuesta) => { 
-                        return(
-                        <div className='item-00' key={"partida_" + apuesta.id}>
-                            <div className='item-border-bottom'>
-                                <div className='hero-c-img'>
-                                        <img
-                                        src={
-                                            dotaImageBase +
-                                            heroes[apuesta.match_hero_id]?.img
-                                        }
-                                        className="hero_img"
-                                        />
-                                </div>
-                                <div className='hero-description'>
-                                    
-                                    <p className='win-price '>
-                                    {
-                                        user[findIndex(apuesta.usuario_id)].nickname 
-                                    }
-                                     <br />+ S/ {apuesta.monto}</p>
-                                    <div className='ad-icon-c'>
-                                        <Image src='/icons/favicon/logo-gris.png' width={80} height={55} />
+                    <div className='last-bets-complete' style={
+                        {
+                            transform: `translateX(${cont}px)`
+                        }
+                    }>
+                    {!searching &&
+                        apuestas.map((apuesta) => { 
+                            return(
+                            <div className='item-00' key={"partida_" + apuesta.id}>
+                                <div className='item-border-bottom'>
+                                    <div className='hero-c-img'>
+                                            <img
+                                            src={
+                                                dotaImageBase +
+                                                heroes[apuesta.match_hero_id]?.img
+                                            }
+                                            className="hero_img"
+                                            />
                                     </div>
+                                    <div className='hero-description'>
+                                        
+                                        <p className='win-price '>
+                                        {
+                                            user[findIndex(apuesta.usuario_id)].nickname 
+                                        }
+                                        <br />+ S/ {apuesta.monto}</p>
+                                        <div className='ad-icon-c'>
+                                            <Image src='/icons/favicon/logo-gris.png' width={80} height={55} />
+                                        </div>
+                                    </div>
+                                </div>        
+                                <div className='person-info-content'>
+                                    <img src={ user[findIndex(apuesta.usuario_id)].foto } className='profile-img' alt='profile' />      
+                                    <h4 className='profile-nickname white'>{
+                                        user[findIndex(apuesta.usuario_id)].nickname 
+                                        }</h4>
+                                    <p className='profile-match'>Match ID: <br /> {apuesta.match_id}</p>
                                 </div>
-                            </div>        
-                            <div className='person-info-content'>
-                                <img src={ user[findIndex(apuesta.usuario_id)].foto } className='profile-img' alt='profile' />      
-                                <h4 className='profile-nickname white'>{
-                                    user[findIndex(apuesta.usuario_id)].nickname 
-                                    }</h4>
-                                <p className='profile-match'>Match ID: <br /> {apuesta.match_id}</p>
-                            </div>
-                        </div>)
-                    
-                    })
-                }     
-                </div>
+                            </div>)
+                        
+                        })
+                    }     
+                    </div>
                 </div>
             </div>
         </div>
@@ -160,15 +167,65 @@ export default function Banner() {
 .container-bets {
     display: flex;
     padding: 0 50px;
+    justify-content: center;
+   align-items: center;
+   
+}
+.banner-text-c {
+    
+    
+    width: 300px;
+    height: 164px;
+    --border-width: 3px;
+    overflow: hidden;
+    position: relative;
+    background-color: rgba(128,0,128, .5);
     
 }
+
+.banner-text-c h2 {
+    text-shadow: 3px 3px 4px #000;
+    font-size: 3.7rem;
+    font-family: "Bebas Neue", cursive;
+    text-align: center;
+    color: #fff;
+    line-height: 1;
+    margin-top: 25px;
+}
+
+.banner-text-c::after {
+    position: absolute;
+    content: "";
+    top: calc(-1 * var(--border-width));
+    left: calc(-1 * var(--border-width));
+    z-index: -1;
+    width: calc(100% + var(--border-width) * 2);
+    height: calc(100% + var(--border-width) * 2);
+    background: linear-gradient(
+      60deg,
+      hsl(224, 85%, 66%),
+      hsl(269, 85%, 66%),
+      hsl(314, 85%, 66%),
+      hsl(359, 85%, 66%),
+      hsl(44, 85%, 66%),
+      hsl(89, 85%, 66%),
+      hsl(134, 85%, 66%),
+      hsl(179, 85%, 66%)
+    );
+    background-size: 300% 300%;
+    background-position: 0 50%;
+    border-radius: calc(2 * var(--border-width));
+    animation: moveGradient 4s alternate infinite;
+
+    
+  }
             .last-bets-c {            
                 max-width: 1360px;
                 overflow:hidden;
                 position: relative;
                 --border-width: 3px;
                 border-right: 5px solid #2c62fe;
-                
+                background-color: rgba(128,0,128, .5);
             }   
             {/* 
              background-color: #1A1A1A; */}
@@ -199,7 +256,7 @@ export default function Banner() {
 
     
   }
-}
+
 
 @keyframes moveGradient {
   50% {
@@ -233,10 +290,6 @@ export default function Banner() {
               
             }
 
-            .item-00:hover .item-border-bottom {
-                
-            }
-
             .hero-description {
                 position: relative;
                 width: 100%;
@@ -268,7 +321,7 @@ export default function Banner() {
                 text-align: center;
                 position: absolute;
                 left: 0px;
-                text-shadow: 0px 0px 10px #000;
+                text-shadow: 3px 3px 4px #000;
                 margin: 2px 20px;
                
             }
@@ -280,18 +333,6 @@ export default function Banner() {
                 font-weight: 600;
                 
             }
-
-            {/* background: -webkit-linear-gradient(#FFFFFF 10%, #00A3D7 90%);
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                filter: drop-shadow(0px 0px 5px #0089d8); 
-                
-                   background: -webkit-linear-gradient(#FFFFFF 10%, #b6ff40 90%);
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                filter: drop-shadow(0px 0px 5px #b6ff40);*/}
 
             .hero-c-img {
                 width: 170px;
