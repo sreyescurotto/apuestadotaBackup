@@ -338,18 +338,13 @@ const With = (props) => {
             padding-top: 0.5rem;
           }
 
-          .bottom-text {
-            margin-top: 1.5rem;
-          }
+        
 
            {
             /* color: rgba(255, 255, 255, 0.6); */
           }
 
-          .text-t {
-            color: #b6ff40;
-            font-family: "Teko", sans-serif;
-          }
+        
 
           .w-margin {
             margin-top: 1rem;

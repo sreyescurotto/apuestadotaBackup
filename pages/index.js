@@ -47,7 +47,6 @@ const Home = (props) => {
       const { y, x } = hand1.getBoundingClientRect();
       const minusY = yAxi + y;
       const minusX = xAxi + y * 0.14;
-      console.log(x, y, minusY);
 
       if (minusY > 0) {
         setyAxi(minusY);

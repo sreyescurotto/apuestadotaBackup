@@ -195,19 +195,7 @@ const Solo = (props) => {
     }
   };
 
-  const obtenerSaldo = () => {
-    let s = new AppService();
 
-    if (s.getUser() !== null) {
-      s.makeGet("saldo", {}, true).then((resp) => {
-        setSaldo(resp.data.saldo);
-      });
-    }
-  };
-
-  useEffect(() => {
-    obtenerSaldo();
-  }, []);
 
  
 

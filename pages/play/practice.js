@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../../components/Layout/Layout';
 import ModePractice from '../../components/Practice';
+import Test from '../../components/Test';
 
 
 export async function getStaticProps({ locale }) {
@@ -21,7 +22,7 @@ const Practice = (props) => {
         <>
             <Layout layout={layout} navbar={navbar} leftbar={leftbar}>
                 <div className='interface'>
-                    <ModePractice play={play} profile={profile}/>
+                    <Test play={play} profile={profile}/>
                 </div>
             </Layout>
             <style jsx>

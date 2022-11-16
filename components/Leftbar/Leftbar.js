@@ -18,21 +18,31 @@ const Leftbar = (props) => {
 
 
   
-  const [saldo, setSaldo] = useState(()=> {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('saldo');
-      const initialValue = JSON.parse(saved);
-      return initialValue || leftbar.loading;
-    }   
-  });
+  // const [saldo, setSaldo] = useState(()=> {
+  //   if (typeof window !== 'undefined') {
+  //     if(localStorage.getItem('saldo') != "oo"){
+  //       const saved = localStorage.getItem('saldo');
+  //       const initialValue = JSON.parse(saved);
+  //       return initialValue;
+  //       } else {
+  //       return leftbar.loading;
+  //     }
+  //   }   
+  // });
+  const [saldo, setSaldo] = useState(leftbar.loading);
+  const [saldoPrueba, setSaldoPrueba] = useState(leftbar.loading);
 
-  const [saldoPrueba, setSaldoPrueba] = useState(()=> {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('saldoPrueba');
-      const initialValue = JSON.parse(saved);
-      return initialValue || leftbar.loading;
-    }   
-  });
+  // const [saldoPrueba, setSaldoPrueba] = useState(()=> {
+  //   if (typeof window !== 'undefined') {
+  //     if(localStorage.getItem('saldoPrueba') != "oo"){
+  //     const saved = localStorage.getItem('saldoPrueba');
+  //     const initialValue = JSON.parse(saved);
+  //     return initialValue;
+  //     } else {
+  //     return leftbar.loading;
+  //   }
+  //   }   
+  // });
 
   const [charging, setCharging] = useState(false);
 
@@ -82,7 +92,9 @@ const Leftbar = (props) => {
     localStorage.setItem("saldo", saldo);
     localStorage.setItem("saldoPrueba", saldoPrueba);
     
-  }, [saldo, saldoPrueba]);
+  }, []);
+
+
 
 
 

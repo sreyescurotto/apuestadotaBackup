@@ -625,22 +625,26 @@ input[type=number] {
 
 .mode--solo {
   position: relative;
-  max-width: 1040px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 48px 20px;
 }
 
-.solo--title {
-  margin-bottom: 16px;
+.mode--solo--c {
+  display:flex;
+  flex-direction: row-reverse;
+  
 }
 
-.solo--title h3 {
+.solo--title {
+  margin-bottom: 16px;
   color: rgba(255, 255, 255, 1);
   font-size: 2.25rem;
   font-family: "Teko", sans-serif;
   text-transform: uppercase;
   text-shadow: 2px 2px 2px #000;
 }
+
 
 .solo--item {
   position: relative;
@@ -650,11 +654,18 @@ input[type=number] {
   border: 1px solid #25273d;
   border-radius: 2px;
   box-shadow: 0 8px 16px -4px rgb(0 0 0 / 27%);
-  display: grid;
   padding-right: 30px;
-  grid-gap: 30px;
-  grid-template: minmax(340px, 400px) / 690px auto;
   border-radius: 3px;
+}
+
+.bottom-text {
+  margin-top: 1.5rem;
+}
+
+.text-t {
+  color: #62ff18;
+  font-family: "Teko", sans-serif;
+  font-size: 1.3rem;
 }
 
 .solo--item--i {
@@ -868,17 +879,17 @@ input[type=number] {
 }
 
 .start-game-btn {
-  background-color: #b6ff40;
+  background-color: #62ff18;
   color: #081325;
   border: none;
-  border-radius: 15px;
+  border-radius: 10px;
   font-size: 22px;
   line-height: 28px;
   width: 370px;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.4rem;
-  padding-bottom: 0.4rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-family: "Roboto Mono", monospace;
   text-transform: uppercase;
   transition: all 0.3s ease;
@@ -1298,13 +1309,14 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 }
 
 .mode-solo-amount-inp {
-  background-color: #0e1018;
-  width: 320px;
+  background-color: #62ff18;
+  width: 360px;
   border-radius: 10px;
   margin-bottom: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
   position: relative;
+  margin: 0 auto;
 }
 
 .mode-test-active {
@@ -1356,7 +1368,7 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 }
 
 .dollarsign {
-  color: white;
+  color: #000;
   font-size: 22px;
   position: absolute;
   left: 35%;
@@ -1395,7 +1407,6 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 
 .mode-create-lobby {
   padding: 68px 40px;
-  margin-top: 6%;
   position: relative;
   z-index: 10;
 }
@@ -1418,7 +1429,7 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 
 .inputBetAmount {
   background: transparent;
-  color: #fff;
+  color: #000;
   border: none;
   text-align: center;
   width: 100%;
@@ -1442,7 +1453,8 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 
 .terms-container label {
   color: rgba(255, 255, 255, 0.6);
-  font-size: 14px;
+  font-size: 16px;
+  font-family: "Teko", sans-serif;
 }
 
 .terms-container label a {
@@ -1540,8 +1552,8 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 
 .controls-abs {
   position: absolute;
-  top: 160px;
-  left: 332px;
+  top: 45%;
+  left: 45%;
   cursor: pointer;
 }
 
