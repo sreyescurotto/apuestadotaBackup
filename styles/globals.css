@@ -143,6 +143,10 @@ li {
   object-fit: cover;
 }
 
+.mode-bets-a {
+  padding: 2rem 3rem;
+} 
+
 .user-name {
   color: #fff;
   font-family: "Poppins";
@@ -663,7 +667,7 @@ input[type=number] {
 }
 
 .text-t {
-  color: #62ff18;
+  color: #b6ff40;
   font-family: "Teko", sans-serif;
   font-size: 1.3rem;
 }
@@ -879,7 +883,7 @@ input[type=number] {
 }
 
 .start-game-btn {
-  background-color: #62ff18;
+  background-color: #b6ff40;
   color: #081325;
   border: none;
   border-radius: 10px;
@@ -1309,7 +1313,7 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 }
 
 .mode-solo-amount-inp {
-  background-color: #62ff18;
+  background-color: #b6ff40;
   width: 360px;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -1452,13 +1456,15 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 }
 
 .terms-container label {
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 18px;
   font-family: "Teko", sans-serif;
+  letter-spacing: 1px;
 }
 
 .terms-container label a {
   color: #fff;
+  font-weight: 700;
 }
 
 .terms-container {
@@ -1469,6 +1475,13 @@ MEDIA QUERY MAXW WIDTH 415PX  */
   width: 480px;
 }
 
+.real-acc {
+  color: #b6ff40!important;
+}
+
+.orange {
+  color: rgba(242,92,4,1)!important;
+}
 
 /* cerrar */
 
@@ -1660,9 +1673,12 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 
 @media (max-width: 485px) {
   .mode-create-lobby {
-    margin-top: 70%;
-    padding: 50px 40px;
+
+    padding: 50px 0px;
     overflow: auto;
+  }
+  .mode-solo-amount-inp {
+    width: 100%;
   }
 
   .mode-solo.amount h3 {
@@ -1680,6 +1696,7 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 
   .mode--solo--c {
     overflow-x: auto;
+    flex-direction: column;
   }
 
   .terms-container {

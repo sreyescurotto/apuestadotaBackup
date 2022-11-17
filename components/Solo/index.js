@@ -12,18 +12,15 @@ import AppService from "../../services/app.service";
 
 import Swal from "sweetalert2";
 
-
 const Solo = (props) => {
+  const play = props.play;
 
-  const play = props.play
-
-  const profile = props.profile
+  const profile = props.profile;
 
   const router = useRouter();
+  console.log(router.pathname);
 
   const [user, setUser] = useState(null);
-
-  const [active, setActive] = useState(false);
 
   const [terms, setTerms] = useState(false);
 
@@ -35,7 +32,7 @@ const Solo = (props) => {
 
   const [saldoPrueba, setSaldoPrueba] = useState("Cargando ...");
 
-  const [bet, setBet] = useState(10);
+  const [bet, setBet] = useState(0);
 
   const [loadApuestas, setLoadApuestas] = useState(false);
 
@@ -58,7 +55,7 @@ const Solo = (props) => {
         setSaldo(res.data.saldo);
         setSaldoPrueba(res.data.saldo_prueba);
       });
-      s.makePut("saldo/switch", { switch: 0 }, true)
+      s.makePut("saldo/switch", { switch: 0 }, true);
     }
   }, []);
 
@@ -74,25 +71,10 @@ const Solo = (props) => {
     setRules(checked);
   };
 
-
-
-
-  const handleClick = (event) => {
-    user !== null ? setActive((current) => !current) : router.push("/login");
-  };
-
   const handleInputMonto = (event) => {
     const n = parseInt(event.target.value);
     const b = event.target.value;
-    b.length > 4 ? setBet(100): setBet(n);
-  };
-
-
-  const decreaseBet = () => {
-    setBet((current) => current - 1);
-  };
-  const increaseBet = () => {
-    setBet((current) => current + 1);
+    b.length > 4 ? setBet(100) : setBet(n);
   };
 
   const handlePlay = () => {
@@ -183,7 +165,6 @@ const Solo = (props) => {
                 "No se pudo realizar la apuesta porque debes compartir tus estadísticas en Dota2. En el siguiente video te enseñamos a hacerlo."
               ) {
                 setTimeout(() => {
-                  
                   location.replace("/exposeData#video");
                 }, 1000);
               } else {
@@ -193,14 +174,6 @@ const Solo = (props) => {
           });
       }
     }
-  };
-
-
-
- 
-
-  const closeBetW = (e) => {
-    setActive(false);
   };
 
 
@@ -217,264 +190,195 @@ const Solo = (props) => {
 
     setTimeout(() => {
       setLoadApuestas(true);
-
-      
     }, 1000);
   }, []);
 
   return (
     <>
-      <div
-        className={
-          active ? "scaleuptr visible menu-bet" : "scaledowntop menu-bet"
-        }
-      >
-        <div className="sss" onClick={closeBetW}></div>
-
-        <div className="mode-create-lobby normal-lobby">
-          <img
-            src="/icons/close-w.png"
-            alt="close"
-            id="closebutton"
-            onClick={handleClick}
-          />
-
-          <div className="mode-test-active">{play.modeNormal}</div>
-
-          <h4 className="mb-sm subtitle-modes">{play.modesubtitle}</h4>
-
-          <div className="mode-solo-amount">
-            <div className="mode-solo-amount-inp">
-              <h3>{play.modeAmount}:</h3>
-
-              <span className="dollarsign">S/</span>
-
-              <input
-                className="inputBetAmount"
-                type="number"
-                onChange={handleInputMonto}
-                value={bet}
-                max="500"
-                min="0"
-              />
-            </div>
-
-            <div className="mode-solo-amount-btn">
-              <button
-                className="large-btn"
-                onClick={increaseBet}
-                disabled={bet >= 500}
-              >
-                +
-              </button>
-
-              <button
-                className="large-btn"
-                onClick={decreaseBet}
-                disabled={bet <= 1}
-              >
-                -
-              </button>
-            </div>
-
-            <div className="terms-container">
-              <input
-                type="checkbox"
-                id="terms"
-                name="terms"
-                onChange={checkboxChange}
-              />
-
-              <label className="checkbox-terms" htmlFor="terms">
-                {play.modeTerms}
-                <a href="/rules">{play.modeTerms1}</a>
-              </label>
-            </div>
-            <div className="terms-container">
-              <input
-                type="checkbox"
-                id="rules"
-                name="rules"
-                onChange={checkboxRule}
-              />
-
-              <label className="checkbox-terms" htmlFor="terms">
-                {play.modeTerms2}
-              </label>
-            </div>
-          </div>
-
-          <div className="start-game-btn-container">
-            <button className="start-game-btn" onClick={apostar}>
-              {searching ? "Procesando apuesta..." : 
-                play.bet
-              }
+      <div className="mode--solo">
+        <div className="balance-container">
+          {user !== null && (
+            <button className="btn btn-md welcomebtn">
+              {play.welcome} {user?.nickname}
             </button>
+          )}
+
+          <h3>{play.balance}</h3>
+          <div className="pad--s" onClick={handleClick3}>
+            <div className="pad--int active-mode">
+              <h3 className="left-container-h3 real-acc">{play.realacc}</h3>
+              <h3 className="left-container-h3 left-flex-container-h real-acc">
+                S/
+                <span className="fontw-l"> {saldo}</span>
+              </h3>
+            </div>
           </div>
 
-          <div>
-            <h4 className="mb-sm subtitle-modes lighterr">
-              {play.betdetails}
-            </h4>
+          <div className="pad--s" onClick={handleClick2}>
+            <div className="pad--int">
+              <h3 className="left-container-h3 orange">{play.practiceacc}</h3>
 
-            <div className="profit-container">
-              <h4 className="subtitle-modes lighterr">
-                {play.betdetails2} <span className="bold">+ 40%</span>
-              </h4>
-
-              <h4 className="subtitle-modes lighterr">
-                {play.betdetails3}
-                <span className="bold">+ S/ {(bet * 0.4).toFixed(2)}</span>
-              </h4>
-
-              <h4 className="subtitle-modes lighterr">
-                {play.betdetails4}
-                <span className="bold">S/ {(bet * 1.4).toFixed(2)}</span>
-              </h4>
+              <h3 className="left-container-h3 left-flex-container-h orange">
+                S/
+                <span className="fontw-l"> {saldoPrueba}</span>
+              </h3>
             </div>
           </div>
         </div>
-      </div>
-      <div className="mode--solo">
+
         <div className="mode--solo--c">
-          <div className="solo--title">
-            <h3>{play.title}</h3>
-          </div>
+          <div>
+            <h2 className="solo--title">
+              ¿Cómo jugar?, Mira el siguiente video
+            </h2>
+            <div className="solo--item">
+              <div className="solo--item--i">
+                <div className="solo--item--video">
+                  <video
+                    preload="auto"
+                    className="solo--item--vv"
+                    ref={videoRef}
+                    onClick={handlePlay}
+                  >
+                    <source src="/tutorial/pruebavideo.mp4" type="video/mp4" />
+                  </video>
 
-          <div className="balance-container">
-            {user !== null && (
-              <button className="btn btn-md welcomebtn">
-                {play.welcome} {user?.nickname}
-              </button>
-            )}
-
-            <h3>{play.balance}</h3>
-            <div className="pad--s" onClick={handleClick3}>
-              <div className="pad--int active-mode">
-                <h3 className="left-container-h3 real-acc">{play.realacc}</h3>
-                <h3 className="left-container-h3 left-flex-container-h real-acc">
-                  
-
-                <Image
-                  src="/icons/currency-usd-g.png"
-                  className="dollar--svg"
-                  width={24}
-                  height={24}
-                />
-                  <span className="fontw-l"> {saldo}</span>
-                </h3>
-              </div>
-            </div>
-
-            <div className="pad--s" onClick={handleClick2}>
-              <div className="pad--int">
-                <h3 className="left-container-h3 orange">
-                  {play.practiceacc}
-                </h3>
-
-                <h3 className="left-container-h3 left-flex-container-h">
-                  <img
-                    src="/icons/currency-o.png"
-                    className="dollar--svg"
-                  ></img>
-                  <span className="fontw-l orange"> {saldoPrueba}</span>
-                </h3>
-              </div>
-            </div>
-          </div>
-
-          <div className="solo--item">
-            <div className="solo--item--i">
-              <div className="solo--item--video">
-                <video
-                  preload="auto"
-                  className="solo--item--vv"
-                  ref={videoRef}
-                  onClick={handlePlay}
-                >
-                  <source src="/tutorial/pruebavideo.mp4" type="video/mp4" />
-                </video>
-
-                <div onClick={handlePlay} className="controls-abs">
-                  {isPlaying ? (
-                    <div className="controls-play"> 
-                    <Image
-                      src="/icons/controls/stop.png"
-                      height={50}
-                        width={50}
-                        alt="stop"
-                    />
-                    </div>
-                  ) : (
-                    <div className="controls-pause">
-                    <Image
-                      src="/icons/controls/play.png"
-
-                      height={50}
-                        width={50}
-                        alt="play"
-                    />
-                    </div>
-                  )}
+                  <div onClick={handlePlay} className="controls-abs">
+                    {isPlaying ? (
+                      <div className="controls-play">
+                        <Image
+                          src="/icons/controls/stop.png"
+                          height={50}
+                          width={50}
+                          alt="stop"
+                        />
+                      </div>
+                    ) : (
+                      <div className="controls-pause">
+                        <Image
+                          src="/icons/controls/play.png"
+                          height={50}
+                          width={50}
+                          alt="play"
+                        />
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-                <div onClick={openFullscreen}
-                    className="expand-button">
-                    <Image
+
+                <div onClick={openFullscreen} className="expand-button">
+                  <Image
                     src="/icons/controls/arrow-expand.png"
-                    
                     height={50}
                     width={50}
-                />
+                  />
                 </div>
-              
+              </div>
+            </div>
+            <div className="bottom-text">
+              <p className="text-t">
+                Te pagamos el 40% de tu apuesta por cada partida ganada.
+              </p>
+              <p className="text-t">
+                Solo estan permitidas las partidas Ranekd individual.
+              </p>
+              <p className="text-t">
+                Una vez ejecutada la apuesta tienes 25 minutos para empezar a
+                jugar.
+              </p>
+            </div>
+          </div>
+
+          <div className="mode-create-lobby">
+            {/* <h3 className="solo--title">{play.title}</h3> */}
+
+            <div className="mode-test-active">{play.modeNormal}</div>
+
+            <h4 className="mb-sm subtitle-modes">{play.modesubtitle}</h4>
+
+            <div className="mode-solo-amount">
+              <div className="mode-solo-amount-inp">
+                <span className="dollarsign">S/</span>
+
+                <input
+                  className="inputBetAmount"
+                  type="number"
+                  onChange={handleInputMonto}
+                  value={bet}
+                  autoFocus
+                />
+              </div>
+
+              <div className="terms-container">
+                <input
+                  type="checkbox"
+                  id="terms"
+                  name="terms"
+                  onChange={checkboxChange}
+                />
+
+                <label className="checkbox-terms" htmlFor="terms">
+                  {play.modeTerms}
+                  <a href="/rules">{play.modeTerms1}</a>
+                </label>
+              </div>
+
+              <div className="terms-container">
+                <input
+                  type="checkbox"
+                  id="rules"
+                  name="rules"
+                  onChange={checkboxRule}
+                />
+
+                <label className="checkbox-terms" htmlFor="terms">
+                  {play.modeTerms2}
+                </label>
+              </div>
             </div>
 
-            <div className="solo--item-content">
-              <div className="solo--item-content-head">
-                <span>{play.subtitle}</span>
+            <div className="start-game-btn-container">
+              <button className="start-game-btn" onClick={apostar}>
+                {searching ? "Procesando apuesta..." : play.bet}
+              </button>
+            </div>
 
-                <h2>{play.subtitle2}</h2>
-              </div>
+            <div>
+              <h4 className="mb-sm subtitle-modes lighterr">
+                {play.betdetails}
+              </h4>
 
-              <div className="solo--item-content-desc">
-                <p>
-                  {play.subtitle3}
-                  <br></br>
-                  {play.subtitle4}
-                </p>
-              </div>
+              <div className="profit-container">
+                <h4 className="subtitle-modes lighterr">
+                  {play.betdetails2} <span className="bold">+ 40%</span>
+                </h4>
 
-              <div className="solo--item-content-button">
-                <a
-                  href="#"
-                  className="solo--btn-c"
-                  id="openbutton"
-                  onClick={handleClick}
-                >
-                  {play.start}
-                </a>
+                <h4 className="subtitle-modes lighterr">
+                  {play.betdetails3}
+                  <span className="bold">
+                    + S/ {bet > 0 ? (bet * 0.4).toFixed(2) : "00"}
+                  </span>
+                </h4>
+
+                <h4 className="subtitle-modes lighterr">
+                  {play.betdetails4}
+                  <span className="bold">
+                    S/ {bet > 0 ? (bet * 1.4).toFixed(2) : "00"}
+                  </span>
+                </h4>
               </div>
             </div>
           </div>
         </div>
 
-        <br />
-        <br />
-        <br />
+        <div>
+          <h3 className="solo--title"> {play.betsmade}</h3>
 
-        <div className="mode--solo--c">
-          <div className="solo--title">
-            <h3>{play.betsmade}</h3>
-          </div>
           <div className="solo--content">
-          {loadApuestas && <Apuestas  profile={profile}/>}
-          
+            {loadApuestas && <Apuestas profile={profile} />}
           </div>
         </div>
       </div>
-
-  
     </>
   );
 };

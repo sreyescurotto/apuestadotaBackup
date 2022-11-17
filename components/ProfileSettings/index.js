@@ -265,14 +265,9 @@ const ProfileSettings = (props) => {
         </div>
 
         <div className={extra ? "d-block" : "d-none"}>
-          <div className="mode--solo--c">
-            <div className="solo--title">
-              <h3>{profileProps.betsmade}</h3>
-            </div>
-
-            <div className="solo--content">
+          <div className="mode-bets-a">
+              <h3 className="solo--title">{profileProps.betsmade}</h3>
               <ApuestasAll profile={profileProps}/>
-            </div>
           </div>
         </div>
 
@@ -527,7 +522,7 @@ const ProfileSettings = (props) => {
 
             list-style: none;
 
-            border-bottom: 2px solid #23272f;
+            border-bottom: 2px solid #fff;
 
             justify-content: space-around;
           }
@@ -545,7 +540,7 @@ const ProfileSettings = (props) => {
           }
 
           .tab-active {
-            border-bottom: 5px solid #2c62fe;
+            border-bottom: 5px solid #fff;
           }
 
           .profile-sub-title {
@@ -747,6 +742,8 @@ const ProfileSettings = (props) => {
 
             opacity: 0;
           }
+
+       
 
            {
             /* MEDIA QUERYS */

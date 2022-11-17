@@ -20,11 +20,9 @@ const ReferidosAll = () => {
     }, []);
 
     return <>
-        <div className="mode--solo--c">
-            <div className="solo--title"> 
-                <h3>Mis referidos</h3>
-            </div>
-            <div className="solo--content">
+        <div className="mode-bets-a">
+                <h3 className="solo--title">Mis referidos</h3>
+            <div >
                 <table className='desktop-table'>
                     <thead>
                         <tr>

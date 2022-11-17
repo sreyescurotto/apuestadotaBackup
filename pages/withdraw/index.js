@@ -29,7 +29,7 @@ const Withdraw = (props) => {
       <style jsx>
         {`
           .interface {
-            background-image: url("/heros/storm.jpg");
+            background-image: linear-gradient(180deg, rgba(101,35,255,1) 0%, rgba(101,35,252,1) 24%, rgba(101,8,255,1) 42%, rgba(101,0,232,1) 56%, rgba(101,1,212,1) 66%, rgba(101,3,201,1) 75%, rgba(101,2,182,1) 81%, rgba(101,2,162,1) 87%, rgba(101,1,144,1) 92%, rgba(101,1,133,1) 100%);
           }
         `}
       </style>

@@ -94,13 +94,6 @@ const Leftbar = (props) => {
     
   }, []);
 
-
-
-
-
-
-  
-
 const routePractice = () => {
   router.push("/play/practice");
 }
@@ -123,7 +116,7 @@ const routeReal = () => {
               switchSaldo(0);
             }} */}
             <div className={router.pathname == '/play/normal' ?   "pad--int active-mode" : "pad--int"}>
-              <h3 className="left-container-h3 real-acc">{leftbar.realAcc}</h3>
+              <h3 className="left-container-h3">{leftbar.realAcc}</h3>
 
               <h3 className="left-container-h3 left-flex-container-h real-acc">
                 S/.
@@ -148,15 +141,6 @@ const routeReal = () => {
               </h3>
             </div>
           </div>
-
-          {/* <div className="reloadpng" onClick={depositarPrueba}>
-            <Image
-              src="/icons/reload.png"   
-              width={24}
-              height={24}
-            />
-          </div> */}
-
         </div>
 
         <div className="left-container-body">
@@ -274,9 +258,8 @@ const routeReal = () => {
             height: 25px;
           }
 
-          .orange {
-            color: rgba(242,92,4,1);
-          }
+        
+          
 
           .right-arrow--svg {
             height: 18px;

@@ -178,6 +178,8 @@ const With = (props) => {
               ref={refM}
               onChange={handleChange}
               value={monto}
+              type="number"
+              autoFocus
             />
             <div className="bottom-text">
               <p className="text-t">{withdraw.text}</p>
@@ -251,7 +253,10 @@ const With = (props) => {
           </div>
         </div>
 
+        <div className="mode-bets-a ">
+
         <DepReq profile={profileProps} />
+        </div>
       </div>
 
       <style jsx>
@@ -338,13 +343,9 @@ const With = (props) => {
             padding-top: 0.5rem;
           }
 
-        
-
            {
             /* color: rgba(255, 255, 255, 0.6); */
           }
-
-        
 
           .w-margin {
             margin-top: 1rem;
@@ -403,9 +404,40 @@ const With = (props) => {
           @media screen and (max-width: 485px) {
             .withdraw-container {
               padding: 2rem 2rem 6.5rem;
+              flex-direction:column;
+            }
+            .withdraw-flex-first {
+              width: 100%;
+            }
+            .withdraw-flex {
+              width: 100%;
             }
             .widthdraw-form {
               width: 100%;
+            }
+
+            .subtitle-w {
+              font-size: 2rem;
+              margin-bottom: 10px;
+            }
+            .input-amount-withdraw {
+              width: 100%;
+              font-size: 2.2rem;
+            }
+            .bottom-text {
+              margin-bottom: 1.5rem;
+            }
+            .withdraw-flex-payment-main {
+              padding: .5rem 0;
+            }
+            .withdraw-flex-payment-main-item input {
+              width: 100%;
+              padding-left: 0;
+            }
+
+            .balance-w {
+              margin: 0 0 0 5rem;
+              font-size: 2.2rem;
             }
             .intro-title {
               font-size: 2.2rem;
