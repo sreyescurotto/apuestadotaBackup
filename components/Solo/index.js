@@ -18,7 +18,6 @@ const Solo = (props) => {
   const profile = props.profile;
 
   const router = useRouter();
-  console.log(router.pathname);
 
   const [user, setUser] = useState(null);
 
@@ -100,6 +99,9 @@ const Solo = (props) => {
   const apostar = () => {
     let _saldo = Number(saldo);
 
+    if (user == null){
+      router.push("/login");
+    } else {
     if (searching) {
     } else {
       // validar si cuenta con saldo
@@ -173,7 +175,7 @@ const Solo = (props) => {
             });
           });
       }
-    }
+    }}
   };
 
 
@@ -280,7 +282,7 @@ const Solo = (props) => {
                 Te pagamos el 40% de tu apuesta por cada partida ganada.
               </p>
               <p className="text-t">
-                Solo estan permitidas las partidas Ranekd individual.
+                Solo estan permitidas las partidas Ranked individual.
               </p>
               <p className="text-t">
                 Una vez ejecutada la apuesta tienes 25 minutos para empezar a

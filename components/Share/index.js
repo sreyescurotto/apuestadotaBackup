@@ -83,15 +83,15 @@ export default function Share() {
 
             .shareText h2 {
                 color: #b6ff40;
-                font-family: "Teko", sans-serif;
+                
                 width: 760px;
                 text-align: center;
-                font-size: 4.5rem;
+                font-size: 3.8rem;
                 line-height: 1.1;
             }
 
             .shareText p {
-                font-family: "Roboto Mono", monospace;
+              
                 font-size: 1.5rem;
                 width: 760px;
                 font-weight: 600;
@@ -143,7 +143,6 @@ export default function Share() {
         .absolute-text {
             position: absolute;
             color: #fff;
-            font-family: "Roboto Mono", monospace;
             font-size: 1.5rem;
             left: -20px;
             top: -20px;

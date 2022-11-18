@@ -91,8 +91,6 @@ export default function Referrals({ user, ...props }) {
 
           color: #fff;
 
-          font-family: "Poppins", sans-serif;
-
           font-size: 25px;
 
           text-align: center;
@@ -105,6 +103,11 @@ export default function Referrals({ user, ...props }) {
 
           margin: 0 auto;
         }
+        .referrals-section-c {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
 
         .referrals-step {
           display: flex;
@@ -115,9 +118,9 @@ export default function Referrals({ user, ...props }) {
         }
 
         .referrals-step-number {
-          border: 3px solid #000;
+          border: 3px solid var(--black);
 
-          background-color: #b6ff40;
+          background-color: var(--verde);
 
           border-radius: 12px;
 
@@ -131,8 +134,6 @@ export default function Referrals({ user, ...props }) {
         .referrals-step h4 {
           color: #fff;
 
-          font-family: "Poppins", sans-serif;
-
           font-size: 20px;
 
           cursor: none;
@@ -140,8 +141,6 @@ export default function Referrals({ user, ...props }) {
 
         .step-02 p {
           color: rgba(255, 255, 255, 0.7);
-
-          font-family: "Roboto Mono", monospace;
         }
 
         .white-span {
@@ -159,10 +158,6 @@ export default function Referrals({ user, ...props }) {
           margin-bottom: 16px;
         }
 
-        .referrals-code-sec p {
-          font-family: "Roboto Mono", monospace;
-        }
-
         .copy-success {
           position: absolute;
 
@@ -170,7 +165,7 @@ export default function Referrals({ user, ...props }) {
         }
 
         .referral-code-c {
-          background-color: #b6ff40;
+          background-color: var(--verde);
 
           display: flex;
 

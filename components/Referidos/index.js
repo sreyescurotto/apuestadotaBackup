@@ -23,7 +23,7 @@ const ReferidosAll = () => {
         <div className="mode-bets-a">
                 <h3 className="solo--title">Mis referidos</h3>
             <div >
-                <table className='desktop-table'>
+                <table className='desktop-table background-gradient-1'>
                     <thead>
                         <tr>
                             <th>Fecha</th>   
@@ -58,24 +58,7 @@ const ReferidosAll = () => {
                 margin-top: 20px;
                 width:100%;
             }
-            table {
-                border: 1px solid transparent;
-                border-radius: 8px;
-                background-image: linear-gradient(to bottom,#161629 32px,rgba(22,22,41,0));
-                border-image: linear-gradient(to bottom,rgba(255,255,255,.1),rgba(255,255,255,0));
-            }
-            th {
-                color: #fff;
-                opacity: 0.48;
-            }
-            td {
-                color: #fff;
-                text-align: center;
-                padding: 10px 20px;
-            }
-            th, td {
-                font-family: 'Roboto Mono', monospace;
-            }
+          
             .userinfo {
                 display: flex;
                 flex-direction: row;

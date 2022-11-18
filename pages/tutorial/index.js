@@ -119,7 +119,7 @@ export default function Tutorial(props) {
                 <div className="tutorial-p">
                   <p>
                   {tutorial.subtitle2}
-                    <span className="green">{tutorial.email}</span>
+                    <span className="green-b">{tutorial.email}</span>
                   </p>
                 </div>
               </div>
@@ -432,7 +432,6 @@ export default function Tutorial(props) {
 
             font-weight: 500;
 
-            font-family: "Poppins", sans-serif;
           }
 
           .box-terms {
@@ -451,8 +450,6 @@ export default function Tutorial(props) {
             background-color: #41b6e6;
 
             color: #fff;
-
-            font-family: "Poppins", sans-serif;
 
             padding: 1rem 2rem;
           }
@@ -488,11 +485,10 @@ export default function Tutorial(props) {
           }
 
           .box-item-anchor a {
-            color: #b6ff40;
+            color: var(--verde);
 
             text-decoration: none;
 
-            font-family: "Roboto Mono", monospace;
           }
 
           .box-item-a {
@@ -524,8 +520,6 @@ export default function Tutorial(props) {
           .faq-container-box-item-title h4 {
             color: #fff;
 
-            font-family: "Poppins", sans-serif;
-
             font-size: 22px;
 
             display: flex;
@@ -551,8 +545,6 @@ export default function Tutorial(props) {
             font-size: 16px;
 
             color: rgba(255, 255, 255, 0.8);
-
-            font-family: "Roboto Mono", sans-serif;
           }
 
           .faq-container-box-item-title {
@@ -602,8 +594,6 @@ export default function Tutorial(props) {
 
             font-weight: 500;
 
-            font-family: "Poppins", sans-serif;
-
             margin-bottom: 15px;
           }
 
@@ -615,8 +605,6 @@ export default function Tutorial(props) {
             font-size: 37px;
 
             font-weight: 500;
-
-            font-family: "Poppins", sans-serif;
 
             padding: 1rem 2rem;
 
@@ -640,7 +628,6 @@ export default function Tutorial(props) {
           .tutorial-p p {
             color: rgba(255, 255, 255, 0.8);
 
-            font-family: "Roboto-mono", sans-serif;
           }
 
           .img-prueba {
@@ -651,9 +638,7 @@ export default function Tutorial(props) {
             border-radius: 10px;
           }
 
-          .green {
-            color: #b6ff40;
-          }
+     
 
           @media only screen and (max-width: 1366px) { 
             .interface-item-02 {

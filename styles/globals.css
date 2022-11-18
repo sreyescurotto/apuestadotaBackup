@@ -1,17 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Aldrich&family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,700;1,800;1,900&family=Roboto+Mono:wght@300;400&family=Teko:wght@300;400;500;600;700&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 /* GENERALES  */
+:root {
+  --verde: #b6ff40;
+  --black: #081325;
+  --blue: #2c62fe;
+  --purple: #b28afd;
+  --title-size: 24px;
+  --subtitle-size: 16px;
+  --text: 14px;
+  --button-size: 18px;
+  --border-radius: 12px;
+  --button-weight: 600;
+  --border-width: 3px;
+}
 
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
   overflow: hidden;
   background-color: #081325;
+  
 }
 
 .logo {
@@ -36,7 +51,7 @@ a {
 }
 
 button {
-  font-family: "Bebas Neue", cursive;
+  /* font-family: "Bebas Neue", cursive; */
   cursor: pointer;
 }
 
@@ -149,7 +164,7 @@ li {
 
 .user-name {
   color: #fff;
-  font-family: "Poppins";
+  /* font-family: "Poppins"; */
   font-weight: 300;
   font-size: 15px;
 }
@@ -219,7 +234,7 @@ li {
     font-size: 1rem;
     line-height: 1.75rem;
     padding: 1.4rem 2rem;
-    font-family: "Roboto Mono", monospace;
+    /* font-family: "Roboto Mono", monospace; */
     letter-spacing: -0.4px;
   }
 
@@ -286,14 +301,15 @@ li {
   width: 300px;
   height: 70px;
   font-size: 28px;
-  background: linear-gradient(45deg, transparent 5%, #b6ff40 5%);
+  background: linear-gradient(45deg, transparent 5%, var(--verde) 5%);
   border: 0;
-  color: #000;
+  color: var(--black);
   letter-spacing: 3px;
   line-height: 70px;
   box-shadow: 6px 0px 0px #2c62fe;
   outline: transparent;
   position: relative;
+  font-weight: var(--button-weight);
 }
 
 .fixed-button::after {
@@ -380,12 +396,16 @@ li {
 .btn {
   padding: 0.8em 1.6em;
   border: none;
-  border-radius: 12px;
+  
   -webkit-transition: background-color 500ms linear;
   -ms-transition: background-color 500ms linear;
   transition: background-color 500ms linear;
-  font-size: 18px;
+  font-size: var(--button-size);
+  font-weight: var(--button-weight);
+  border-radius: var(--border-radius);
+
   margin: 3px 10px;
+
 }
 
 .btn-md {
@@ -425,16 +445,17 @@ li {
   font-size: 4.8em;
   font-weight: bold;
   margin-bottom: 0.5em;
-  font-family: "Poppins", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
   line-height: 75px;
   text-align: start;
 }
 
 .subtitle-1 {
-  font-size: 1.6em;
+  font-size: var(--title-size);
+  margin-top: .5rem;
   color: #fff;
   margin-bottom: 0.5em;
-  font-family: "Roboto Mono", monospace;
+  /* font-family: "Roboto Mono", monospace; */
   text-align: start;
 }
 
@@ -479,7 +500,7 @@ li {
 
 .poppins {
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
 }
 
 .hgray {
@@ -572,7 +593,7 @@ li {
 
 h3,
 h5 {
-  font-family: "Roboto Mono", monospace;
+  /* font-family: "Roboto Mono", monospace; */
 }
 
 input::-webkit-outer-spin-button,
@@ -644,7 +665,8 @@ input[type=number] {
   margin-bottom: 16px;
   color: rgba(255, 255, 255, 1);
   font-size: 2.25rem;
-  font-family: "Teko", sans-serif;
+  /* font-family: "Teko", sans-serif; */
+  font-weight: 900;
   text-transform: uppercase;
   text-shadow: 2px 2px 2px #000;
 }
@@ -668,8 +690,8 @@ input[type=number] {
 
 .text-t {
   color: #b6ff40;
-  font-family: "Teko", sans-serif;
-  font-size: 1.3rem;
+  /* font-family: "Teko", sans-serif; */
+  font-size: var(--subtitle-size);
 }
 
 .solo--item--i {
@@ -719,7 +741,7 @@ input[type=number] {
 .solo--item-content-head span {
   padding-bottom: 18px;
   font-size: 1.375rem;
-  font-family: "Teko", sans-serif;
+  /* font-family: "Teko", sans-serif; */
   line-height: 1.125rem;
   color: #3c5376;
 }
@@ -728,7 +750,7 @@ input[type=number] {
   color: rgba(255, 255, 255, 1);
   font-weight: 600;
   font-size: 1.25rem;
-  font-family: Poppins, sans-serif;
+  /* font-family: Poppins, sans-serif; */
   line-height: 1.625rem;
 }
 
@@ -740,7 +762,7 @@ input[type=number] {
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.875rem;
   line-height: 1.5rem;
-  font-family: Poppins, sans-serif;
+  /* font-family: Poppins, sans-serif; */
 }
 
 .solo--btn-c {
@@ -748,7 +770,7 @@ input[type=number] {
   font-size: 1.25rem;
   text-align: center;
   background-color: #98ea13;
-  font-family: "Teko", sans-serif;
+  /* font-family: "Teko", sans-serif; */
   width: 100%;
   display: flex;
   justify-content: center;
@@ -785,7 +807,7 @@ input[type=number] {
 }
 
 .mode-test h4 {
-  font-family: "Roboto Mono", monospace;
+  /* font-family: "Roboto Mono", monospace; */
   font-size: 18px;
 }
 
@@ -817,7 +839,7 @@ input[type=number] {
 
 .modes-container .mode-item h4 {
   color: #fff;
-  font-family: "Roboto Mono", monospace;
+  /* font-family: "Roboto Mono", monospace; */
   font-size: 18px;
 }
 
@@ -872,13 +894,13 @@ input[type=number] {
   position: relative;
   padding: 1rem;
   margin: 2.5rem 2rem;
-  background-color: #b6ff40;
-  color: #081325;
+  background-color: var(--verde);
+  color: var(--black);
   border: none;
-  border-radius: 4px;
-  font-family: "Roboto Mono", monospace;
-  font-size: 16px;
-  border-radius: 15px;
+  border-radius: var(--border-radius);
+  /* font-family: "Roboto Mono", monospace; */
+  font-size: var(--button-size);
+  font-weight: var(--button-weight);
   transition: all 0.3s ease;
 }
 
@@ -886,15 +908,16 @@ input[type=number] {
   background-color: #b6ff40;
   color: #081325;
   border: none;
-  border-radius: 10px;
-  font-size: 22px;
+  border-radius: var(--border-radius);
+  font-size: var(--button-size);
+  font-weight: var(--button-weight);
   line-height: 28px;
   width: 370px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 10px;
   padding-bottom: 10px;
-  font-family: "Roboto Mono", monospace;
+  /* font-family: "Roboto Mono", monospace; */
   text-transform: uppercase;
   transition: all 0.3s ease;
 }
@@ -921,7 +944,7 @@ input[type=number] {
   color: #fff;
   font-weight: 500;
   font-size: 12px;
-  font-family: "Roboto Mono", monospace;
+  /* font-family: "Roboto Mono", monospace; */
   letter-spacing: 0;
   text-align: center;
   line-height: 20px;
@@ -1003,7 +1026,7 @@ input[type=number] {
 /* ESTILOS TITLE RULES  */
 
 .sec-title-h {
-  font-family: "Teko", sans-serif;
+  /* font-family: "Teko", sans-serif; */
   font-size: 3.5rem;
   text-shadow: 2px 2px 2px #000;
 }
@@ -1045,6 +1068,10 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 
   #tsparticles {
     display: none;
+  }
+
+  .fixed-button-container {
+    right: 0!important;
   }
 
   .interface {
@@ -1295,8 +1322,8 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 .subtitle-modes {
   color: #fff;
   /* text-align: center; */
-  font-size: 25px;
-  font-family: "Roboto Mono", monospace;
+  font-size: var(--title-size);
+  /* font-family: "Roboto Mono", monospace; */
 }
 
 .mb-sm {
@@ -1313,9 +1340,9 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 }
 
 .mode-solo-amount-inp {
-  background-color: #b6ff40;
+ 
   width: 360px;
-  border-radius: 10px;
+ 
   margin-bottom: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -1329,7 +1356,7 @@ MEDIA QUERY MAXW WIDTH 415PX  */
   top: 0;
   margin: 14px 0;
   font-size: 20px;
-  font-family: "Roboto Mono", monospace;
+  /* font-family: "Roboto Mono", monospace; */
 }
 
 .mode-solo-amount div h3 {
@@ -1356,8 +1383,8 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 }
 
 .left-container-h3 {
-  font-size: 1.2rem;
-  font-family: "Teko", sans-serif;
+  font-size: 1rem;
+  /* font-family: "Teko", sans-serif; */
 }
 
 .large-btn {
@@ -1372,11 +1399,12 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 }
 
 .dollarsign {
-  color: #000;
-  font-size: 22px;
+  color: rgb(255, 255, 255);
+  font-size: var(--title-size);
   position: absolute;
+  font-weight: lighter;
   left: 35%;
-  font-family: "Roboto Mono", monospace;
+  /* font-family: "Roboto Mono", monospace; */
 }
 
 .start-game-btn-container {
@@ -1433,13 +1461,15 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 
 .inputBetAmount {
   background: transparent;
-  color: #000;
+  color: rgb(255, 255, 255);
   border: none;
   text-align: center;
   width: 100%;
-  font-size: 22px;
+  font-size: var(--title-size);
+  padding-bottom: 2px;
   font-weight: lighter;
-  font-family: "Roboto Mono", monospace;
+  border-bottom: 2px solid var(--verde);
+  /* font-family: "Roboto Mono", monospace; */
 }
 
 .inputBetAmount:focus {
@@ -1450,16 +1480,16 @@ MEDIA QUERY MAXW WIDTH 415PX  */
   margin-bottom: 40px;
   font-size: 20px;
   font-weight: 300;
-  font-family: "Poppins", sans-serif;
+  /* font-family: "Poppins", sans-serif; */
   text-transform: uppercase;
   color: #fff;
 }
 
 .terms-container label {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 18px;
-  font-family: "Teko", sans-serif;
-  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--text);
+  /* font-family: "Teko", sans-serif; */
+  letter-spacing: 1.2px;
 }
 
 .terms-container label a {
@@ -1709,5 +1739,109 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 
   .balance-container {
     display: block;
+  }
+}
+
+
+
+/* TABLE AND BACKGROUND WITH GRADIENT */
+
+.background-gradient-1 {
+  
+    padding: 24px;
+
+    margin: 8px;
+
+    background-image: linear-gradient(
+      to bottom,
+      #161629 32px,
+      rgba(22, 22, 41, 0)
+    );
+
+    border: 1px solid transparent;
+
+    border-bottom-width: 0;
+
+    border-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0)
+      )
+      1;
+
+}
+
+th {
+  color: #fff;
+  font-size: var(--subtitle-size);
+  opacity: 0.48;
+}
+
+td {
+  color: #fff;
+
+  text-align: center;
+
+  padding: 10px 20px;
+}
+
+.lastCol {
+  padding: 10px !important;
+}
+
+
+.hero_img {
+  width: 70px;
+
+  height: 50px;
+
+  border-radius: 8px;
+}
+
+.d-match {
+  display: flex;
+
+  flex-direction: row;
+}
+
+.d-match-body {
+  text-align: left;
+
+  padding-left: 10px;
+}
+
+.d-match-body h5 {
+  font-weight: bold;
+
+  margin-bottom: 5px;
+}
+
+.d-match-body div {
+  font-size: 12px;
+}
+
+.date-td {
+  font-size: var(--text);
+}
+
+.green {
+  color: #00ff00;
+
+  font-size: var(--text);
+}
+
+.red {
+  color: #ff0000;
+
+  font-size: var(--text);
+}
+
+@media only screen and (max-width: 485px) {
+  th {
+    font-size: 10px;
+  }
+
+  td {
+    font-size: 12px;
   }
 }

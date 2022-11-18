@@ -86,6 +86,7 @@ export default function Banner(props) {
 
   return (
     <>
+    <h2 className="mobile-title">Victorias Recientes</h2>
       <div className="banner-container">
         <div className="container-bets">
           <div className="banner-text-c">
@@ -163,7 +164,7 @@ export default function Banner(props) {
         .banner-text-c {
           width: 300px;
           height: 164px;
-          --border-width: 3px;
+          border-width: var(--border-width);
           overflow: hidden;
           position: relative;
           background-color: rgba(128, 0, 128, 0.5);
@@ -171,8 +172,8 @@ export default function Banner(props) {
 
         .banner-text-c h2 {
           text-shadow: 3px 3px 4px #000;
-          font-size: 3.7rem;
-          font-family: "Bebas Neue", cursive;
+          font-size: 3rem;
+       
           text-align: center;
           color: #fff;
           line-height: 1;
@@ -207,7 +208,7 @@ export default function Banner(props) {
           max-width: 1360px;
           overflow: hidden;
           position: relative;
-          --border-width: 3px;
+          border-width: var(--border-width);
           border-right: 5px solid #2c62fe;
           background-color: rgba(128, 0, 128, 0.5);
         }
@@ -296,7 +297,7 @@ export default function Banner(props) {
           opacity: 0.2;
         }
         .win-price {
-          font-size: 22px;
+          font-size: var(--subtitle-size);
           line-height: 26px;
           font-weight: 600;
           color: #fff;
@@ -304,7 +305,7 @@ export default function Banner(props) {
           letter-spacing: 1px;
           padding: 8px;
           padding-left: 0px;
-          font-family: "Bebas Neue", cursive;
+         
           text-align: center;
           position: absolute;
           left: 0px;
@@ -355,7 +356,7 @@ export default function Banner(props) {
         .profile-nickname {
           margin-top: 2px;
           font-weight: 600;
-          font-family: "Poppins", sans-serif;
+        
         }
 
         .white {
@@ -369,17 +370,27 @@ export default function Banner(props) {
         .item-00:hover .person-info-content {
           transform: translateY(0);
         }
+        .mobile-title {
+          display:none;
+        }
 
         @media (max-width: 480px) {
+          .banner-text-c {
+            display: none;
+          }
           .container-bets {
             padding: 0px 20px;
           }
           .item-00 {
-            min-width: 94px;
+            min-width: 120px;
           }
           .hero-c-img {
             width: 120px;
             height: 70px;
+          }
+          .mobile-title {
+            display: block;
+            text-align: center;
           }
         }
       `}</style>

@@ -495,7 +495,7 @@ const Home = (props) => {
         .section2-text h3 {
           text-shadow: 5px 5px 6px #000000;
           font-size: 2.2rem;
-          font-family: Geometrik Blk, sans-serif;
+
         }
         .intro-content {
           display: flex;
@@ -521,9 +521,9 @@ const Home = (props) => {
         .info-text-cont {
           position: absolute;
           z-index: 2;
-          color: #000;
-          font-family: "Bebas Neue", cursive;
-          font-size: 2.5rem;
+          color: var(--black);
+      
+          font-size: 2.3rem;
           pointer-events: none;
           text-align: center;
           font-weight: 600;
@@ -533,8 +533,8 @@ const Home = (props) => {
           left: 45%;
         }
         .mid-text-c {
-          left: 51%;
-          width: 180px;
+          left: 47%;
+          width: 220px;
         }
         .last-text-c {
           left: 33%;

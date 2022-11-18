@@ -666,8 +666,6 @@ const Dep = () => {
 
             font-size: 1.3rem;
 
-            font-family: "Roboto Mono", monospace;
-
             margin-bottom: 1rem;
           }
 
@@ -683,8 +681,6 @@ const Dep = () => {
             flex-direction: column;
 
             gap: 20px;
-
-            font-family: "Teko", sans-serif;
 
             color: #fff;
 
@@ -743,8 +739,6 @@ const Dep = () => {
           .text-t {
             color: rgba(255, 255, 255, 0.6);
 
-            font-family: "Teko", sans-serif;
-
             margin-top: 1rem;
           }
 
@@ -768,8 +762,6 @@ const Dep = () => {
 
           .withdraw-flex-payment-main-item label {
             color: rgba(255, 255, 255, 0.5);
-
-            font-family: "Teko", sans-serif;
           }
 
           .withdraw-flex-payment-main-item input {
@@ -795,7 +787,6 @@ const Dep = () => {
           }
 
           .withdraw-flex-payment-main-item input:focus {
-            font-family: "Roboto Mono", monospace;
 
             outline: none;
 
@@ -804,8 +795,6 @@ const Dep = () => {
 
           .warning-text {
             color: #b6ff40;
-
-            font-family: "Roboto Mono", monospace;
 
             text-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
 
@@ -860,8 +849,6 @@ const Dep = () => {
 
           .text-t {
             color: rgba(255, 255, 255, 0.6);
-
-            font-family: "Teko", sans-serif;
           }
 
           .withdraw-form {

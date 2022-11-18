@@ -130,7 +130,7 @@ const routeReal = () => {
             onClick={routePractice}
           >
             <div className={router.pathname == '/play/practice' ?   "pad--int active-mode" : "pad--int"}>
-              <h3 className="left-container-h3 orange">{leftbar.practiceAcc}</h3>
+              <h3 className="left-container-h3">{leftbar.practiceAcc}</h3>
 
               <h3 className="left-container-h3 left-flex-container-h">
            
@@ -326,7 +326,6 @@ const routeReal = () => {
 
           .left-container-title {
             padding: 0 0 0 2rem;
-            font-family: "Teko", sans-serif;
           }
 
           .fontw-l {

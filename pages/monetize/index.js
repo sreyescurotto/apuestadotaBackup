@@ -141,7 +141,7 @@ const Profile = (props) => {
           }
 
           .benefits-item p {
-            font-family: "Roboto Mono", monospace;
+            font-size: var(--subtitle-size);
             font-weight: 600;
           }
 

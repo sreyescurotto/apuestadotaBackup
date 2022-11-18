@@ -313,8 +313,6 @@ const ProfileForm = ({onSubmit, ...props}) => {
 
                     color: #fff;
 
-                    font-family: 'Poppins', sans-serif;
-
                     background-color: rgba(0,0,0,.05);
 
                     border-bottom: 1px solid rgba(0,0,0,.1);
@@ -339,7 +337,6 @@ const ProfileForm = ({onSubmit, ...props}) => {
 
                     color: #fff;
 
-                    font-family: 'Roboto Mono', monospace;
 
                 }
 
@@ -355,7 +352,6 @@ const ProfileForm = ({onSubmit, ...props}) => {
 
                     font-weight: 400;
 
-                    font-family: 'Poppins', sans-serif;
 
                 }
 
@@ -372,8 +368,6 @@ const ProfileForm = ({onSubmit, ...props}) => {
                     border: none;
 
                     color: #fff;
-
-                    font-family: 'Roboto Mono', monospace;
 
                     font-size: 12px;
 

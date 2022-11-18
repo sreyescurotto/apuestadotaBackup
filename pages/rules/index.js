@@ -98,7 +98,7 @@ export default function rules(props) {
 
           .rules-container p {
             margin-bottom: 4rem;
-            font-family: Teko,sans-serif;
+          
             font-size: 1.5rem;
           }
 
@@ -131,7 +131,7 @@ export default function rules(props) {
           .terms-link {
             color: #000;
 
-            font-family: Bebas Neue, cursive;
+
 
             font-size: 26px;
 

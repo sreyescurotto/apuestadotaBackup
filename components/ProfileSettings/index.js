@@ -173,7 +173,7 @@ const ProfileSettings = (props) => {
                 <ProfileForm onSubmit={updateUser}  profileProps={profileProps}/>
               </div>
             ) : (
-              <div className="gc-profile-box">
+              <div className="background-gradient-1 flex-basis">
                 <h4 className="gc-profile-title">{profileProps.general}</h4>
                 <ul className="gc-profile-list">
                   <li className="gc-profile-list-item">
@@ -230,7 +230,7 @@ const ProfileSettings = (props) => {
               </div>
             )}
 
-            <div className="gc-profile-box">
+            <div className="background-gradient-1 flex-basis">
               <h4 className="gc-profile-title">{profileProps.extra}</h4>
 
               <ul className="gc-profile-list">
@@ -257,11 +257,17 @@ const ProfileSettings = (props) => {
         </div>
 
         <div className={record ? "d-block" : "d-none"}>
+          <div className="mode-bets-a">
+              <h3 className="solo--title">{profileProps.withDes}</h3>
           <DepReq profile={profileProps} />
+          </div>
         </div>
 
         <div className={accountTrans ? "d-block" : "d-none"}>
+          <div className="mode-bets-a">
+              <h3 className="solo--title">Estado de cuenta</h3>
           <Account profile={profileProps}/>
+          </div>
         </div>
 
         <div className={extra ? "d-block" : "d-none"}>
@@ -296,28 +302,9 @@ const ProfileSettings = (props) => {
             padding: 1.5rem 3rem;
           }
 
-          .gc-profile-box {
-            padding: 24px;
+         
 
-            margin: 8px;
-
-            background-image: linear-gradient(
-              to bottom,
-              #161629 32px,
-              rgba(22, 22, 41, 0)
-            );
-
-            border: 1px solid transparent;
-
-            border-bottom-width: 0;
-
-            border-image: linear-gradient(
-                to bottom,
-                rgba(255, 255, 255, 0.1),
-                rgba(255, 255, 255, 0)
-              )
-              1;
-
+          .flex-basis {
             flex-basis: 50%;
           }
 

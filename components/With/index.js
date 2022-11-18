@@ -164,7 +164,7 @@ const With = (props) => {
       <div className="withdraw-main-container">
         <h2 className="intro-title">{withdraw.title}</h2>
 
-        <div className="withdraw-container">
+        <div className="withdraw-container background-gradient-1">
           <div className="withdraw-flex-first">
             <div className="text-w-intro">
               <h3 className="subtitle-w">
@@ -271,8 +271,6 @@ const With = (props) => {
 
             font-size: 3.5rem;
 
-            font-family: "Poppins";
-
             text-shadow: 2px 2px 2px #000;
           }
 
@@ -283,26 +281,26 @@ const With = (props) => {
 
             padding: 2rem;
 
-            background-color: #131e2fd9;
+            
 
             border-radius: 10px;
           }
 
           .text-w-intro {
-            margin-bottom: 2rem;
+            margin-bottom: .6rem;
           }
 
           .subtitle-w {
-            font-size: 2.2rem;
+            font-size: var(--title-size);
             letter-spacing: 0px;
             line-height: 1.1;
+            margin-bottom: .6rem;
           }
 
           .balance-w {
-            color: #b6ff40;
-            font-size: 2.5rem;
-            font-family: "Poppins";
-            margin: 0 0 0 7rem;
+            color: var(--verde);
+            font-size: var(--title-size);
+            margin: 0 0 0 8rem;
           }
 
           .withdraw-container {
@@ -317,8 +315,6 @@ const With = (props) => {
             color: #fff;
 
             font-size: 1.3rem;
-
-            font-family: "Roboto Mono", monospace;
 
             margin-bottom: 1rem;
           }
@@ -362,25 +358,26 @@ const With = (props) => {
           .withdraw-flex-payment-main-item input {
             background-color: transparent;
             border: none;
-            border-bottom: 2px solid #b6ff40;
-            font-size: 1.2rem;
+            border-bottom: 2px solid var(--verde);
+            font-size: var(--subtitle-size);
+            font-weight: lighter;
             height: 30px;
             color: white;
             padding: 0.5rem;
             margin-left: 1rem;
             width: 90%;
-            font-family: "Roboto Mono", monospace;
           }
 
           .input-amount-withdraw {
             background-color: transparent;
+            font-weight: lighter;
             border: none;
-            border-bottom: 2px solid #b6ff40;
+            border-bottom: 2px solid var(--verde);
             width: 80%;
             text-align: center;
             color: white;
-            font-family: "Roboto Mono", monospace;
-            font-size: 2.5rem;
+            font-size: var(--title-size);
+            height: 35px;
           }
           .input-amount-withdraw:focus {
             outline: none;
@@ -397,7 +394,6 @@ const With = (props) => {
           }
 
           .withdraw-flex-payment-main-item input:focus {
-            font-family: "Roboto Mono", monospace;
             outline: none;
           }
 

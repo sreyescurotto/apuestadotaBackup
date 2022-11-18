@@ -159,7 +159,7 @@ const Login = () => {
 
             overflow-y: auto;
 
-            background-color: #1f2428;
+            background-color: var(--black);
           }
 
           .background-img {
@@ -205,13 +205,12 @@ const Login = () => {
           }
 
           .form-title {
-            font-family: "Poppins";
 
             font-style: normal;
 
             font-weight: 700;
 
-            font-size: 24px;
+            font-size: var(--title-size);
 
             line-height: 36px;
 
@@ -259,7 +258,7 @@ const Login = () => {
           }
 
           .steambtn {
-            background-color: #b6ff40;
+            background-color: var(--verde);
 
             transition: all 0.3s ease;
 
@@ -274,52 +273,7 @@ const Login = () => {
             background: url(/icons/steam.png);
           }
 
-          .login-box .user-box {
-            position: relative;
-          }
-
-          .login-box .user-box input {
-            width: 100%;
-
-            padding: 10px 0;
-
-            font-size: 16px;
-
-            color: #fff;
-
-            margin-bottom: 30px;
-
-            border: none;
-
-            border-bottom: 1px solid #fff;
-
-            outline: none;
-
-            background: transparent;
-
-            font-family: "Poppins";
-          }
-
-          .login-box .user-box label {
-            position: absolute;
-
-            top: 0;
-
-            left: 0;
-
-            padding: 10px 0;
-
-            font-size: 16px;
-
-            color: #fff;
-
-            pointer-events: none;
-
-            transition: 0.5s;
-
-            font-family: "Poppins";
-          }
-
+            
           /* #03e9f4 */
 
           .login-box .user-box input:focus ~ label,
@@ -356,7 +310,6 @@ const Login = () => {
 
             letter-spacing: 4px;
 
-            font-family: "Poppins";
           }
 
           .login-box a:hover {
@@ -505,8 +458,6 @@ const Login = () => {
 
             font-weight: 700;
 
-            font-family: "Poppins";
-
             font-style: normal;
 
             line-height: 24px;
@@ -604,13 +555,6 @@ const Login = () => {
             padding: 10px;
           }
 
-          .login-card-title h1 {
-            font-family: Roboto Mono, monospace;
-          }
-
-          .login-card-title p {
-            font-family: Poppins, sans-serif;
-          }
 
           .login-card-body {
             background-color: #fff;
@@ -630,8 +574,7 @@ const Login = () => {
 
           li {
             list-style: auto;
-
-            font-family: Poppins, sans-serif;
+            font-size: var(--text);
           }
 
           .tutorial-box {

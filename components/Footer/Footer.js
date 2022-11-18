@@ -28,7 +28,7 @@ const Footer = (props) => {
 
           padding: 40px 100px;
 
-          background-color: #000;
+          background-color: var(--black);
 
           position: relative; 
 
@@ -52,9 +52,13 @@ const Footer = (props) => {
         .footer-text {
           text-align: center;
 
-          font-size: 15px;
+          font-size: var(--text);
 
           color: #777;
+          
+          line-height: 1.3;
+          letter-spacing: 1.2px;
+          
 
           padding: 0 20px;
 
@@ -62,7 +66,6 @@ const Footer = (props) => {
 
           margin: 0 auto;
 
-          font-family: "Geometrik Blk";
         }
 
         @media only screen and (max-width: 1366px) {
