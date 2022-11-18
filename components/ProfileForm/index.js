@@ -325,15 +325,15 @@ const ProfileForm = ({onSubmit, ...props}) => {
 
                     margin-bottom: 4px;
 
-                    font-size: 10px;
+                    font-size: var(--text);
 
                     font-weight: 400;
 
-                    text-transform: uppercase;
+                    text-align: end;
 
                     letter-spacing: 1px;
 
-                    opacity: .25;
+                    opacity: .75;
 
                     color: #fff;
 
@@ -342,56 +342,60 @@ const ProfileForm = ({onSubmit, ...props}) => {
 
                 .gc-list-text {
 
-                    min-width: 60%;
+min-width: 60%;
 
-                    margin: 0;
+margin: 0;
 
-                    padding-right: 8px;
+padding-right: 8px;
 
-                    font-size: 12px;
+font-size: var(--text);
 
-                    font-weight: 400;
+font-weight: 400;
 
 
-                }
+}
 
-        
 
-                .gc-list-text input {
 
-                    width: 100%;
+.gc-list-text input {
 
-                    height: 100%;
+width: 100%;
 
-                    background-color: transparent;
+height: 100%;
 
-                    border: none;
+background-color: transparent;
 
-                    color: #fff;
+border: none;
 
-                    font-size: 12px;
+color: #fff;
 
-                    font-weight: 600;
+font-size: var(--text);
 
-                    padding: 8px 8px 8px 0;
+font-weight: 600;
 
-                }
+padding: 8px 8px 8px 0;
+
+}
 
 
 
                 .profile-register-button {
+            padding: 1rem 2rem;
 
-                    padding: 1rem 2rem;
+            border-radius: var(--border-radius);
 
-                    border-radius: 8px;
+            float: right;
 
-                    float: right;
+            margin-top: 1rem;
 
-                    margin-top: 1rem;
+            border: none;
 
-                    font-size: 16px;
+            font-size: var(--button-size);
 
-                }
+            font-weight: var(--button-weight);
+            background-color: var(--verde);
+            color: var(--black);
+          }
 
                 `}
 

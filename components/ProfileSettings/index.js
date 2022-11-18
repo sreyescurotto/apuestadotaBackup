@@ -9,7 +9,6 @@ import Account from "../Account";
 import DepReq from "../DepReq";
 
 const ProfileSettings = (props) => {
-
   const profileProps = props.profile;
   const [record, setRecord] = useState(false);
   const [security, setSecurity] = useState(false);
@@ -18,7 +17,7 @@ const ProfileSettings = (props) => {
   const [saldo, setSaldo] = useState(0);
   const [accountTrans, setaccountTrans] = useState(false);
 
-  const [userProfile, setUserProfile] = useState('/spinner.gif');
+  const [userProfile, setUserProfile] = useState("/spinner.gif");
 
   const handleClickSecurity = (event) => {
     setSecurity(true);
@@ -34,7 +33,6 @@ const ProfileSettings = (props) => {
     setRecord(true);
     setExtra(false);
     setaccountTrans(false);
-
   };
 
   const handleClickProfile = (event) => {
@@ -108,7 +106,10 @@ const ProfileSettings = (props) => {
               }
               id="info-button-g"
             >
-              <img src="/icons/account-details-outline.png" alt={profileProps.personalinfo} />
+              <img
+                src="/icons/account-details-outline.png"
+                alt={profileProps.personalinfo}
+              />
               <h3 className="tab-h-active">{profileProps.personalinfo}</h3>
             </div>
           </a>
@@ -165,12 +166,15 @@ const ProfileSettings = (props) => {
         <div id="profile-info-g" className={profile ? "d-block" : "d-none"}>
           <div className="security-flex-b">
             {user.dni_status == 0 || user.dni_status == 3 ? (
-              <div className="gc-profile-box">
+              <div className="background-gradient-1 flex-basis">
                 <h4 className="gc-profile-title">
                   {profileProps.hello} <span>{user.nickname}</span>
                   {profileProps.completeinfo}
                 </h4>
-                <ProfileForm onSubmit={updateUser}  profileProps={profileProps}/>
+                <ProfileForm
+                  onSubmit={updateUser}
+                  profileProps={profileProps}
+                />
               </div>
             ) : (
               <div className="background-gradient-1 flex-basis">
@@ -216,8 +220,7 @@ const ProfileSettings = (props) => {
                     <div className="gc-list-text">
                       <p className="gc-list-text">
                         {user.dni_status == 0
-                          ? 
-                          profileProps.notVerify
+                          ? profileProps.notVerify
                           : user.dni_status == 1
                           ? profileProps.verify1
                           : user.dni_status == 2
@@ -235,7 +238,9 @@ const ProfileSettings = (props) => {
 
               <ul className="gc-profile-list">
                 <li className="gc-profile-list-item">
-                  <h6 className="gc-list-title">{profileProps.registrationdate}</h6>
+                  <h6 className="gc-list-title">
+                    {profileProps.registrationdate}
+                  </h6>
 
                   <p className="gc-list-text">{user.date_time_created}</p>
                 </li>
@@ -258,27 +263,27 @@ const ProfileSettings = (props) => {
 
         <div className={record ? "d-block" : "d-none"}>
           <div className="mode-bets-a">
-              <h3 className="solo--title">{profileProps.withDes}</h3>
-          <DepReq profile={profileProps} />
+            <h3 className="solo--title">{profileProps.withDes}</h3>
+            <DepReq profile={profileProps} />
           </div>
         </div>
 
         <div className={accountTrans ? "d-block" : "d-none"}>
           <div className="mode-bets-a">
-              <h3 className="solo--title">Estado de cuenta</h3>
-          <Account profile={profileProps}/>
+            <h3 className="solo--title">Estado de cuenta</h3>
+            <Account profile={profileProps} />
           </div>
         </div>
 
         <div className={extra ? "d-block" : "d-none"}>
           <div className="mode-bets-a">
-              <h3 className="solo--title">{profileProps.betsmade}</h3>
-              <ApuestasAll profile={profileProps}/>
+            <h3 className="solo--title">{profileProps.betsmade}</h3>
+            <ApuestasAll profile={profileProps} />
           </div>
         </div>
 
         <div className={security ? "d-block" : "d-none"}>
-          <Referrals user={user} profile={profileProps}/>
+          <Referrals user={user} profile={profileProps} />
         </div>
       </div>
 
@@ -301,8 +306,6 @@ const ProfileSettings = (props) => {
 
             padding: 1.5rem 3rem;
           }
-
-         
 
           .flex-basis {
             flex-basis: 50%;
@@ -368,8 +371,6 @@ const ProfileSettings = (props) => {
             opacity: 0.75;
 
             color: #fff;
-
-
           }
 
           .gc-list-text {
@@ -380,8 +381,6 @@ const ProfileSettings = (props) => {
             font-size: var(--text);
 
             font-weight: 400;
-
-
           }
 
           .gc-list-text input {
@@ -621,8 +620,6 @@ const ProfileSettings = (props) => {
 
             gap: 10px;
 
-            font-family: "Roboto Mono", monospace;
-
             font-size: 16px;
           }
 
@@ -636,17 +633,7 @@ const ProfileSettings = (props) => {
             border-width: 5px;
           }
 
-          .profile-register-button {
-            padding: 1rem 2rem;
-
-            border-radius: 8px;
-
-            float: right;
-
-            margin-top: 1rem;
-
-            font-size: 16px;
-          }
+         
 
           .mode--solo--c {
             padding: 1rem 2rem;
@@ -719,8 +706,6 @@ const ProfileSettings = (props) => {
 
             opacity: 0;
           }
-
-       
 
            {
             /* MEDIA QUERYS */

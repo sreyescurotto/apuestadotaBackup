@@ -76,7 +76,7 @@ const With = (props) => {
   const handleChange = (e) => {
     const b = e.target.value;
 
-    b.length > 4 ? setMonto(100) : (b > 0 ? setMonto(b): setMonto(0));
+    b.length > 4 ? setMonto(100) : b > 0 ? setMonto(b) : setMonto(0);
   };
 
   const retirar = (e) => {
@@ -170,7 +170,7 @@ const With = (props) => {
               <h3 className="subtitle-w">
                 Hola {nickname}, tu saldo actual es:
               </h3>
-              <span className="balance-w">S/ {saldo}</span>
+              <h5 className="balance-w">S/ {saldo}</h5>
             </div>
             <h4> {withdraw.hello}</h4>
             <input
@@ -254,16 +254,12 @@ const With = (props) => {
         </div>
 
         <div className="mode-bets-a ">
-
-        <DepReq profile={profileProps} />
+          <DepReq profile={profileProps} />
         </div>
       </div>
 
       <style jsx>
         {`
-          .withdraw-main-container {
-            margin-bottom: 4rem;
-          }
           .intro-title {
             padding: 2rem;
 
@@ -274,41 +270,14 @@ const With = (props) => {
             text-shadow: 2px 2px 2px #000;
           }
 
-          .withdraw-container {
-            max-width: 1200px;
-
-            margin: 0 auto;
-
-            padding: 2rem;
-
-            
-
-            border-radius: 10px;
-          }
-
           .text-w-intro {
-            margin-bottom: .6rem;
-          }
-
-          .subtitle-w {
-            font-size: var(--title-size);
-            letter-spacing: 0px;
-            line-height: 1.1;
-            margin-bottom: .6rem;
+            margin-bottom: 0.6rem;
           }
 
           .balance-w {
             color: var(--verde);
             font-size: var(--title-size);
-            margin: 0 0 0 8rem;
-          }
-
-          .withdraw-container {
-            display: flex;
-          }
-
-          .withdraw-flex-first {
-            width: 50%;
+            text-align: center;
           }
 
           .withdraw-container h4 {
@@ -317,16 +286,6 @@ const With = (props) => {
             font-size: 1.3rem;
 
             margin-bottom: 1rem;
-          }
-
-          .withdraw-flex {
-            display: flex;
-
-            width: 50%;
-
-            flex-direction: column;
-
-            justify-content: center;
           }
 
           .widthdraw-form {
@@ -368,20 +327,7 @@ const With = (props) => {
             width: 90%;
           }
 
-          .input-amount-withdraw {
-            background-color: transparent;
-            font-weight: lighter;
-            border: none;
-            border-bottom: 2px solid var(--verde);
-            width: 80%;
-            text-align: center;
-            color: white;
-            font-size: var(--title-size);
-            height: 35px;
-          }
-          .input-amount-withdraw:focus {
-            outline: none;
-          }
+          
 
           .withdraw-flex-payment-main-item input::placeholder {
             color: white;
@@ -398,24 +344,10 @@ const With = (props) => {
           }
 
           @media screen and (max-width: 485px) {
-            .withdraw-container {
-              padding: 2rem 2rem 6.5rem;
-              flex-direction:column;
-            }
-            .withdraw-flex-first {
-              width: 100%;
-            }
-            .withdraw-flex {
-              width: 100%;
-            }
             .widthdraw-form {
               width: 100%;
             }
 
-            .subtitle-w {
-              font-size: 2rem;
-              margin-bottom: 10px;
-            }
             .input-amount-withdraw {
               width: 100%;
               font-size: 2.2rem;
@@ -424,7 +356,7 @@ const With = (props) => {
               margin-bottom: 1.5rem;
             }
             .withdraw-flex-payment-main {
-              padding: .5rem 0;
+              padding: 0.5rem 0;
             }
             .withdraw-flex-payment-main-item input {
               width: 100%;

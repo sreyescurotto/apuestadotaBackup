@@ -39,7 +39,7 @@ export default function rules(props) {
                 
                 rel="noreferrer"
               >
-                Terminos y condiciones - Apuestadota.com 
+                Términos y condiciones - Apuestadota.com 
               </a>
 
               <Image src="/icons/spain.png" width={35} height={35} alt='spanish' />
@@ -127,6 +127,12 @@ export default function rules(props) {
 
               padding: 1rem;
             }
+
+            .rules-container p {
+            margin-bottom: 4rem;
+          
+            font-size: var(--subtitle-size);
+          }
           }
         `}
       </style>
