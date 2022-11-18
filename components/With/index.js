@@ -75,8 +75,8 @@ const With = (props) => {
 
   const handleChange = (e) => {
     const b = e.target.value;
-    const amount = refM.current.value;
-    b.length > 4 ? setMonto(100) : setMonto(amount);
+
+    b.length > 4 ? setMonto(100) : (b > 0 ? setMonto(b): setMonto(0));
   };
 
   const retirar = (e) => {

@@ -446,13 +446,7 @@ export default function Tutorial(props) {
             width: 500px;
           }
 
-          .box-item {
-            background-color: #41b6e6;
-
-            color: #fff;
-
-            padding: 1rem 2rem;
-          }
+     
 
           .box-item-title {
             font-size: 30px;
@@ -600,7 +594,7 @@ export default function Tutorial(props) {
           .tutorial-subtitle {
             color: #fff;
 
-            background-color: #41b6e6;
+            background-color: #6d41a2;
 
             font-size: 37px;
 

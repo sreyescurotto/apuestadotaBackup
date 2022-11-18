@@ -1496,7 +1496,7 @@ MEDIA QUERY MAXW WIDTH 415PX  */
   color: rgba(255, 255, 255, 1);
   font-size: var(--subtitle-size);
   /* font-family: "Teko", sans-serif; */
-  letter-spacing: 1.2px;
+
   font-weight: 300;
 }
 

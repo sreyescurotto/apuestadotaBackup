@@ -41,7 +41,7 @@ export default function Referrals({ user, ...props }) {
               <div className="referrals-step step-01">
                 <div className="referrals-step-number">1</div>
 
-                <h4>{profile.refSubtitle}</h4>
+                <p>{profile.refSubtitle}</p>
               </div>
 
               <div className="referrals-step step-02">
@@ -140,7 +140,7 @@ export default function Referrals({ user, ...props }) {
         }
 
         .step-02 p {
-          color: rgba(255, 255, 255, 0.7);
+          color: rgba(255, 255, 255, 1);
         }
 
         .white-span {

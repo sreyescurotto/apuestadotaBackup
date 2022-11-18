@@ -368,12 +368,7 @@ const ModePractice = (props) => {
                   {play.betdetails2} <span className="bold">+ 40%</span>
                 </h4>
 
-                <h4 className="subtitle-mode-d lighterr">
-                  {play.betdetails3}
-                  <span className="bold">
-                    + S/ {bet > 0 ? (bet * 0.4).toFixed(2) : "00"}
-                  </span>
-                </h4>
+              
 
                 <h4 className="subtitle-mode-d lighterr">
                   {play.betdetails4}

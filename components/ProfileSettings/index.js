@@ -315,10 +315,6 @@ const ProfileSettings = (props) => {
 
             font-weight: 300;
 
-            font-family: "Poppins", sans-serif;
-
-            text-transform: uppercase;
-
             color: #fff;
           }
 
@@ -373,11 +369,11 @@ const ProfileSettings = (props) => {
 
             letter-spacing: 1px;
 
-            opacity: 0.25;
+            opacity: 0.75;
 
             color: #fff;
 
-            font-family: "Roboto Mono", monospace;
+
           }
 
           .gc-list-text {
