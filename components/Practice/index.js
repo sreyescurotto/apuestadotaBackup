@@ -78,7 +78,7 @@ const ModePractice = (props) => {
   const handleInputMonto = (event) => {
     const n = parseInt(event.target.value);
     const b = event.target.value;
-    b.length > 4 ? setBet(100) : setBet(n);
+    b.length > 4 ? setBet(100) : (b > 0 ? setBet(n): setBet(0));
   };
 
   const handlePlay = () => {

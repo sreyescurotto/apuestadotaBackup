@@ -73,7 +73,7 @@ const Solo = (props) => {
   const handleInputMonto = (event) => {
     const n = parseInt(event.target.value);
     const b = event.target.value;
-    b.length > 4 ? setBet(100) : (b > 0 ? setBet(n): Swal.fire("Solo numeros positivos"));
+    b.length > 4 ? setBet(100) : (b > 0 ? setBet(n): setBet(0));
   
   };
 

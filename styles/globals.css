@@ -691,6 +691,7 @@ input[type=number] {
 .text-t {
 
   /* font-family: "Teko", sans-serif; */
+  font-weight: 300;
   font-size: var(--subtitle-size);
 }
 
@@ -1496,6 +1497,7 @@ MEDIA QUERY MAXW WIDTH 415PX  */
   font-size: var(--subtitle-size);
   /* font-family: "Teko", sans-serif; */
   letter-spacing: 1.2px;
+  font-weight: 300;
 }
 
 .terms-container label a {
