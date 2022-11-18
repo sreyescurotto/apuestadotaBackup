@@ -346,7 +346,7 @@ const ModePractice = (props) => {
                   onChange={checkboxRule}
                 />
 
-                <label className="checkbox-terms" htmlFor="terms">
+                <label className="checkbox-terms" htmlFor="rules">
                   {play.modeTerms2}
                 </label>
               </div>
