@@ -295,7 +295,7 @@ const ModePractice = (props) => {
                 Te pagamos el 40% de tu apuesta por cada partida ganada.
               </p>
               <p className="text-t">
-                Solo estan permitidas las partidas Ranked individual.
+                Solo están permitidas las partidas Ranked individual.
               </p>
               <p className="text-t">
                 Una vez ejecutada la apuesta tienes 25 minutos para empezar a

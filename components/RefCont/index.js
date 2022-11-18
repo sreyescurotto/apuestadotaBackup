@@ -200,6 +200,8 @@ export default function Referrals({ user, ...props }) {
           width: 100%;
 
           text-align: center;
+
+          font-size: var(--text);
         }
 
         .input-referral:focus {

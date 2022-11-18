@@ -341,8 +341,6 @@ const ProfileSettings = (props) => {
 
             color: #fff;
 
-            font-family: "Poppins", sans-serif;
-
             background-color: rgba(0, 0, 0, 0.05);
 
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -361,11 +359,9 @@ const ProfileSettings = (props) => {
 
             margin-bottom: 4px;
 
-            font-size: 10px;
+            font-size: var(--text);
 
-            font-weight: 400;
-
-            text-transform: uppercase;
+            font-weight: 600;
 
             letter-spacing: 1px;
 
@@ -381,11 +377,11 @@ const ProfileSettings = (props) => {
 
             padding-right: 8px;
 
-            font-size: 12px;
+            font-size: var(--text);
 
             font-weight: 400;
 
-            font-family: "Poppins", sans-serif;
+
           }
 
           .gc-list-text input {
@@ -399,9 +395,7 @@ const ProfileSettings = (props) => {
 
             color: #fff;
 
-            font-family: "Roboto Mono", monospace;
-
-            font-size: 12px;
+            font-size: var(--text);
 
             font-weight: 600;
           }
