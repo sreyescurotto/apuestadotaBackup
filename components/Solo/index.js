@@ -73,7 +73,8 @@ const Solo = (props) => {
   const handleInputMonto = (event) => {
     const n = parseInt(event.target.value);
     const b = event.target.value;
-    b.length > 4 ? setBet(100) : setBet(n);
+    b.length > 4 ? setBet(100) : (b > 0 ? setBet(n): Swal.fire("Solo numeros positivos"));
+  
   };
 
   const handlePlay = () => {
@@ -346,23 +347,23 @@ const Solo = (props) => {
             </div>
 
             <div>
-              <h4 className="mb-sm subtitle-modes lighterr">
+              <h4 className="mb-sm subtitle-mode-d lighterr">
                 {play.betdetails}
               </h4>
 
               <div className="profit-container">
-                <h4 className="subtitle-modes lighterr">
+                <h4 className="subtitle-mode-d lighterr">
                   {play.betdetails2} <span className="bold">+ 40%</span>
                 </h4>
 
-                <h4 className="subtitle-modes lighterr">
+                <h4 className="subtitle-mode-d lighterr">
                   {play.betdetails3}
                   <span className="bold">
                     + S/ {bet > 0 ? (bet * 0.4).toFixed(2) : "00"}
                   </span>
                 </h4>
 
-                <h4 className="subtitle-modes lighterr">
+                <h4 className="subtitle-mode-d lighterr">
                   {play.betdetails4}
                   <span className="bold">
                     S/ {bet > 0 ? (bet * 1.4).toFixed(2) : "00"}

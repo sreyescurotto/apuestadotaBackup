@@ -397,7 +397,7 @@ export default function Tutorial(props) {
           }
 
           .interface {
-            background-image: url(/warlock2.jpg);
+            background-color: #2C62FE;
           }
 
           .help-c {
