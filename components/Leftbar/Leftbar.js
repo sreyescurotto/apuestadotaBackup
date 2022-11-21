@@ -15,31 +15,33 @@ const Leftbar = (props) => {
 
   const router = useRouter();
 
-  const [saldo, setSaldo] = useState(() => {
-    if (typeof window !== "undefined") {
-      if (localStorage.getItem("saldo") != "...") {
-        const saved = localStorage.getItem("saldo");
+  // const [saldo, setSaldo] = useState(() => {
+  //   if (typeof window !== "undefined") {
+  //     if (localStorage.getItem("saldo") != "...") {
+  //       const saved = localStorage.getItem("saldo");
+  //       const initialValue = JSON.parse(saved);
+  //       return initialValue.saldo;
+  //     } else {
+  //       return leftbar.loading;
+  //     }
+  //   }
+  // });
 
-        const initialValue = JSON.parse(saved);
+  const [saldo, setSaldo] = leftbar.loading;
 
-        return initialValue.saldo;
-      } else {
-        return "loading";
-      }
-    }
-  });
+  const [saldoPrueba, setSaldoPrueba] = leftbar.loading;
 
-  const [saldoPrueba, setSaldoPrueba] = useState(() => {
-    if (typeof window !== "undefined") {
-      if (localStorage.getItem("saldoPrueba") != "...") {
-        const saved = localStorage.getItem("saldoPrueba");
-        const initialValue = JSON.parse(saved);
-        return initialValue.saldoPrueba;
-      } else {
-        return "loading";
-      }
-    }
-  });
+  // const [saldoPrueba, setSaldoPrueba] = useState(() => {
+  //   if (typeof window !== "undefined") {
+  //     if (localStorage.getItem("saldoPrueba") != "...") {
+  //       const saved = localStorage.getItem("saldoPrueba");
+  //       const initialValue = JSON.parse(saved);
+  //       return initialValue.saldoPrueba;
+  //     } else {
+  //       return leftbar.loading;
+  //     }
+  //   }
+  // });
 
   const [charging, setCharging] = useState(false);
 
