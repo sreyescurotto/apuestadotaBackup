@@ -24,7 +24,7 @@ const Leftbar = (props) => {
 
         return initialValue.saldo;
       } else {
-        return leftbar.loading;
+        return "loading";
       }
     }
   });
@@ -36,7 +36,7 @@ const Leftbar = (props) => {
         const initialValue = JSON.parse(saved);
         return initialValue.saldoPrueba;
       } else {
-        return leftbar.loading;
+        return "loading";
       }
     }
   });
