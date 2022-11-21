@@ -11,44 +11,40 @@ import AppService from "../../services/app.service";
 import Image from "next/image";
 
 const Leftbar = (props) => {
-
-  const leftbar = props.leftbar
+  const leftbar = props.leftbar;
 
   const router = useRouter();
 
+  const [saldo, setSaldo] = useState(() => {
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("saldo") != "...") {
+        const saved = localStorage.getItem("saldo");
 
-  
-  // const [saldo, setSaldo] = useState(()=> {
-  //   if (typeof window !== 'undefined') {
-  //     if(localStorage.getItem('saldo') != "oo"){
-  //       const saved = localStorage.getItem('saldo');
-  //       const initialValue = JSON.parse(saved);
-  //       return initialValue;
-  //       } else {
-  //       return leftbar.loading;
-  //     }
-  //   }   
-  // });
-  const [saldo, setSaldo] = useState(leftbar.loading);
-  const [saldoPrueba, setSaldoPrueba] = useState(leftbar.loading);
+        const initialValue = JSON.parse(saved);
 
-  // const [saldoPrueba, setSaldoPrueba] = useState(()=> {
-  //   if (typeof window !== 'undefined') {
-  //     if(localStorage.getItem('saldoPrueba') != "oo"){
-  //     const saved = localStorage.getItem('saldoPrueba');
-  //     const initialValue = JSON.parse(saved);
-  //     return initialValue;
-  //     } else {
-  //     return leftbar.loading;
-  //   }
-  //   }   
-  // });
+        return initialValue.saldo;
+      } else {
+        return leftbar.loading;
+      }
+    }
+  });
+
+  const [saldoPrueba, setSaldoPrueba] = useState(() => {
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("saldoPrueba") != "...") {
+        const saved = localStorage.getItem("saldoPrueba");
+        const initialValue = JSON.parse(saved);
+        return initialValue.saldoPrueba;
+      } else {
+        return leftbar.loading;
+      }
+    }
+  });
 
   const [charging, setCharging] = useState(false);
 
   const [test2, setTest2] = useState(false);
 
-  
   const depositarPrueba = () => {
     if (charging) return;
 
@@ -89,18 +85,23 @@ const Leftbar = (props) => {
       setSaldo("...");
       setSaldoPrueba("...");
     }
-    localStorage.setItem("saldo", saldo);
-    localStorage.setItem("saldoPrueba", saldoPrueba);
-    
   }, []);
 
-const routePractice = () => {
-  router.push("/play/practice");
-}
+  useEffect(() => {
+    localStorage.setItem("saldo", JSON.stringify({ saldo: saldo }));
+    localStorage.setItem(
+      "saldoPrueba",
+      JSON.stringify({ saldoPrueba: saldoPrueba })
+    );
+  }, [saldo, saldoPrueba]);
 
-const routeReal = () => {
-  router.push("/play/normal");
-}
+  const routePractice = () => {
+    router.push("/play/practice");
+  };
+
+  const routeReal = () => {
+    router.push("/play/normal");
+  };
 
   return (
     <>
@@ -108,14 +109,17 @@ const routeReal = () => {
         <div className="left-container-header">
           <h3 className="left-container-title">{leftbar.title} </h3>
 
-          <div
-            className="pad--s"
-            onClick={routeReal}
-          >
-          {/* onClick={() => {
+          <div className="pad--s" onClick={routeReal}>
+            {/* onClick={() => {
               switchSaldo(0);
             }} */}
-            <div className={router.pathname == '/play/normal' ?   "pad--int active-mode" : "pad--int"}>
+            <div
+              className={
+                router.pathname == "/play/normal"
+                  ? "pad--int active-mode"
+                  : "pad--int"
+              }
+            >
               <h3 className="left-container-h3">{leftbar.realAcc}</h3>
 
               <h3 className="left-container-h3 left-flex-container-h real-acc">
@@ -125,18 +129,18 @@ const routeReal = () => {
             </div>
           </div>
 
-          <div
-            className={"pad--s"}
-            onClick={routePractice}
-          >
-            <div className={router.pathname == '/play/practice' ?   "pad--int active-mode" : "pad--int"}>
+          <div className={"pad--s"} onClick={routePractice}>
+            <div
+              className={
+                router.pathname == "/play/practice"
+                  ? "pad--int active-mode"
+                  : "pad--int"
+              }
+            >
               <h3 className="left-container-h3">{leftbar.practiceAcc}</h3>
 
               <h3 className="left-container-h3 left-flex-container-h">
-           
-                <div className="dollar--svg orange"> 
-                  S/.
-                </div>
+                <div className="dollar--svg orange">S/.</div>
                 <span className="fontw-l orange"> {saldoPrueba}</span>
               </h3>
             </div>
@@ -145,86 +149,118 @@ const routeReal = () => {
 
         <div className="left-container-body">
           <div className="left-container-body-item">
-            
-            <Link href='/profile'>
-              <a className={router.pathname == '/profile' ? "left-body-anchor-active" : "left-container-body-anchor"}>
-              <div className="left-container-img left-img-active">
-                <Image
+            <Link href="/profile">
+              <a
+                className={
+                  router.pathname == "/profile"
+                    ? "left-body-anchor-active"
+                    : "left-container-body-anchor"
+                }
+              >
+                <div className="left-container-img left-img-active">
+                  <Image
                     src="/icons/account-l.png"
                     alt="profile"
                     width={24}
                     height={24}
                   />
-              </div>
-                <h3 className="left-container-h3  left-h3-active">{leftbar.profile}</h3>
+                </div>
+                <h3 className="left-container-h3  left-h3-active">
+                  {leftbar.profile}
+                </h3>
               </a>
             </Link>
           </div>
 
           <div className="left-container-body-item">
-           
-           <Link href="/deposit">
-              <a  className={router.pathname == '/deposit' ? "left-body-anchor-active" : "left-container-body-anchor"}>
-              <div className="left-container-img left-img-active">
-                <Image 
+            <Link href="/deposit">
+              <a
+                className={
+                  router.pathname == "/deposit"
+                    ? "left-body-anchor-active"
+                    : "left-container-body-anchor"
+                }
+              >
+                <div className="left-container-img left-img-active">
+                  <Image
                     src="/icons/cash-fast-l.png"
                     alt="deposit"
                     width={24}
                     height={24}
                   />
-              </div>
-                <h3 className="left-container-h3 left-h3-active">{leftbar.deposit}</h3>
-              </a>
-           </Link>
-              
-           
-          </div>
-
-          <div className="left-container-body-item">
-            
-            <Link href="/withdraw">
-              <a className={router.pathname == '/withdraw' ? "left-body-anchor-active" : "left-container-body-anchor"}>
-              <div className="left-container-img left-img-active">
-                <Image
-                  src="/icons/currency-usd-l.png"
-                  alt="withdraw"
-                  width={24}
-                  height={24}
-                />
-              </div>
-                <h3 className="left-container-h3 left-h3-active">{leftbar.withdraw}</h3>
+                </div>
+                <h3 className="left-container-h3 left-h3-active">
+                  {leftbar.deposit}
+                </h3>
               </a>
             </Link>
           </div>
 
           <div className="left-container-body-item">
-            
-            <Link href='/tutorial'>
-              <a className={router.pathname == '/tutorial' ? "left-body-anchor-active" : "left-container-body-anchor"}>
-              <div className="left-container-img left-img-active">
-                <Image
-                  src="/icons/help-box-l.png"
-                  alt="tutorial"
-                  width={24}
-                  height={24}
-                />
-              </div>
-                <h3 className="left-container-h3 left-h3-active">{leftbar.tutorial}</h3>
+            <Link href="/withdraw">
+              <a
+                className={
+                  router.pathname == "/withdraw"
+                    ? "left-body-anchor-active"
+                    : "left-container-body-anchor"
+                }
+              >
+                <div className="left-container-img left-img-active">
+                  <Image
+                    src="/icons/currency-usd-l.png"
+                    alt="withdraw"
+                    width={24}
+                    height={24}
+                  />
+                </div>
+                <h3 className="left-container-h3 left-h3-active">
+                  {leftbar.withdraw}
+                </h3>
               </a>
-              </Link>
+            </Link>
           </div>
 
-          <div className="left-container-body-item">  
+          <div className="left-container-body-item">
+            <Link href="/tutorial">
+              <a
+                className={
+                  router.pathname == "/tutorial"
+                    ? "left-body-anchor-active"
+                    : "left-container-body-anchor"
+                }
+              >
+                <div className="left-container-img left-img-active">
+                  <Image
+                    src="/icons/help-box-l.png"
+                    alt="tutorial"
+                    width={24}
+                    height={24}
+                  />
+                </div>
+                <h3 className="left-container-h3 left-h3-active">
+                  {leftbar.tutorial}
+                </h3>
+              </a>
+            </Link>
+          </div>
+
+          <div className="left-container-body-item">
             <Link href="/rules">
-              <a  className={router.pathname == '/rules' ? "left-body-anchor-active" : "left-container-body-anchor"}>
-              <div className="left-container-img left-img-active">
-                <Image
+              <a
+                className={
+                  router.pathname == "/rules"
+                    ? "left-body-anchor-active"
+                    : "left-container-body-anchor"
+                }
+              >
+                <div className="left-container-img left-img-active">
+                  <Image
                     src="/icons/book-o.png"
                     alt="rules"
                     width={24}
                     height={24}
                   />
-              </div>
+                </div>
                 <h3 className="left-container-h3 left-h3-active">
                   {leftbar.terms}
                 </h3>
@@ -232,17 +268,23 @@ const routeReal = () => {
             </Link>
           </div>
 
-          <div className="left-container-body-item">  
+          <div className="left-container-body-item">
             <Link href="/monetize">
-              <a  className={router.pathname == '/monetize' ? "left-body-anchor-active" : "left-container-body-anchor"}>
-              <div className="left-container-img left-img-active">
-                <Image
+              <a
+                className={
+                  router.pathname == "/monetize"
+                    ? "left-body-anchor-active"
+                    : "left-container-body-anchor"
+                }
+              >
+                <div className="left-container-img left-img-active">
+                  <Image
                     src="/icons/cash-1.png"
                     alt="monetize"
                     width={24}
                     height={24}
                   />
-              </div>
+                </div>
                 <h3 className="left-container-h3 left-h3-active">
                   {leftbar.monetize}
                 </h3>
@@ -257,9 +299,6 @@ const routeReal = () => {
           .dollar--svg {
             height: 25px;
           }
-
-        
-          
 
           .right-arrow--svg {
             height: 18px;
@@ -348,7 +387,7 @@ const routeReal = () => {
           }
 
           .left-container-body-item a {
-            padding: 0.7rem 1rem .5rem;
+            padding: 0.7rem 1rem 0.5rem;
 
             border-radius: 20px;
           }
@@ -386,8 +425,6 @@ const routeReal = () => {
           }
 
           .left-container-h3 {
-            
-
             font-weight: 400;
 
             color: rgb(146, 162, 190);
@@ -422,28 +459,28 @@ const routeReal = () => {
           }
 
           .reloadpng:hover {
-            transform:  scale(1.4) rotate(270deg);
+            transform: scale(1.4) rotate(270deg);
           }
 
           .disable-test {
             display: none;
           }
 
-          @media only screen and (max-width: 1366px) { 
+          @media only screen and (max-width: 1366px) {
             .reloadpng {
               margin: 1.5rem;
               width: 20px;
               height: 20px;
             }
             .left-container-body-item {
-              padding-top: .4rem;
-              padding-bottom: .4rem;
+              padding-top: 0.4rem;
+              padding-bottom: 0.4rem;
             }
             .left-container-h3 {
               font-size: 1rem;
             }
             .pad--s {
-              padding: .5rem 1rem .5rem 1.5rem;
+              padding: 0.5rem 1rem 0.5rem 1.5rem;
             }
           }
 

@@ -19,6 +19,7 @@
     "react-hook-form": "^7.36.0",
     "react-select": "^5.5.7",
     "react-tsparticles": "^2.5.3",
+    "serverless-mysql": "^1.5.4",
     "sweetalert2": "^11.6.2",
     "tsparticles": "^2.5.3"
   },
