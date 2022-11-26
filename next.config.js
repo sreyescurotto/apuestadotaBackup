@@ -11,3 +11,5 @@ module.exports = {
     locales: ['es', 'en'],
   }
 }
+
+

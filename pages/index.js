@@ -12,6 +12,7 @@ import { loadFull } from "tsparticles";
 import Banner from "../components/Banner";
 import Share from "../components/Share";
 
+
 export async function getStaticProps({ locale }) {
   const response = await import(`../lang/${locale}.json`);
   return {
@@ -299,6 +300,7 @@ const Home = (props) => {
 
           <section className="first-section" ref={ref1}>
             <div className="intro">
+
               <h1 className="title-1">
                 {home.title} <br />
                 {home.title2}

@@ -18,7 +18,7 @@ const Dep = () => {
 
   const [baseURL, setBaseURL] = useState(null);
 
-  const merchandid = "456879856";
+  const merchandid = "650221602";
 
   const methods = [
     {
@@ -61,9 +61,6 @@ const Dep = () => {
 
   const refCR = useRef(null);
 
-  const testapiUrl =
-    "https://apisandbox.vnforappstest.com/api.security/v1/security";
-
   const selectMetodo = (metodo) => {
     setMetodo(metodo);
   };
@@ -104,10 +101,10 @@ const Dep = () => {
   function createToken() {
     const options = {
       method: "GET",
-      url: "https://apisandbox.vnforappstest.com/api.security/v1/security",
+      url: "https://apiprod.vnforapps.com/api.security/v1/security",
       headers: {
         accept: "text/plain",
-        authorization: `Basic ${process.env.NIUBIZ_AUTHENTICATION}`,
+        authorization: "Basic YXhlbF8yNzEyQGhvdG1haWwuY29tOjBpIXZLMFk/",
       },
     };
 
@@ -126,7 +123,7 @@ const Dep = () => {
     if (loading) {
       const options = {
         method: "POST",
-        url: `https://apisandbox.vnforappstest.com/api.ecommerce/v2/ecommerce/token/session/${merchandid}`,
+        url: `https://apiprod.vnforapps.com/api.ecommerce/v2/ecommerce/token/session/${merchandid}`,
         headers: {
           accept: "application/json",
           "content-type": "application/json",
@@ -135,9 +132,11 @@ const Dep = () => {
         data: {
           antifraud: {
             merchantDefineData: {
-              MDD15: "Valor MDD 15",
-              MDD20: "Valor MDD 20",
-              MDD33: "Valor MDD 33",
+              MDD4: "example@gmail.com",
+              MDD21: 0,
+              MDD32: "12345678",
+              MDD75: "Registrado",
+              MDD77: 12345,
             },
           },
           channel: "web",
@@ -192,6 +191,18 @@ const Dep = () => {
   const [orderID, setOrderId] = useState(generateOrderNumber());
 
   const openForm = (sessionKey) => {
+    if (monto > 500 || monto < 10) {
+      Swal.fire({
+        title: "Error al depositar",
+        text: "El monto máximo es de 500 soles y el mínimo es de 10 soles",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          router.reload();
+        }
+      })
+    }
+    else {
+    
     VisanetCheckout.configure({
       sessiontoken: sessionKey, 
       channel: "web",
@@ -204,18 +215,22 @@ const Dep = () => {
       formbuttoncolor: "#000000",
       buttoncolor: "navy",
       method: "POST",
-      action: `/api/ad/depositarNiubiz?token=${token}&amount=${monto}&orderid=${orderID}&api_token=${user.api_token}&ref_code=${codRef}`,
+      action: `/api/ad/depositarNiubiz?token=${token}&amount=${monto}&orderid=${orderID}&ref_code=${codRef}`,
       cardholdername: user.name,
       cardholderlastname: user.lastname,
       cardholderemail: user.email,
       
       
       complete: function (params) {
-        alert(JSON.stringify(params));
+        <h1>
+          LOADING
+        </h1>
       },
     });
     
-    VisanetCheckout.open()
+    
+      VisanetCheckout.open()
+  }
   };
 
   const generQr = () => {
@@ -263,7 +278,7 @@ const Dep = () => {
     <>
       <Script
         type="text/javascript"
-        src="https://static-content-qas.vnforapps.com/v2/js/checkout.js"
+        src="https://static-content.vnforapps.com/v2/js/checkout.js"
       />
       <div className="withdraw-main-container">
         <div className="withdraw-container background-gradient-1">

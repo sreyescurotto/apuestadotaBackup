@@ -4,7 +4,7 @@ const PaymentReceived = () => {
   return (
     <>
       <div className="payment-recieved">
-        <h4 className="payment-title">Tu recarga ha sido procesada con éxito, en breve podras verificar tu saldo en tu cuenta </h4>
+        <h4 className="payment-title">Tu recarga ha sido recibida éxito, estamos validando la transaccion, dale click en el boton para culminar con el proceso </h4>
 
         <img src="icons/ok.svg" className="payment-ok" />
       </div>

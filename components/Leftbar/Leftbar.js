@@ -27,9 +27,9 @@ const Leftbar = (props) => {
   //   }
   // });
 
-  const [saldo, setSaldo] = leftbar.loading;
+  const [saldo, setSaldo] = useState(leftbar.loading);
 
-  const [saldoPrueba, setSaldoPrueba] = leftbar.loading;
+  const [saldoPrueba, setSaldoPrueba] = useState(leftbar.loading);
 
   // const [saldoPrueba, setSaldoPrueba] = useState(() => {
   //   if (typeof window !== "undefined") {
@@ -89,13 +89,7 @@ const Leftbar = (props) => {
     }
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("saldo", JSON.stringify({ saldo: saldo }));
-    localStorage.setItem(
-      "saldoPrueba",
-      JSON.stringify({ saldoPrueba: saldoPrueba })
-    );
-  }, [saldo, saldoPrueba]);
+
 
   const routePractice = () => {
     router.push("/play/practice");
