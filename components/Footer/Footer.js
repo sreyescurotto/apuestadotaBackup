@@ -76,7 +76,7 @@ const Footer = (props) => {
 
         @media only screen and (max-width: 480px) {
           .root-footer {
-            padding: 28px 40px 0;
+            padding: 28px 40px 20px;
             top: 0;
           }
           .footer-text {

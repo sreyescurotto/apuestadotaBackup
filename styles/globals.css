@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 /* GENERALES  */
+
+
 :root {
   --verde: #b6ff40;
   --black: #081325;
@@ -111,7 +113,7 @@ li {
 }
 
 .navbar {
-  padding: 8px 16px;
+  padding: .5rem 2.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -203,7 +205,7 @@ li {
 
   .menu-navigation-media {
     position: absolute;
-    height: 93%;
+    height: 90vh;
     width: 89%;
     background-color: #b6ff40;
     margin: 30px 30px;
@@ -1084,7 +1086,6 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 
   .menu-navigation-media {
     margin: 10px 19px;
-    height: 88%;
     padding-top: 10px;
   }
 

@@ -6,9 +6,7 @@ import Footer from "../components/Footer/Footer";
 import Script from "next/script";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useCallback, useState, useRef, useEffect } from "react";
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
+import { useState, useRef, useEffect } from "react";
 import Banner from "../components/Banner";
 import Share from "../components/Share";
 
@@ -30,17 +28,8 @@ const Home = (props) => {
   const [yAxi, setyAxi] = useState(36);
   const [xAxi, setxAxi] = useState(40);
   const ref1 = useRef();
-  const [scroll, setScroll] = useState(true);
-  const particlesInit = useCallback(async (engine) => {
-    // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
-    // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
-    // starting from v2 you can add only the features you need reducing the bundle size
-    await loadFull(engine);
-  }, []);
 
-  const particlesLoaded = useCallback(async (container) => {
-    // set the container size
-  }, []);
+
   // Attach the scroll listener to the div
   useEffect(() => {
     const handleScroll = () => {
@@ -125,170 +114,6 @@ const Home = (props) => {
               right: `${xAxi}%`,
             }}
           >
-            <Particles
-              id="tsparticles"
-              className="particles"
-              canvasClassName="particles-canvas"
-              init={particlesInit}
-              loaded={particlesLoaded}
-              style={{
-                position: "fixed",
-                zIndex: "-1",
-                transform: "translate(75%, 75%)",
-              }}
-              options={{
-                fullScreen: {
-                  enable: true,
-                },
-                detectRetina: false,
-                fpsLimit: 120,
-                interactivity: {
-                  events: {
-                    onClick: {
-                      enable: false,
-                      mode: "push",
-                    },
-                    onDiv: {
-                      elementId: "repulse-div",
-                      enable: false,
-                      mode: "repulse",
-                    },
-                    onHover: {
-                      enable: true,
-                      mode: "bubble",
-                      parallax: {
-                        enable: false,
-                        force: 2,
-                        smooth: 10,
-                      },
-                    },
-                    resize: true,
-                  },
-                  modes: {
-                    bubble: {
-                      distance: 40,
-                      duration: 2,
-                      opacity: 8,
-                      size: 6,
-                      speed: 3,
-                    },
-                    connect: {
-                      distance: 80,
-                      lineLinked: {
-                        opacity: 0.5,
-                      },
-                      radius: 60,
-                    },
-                    grab: {
-                      distance: 400,
-                      lineLinked: {
-                        opacity: 1,
-                      },
-                    },
-                    push: {
-                      quantity: 4,
-                    },
-                    remove: {
-                      quantity: 2,
-                    },
-                    repulse: {
-                      distance: 200,
-                      duration: 0.4,
-                    },
-                    slow: {
-                      active: false,
-                      radius: 0,
-                      factor: 1,
-                    },
-                  },
-                },
-                particles: {
-                  color: {
-                    value: "#b6ff40",
-                  },
-                  lineLinked: {
-                    blink: false,
-                    color: "#b6ff40",
-                    consent: false,
-                    distance: 30,
-                    enable: true,
-                    opacity: 0.4,
-                    width: 1,
-                  },
-                  move: {
-                    attract: {
-                      enable: false,
-                      rotate: {
-                        x: 600,
-                        y: 1200,
-                      },
-                    },
-                    bounce: false,
-                    direction: "none",
-                    enable: true,
-                    outMode: "bounce",
-                    random: false,
-                    speed: 1,
-                    straight: false,
-                  },
-                  number: {
-                    density: {
-                      enable: false,
-                      area: 2000,
-                    },
-                    limit: 0,
-                    value: 200,
-                  },
-                  opacity: {
-                    animation: {
-                      enable: true,
-                      minimumValue: 0.05,
-                      speed: 2,
-                      sync: false,
-                    },
-                    random: false,
-                    value: 0.4,
-                  },
-                  shape: {
-                    type: "circle",
-                  },
-                  size: {
-                    animation: {
-                      enable: false,
-                      minimumValue: 0.1,
-                      speed: 40,
-                      sync: false,
-                    },
-                    random: true,
-                    value: 1,
-                  },
-                },
-                polygon: {
-                  draw: {
-                    enable: true,
-                    lineColor: "rgba(255,255,255,0.2)",
-                    lineWidth: 0.5,
-                  },
-                  enable: true,
-                  move: {
-                    radius: 10,
-                  },
-                  inline: {
-                    arrangement: "equidistant",
-                  },
-                  scale: 0.5,
-                  type: "inline",
-                  url: "https://particles.js.org/images/smalldeer.svg",
-                },
-                background: {
-                  color: "transparent",
-                  image: "",
-                  position: "50% 50%",
-                  repeat: "no-repeat",
-                  size: "cover",
-                },
-              }}
-            />
             <Link href="/play/normal" locale={router.locale}>
               <a>
                 <button className="fixed-button" id="fixed-button">
@@ -338,7 +163,7 @@ const Home = (props) => {
 
           <section className="second-section">
             <Image
-              src="/aegis-background.png"
+              src="/aegis-background.jpg"
               className="aegis-background"
               alt="Aegis"
               layout="fill"
@@ -578,15 +403,15 @@ const Home = (props) => {
 
         @media only screen and (max-width: 485px) {
           .info-text-cont {
-            font-size: 1.2rem;
+            font-size: 1rem;
             width: 110px;
           }
           .first-text-c {
             left: 46%;
           }
           .mid-text-c {
-            left: 46%;
-            width: 105px;
+            left: 47%;
+            width: 99px;
           }
           .last-text-c {
             left: 42%;

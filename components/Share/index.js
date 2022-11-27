@@ -87,7 +87,8 @@ export default function Share() {
                 width: 760px;
                 text-align: center;
                 font-size: 3.8rem;
-                line-height: 1.1;
+                line-height: 1.2;
+                margin-bottom: 2rem;
             }
 
             .shareText p {
@@ -196,12 +197,7 @@ export default function Share() {
             }
 
             .runes-effect {
-                left: 58%;
-               bottom: 70%;
-            }
-
-            .runes-effect img {
-                width: 100px;
+              display: none;
             }
 
             .absolute-social-c {
