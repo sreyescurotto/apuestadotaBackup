@@ -58,7 +58,7 @@ const NavbarFirst = (props) => {
 
         <div className="menu-navigation-links">
           <Link href="/play/normal" locale={router.locale}>
-            <a className="anchor">{props.play}</a>
+            <a className="anchor">{navbar.play}</a>
           </Link>
 
           <Link href="/profile" locale={router.locale}>

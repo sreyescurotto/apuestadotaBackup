@@ -152,7 +152,7 @@ export default function Banner(props) {
       <style jsx>{`
         .banner-container {
           position: relative;
-          z-index: 10;
+          z-index: 9;
           margin-top: 2.2rem;
         }
         .container-bets {
@@ -383,6 +383,7 @@ export default function Banner(props) {
           }
           .item-00 {
             min-width: 120px;
+            height: 145px;
           }
           .hero-c-img {
             width: 120px;
@@ -391,6 +392,18 @@ export default function Banner(props) {
           .mobile-title {
             display: block;
             text-align: center;
+          }
+          .win-price {
+            font-size: 16px;
+            line-height: 16px;
+            width: 120px;
+            letter-spacing: 0;
+            margin: 15px 0;
+            padding: 0;
+          }
+
+          .person-info-content {
+            width: 120px;
           }
         }
       `}</style>

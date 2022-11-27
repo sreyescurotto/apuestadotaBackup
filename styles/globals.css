@@ -188,7 +188,7 @@ li {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 2rem 1.5rem;
+    padding: 1.5rem;
   }
 
   .close-bw {
@@ -278,7 +278,7 @@ li {
   transition: all 0.5s linear;
   right: 40%;
   margin: 20px 50px;
-  z-index: 999;
+  z-index: 10;
 }
 
 .fixed-button {
@@ -1060,7 +1060,7 @@ MEDIA QUERY MAXW WIDTH 768PX  APLICACION POR DENTRO */
 
 MEDIA QUERY MAXW WIDTH 415PX  */
 
-@media (max-width: 480px) {
+@media only screen and (max-width: 480px) {
   #tsparticles {
     display: none;
   }
@@ -1145,7 +1145,7 @@ MEDIA QUERY MAXW WIDTH 415PX  */
   }
 
   .overlay-gradient {
-    top: 12%;
+    top: 10%!important;
   }
 
   .grid-content {
@@ -1206,6 +1206,8 @@ MEDIA QUERY MAXW WIDTH 415PX  */
     line-height: 52px;
     top: 20%;
     left: 0 !important;
+    width: 100%;
+    padding: 0 1rem;
   }
 
   .title-2 {
@@ -1217,7 +1219,9 @@ MEDIA QUERY MAXW WIDTH 415PX  */
   }
 
   .second-section {
-    margin-top: 20px;
+    margin-top: 40px;
+    height: 100vh;
+    margin-bottom: 3%;
   }
 
   .third-section-intro-content {
@@ -1673,6 +1677,14 @@ MEDIA QUERY MAXW WIDTH 415PX  */
 
   .left-container-h3 {
     font-size: 1rem;
+  }
+  .title-1 {
+    font-size: 2.2em;
+    line-height: 40px;
+  }
+
+  .overlay-gradient {
+    top: 18%;
   }
 }
 

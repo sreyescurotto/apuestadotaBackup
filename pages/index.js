@@ -27,7 +27,7 @@ export async function getStaticProps({ locale }) {
 const Home = (props) => {
   const { home, navbar, footer } = props;
   const router = useRouter();
-  const [yAxi, setyAxi] = useState(300);
+  const [yAxi, setyAxi] = useState(36);
   const [xAxi, setxAxi] = useState(40);
   const ref1 = useRef();
   const [scroll, setScroll] = useState(true);
@@ -121,7 +121,7 @@ const Home = (props) => {
           <div
             className="fixed-button-container"
             style={{
-              bottom: `${yAxi}px`,
+              bottom: `${yAxi}%`,
               right: `${xAxi}%`,
             }}
           >
@@ -545,13 +545,8 @@ const Home = (props) => {
           .App {
             height: 768px;
           }
-          .overlay-gradient {
-            top: 18%;
-          }
-          .title-1 {
-            font-size: 2.8em;
-            line-height: 46px;
-          }
+        
+      
           .subtitle-1 {
             font-size: 1em;
           }
@@ -584,13 +579,22 @@ const Home = (props) => {
         @media only screen and (max-width: 485px) {
           .info-text-cont {
             font-size: 1.2rem;
+            width: 110px;
           }
           .first-text-c {
-            left: 42%;
+            left: 46%;
           }
           .mid-text-c {
-            left: 44%;
-            width: auto;
+            left: 46%;
+            width: 105px;
+          }
+          .last-text-c {
+            left: 42%;
+          }
+          .info-img {
+            display: flex;
+            justify-content: center;
+            
           }
         }
       `}</style>

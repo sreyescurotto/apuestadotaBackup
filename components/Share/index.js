@@ -176,25 +176,28 @@ export default function Share() {
         @media only screen and (max-width: 485px) {
 
             .shareText {
-                padding: 2rem 0;
+                padding: 4rem 0;
                 width: 100%;
                 left: 0;
             }
 
             .shareText h2 {
                 width: 100%;
-                font-size: 2.5rem;
+                font-size: 1.7rem;
+                text-align: center;
+                padding: 0 20px;
             }
 
             .shareText p {
                 margin-top: 1rem;
                 width: 100%;
-                font-size: 1.2rem;
+                font-size: 1rem;
+                padding: 0 20px;
             }
 
             .runes-effect {
                 left: 58%;
-               
+               bottom: 70%;
             }
 
             .runes-effect img {
@@ -217,6 +220,10 @@ export default function Share() {
             }
           .absolute-social-c img {
             width: 60px;
+          }
+          .absolute-text {
+            font-size: 1.2rem;
+            left: 0;
           }
           
           }
