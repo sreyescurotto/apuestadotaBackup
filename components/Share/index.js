@@ -176,6 +176,10 @@ export default function Share() {
             
         @media only screen and (max-width: 485px) {
 
+            .share {
+              margin-bottom: 7rem;
+            }
+
             .shareText {
                 padding: 4rem 0;
                 width: 100%;

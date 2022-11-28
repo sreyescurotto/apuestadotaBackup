@@ -211,7 +211,7 @@ const Dep = () => {
       amount: `${monto}.00`, 
       expirationminutes: "20",
       timeouturl: "https://apuestadota.com/paymentError",
-      merchantlogo: "https://apuestadota.com/_next/image?url=%2Fapuesta-logo.png&w=256&q=75",
+      merchantlogo: "https://apuestadota.com/apuesta-logo-b.png",
       formbuttoncolor: "#000000",
       buttoncolor: "navy",
       method: "POST",

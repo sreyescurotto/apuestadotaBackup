@@ -72,7 +72,7 @@ const DepReq = (props) => {
 
       {/* TABLA EN MOBILE */}
 
-      <table className="mobile-table">
+      <table className="mobile-table background-gradient-1">
         <thead>
           <tr>
             <th>{profileProps.date}</th>

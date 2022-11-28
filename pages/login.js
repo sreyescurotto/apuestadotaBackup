@@ -1,6 +1,5 @@
 import { React, useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import AppService from "../services/app.service";
 import Loading from "../components/Loading";
@@ -39,9 +38,9 @@ const Login = () => {
 
       "openid.mode": "checkid_setup",
 
-      // "openid.return_to": "https://apuestadota.com/login", Esto es la url donde va a recibir los get params despues de iniciar sesion
+      // "openid.return_to": "https://apuestadota.com/login",
 
-      //"openid.realm": "https://apuestadota.com",  Esto es el origen de la peticion
+      // "openid.realm": "https://apuestadota.com",  
 
       "openid.return_to": "https://apuestadotabackup.vercel.app/login", 
 
@@ -272,9 +271,6 @@ const Login = () => {
           .steam-icon-p {
             background: url(/icons/steam.png);
           }
-
-            
-          /* #03e9f4 */
 
           .login-box .user-box input:focus ~ label,
           .login-box .user-box input:valid ~ label {
@@ -637,7 +633,7 @@ const Login = () => {
             }
 
             .arrowbottom {
-              bottom: -33%;
+              display: none;
             }
           }
         `}

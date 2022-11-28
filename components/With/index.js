@@ -298,10 +298,6 @@ const With = (props) => {
             padding-top: 0.5rem;
           }
 
-           {
-            /* color: rgba(255, 255, 255, 0.6); */
-          }
-
           .w-margin {
             margin-top: 1rem;
           }
@@ -364,11 +360,15 @@ const With = (props) => {
             }
 
             .balance-w {
-              margin: 0 0 0 5rem;
-              font-size: 2.2rem;
+              margin: 0;
+              font-size: 2rem;
             }
             .intro-title {
               font-size: 2.2rem;
+            }
+
+            .mode-bets-a {
+              padding: 2rem 1rem;
             }
           }
         `}

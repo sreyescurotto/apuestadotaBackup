@@ -1898,7 +1898,7 @@ td {
   width: 80%;
   text-align: center;
   color: white;
-  font-size: var(--title-size);
+  font-size: var(--subtitle-size);
   height: 35px;
 }
 .input-amount-withdraw:focus {

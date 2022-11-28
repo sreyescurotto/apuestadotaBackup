@@ -25,7 +25,7 @@ export async function getStaticProps({ locale }) {
 const Home = (props) => {
   const { home, navbar, footer } = props;
   const router = useRouter();
-  const [yAxi, setyAxi] = useState(36);
+  const [yAxi, setyAxi] = useState(35);
   const [xAxi, setxAxi] = useState(40);
   const ref1 = useRef();
 
