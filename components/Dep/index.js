@@ -23,29 +23,34 @@ const Dep = () => {
   const methods = [
     {
       id: "izipay",
-      img_url: "/icons/methods/visa-mastercard.png",
+      img_url: "/methods/visa.png",
       label: "Pago con tarjeta",
     },
     {
       id: "niubiz",
-      img_url: "/icons/methods/pagoefectivo.png",
+      img_url: "/methods/mastercard.png",
       label: "Pago Efectivo",
     },
     {
       id: "niubiz2",
-      img_url: "/icons/methods/yapeplin.png",
+      img_url: "/methods/yape.png",
       label: "Pago con Yape o Plin",
     },
     {
       id: "izipay1",
-      img_url: "/icons/methods/visa-mastercard.png",
-      label: "Pago con tarjeta",
+      img_url: "/methods/plin.png",
+      label: "Pago con Plin",
     },
     {
       id: "izipay2",
-      img_url: "/icons/methods/visa-mastercard.png",
-      label: "Pago con tarjeta",
+      img_url: "/methods/dinners.png",
+      label: "Pago con Dinners",
     },
+    {
+      id: "izipay3",
+      img_url: "/methods/americna.png",
+      label: "Pago con American Express",
+    }
   ];
 
   // {id:'paypal', img_url: '/icons/methods/paypal.png', label: 'Paypal'}
@@ -94,6 +99,8 @@ const Dep = () => {
   const [session, setSession] = useState("");
 
   const [loading, setLoading] = useState(false);
+
+  const [buttonD, setButtonD] = useState(true);
 
 
   const [nickname, setNickname] = useState("...");
@@ -227,34 +234,9 @@ const Dep = () => {
         </h1>
       },
     });
-    
-    
+     setButtonD(false); 
       VisanetCheckout.open()
   }
-  };
-
-  const generQr = () => {
-    if (loading) {
-      const options = {
-        method: "POST",
-        url: "https://apitestenv.vnforapps.com/api.qr.manager/v1/qr/ascii",
-        headers: {
-          accept: "application/json",
-          "content-type": "application/json",
-          Authorization: token,
-        },
-        data: { tagType: "STATIC", validityDate: "30122022" },
-      };
-
-      axios
-        .request(options)
-        .then(function (response) {
-          console.log(response.data);
-        })
-        .catch(function (error) {
-          console.error(error);
-        });
-    }
   };
 
   useEffect(() => {
@@ -281,6 +263,7 @@ const Dep = () => {
         src="https://static-content.vnforapps.com/v2/js/checkout.js"
       />
       <div className="withdraw-main-container">
+      <h2 className="solo--title center">Realiza tu deposito</h2>
         <div className="withdraw-container background-gradient-1">
           <div className="withdraw-flex-first">
             <div className="text-w-intro">
@@ -319,8 +302,10 @@ const Dep = () => {
           </div>
           <div className="withdraw-flex">
             <h3 className="subtitle-w">Aceptamos todos los medios de pago</h3>
-            <button className="deposit-btn-submit" onClick={createOrder}>
-              IR A PAGAR
+            <button className={buttonD ? 'deposit-btn-submit': 'deposit-btn-submit disable'} onClick={createOrder}>
+
+            {buttonD ? 'IR A PAGAR': 'CARGANDO...'}
+              
             </button>
 
             <div className="deposit-grid-container">
@@ -344,10 +329,9 @@ const Dep = () => {
       </div>
       <style jsx>
         {`
-          .withdraw-main-container {
-            padding-top: 4rem;
-          }
-
+        .withdraw-main-container h2 {
+          margin-bottom: 1.8rem;
+        }
           .deposit-grid-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -367,8 +351,9 @@ const Dep = () => {
           .text-t {
             max-width: 433px;
           }
-          .input-amount-withdraw {
-            font-size: 16px !important;
+
+          .disable {
+            pointer-events: none;
           }
         `}
       </style>

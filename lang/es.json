@@ -103,7 +103,7 @@
     "amount": "Importe",
     "status": "Estado",
     "method": "Medio",
-    "withDes": "SOLICITUD PARA LA RETIRADA DE FONDOS",
+    "withDes": "Solicitud para la retirada de fondos",
     "notwith": "No has realizado solicitudes de retiro",
     "completed": "Completado",
     "pending": "Pendiente",
@@ -114,7 +114,8 @@
     "match": "Partida",
     "matchId": "Match ID",
     "result": "Resultado",
-    "refTitle": "Recomienda ApuestaDota a un amigo y gana dinero extra.",
+    "refTitle": "Recomienda ApuestaDota a un amigo y gana dinero extra",
+    "accStatus" : "Movimientos de cuenta",
     "refSubtitle": "Invita a tus amigos a unirse a ApuestaDota.",
     "refSubtitle2": "Cuando tu amigo utilice tu código deberá realizar su primera apuesta. Después de completar con los requisitos, tu recibirás 1 PEN",
     "each": " por cada referido!",
@@ -141,7 +142,7 @@
     "writaemail": "Escribe tu email",
     "writeid": "Escrite tu DNi",
     "adj": "Adjunta tu documento",
-    "register": "Registrar"
+    "register": "REGISTRAR"
   },
   "deposit": {
     "hello": "Hola",
@@ -159,18 +160,21 @@
     "accCCI": "Código Interbancario:",
     "nameA": "Nombre completo del titular:",
     "amount": "Monto:",
-    "withdraw": "Retirar",
+    "withdraw": "RETIRAR",
     "text": "El monto minimo para retirar es de S/ 20.",
     "text2": "Los retiros se realizan en un plazo de 24 horas hbiles y pueden tardar hasta 48 horas hábiles.",
     "text3": "No se puede retirar dinero a cuentas que no pertenezcan al titular de la cuenta.",
-    "higher20": "El monto debe ser mayor a 20 dólares",
+    "higher20": "El monto debe ser mayor a 20 soles",
     "notBalance": "No cuentas con saldo suficiente para realizar el retiro",
     "confirmText": "¿Deseas realizar el retiro de ",
     "for": " por ",
     "confirm": "Sí, retirar",
     "cancel": "Cancelar",
     "success": "Retiro exitoso",
-    "errorWith": "Hubo un error al realizar el depósito"
+    "errorWith": "Hubo un error al realizar el depósito",
+    "insertData": "Ingresa los datos solicitados",
+    "hello2" : "Hola",
+    "currentBalance" : "tu saldo actual es:"
   },
   "terms": {
     "title": "TÉRMINOS Y CONDICIONES",

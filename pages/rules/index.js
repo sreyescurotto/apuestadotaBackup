@@ -27,26 +27,45 @@ export default function rules(props) {
       <Layout layout={layout} navbar={navbar} leftbar={leftbar}>
         <div className="interface">
           <div className="rules-container">
-            <h2 className="sec-title-h">{terms.title}</h2>
-            <p>{terms.date} {b}. </p>
+            <div className="rules-container-text">
+              <h2 className="sec-title-h">{terms.title}</h2>
+              <p>
+                {terms.date} {b}.{" "}
+              </p>
+            </div>
+            
             <div className="terms-link-container">
-              <Image src="/pdf-blue.png" className="terms-img" width={50} height={50}/>
+              <Image
+                src="/pdf-blue.png"
+                className="terms-img"
+                width={50}
+                height={50}
+              />
 
               <a
                 href="/terms-apuestadota.pdf"
                 target={"_blank"}
                 className="terms-link"
-                
                 rel="noreferrer"
               >
-                Términos y condiciones - Apuestadota.com 
+                Términos y condiciones - Apuestadota.com
               </a>
 
-              <Image src="/icons/spain.png" width={35} height={35} alt='spanish' />
+              <Image
+                src="/icons/spain.png"
+                width={35}
+                height={35}
+                alt="spanish"
+              />
             </div>
 
             <div className="terms-link-container english-terms">
-              <Image src="/pdf-blue.png" className="terms-img" width={50} height={50}/>
+              <Image
+                src="/pdf-blue.png"
+                className="terms-img"
+                width={50}
+                height={50}
+              />
 
               <a
                 href="/terms-apuestadota-en.pdf"
@@ -54,10 +73,15 @@ export default function rules(props) {
                 rel="noreferrer"
                 className="terms-link"
               >
-                Terms & Conditions - Apuestadota.com 
+                Terms & Conditions - Apuestadota.com
               </a>
 
-              <Image src="/icons/britain.png" width={35} height={35} alt='english'/>
+              <Image
+                src="/icons/britain.png"
+                width={35}
+                height={35}
+                alt="english"
+              />
             </div>
           </div>
         </div>
@@ -66,19 +90,25 @@ export default function rules(props) {
       <style jsx>
         {`
           .interface {
-            background-color: #2C62FE;
+            background-color: #2c62fe;
           }
 
           .rules-container {
-            padding: 2rem;
+            padding: 4rem;
           }
 
-          
+          .rules-container-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
 
           .rules-container p {
             margin-bottom: 4rem;
-          
-            font-size: 1.5rem;
+
+            margin-top: .5rem;
+
+            font-size: 16px;
           }
 
           .terms-link-container {
@@ -110,9 +140,7 @@ export default function rules(props) {
           .terms-link {
             color: #000;
 
-
-
-            font-size: 26px;
+            font-size: 20px;
 
             width: 80%;
           }
@@ -129,10 +157,10 @@ export default function rules(props) {
             }
 
             .rules-container p {
-            margin-bottom: 4rem;
-          
-            font-size: var(--subtitle-size);
-          }
+              margin-bottom: 4rem;
+
+              font-size: var(--subtitle-size);
+            }
           }
         `}
       </style>

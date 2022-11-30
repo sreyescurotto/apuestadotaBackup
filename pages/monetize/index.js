@@ -93,8 +93,8 @@ const Profile = (props) => {
             padding-bottom: 4rem;
           }
           .monetize-title {
-            margin-top: 2rem;
-           
+            margin-top: 4rem;
+            margin-bottom: .5rem;
           }
 
           .monetize-subtitle {
@@ -120,7 +120,7 @@ const Profile = (props) => {
           }
 
           .benefits-item p {
-            font-size: var(--subtitle-size);
+            font-size: 20px;
             font-weight: 600;
           }
 
@@ -150,7 +150,7 @@ const Profile = (props) => {
 
           .arrow-container {
             position: absolute;
-            bottom: -30%;
+            bottom: -50%;
             left: 30%;
           }
 

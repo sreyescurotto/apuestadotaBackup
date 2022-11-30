@@ -103,7 +103,7 @@
     "amount": "Amount",
     "status": "Status",
     "method": "Method",
-    "withDes": "REQUEST FOR WITHDRAWAL OF FUNDS",
+    "withDes": "Request for withdrawal of funds",
     "notwith": "No withdraw request yet",
     "completed": "Completed",
     "pending": "Pending",
@@ -114,8 +114,9 @@
     "match": "Match",
     "matchId": "Match ID",
     "result": "Result",
-    "refTitle": "Recommend ApuestaDota to a friend and earn extra money.",
-    "refSubtitle": "Invite your friends to join BetDota.",
+    "refTitle": "Recommend ApuestaDota to a friend and earn extra money",
+    "accStatus" : "Account movements",
+    "refSubtitle": "Invite your friends to join ApuestaDota.",
     "refSubtitle2": "When your friend uses your code, they must place their first bet. After completing the requirements, you will receive 1 PEN",
     "each": "for each referral!",
     "refSubtitle3": "Your referral code is: ",
@@ -141,7 +142,7 @@
     "writaemail": "Enter your email",
     "writeid": "Enter your ID",
     "adj": "Attach your ID",
-    "register": "Register"
+    "register": "SUBMIT"
   },
   "deposit": {
     "hello": "Hello",
@@ -159,18 +160,21 @@
     "accCCI": "Interbank Code:",
     "nameA": "Holder's full name:",
     "amount": "Amount:",
-    "withdraw": "Withdraw",
+    "withdraw": "WITHDRAW",
     "text": "The minimum amount to withdraw is S/ 20.",
     "text2": "Withdrawals are made within 24 business hours and can take up to 48 business hours.",
     "text3": "Money cannot be withdrawn to accounts that do not belong to the account holder.",
-    "higher20": "The amount must be greater than 20 dollars",
+    "higher20": "The amount must be greater than S/ 20",
     "notBalance": "You do not have enough balance to make the withdrawal",
     "confirmText": "Do you want to withdraw of",
     "for": " through",
     "confirm": "Yes, withdraw",
     "cancel": "Cancel",
     "success": "Withdraw successful",
-    "errorWith": "There was an error making the withdraw"
+    "errorWith": "There was an error making the withdraw",
+    "insertData": "Enter the requested data",
+    "hello2" : "Hello",
+    "currentBalance" : "your current balance is:"
   },
   "terms": {
     "title": "Terms & Conditions",
@@ -222,7 +226,7 @@
     "q13": "What if when I'm waiting for the game to start, some player has a connection error and the game doesn't start?",
     "a13": "In that case your next game will be the one that counts, don't worry.",
     "q14": "Is there a minimum and maximum withdrawal amount?",
-    "a14": "The minimum withdrawal amount is 20 dollars but there is no maximum withdrawal amount, you can withdraw your entire balance as long as it is greater than 20 dollars.",
+    "a14": "The minimum withdrawal amount is S/ 20 but there is no maximum withdrawal amount, you can withdraw your entire balance as long as it is greater than S/ 20.",
     "videotutorial": "How to configure Bet?"
   }
 }

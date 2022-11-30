@@ -179,7 +179,6 @@ const Solo = (props) => {
     }}
   };
 
-
   const handleClick2 = (e) => {
     router.push("/play/practice");
   };
@@ -199,35 +198,36 @@ const Solo = (props) => {
   return (
     <>
       <div className="mode--solo">
-        <div className="balance-container">
+        
           {user !== null && (
+            <div className="balance-container">
             <button className="btn btn-md welcomebtn">
               {play.welcome} {user?.nickname}
             </button>
+          
+            <h3>{play.balance}</h3>
+            <div className="pad--s" onClick={handleClick3}>
+              <div className="pad--int active-mode">
+                <h3 className="left-container-h3 real-acc">{play.realacc}</h3>
+                <h3 className="left-container-h3 left-flex-container-h real-acc">
+                  S/
+                  <span className="fontw-l"> {saldo}</span>
+                </h3>
+              </div>
+            </div>
+
+            <div className="pad--s" onClick={handleClick2}>
+              <div className="pad--int">
+                <h3 className="left-container-h3 orange">{play.practiceacc}</h3>
+
+                <h3 className="left-container-h3 left-flex-container-h orange">
+                  S/
+                  <span className="fontw-l"> {saldoPrueba}</span>
+                </h3>
+              </div>
+            </div>
+          </div>
           )}
-
-          <h3>{play.balance}</h3>
-          <div className="pad--s" onClick={handleClick3}>
-            <div className="pad--int active-mode">
-              <h3 className="left-container-h3 real-acc">{play.realacc}</h3>
-              <h3 className="left-container-h3 left-flex-container-h real-acc">
-                S/
-                <span className="fontw-l"> {saldo}</span>
-              </h3>
-            </div>
-          </div>
-
-          <div className="pad--s" onClick={handleClick2}>
-            <div className="pad--int">
-              <h3 className="left-container-h3 orange">{play.practiceacc}</h3>
-
-              <h3 className="left-container-h3 left-flex-container-h orange">
-                S/
-                <span className="fontw-l"> {saldoPrueba}</span>
-              </h3>
-            </div>
-          </div>
-        </div>
 
         <div className="mode--solo--c">
           <div>

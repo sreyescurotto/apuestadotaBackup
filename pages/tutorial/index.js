@@ -107,7 +107,7 @@ export default function Tutorial(props) {
         <div className="interface">
           <div className="faq-container">
             <div className="faq-container-title">
-              <h4>{tutorial.title}</h4>
+              <h4 className="center">{tutorial.title}</h4>
             </div>
 
             <div className="faq-container-box">
@@ -369,7 +369,7 @@ export default function Tutorial(props) {
 
           <section className="container-interface" id="expose-public">
             <div className="int interface-item-01">
-              <h4>{tutorial.videotutorial}</h4>
+              <h4 className="solo--title">{tutorial.videotutorial}</h4>
 
               <div className="multimedia-container">
                 <video
@@ -514,7 +514,7 @@ export default function Tutorial(props) {
           .faq-container-box-item-title h4 {
             color: #fff;
 
-            font-size: 22px;
+            font-size: 20px;
 
             display: flex;
 
@@ -582,11 +582,7 @@ export default function Tutorial(props) {
           }
 
           .int h4 {
-            color: #fff;
-
-            font-size: 37px;
-
-            font-weight: 500;
+         
 
             margin-bottom: 15px;
           }
@@ -607,6 +603,10 @@ export default function Tutorial(props) {
             border-top-right-radius: 10px;
           }
 
+          .tutorial-subtitle h4 {
+            font-size: 2.25rem;
+          }
+
           .tutorial-p {
             font-size: 20px;
 
@@ -620,8 +620,7 @@ export default function Tutorial(props) {
           }
 
           .tutorial-p p {
-            color: rgba(255, 255, 255, 0.8);
-
+            font-size: 16px;
           }
 
           .img-prueba {
@@ -646,7 +645,7 @@ export default function Tutorial(props) {
               font-size : 18px;
             }
             .multimedia-container {
-              width: 85%;
+              width: 100%;
             }
           }
 
@@ -676,7 +675,7 @@ export default function Tutorial(props) {
             }
 
             .faq-container-title h4 {
-              font-size: 30px;
+              font-size: 24px;
             }
 
             .faq-container {
@@ -714,11 +713,15 @@ export default function Tutorial(props) {
             .interface-item-02 {
               width: 360px;
 
-              bottom: -134vh;
+              bottom: -60vh;
 
               position: absolute;
 
-              right: 12px;
+              right: 10px;
+            }
+            
+            .tutorial-subtitle h4 {
+              font-size: 24px;
             }
 
             .interface-item-03 {
@@ -739,6 +742,10 @@ export default function Tutorial(props) {
               font-size: 16px;
 
               padding: 1rem;
+            }
+
+            .int h4 {
+              font-size: 24px;
             }
           }
         `}

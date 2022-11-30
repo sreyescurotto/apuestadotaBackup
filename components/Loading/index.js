@@ -82,8 +82,6 @@ const Loading = (props) => {
 
                         letter-spacing: 4px;
 
-                        font-family: 'Poppins';
-
                     }
 
 

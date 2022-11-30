@@ -32,7 +32,7 @@ export default function Referrals({ user, ...props }) {
 
       {!loading && (
         <>
-          <h4 className="profile-sub-title">
+          <h4 className="solo--title">
            {profile.refTitle}
           </h4>
 

@@ -20,8 +20,8 @@ const ReferidosAll = () => {
     }, []);
 
     return <>
-        <div className="mode-bets-a">
-                <h3 className="solo--title">Mis referidos</h3>
+        
+                <h3 className="profile-sub-title">Mis referidos</h3>
             <div >
                 <table className='desktop-table background-gradient-1'>
                     <thead>
@@ -48,7 +48,7 @@ const ReferidosAll = () => {
                     </tbody>
                 </table>
             </div>
-        </div>  
+        
         <style jsx>{`
             .mode--solo--c {
                 padding: 1rem 2rem;
@@ -69,6 +69,10 @@ const ReferidosAll = () => {
                 width: 40px;
                 height: 40px;
                 margin-right: 10px;
+            }
+
+            .profile-sub-title {
+                font-size: 18px;
             }
         `}</style>
     </>;

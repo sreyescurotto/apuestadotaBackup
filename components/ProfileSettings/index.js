@@ -270,7 +270,7 @@ const ProfileSettings = (props) => {
 
         <div className={accountTrans ? "d-block" : "d-none"}>
           <div className="mode-bets-a">
-            <h3 className="solo--title">Estado de cuenta</h3>
+            <h3 className="solo--title">{profileProps.accStatus}</h3>
             <Account profile={profileProps} />
           </div>
         </div>
@@ -283,15 +283,14 @@ const ProfileSettings = (props) => {
         </div>
 
         <div className={security ? "d-block" : "d-none"}>
-          <Referrals user={user} profile={profileProps} />
+          <div className="mode-bets-a">
+            <Referrals user={user} profile={profileProps} />
+          </div>
         </div>
       </div>
 
       <style jsx>
         {`
-           {
-            /* Verificado */
-          }
 
           .verified-container {
             position: absolute;
@@ -311,15 +310,7 @@ const ProfileSettings = (props) => {
             flex-basis: 50%;
           }
 
-          .gc-profile-title {
-            margin-bottom: 20px;
-
-            font-size: 20px;
-
-            font-weight: 300;
-
-            color: #fff;
-          }
+        
 
           .gc-profile-title span {
             font-weight: 600;
@@ -466,7 +457,7 @@ const ProfileSettings = (props) => {
 
             text-transform: none;
 
-            font-size: 15px;
+            font-size: 16px;
 
             margin-top: 10px;
           }
@@ -513,6 +504,8 @@ const ProfileSettings = (props) => {
 
           .tabs-container-item h3 {
             font-size: 16px;
+            font-weight: 500;
+            text-transform: uppercase; 
           }
 
           .tab-active {
@@ -747,7 +740,7 @@ const ProfileSettings = (props) => {
             .profile-intro-i h3 {
               margin-top: 7px;
 
-              font-size: 13px;
+              font-size: 18px;
             }
 
             .profile-green-q {
@@ -763,7 +756,7 @@ const ProfileSettings = (props) => {
             }
 
             .tabs-container-item h3 {
-              font-size: 12px;
+              font-size: 16px;
             }
 
             .tabs-container-item img {
@@ -794,10 +787,6 @@ const ProfileSettings = (props) => {
               text-align: center;
             }
 
-             {
-              /* NEW SECURITY */
-            }
-
             .security-flex-b {
               padding: 1rem 1rem;
 
@@ -805,7 +794,7 @@ const ProfileSettings = (props) => {
             }
 
             .gc-profile-title {
-              font-size: 15px;
+              font-size: 16px;
             }
 
             .mobile-table {

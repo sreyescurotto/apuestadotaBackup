@@ -22,8 +22,6 @@ const ModePractice = (props) => {
 
   const [user, setUser] = useState(null);
 
-  const [active, setActive] = useState(false);
-
   const [terms, setTerms] = useState(false);
 
   const [rules, setRules] = useState(false);
@@ -211,13 +209,12 @@ const ModePractice = (props) => {
   return (
     <>
       <div className="mode--solo">
+      {user !== null && (
         <div className="balance-container">
-          {user !== null && (
+          
             <button className="btn btn-md welcomebtn">
               {play.welcome} {user?.nickname}
             </button>
-          )}
-
           <h3>{play.balance}</h3>
           <div className="pad--s" onClick={handleClick3}>
             <div className="pad--int">
@@ -240,6 +237,7 @@ const ModePractice = (props) => {
             </div>
           </div>
         </div>
+        )}
 
         <div className="mode--solo--c">
           <div>

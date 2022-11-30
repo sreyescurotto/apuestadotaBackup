@@ -135,8 +135,8 @@ const Leftbar = (props) => {
             >
               <h3 className="left-container-h3">{leftbar.practiceAcc}</h3>
 
-              <h3 className="left-container-h3 left-flex-container-h">
-                <div className="dollar--svg orange">S/.</div>
+              <h3 className="left-container-h3 left-flex-container-h orange">
+                S/.
                 <span className="fontw-l orange"> {saldoPrueba}</span>
               </h3>
             </div>
@@ -292,10 +292,6 @@ const Leftbar = (props) => {
 
       <style jsx>
         {`
-          .dollar--svg {
-            height: 25px;
-          }
-
           .right-arrow--svg {
             height: 18px;
 

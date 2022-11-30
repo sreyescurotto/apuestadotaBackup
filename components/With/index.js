@@ -168,7 +168,7 @@ const With = (props) => {
           <div className="withdraw-flex-first">
             <div className="text-w-intro">
               <h3 className="subtitle-w">
-                Hola {nickname}, tu saldo actual es:
+                {withdraw.hello2} {nickname}, {withdraw.currentBalance}
               </h3>
               <h5 className="balance-w">S/ {saldo}</h5>
             </div>
@@ -191,7 +191,7 @@ const With = (props) => {
           </div>
 
           <div className="withdraw-flex">
-            <h4>Ingresa los siguientes datos</h4>
+            <h4>{withdraw.insertData}</h4>
             <div className="withdraw-flex-payment-main">
               <form onSubmit={retirar}>
                 <div className="widthdraw-form">
@@ -261,11 +261,11 @@ const With = (props) => {
       <style jsx>
         {`
           .intro-title {
-            padding: 2rem;
+            padding: 0 2rem 2rem;
 
             text-align: center;
 
-            font-size: 3.5rem;
+            font-size: 2.25rem;
 
             text-shadow: 2px 2px 2px #000;
           }
@@ -276,14 +276,14 @@ const With = (props) => {
 
           .balance-w {
             color: var(--verde);
-            font-size: var(--title-size);
+            font-size: 20px;
             text-align: center;
           }
 
           .withdraw-container h4 {
             color: #fff;
 
-            font-size: 1.3rem;
+            font-size: 20px;
 
             margin-bottom: 1rem;
           }
@@ -346,7 +346,6 @@ const With = (props) => {
 
             .input-amount-withdraw {
               width: 100%;
-              font-size: 2.2rem;
             }
             .bottom-text {
               margin-bottom: 1.5rem;
@@ -359,9 +358,13 @@ const With = (props) => {
               padding-left: 0;
             }
 
+            .withdraw-container h4 {
+              font-size: 18px;
+            }
+
             .balance-w {
               margin: 0;
-              font-size: 2rem;
+              font-size: 24px;
             }
             .intro-title {
               font-size: 2.2rem;
