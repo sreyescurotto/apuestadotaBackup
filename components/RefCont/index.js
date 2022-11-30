@@ -233,6 +233,10 @@ export default function Referrals({ user, ...props }) {
 
           .referrals-code-sec {
             width: 340px;
+            margin-top: 2rem;
+          }
+          .referrals-code-p {
+            font-size: 14px;
           }
         }
       `}</style>

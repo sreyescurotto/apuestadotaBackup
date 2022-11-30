@@ -358,13 +358,9 @@ const With = (props) => {
               padding-left: 0;
             }
 
-            .withdraw-container h4 {
-              font-size: 18px;
-            }
-
             .balance-w {
               margin: 0;
-              font-size: 24px;
+              font-size: 20px;
             }
             .intro-title {
               font-size: 2.2rem;

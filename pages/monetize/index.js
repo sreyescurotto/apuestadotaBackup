@@ -190,7 +190,7 @@ const Profile = (props) => {
               line-height: 25px;
             }
             .benefits-item p {
-              font-size: .8em;
+              font-size: 18px;
             }
             .last-item-monetize {
               margin: 1rem 1rem 2rem;

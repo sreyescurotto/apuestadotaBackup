@@ -317,6 +317,10 @@ const Leftbar = (props) => {
             pointer-events: none;
           }
 
+          .left-container-img {
+            min-width: 20px;
+          }
+
           .left-container {
             background-color: #081325;
 

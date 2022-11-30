@@ -29,7 +29,7 @@ const Normal = (props) => {
         {`
           .interface {
 
-            background-color: #2C62FE;
+            background-color: #2c62fe7a;
           }
         `}
       </style>

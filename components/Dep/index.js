@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/router";
 
 import axios from "axios";
+
 import Script from "next/script";
 
 const Dep = () => {
@@ -50,25 +51,16 @@ const Dep = () => {
       id: "izipay3",
       img_url: "/methods/americna.png",
       label: "Pago con American Express",
-    }
+    },
   ];
 
-  // {id:'paypal', img_url: '/icons/methods/paypal.png', label: 'Paypal'}
   const [metodo, setMetodo] = useState("izipay");
 
   const [monto, setMonto] = useState(10);
 
-  const [mouse, setMouse] = useState(true);
-
-  const [dep, setDep] = useState(true);
-
   const refM = useRef(null);
 
   const refCR = useRef(null);
-
-  const selectMetodo = (metodo) => {
-    setMetodo(metodo);
-  };
 
   const handleChange = (e) => {
     const b = e.target.value;
@@ -84,16 +76,6 @@ const Dep = () => {
     setCodRef(cod_ref);
   };
 
-  const handleMouseEnter = (e) => {
-    setMouse(!mouse);
-  };
-
-  const handleDeposit = (e) => {
-    if (monto >= 10) {
-      setDep(false);
-    }
-  };
-
   const [token, setToken] = useState("");
 
   const [session, setSession] = useState("");
@@ -102,8 +84,9 @@ const Dep = () => {
 
   const [buttonD, setButtonD] = useState(true);
 
-
   const [nickname, setNickname] = useState("...");
+
+  const key = process.env.MYSQL_HOST;
 
   function createToken() {
     const options = {
@@ -111,7 +94,7 @@ const Dep = () => {
       url: "https://apiprod.vnforapps.com/api.security/v1/security",
       headers: {
         accept: "text/plain",
-        authorization: "Basic YXhlbF8yNzEyQGhvdG1haWwuY29tOjBpIXZLMFk/",
+        authorization: `Basic YXhlbF8yNzEyQGhvdG1haWwuY29tOjBpIXZLMFk/`,
       },
     };
 
@@ -153,7 +136,7 @@ const Dep = () => {
 
       axios
         .request(options)
-        .then(function (response) {        
+        .then(function (response) {
           setSession(response.data.sessionKey);
           openForm(response.data.sessionKey);
         })
@@ -162,35 +145,6 @@ const Dep = () => {
         });
     }
   }
-
-  function pagoEfectivo() {
-    const options = {
-      method: "POST",
-      url: "https://apisandbox.vnforappstest.com/api.pagoefectivo/v1/create/456879852",
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json",
-        Authorization: token,
-      },
-      data: {
-        channel: "web",
-        email: user.email,
-        amount: `${monto}.00`,
-        externalTransactionId: "218f9cff-9131-1154-2919-d0b319912351",
-      },
-    };
-
-    axios
-      .request(options)
-      .then(function (response) {
-        console.log(response.data);
-        router.push(response.data.cipUrl);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  }
-
   //generate a random purchase order number
   const generateOrderNumber = () => {
     return Math.floor(Math.random() * 1000000000);
@@ -206,37 +160,32 @@ const Dep = () => {
         if (result.isConfirmed) {
           router.reload();
         }
-      })
+      });
+    } else {
+      VisanetCheckout.configure({
+        sessiontoken: sessionKey,
+        channel: "web",
+        merchantid: merchandid,
+        purchasenumber: orderID,
+        amount: `${monto}.00`,
+        expirationminutes: "20",
+        timeouturl: "https://apuestadota.com/paymentError",
+        merchantlogo: "https://apuestadota.com/apuesta-logo-b.png",
+        formbuttoncolor: "#000000",
+        buttoncolor: "navy",
+        method: "POST",
+        action: `/api/ad/depositarNiubiz?token=${token}&amount=${monto}&orderid=${orderID}&ref_code=${codRef}`,
+        cardholdername: user.name,
+        cardholderlastname: user.lastname,
+        cardholderemail: user.email,
+
+        complete: function (params) {
+          <h1>LOADING</h1>;
+        },
+      });
+      setButtonD(false);
+      VisanetCheckout.open();
     }
-    else {
-    
-    VisanetCheckout.configure({
-      sessiontoken: sessionKey, 
-      channel: "web",
-      merchantid: merchandid, 
-      purchasenumber: orderID, 
-      amount: `${monto}.00`, 
-      expirationminutes: "20",
-      timeouturl: "https://apuestadota.com/paymentError",
-      merchantlogo: "https://apuestadota.com/apuesta-logo-b.png",
-      formbuttoncolor: "#000000",
-      buttoncolor: "navy",
-      method: "POST",
-      action: `/api/ad/depositarNiubiz?token=${token}&amount=${monto}&orderid=${orderID}&ref_code=${codRef}`,
-      cardholdername: user.name,
-      cardholderlastname: user.lastname,
-      cardholderemail: user.email,
-      
-      
-      complete: function (params) {
-        <h1>
-          LOADING
-        </h1>
-      },
-    });
-     setButtonD(false); 
-      VisanetCheckout.open()
-  }
   };
 
   useEffect(() => {
@@ -251,11 +200,6 @@ const Dep = () => {
     });
   }, []);
 
-  // useEffect(() => {
-
-  //   createOrder()
-  // }, [loading]);
-
   return (
     <>
       <Script
@@ -263,7 +207,7 @@ const Dep = () => {
         src="https://static-content.vnforapps.com/v2/js/checkout.js"
       />
       <div className="withdraw-main-container">
-      <h2 className="solo--title center">Realiza tu deposito</h2>
+        <h2 className="solo--title center">Realiza tu deposito</h2>
         <div className="withdraw-container background-gradient-1">
           <div className="withdraw-flex-first">
             <div className="text-w-intro">
@@ -302,10 +246,13 @@ const Dep = () => {
           </div>
           <div className="withdraw-flex">
             <h3 className="subtitle-w">Aceptamos todos los medios de pago</h3>
-            <button className={buttonD ? 'deposit-btn-submit': 'deposit-btn-submit disable'} onClick={createOrder}>
-
-            {buttonD ? 'IR A PAGAR': 'CARGANDO...'}
-              
+            <button
+              className={
+                buttonD ? "deposit-btn-submit" : "deposit-btn-submit disable"
+              }
+              onClick={createOrder}
+            >
+              {buttonD ? "IR A PAGAR" : "CARGANDO..."}
             </button>
 
             <div className="deposit-grid-container">
@@ -329,9 +276,9 @@ const Dep = () => {
       </div>
       <style jsx>
         {`
-        .withdraw-main-container h2 {
-          margin-bottom: 1.8rem;
-        }
+          .withdraw-main-container h2 {
+            margin-bottom: 1.8rem;
+          }
           .deposit-grid-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);

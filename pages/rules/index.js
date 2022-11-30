@@ -156,6 +156,10 @@ export default function rules(props) {
               padding: 1rem;
             }
 
+            .rules-container {
+              padding: 2rem;
+            }
+
             .rules-container p {
               margin-bottom: 4rem;
 

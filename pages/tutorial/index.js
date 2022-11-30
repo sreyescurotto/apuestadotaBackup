@@ -679,7 +679,7 @@ export default function Tutorial(props) {
             }
 
             .faq-container {
-              padding: 0.5rem;
+              padding: 2rem;
             }
 
             .faq-container-box {

@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { useState, useRef, useEffect } from "react";
 import Banner from "../components/Banner";
 import Share from "../components/Share";
+import Spinner from "../components/Spinner";
 
 
 export async function getStaticProps({ locale }) {
@@ -25,8 +26,9 @@ export async function getStaticProps({ locale }) {
 const Home = (props) => {
   const { home, navbar, footer } = props;
   const router = useRouter();
-  const [yAxi, setyAxi] = useState(35);
+  const [yAxi, setyAxi] = useState(33);
   const [xAxi, setxAxi] = useState(40);
+  const [firstLoader, setFirstLoader] = useState(true);
   const ref1 = useRef();
 
 
@@ -50,9 +52,15 @@ const Home = (props) => {
       }
     };
 
+    setTimeout(() => {
+      setFirstLoader(false);
+    }, 5000);
+
     window.addEventListener("scroll", handleScroll, true);
 
     return () => window.removeEventListener("scroll", handleScroll, true);
+    //execute after 5 seconds
+   
   }, []);
 
   return (
@@ -104,7 +112,11 @@ const Home = (props) => {
         `}
       </Script>
 
-      <div className="App">
+      { 
+        firstLoader ? 
+        <Spinner/>
+        :
+        <div className="App">
         <div className="main">
           <NavbarFirst props={navbar} />
           <div
@@ -267,6 +279,9 @@ const Home = (props) => {
           <Footer props={footer} />
         </div>
       </div>
+      }
+
+      
 
       <style jsx>{`
         @font-face {

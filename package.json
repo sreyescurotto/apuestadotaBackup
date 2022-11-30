@@ -17,6 +17,7 @@
     "react-countdown": "^2.3.2",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.36.0",
+    "react-loader-spinner": "^5.3.4",
     "react-select": "^5.5.7",
     "react-tsparticles": "^2.5.3",
     "serverless-mysql": "^1.5.4",
