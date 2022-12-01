@@ -85,7 +85,7 @@ const ApuestasAll = (props) => {
 
   return (
     <>
-      <div>
+      <div className="all-bets-c">
         <table className="desktop-table background-gradient-1">
           <thead>
             <tr>
@@ -199,6 +199,15 @@ const ApuestasAll = (props) => {
             margin-top: 20px;
 
             width: 100%;
+          }
+
+         
+
+          @media screen and (max-width: 485px) {
+            .all-bets-c {
+            max-width: 350px;
+            overflow-y: scroll;
+          }
           }
         `}
       </style>

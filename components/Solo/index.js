@@ -11,11 +11,14 @@ import Apuestas from "../Apuestas/Apuestas";
 import AppService from "../../services/app.service";
 
 import Swal from "sweetalert2";
+import Banner from "../Banner";
 
 const Solo = (props) => {
   const play = props.play;
 
   const profile = props.profile;
+
+  const home = props.home;
 
   const router = useRouter();
 
@@ -31,7 +34,7 @@ const Solo = (props) => {
 
   const [saldoPrueba, setSaldoPrueba] = useState("Cargando ...");
 
-  const [bet, setBet] = useState(0);
+  const [bet, setBet] = useState();
 
   const [loadApuestas, setLoadApuestas] = useState(false);
 
@@ -197,7 +200,10 @@ const Solo = (props) => {
 
   return (
     <>
+    <Banner props={home}/>
       <div className="mode--solo">
+
+      
         
           {user !== null && (
             <div className="balance-container">

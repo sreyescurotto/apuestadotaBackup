@@ -645,7 +645,7 @@ export default function Tutorial(props) {
               font-size : 18px;
             }
             .multimedia-container {
-              width: 100%;
+              width: 84%;
             }
           }
 

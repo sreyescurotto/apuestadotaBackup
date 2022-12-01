@@ -4,6 +4,8 @@ import Image from "next/image";
 import AppService from "../../services/app.service";
 import dayjs from "dayjs";
 
+import Green from "../Spinner/green";
+
 export default function Banner(props) {
   const home = props.props;
 
@@ -17,13 +19,13 @@ export default function Banner(props) {
 
   const [searching, setSearching] = useState(false);
 
-  const [cont, setCont] = useState(-1700);
+  const [cont, setCont] = useState(-1360);
 
   const updateCont = () => {
     if (cont < 0) {
-      setCont(cont + 170);
+      setCont(cont + 136);
     } else {
-      setCont(-1700);
+      setCont(-1360);
     }
   };
 
@@ -86,84 +88,89 @@ export default function Banner(props) {
 
   return (
     <>
-    <h2 className="mobile-title">Victorias Recientes</h2>
-      <div className="banner-container">
-        <div className="container-bets">
-          <div className="banner-text-c">
-            <h2>
-              {home.victory} <br /> {home.recent}
-            </h2>
-          </div>
-          <div className="last-bets-c">
-            <div
-              className="last-bets-complete"
-              style={{
-                transform: `translateX(${cont}px)`,
-              }}
-            >
-              {!searching &&
-                apuestas.map((apuesta) => {
-                  return (
-                    <div className="item-00" key={"partida_" + apuesta.id}>
-                      <div className="item-border-bottom">
-                        <div className="hero-c-img">
-                          <img
-                            src={
-                              dotaImageBase + heroes[apuesta.match_hero_id]?.img
-                            }
-                            className="hero_img"
-                          />
-                        </div>
-                        <div className="hero-description">
-                          <p className="win-price ">
-                            {user[findIndex(apuesta.usuario_id)].nickname}
-                            <br />+ S/ {apuesta.monto}
-                          </p>
-                          <div className="ad-icon-c">
-                            <Image
-                              src="/icons/favicon/logo-gris.png"
-                              width={80}
-                              height={55}
+      {searching ? (
+        <Green />
+        
+      ) : (
+        <>
+          <h2 className="mobile-title">Victorias Recientes</h2>
+          <div className="banner-container">
+            <div className="container-bets">
+              <div className="banner-text-c">
+                <h2>
+                  {home.victory} <br /> {home.recent}
+                </h2>
+              </div>
+              <div className="last-bets-c">
+                <div
+                  className="last-bets-complete"
+                  style={{
+                    transform: `translateX(${cont}px)`,
+                  }}
+                >
+                  {!searching &&
+                    apuestas.map((apuesta) => {
+                      return (
+                        <div className="item-00" key={"partida_" + apuesta.id}>
+                          <div className="item-border-bottom">
+                            <div className="hero-c-img">
+                              <img
+                                src={
+                                  dotaImageBase +
+                                  heroes[apuesta.match_hero_id]?.img
+                                }
+                                className="hero__img"
+                              />
+                            </div>
+                            <div className="hero-description">
+                              <p className="win-price ">
+                                {user[findIndex(apuesta.usuario_id)].nickname}
+                                <br />+ S/ {apuesta.monto}
+                              </p>
+                              <div className="ad-icon-c">
+                                <Image
+                                  src="/icons/favicon/logo-gris.png"
+                                  width={80}
+                                  height={55}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div className="person-info-content">
+                            <img
+                              src={user[findIndex(apuesta.usuario_id)].foto}
+                              className="profile-img"
+                              alt="profile"
                             />
+                            <h4 className="profile-nickname white">
+                              {user[findIndex(apuesta.usuario_id)].nickname}
+                            </h4>
+                            <p className="profile-match">
+                              Match ID: <br /> {apuesta.match_id}
+                            </p>
                           </div>
                         </div>
-                      </div>
-                      <div className="person-info-content">
-                        <img
-                          src={user[findIndex(apuesta.usuario_id)].foto}
-                          className="profile-img"
-                          alt="profile"
-                        />
-                        <h4 className="profile-nickname white">
-                          {user[findIndex(apuesta.usuario_id)].nickname}
-                        </h4>
-                        <p className="profile-match">
-                          Match ID: <br /> {apuesta.match_id}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
+                      );
+                    })}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
 
       <style jsx>{`
         .banner-container {
           position: relative;
-          z-index: 9;
-          margin-top: 2.2rem;
+          z-index: 3;
+          /* margin-top: 2.2rem; */
         }
         .container-bets {
           display: flex;
-          padding: 0 50px;
-          justify-content: center;
-          align-items: center;
         }
         .banner-text-c {
-          width: 300px;
-          height: 164px;
+          width: 50%;
+
           border-width: var(--border-width);
           overflow: hidden;
           position: relative;
@@ -172,12 +179,12 @@ export default function Banner(props) {
 
         .banner-text-c h2 {
           text-shadow: 3px 3px 4px #000;
-          font-size: 3rem;
-       
+          font-size: 2.2rem;
+
           text-align: center;
           color: #fff;
           line-height: 1;
-          margin-top: 25px;
+          margin-top: 30px;
         }
 
         .banner-text-c::after {
@@ -209,7 +216,7 @@ export default function Banner(props) {
           overflow: hidden;
           position: relative;
           border-width: var(--border-width);
-          border-right: 5px solid #2c62fe;
+          /* border-right: 5px solid #2c62fe; */
           background-color: rgba(128, 0, 128, 0.5);
         }
          {
@@ -255,8 +262,8 @@ export default function Banner(props) {
         .item-00 {
           position: relative;
           overflow: hidden;
-          min-width: 170px;
-          height: 164px;
+          min-width: 136px;
+          height: 150px;
           border-bottom: 10px solid;
           border-image-slice: 1;
           border-width: 5px;
@@ -297,15 +304,15 @@ export default function Banner(props) {
           opacity: 0.2;
         }
         .win-price {
-          font-size: var(--subtitle-size);
-          line-height: 26px;
+          font-size: var(--text);
+          line-height: 20px;
           font-weight: 600;
           color: #fff;
           text-transform: uppercase;
           letter-spacing: 1px;
           padding: 8px;
           padding-left: 0px;
-         
+
           text-align: center;
           position: absolute;
           left: 0px;
@@ -321,14 +328,15 @@ export default function Banner(props) {
         }
 
         .hero-c-img {
-          width: 170px;
-          height: 90px;
+          width: 136px;
+          height: 80px;
         }
 
-        .hero_img {
+        .hero__img {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          border-radius: 0px;
         }
 
         .person-info-content {
@@ -340,7 +348,7 @@ export default function Banner(props) {
           align-items: center;
           background: rgba(19, 21, 29, 0.88);
           flex-direction: column;
-          width: 170px;
+          width: 136px;
           padding-top: 20px;
           height: 100%;
           gap: 1px;
@@ -356,7 +364,6 @@ export default function Banner(props) {
         .profile-nickname {
           margin-top: 2px;
           font-weight: 600;
-        
         }
 
         .white {
@@ -364,6 +371,7 @@ export default function Banner(props) {
         }
 
         .profile-match {
+          font-size: var(--text);
           text-align: center;
         }
 
@@ -371,7 +379,16 @@ export default function Banner(props) {
           transform: translateY(0);
         }
         .mobile-title {
-          display:none;
+          display: none;
+        }
+        @media only screen and (max-width: 1366px) {
+          .last-bets-c {
+            max-width: 1025px;
+          }
+          .banner-text-c h2 {
+            font-size: 2.5rem;
+            margin-top: 33px;
+          }
         }
 
         @media (max-width: 480px) {
@@ -392,6 +409,7 @@ export default function Banner(props) {
           .mobile-title {
             display: block;
             text-align: center;
+            margin: 2rem;
           }
           .win-price {
             font-size: 16px;

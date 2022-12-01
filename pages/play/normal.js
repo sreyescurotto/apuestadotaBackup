@@ -11,18 +11,19 @@ export async function getStaticProps({ locale }) {
       navbar: response.default.navbar,
       layout: response.default.layout,
       leftbar: response.default.leftbar,
-      profile: response.default.profile
+      profile: response.default.profile,
+      home: response.default.home
     },
   };
 }
 
 const Normal = (props) => {
-  const { play , layout, navbar, leftbar, profile } = props;
+  const { play , layout, navbar, leftbar, profile, home } = props;
     return (
         <>
             <Layout layout={layout} navbar={navbar} leftbar={leftbar}>
                 <div className='interface'>
-                    <Solo  play={play} profile={profile}/>
+                    <Solo  play={play} profile={profile} home={home}/>
                 </div>
             </Layout>
             <style jsx>

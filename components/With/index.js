@@ -363,7 +363,7 @@ const With = (props) => {
               font-size: 20px;
             }
             .intro-title {
-              font-size: 2.2rem;
+              font-size: 24px;
             }
 
             .mode-bets-a {

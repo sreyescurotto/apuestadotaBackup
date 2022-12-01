@@ -32,7 +32,7 @@ const ModePractice = (props) => {
 
   const [saldoPrueba, setSaldoPrueba] = useState("Cargando ...");
 
-  const [bet, setBet] = useState(0);
+  const [bet, setBet] = useState();
 
   const [loadApuestas, setLoadApuestas] = useState(false);
 

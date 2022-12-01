@@ -10,6 +10,8 @@ import { useState, useRef, useEffect } from "react";
 import Banner from "../components/Banner";
 import Share from "../components/Share";
 import Spinner from "../components/Spinner";
+import { motion } from "framer-motion";
+import Steam from "../lb/steam";
 
 
 export async function getStaticProps({ locale }) {
@@ -116,7 +118,11 @@ const Home = (props) => {
         firstLoader ? 
         <Spinner/>
         :
-        <div className="App">
+        <motion.div 
+    initial={{ opacity: 0, scale: 0.5 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.5 }}>
+      <div className="App">
         <div className="main">
           <NavbarFirst props={navbar} />
           <div
@@ -164,11 +170,6 @@ const Home = (props) => {
             <div>
               <Banner props={home} />
             </div>
-
-            {/* <h1 className="title-1 cursive center mtop">
-              <span className="blue">{ home.subtitle3 } </span> {
-                home.subtitle4 }
-            </h1> */}
           </section>
 
           <div className="overlay-gradient"></div>
@@ -276,9 +277,11 @@ const Home = (props) => {
               </div>
             </div>
           </section>
+          <Steam />
           <Footer props={footer} />
         </div>
-      </div>
+        </div>
+      </motion.div>
       }
 
       
@@ -385,13 +388,11 @@ const Home = (props) => {
           .App {
             height: 768px;
           }
-        
-      
           .subtitle-1 {
             font-size: 1em;
           }
           .videocontainer {
-            height: 80vh;
+            height: 70vh;
           }
           .section-text h3 {
             font-size: 1.8rem;
@@ -412,7 +413,7 @@ const Home = (props) => {
             width: 140px;
           }
           .info-text-cont {
-            font-size: 2rem;
+            font-size: 1.5rem;
           }
         }
 

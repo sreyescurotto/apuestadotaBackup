@@ -173,6 +173,28 @@ export default function Share() {
             }
          }
 
+         @media only screen and (max-width: 1366px) {
+          .shareText h2 {
+            width: 480px;
+            font-size: 2.8rem;
+            line-height: 1.1;
+          }
+          .shareText p {
+            width: 480px;
+            font-size: 1.2rem;
+          }
+          .runes-effect {
+            bottom: 60%;
+            left: 18%;
+          }
+          .absolute-social-c {
+            left: 18%;
+          }
+          .person-img  img{
+            width: 440px;
+          }
+          }
+
             
         @media only screen and (max-width: 485px) {
 

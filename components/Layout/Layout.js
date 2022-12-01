@@ -8,6 +8,8 @@ import Navbar from "../Navbar/Navbar";
 
 import Leftbar from "../Leftbar/Leftbar";
 
+import { motion } from "framer-motion"
+
 
 
 const Layout = (props) => {
@@ -24,14 +26,18 @@ const Layout = (props) => {
         <link rel="shortcut icon" href="/icons/favicon/favicon-32.png" />
       </Head>
 
-      <div className="mode-play">
+      <div className="mode-play" >
         <Navbar navbar={navbar}/>
+
+        
         <div className="main--1">
           <Leftbar leftbar={leftbar} />
         
           
+            {props.children}
+        
 
-          {props.children}
+          
         </div>
 
         <div className="social-container">
@@ -48,6 +54,7 @@ const Layout = (props) => {
             />
           </a>
         </div>
+    
       </div>
 
       <style jsx>

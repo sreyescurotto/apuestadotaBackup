@@ -131,7 +131,7 @@ function authTransaction (a, b, c, d) {
     <>
       <Layout layout={layout} navbar={navbar} leftbar={leftbar}>
           {/*  */}
-          <button onClick={()=> authTransaction(token, transactionToken, orderid, amount)}  className={loading ? 'btn btn-md buttonrandom' : 'btn btn-md buttonrandomdisable'}>
+          <button onClick={()=> authTransaction(token, transactionToken, orderid, amount)}  className={loading ? 'btn btn-md buttonrandom' : 'btn btn-md buttonrandom buttonrandomdisable'}>
           {
             loading ? 'Empezar a jugar' : 'Cargando ...'
           } </button>
@@ -161,6 +161,10 @@ function authTransaction (a, b, c, d) {
           }
 
           .disable {
+            pointer-events: none;
+          }
+
+          .buttonrandomdisable {
             pointer-events: none;
           }
 

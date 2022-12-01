@@ -117,7 +117,7 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 3;
+  z-index: 4;
 }
 
 .media-navbar {
@@ -1677,7 +1677,7 @@ MEDIA QUERY MAXW WIDTH 415PX  */
   }
 
   .overlay-gradient {
-    top: 18%;
+    top: 12%;
   }
 }
 
@@ -1708,6 +1708,10 @@ MEDIA QUERY MAXW WIDTH 415PX  */
     margin-bottom: 2rem;
   }
 
+  .mode--solo {
+    padding: 0px 20px;
+  }
+  
   .mode-bets-a {
     padding: 2rem 1rem;
   }

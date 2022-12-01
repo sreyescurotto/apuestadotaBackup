@@ -154,6 +154,15 @@ const Profile = (props) => {
             left: 30%;
           }
 
+          @media only screen and (max-width: 1366px) {
+            .monetize-subtitle {
+              margin: 0 auto 1rem;
+            }
+            .monetize-offer-item-img img {
+              width: 360px;
+            }
+           }
+
           @media (max-width: 375px) {
             .interface {
               width: 375px;
